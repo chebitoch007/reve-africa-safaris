@@ -1,0 +1,299 @@
+/**
+ * RÊVE AFRICA SAFARIS — Global Styles
+ *
+ * Tailwind v4 CSS-first configuration.
+ * All design tokens are registered as CSS custom properties here,
+ * making them available to both Tailwind utilities and vanilla CSS.
+ */
+
+@import "tailwindcss";
+
+/* ─────────────────────────────────────────────
+   Tailwind v4 theme registration
+   Extends the default theme with brand tokens.
+───────────────────────────────────────────── */
+
+@theme {
+  /* Font families — driven by next/font CSS variables */
+  --font-display: var(--font-cormorant), Georgia, "Times New Roman", serif;
+  --font-body:    var(--font-inter), -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-sans:    var(--font-inter), -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+
+  /* ── Colour palette ── */
+
+  /* Basalt */
+  --color-basalt-950: #0C0D0B;
+  --color-basalt-900: #131510;
+  --color-basalt-800: #1C1F18;
+  --color-basalt-700: #282C22;
+  --color-basalt-600: #363B2D;
+
+  /* Chalk */
+  --color-chalk-50:  #FAF9F5;
+  --color-chalk-100: #F4F2EA;
+  --color-chalk-200: #EBE7DA;
+  --color-chalk-300: #DDD8C6;
+  --color-chalk-400: #CAC2A8;
+
+  /* Dune */
+  --color-dune-100: #F0E8D5;
+  --color-dune-200: #DDD0B1;
+  --color-dune-300: #C9B98D;
+  --color-dune-400: #B5A26A;
+  --color-dune-500: #9E8B4D;
+  --color-dune-600: #7D6D3A;
+
+  /* Acacia */
+  --color-acacia-100: #E8EDE0;
+  --color-acacia-200: #CDD8C0;
+  --color-acacia-300: #A8BA98;
+  --color-acacia-400: #839A73;
+  --color-acacia-500: #627A53;
+  --color-acacia-600: #495C3D;
+  --color-acacia-700: #344229;
+
+  /* Amber */
+  --color-amber-brand-300: #F2D07A;
+  --color-amber-brand-400: #E8BC48;
+  --color-amber-brand-500: #D4A017;
+  --color-amber-brand-600: #B38612;
+
+  /* Stone */
+  --color-stone-brand-200: #E4E0D8;
+  --color-stone-brand-300: #CDC8BC;
+  --color-stone-brand-400: #AFA99A;
+  --color-stone-brand-500: #8F887A;
+  --color-stone-brand-600: #6E6860;
+  --color-stone-brand-700: #4F4A44;
+
+  /* ── Semantic colour tokens ── */
+  --color-bg-primary:   #FAF9F5;
+  --color-bg-secondary: #F4F2EA;
+  --color-bg-muted:     #EBE7DA;
+  --color-bg-inverse:   #131510;
+  --color-bg-dark:      #1C1F18;
+  --color-bg-deep:      #0C0D0B;
+  --color-bg-dune:      #F0E8D5;
+  --color-bg-acacia:    #E8EDE0;
+
+  --color-text-primary:       #131510;
+  --color-text-secondary:     #6E6860;
+  --color-text-muted:         #8F887A;
+  --color-text-inverse:       #FAF9F5;
+  --color-text-inverse-muted: #DDD8C6;
+  --color-text-accent:        #D4A017;
+
+  --color-accent-primary: #D4A017;
+  --color-accent-light:   #F2D07A;
+  --color-accent-dark:    #B38612;
+
+  --color-border-light:   #DDD8C6;
+  --color-border-default: #E4E0D8;
+  --color-border-strong:  #AFA99A;
+  --color-border-inverse: #282C22;
+  --color-border-accent:  #D4A017;
+
+  /* ── Spacing extensions ── */
+  --spacing-18: 4.5rem;   /* 72px */
+  --spacing-22: 5.5rem;   /* 88px */
+  --spacing-28: 7rem;     /* 112px */
+  --spacing-36: 9rem;     /* 144px */
+  --spacing-40: 10rem;    /* 160px */
+  --spacing-48: 12rem;    /* 192px */
+  --spacing-56: 14rem;    /* 224px */
+  --spacing-64: 16rem;    /* 256px */
+  --spacing-72: 18rem;    /* 288px */
+  --spacing-80: 20rem;    /* 320px */
+  --spacing-96: 24rem;    /* 384px */
+
+  /* ── Container sizes ── */
+  --container-xs:  20rem;
+  --container-sm:  38rem;
+  --container-md:  56rem;
+  --container-lg:  72rem;
+  --container-xl:  80rem;
+  --container-2xl: 90rem;
+
+  /* ── Border radii ── */
+  --radius-xs:  0.125rem;
+  --radius-sm:  0.25rem;
+  --radius-md:  0.5rem;
+  --radius-lg:  0.75rem;
+  --radius-xl:  1rem;
+  --radius-2xl: 1.5rem;
+
+  /* ── Shadows (warm-tinted) ── */
+  --shadow-xs:     0 1px 3px 0 rgba(12, 13, 11, 0.08);
+  --shadow-sm:     0 2px 8px 0 rgba(12, 13, 11, 0.10), 0 1px 3px -1px rgba(12, 13, 11, 0.06);
+  --shadow-md:     0 4px 16px -2px rgba(12, 13, 11, 0.14), 0 2px 6px -2px rgba(12, 13, 11, 0.08);
+  --shadow-lg:     0 8px 28px -4px rgba(12, 13, 11, 0.18), 0 4px 10px -4px rgba(12, 13, 11, 0.10);
+  --shadow-xl:     0 16px 48px -8px rgba(12, 13, 11, 0.24), 0 8px 20px -8px rgba(12, 13, 11, 0.14);
+  --shadow-2xl:    0 28px 64px -12px rgba(12, 13, 11, 0.32), 0 12px 28px -12px rgba(12, 13, 11, 0.18);
+  --shadow-accent: 0 0 0 1px rgba(212, 160, 23, 0.3), 0 4px 16px -4px rgba(212, 160, 23, 0.25);
+  --shadow-inner:  inset 0 2px 6px 0 rgba(12, 13, 11, 0.12);
+
+  /* ── Transition durations ── */
+  --duration-fast:     150ms;
+  --duration-base:     250ms;
+  --duration-moderate: 400ms;
+  --duration-slow:     650ms;
+
+  /* ── Easing ── */
+  --ease-standard:  cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-enter:     cubic-bezier(0, 0, 0.2, 1);
+  --ease-exit:      cubic-bezier(0.4, 0, 1, 1);
+  --ease-cinematic: cubic-bezier(0.22, 1, 0.36, 1);
+
+  /* ── Z-index scale ── */
+  --z-raised:   10;
+  --z-dropdown: 20;
+  --z-sticky:   30;
+  --z-overlay:  40;
+  --z-modal:    50;
+  --z-toast:    60;
+  --z-tooltip:  70;
+}
+
+/* ─────────────────────────────────────────────
+   Base resets & global defaults
+───────────────────────────────────────────── */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  height: 100%;
+  /* Smoother font rendering */
+  -webkit-font-smoothing:  antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering:          optimizeLegibility;
+  font-feature-settings:   "kern" 1, "liga" 1, "calt" 1;
+  /* Prevent font size inflation on mobile */
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust:         100%;
+  /* Smooth scroll */
+  scroll-behavior:          smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+body {
+  min-height:      100%;
+  background:      var(--color-bg-primary);
+  color:           var(--color-text-primary);
+  font-family:     var(--font-body);
+  font-size:       1rem;
+  line-height:     1.6;
+  letter-spacing:  0;
+}
+
+/* ─────────────────────────────────────────────
+   Typography base styles
+───────────────────────────────────────────── */
+
+/* Apply Cormorant Garamond to all native heading elements */
+h1, h2, h3, h4, h5, h6 {
+  font-family:  var(--font-display);
+  font-weight:  300;
+  font-style:   italic;
+  line-height:  1.15;
+  letter-spacing: -0.02em;
+  color:        var(--color-text-primary);
+}
+
+h1 { font-size: clamp(2.5rem, 5vw + 1rem, 4.5rem); }
+h2 { font-size: clamp(2rem,   4vw + 0.5rem, 3rem);  }
+h3 { font-size: clamp(1.5rem, 3vw + 0.25rem, 2.25rem); }
+h4 { font-size: clamp(1.25rem, 2vw, 1.875rem); }
+h5 { font-size: 1.25rem; }
+h6 { font-size: 1rem; font-style: normal; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; }
+
+p {
+  font-family: var(--font-body);
+  font-weight: 400;
+  line-height: 1.7;
+}
+
+a {
+  color:           inherit;
+  text-decoration: none;
+  transition:      color var(--duration-base) var(--ease-standard);
+}
+
+/* ─────────────────────────────────────────────
+   Image defaults
+───────────────────────────────────────────── */
+
+img,
+video {
+  max-width:   100%;
+  height:      auto;
+  display:     block;
+}
+
+/* ─────────────────────────────────────────────
+   Focus styles — accessible, branded
+───────────────────────────────────────────── */
+
+:focus-visible {
+  outline:        2px solid var(--color-accent-primary);
+  outline-offset: 3px;
+  border-radius:  2px;
+}
+
+/* Remove focus ring for mouse users */
+:focus:not(:focus-visible) {
+  outline: none;
+}
+
+/* ─────────────────────────────────────────────
+   Reduced motion — collapse all animations
+───────────────────────────────────────────── */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration:   0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration:  0.01ms !important;
+    scroll-behavior:      auto !important;
+  }
+}
+
+/* ─────────────────────────────────────────────
+   Selection styling
+───────────────────────────────────────────── */
+
+::selection {
+  background: var(--color-accent-light);
+  color:      var(--color-text-primary);
+}
+
+/* ─────────────────────────────────────────────
+   Scrollbar styling (Webkit)
+───────────────────────────────────────────── */
+
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-bg-secondary);
+}
+
+::-webkit-scrollbar-thumb {
+  background:    var(--color-stone-brand-300);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-stone-brand-400);
+}

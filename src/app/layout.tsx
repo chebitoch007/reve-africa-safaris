@@ -1,37 +1,43 @@
-import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
-import "../styles/globals.css";
+/**
+ * RÊVE AFRICA SAFARIS — Root Layout
+ *
+ * Server Component. Applies font variables, metadata, and viewport config.
+ * Composes the global Header and Footer around every page.
+ *
+ * Header is a Client Component (scroll detection, mobile menu).
+ * Footer is a Server Component.
+ * The <main> element receives flex-1 so it fills all remaining vertical space,
+ * preventing a short-page footer from floating mid-screen.
+ */
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
+import type { Metadata, Viewport } from 'next';
+import { getFontClassNames } from '@/lib/fonts';
+import { BASE_METADATA, VIEWPORT } from '@/lib/metadata';
+import { Header } from '@/components/navigation/Header';
+import { Footer } from '@/components/footer/Footer';
+import '@/app/globals.css';
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
+export const metadata: Metadata = BASE_METADATA;
+export const viewport: Viewport = VIEWPORT;
 
-export const metadata: Metadata = {
-  title: {
-    default: "RÊVE AFRICA SAFARIS",
-    template: "%s | RÊVE AFRICA SAFARIS",
-  },
-  description:
-    "Luxury African safaris and unforgettable travel experiences across East and Southern Africa.",
-};
-
-export default function RootLayout({
-  children,
-}: Readonly<{
+interface RootLayoutProps {
   children: React.ReactNode;
-}>) {
+}
+
+export default function RootLayout({ children }: RootLayoutProps) {
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+      className={getFontClassNames()}
+      suppressHydrationWarning
     >
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="min-h-screen flex flex-col bg-[var(--color-bg-primary)] text-[var(--color-text-primary)]">
+        <Header />
+        <main id="main-content" className="flex-1 flex flex-col">
+          {children}
+        </main>
+        <Footer />
+      </body>
     </html>
   );
 }
