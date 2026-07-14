@@ -1,22 +1,35 @@
 /**
  * RÊVE AFRICA SAFARIS — Homepage
  *
- * Composes the Milestone 3A homepage sections:
- *   1. Hero            — Full-viewport editorial entry
- *   2. Introduction    — Brand philosophy and stats
- *   3. DestinationsPreview — Kenya, Tanzania, Uganda, Rwanda
- *   4. CTASection      — Dark-surface invitation to plan
+ * Full homepage composition — Milestones 3A + 3B.
  *
- * All sections use Framer Motion whileInView animations (scroll-triggered).
- * The Hero uses entry animations that fire on page load.
+ * Section order:
+ *   1.  Hero                 — Full-viewport editorial entry
+ *   2.  Introduction         — Brand philosophy and stats
+ *   3.  DestinationsPreview  — Kenya, Tanzania, Uganda, Rwanda
+ *   4.  ExperiencesSection   — Six core travel experience types
+ *   5.  PackagesSection      — Three featured safari packages
+ *   6.  WhyUsSection         — Six trust pillars (dark surface)
+ *   7.  StatisticsSection    — Key company metrics
+ *   8.  TestimonialsSection  — Placeholder guest testimonials
+ *   9.  GalleryPreview       — Photography placeholder grid
+ *   10. FAQSection           — Six accordion FAQ items
+ *   11. FinalCTA             — Closing call to action
  */
 
 import type { Metadata } from 'next';
-import { buildPageMetadata } from '@/lib/metadata';
-import { Hero }                 from '@/components/home/Hero';
-import { Introduction }         from '@/components/home/Introduction';
-import { DestinationsPreview }  from '@/components/home/DestinationsPreview';
-import { CTASection }           from '@/components/home/CTASection';
+import { buildPageMetadata }      from '@/lib/metadata';
+import { Hero }                   from '@/components/home/Hero';
+import { Introduction }           from '@/components/home/Introduction';
+import { DestinationsPreview }    from '@/components/home/DestinationsPreview';
+import { ExperiencesSection }     from '@/components/home/ExperiencesSection';
+import { PackagesSection }        from '@/components/home/PackagesSection';
+import { WhyUsSection }           from '@/components/home/WhyUsSection';
+import { StatisticsSection }      from '@/components/home/StatisticsSection';
+import { TestimonialsSection }    from '@/components/home/TestimonialsSection';
+import { GalleryPreview }         from '@/components/home/GalleryPreview';
+import { FAQSection }             from '@/components/home/FAQSection';
+import { FinalCTA }               from '@/components/home/FinalCTA';
 
 export const metadata: Metadata = buildPageMetadata({
   title:       'Extraordinary Safari Journeys Across Africa',
@@ -30,7 +43,14 @@ export default function HomePage() {
       <Hero />
       <Introduction />
       <DestinationsPreview />
-      <CTASection />
+      <ExperiencesSection />
+      <PackagesSection />
+      <WhyUsSection />
+      <StatisticsSection />
+      <TestimonialsSection />
+      <GalleryPreview />
+      <FAQSection />
+      <FinalCTA />
     </>
   );
 }
