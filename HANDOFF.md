@@ -26,9 +26,9 @@ start of each session. Never assume local files from a previous session exist.
 | 2 — Global Layout & Navigation | ✅ Complete | `5a71208` |
 | 3A — Homepage Foundation | ✅ Complete | `5a71208` |
 | 3B — Homepage Completion | ✅ Complete | `79eb883` |
-| **4 — About Page** | ⬜ Next | — |
-| 5 — Destinations Page | ⬜ Pending | — |
-| 6 — Journeys / Packages Page | ⬜ Pending | — |
+| 4 — About Page | ✅ Complete | `4afa685` |
+| **5 — Destinations Page** | ✅ Complete | pushed this session |
+| 6 — Journeys / Packages Page | ⬜ Next | — |
 | 7 — Experiences Page | ⬜ Pending | — |
 | 8 — Contact Page | ⬜ Pending | — |
 | 9 — Gallery Page | ⬜ Pending | — |
@@ -62,14 +62,36 @@ src/
 │   ├── globals.css              ← Tailwind v4 @theme + global resets
 │   ├── layout.tsx               ← Root layout: fonts, Header, Footer, <main>
 │   ├── page.tsx                 ← Homepage (11 sections)
-│   ├── about/page.tsx           ← Placeholder (to be built — Milestone 4)
-│   ├── blog/page.tsx            ← Placeholder
-│   ├── contact/page.tsx         ← Placeholder
-│   ├── destinations/page.tsx    ← Placeholder
-│   ├── gallery/page.tsx         ← Placeholder
-│   └── packages/page.tsx        ← Placeholder
+│   ├── about/page.tsx           ← ✅ About page (Milestone 4)
+│   ├── destinations/page.tsx    ← ✅ Destinations page (Milestone 5)
+│   ├── blog/page.tsx            ← Stub placeholder
+│   ├── contact/page.tsx         ← Stub placeholder
+│   ├── gallery/page.tsx         ← Stub placeholder
+│   └── packages/page.tsx        ← Stub placeholder
 │
 ├── components/
+│   ├── about/                   ← Milestone 4 — About page components
+│   │   ├── AboutHero.tsx        ← Client (entry animations)
+│   │   ├── OurStory.tsx         ← Client (scroll reveals + pull quote)
+│   │   ├── OurApproach.tsx      ← Client (three philosophy pillars)
+│   │   ├── TeamCard.tsx         ← Server Component (portrait card)
+│   │   ├── MeetTheTeam.tsx      ← Client (animation wrapper around TeamCard)
+│   │   ├── ConservationCommitment.tsx ← Client (dark surface, stat cards)
+│   │   └── AboutCTA.tsx         ← Client (closing CTA)
+│   ├── destinations/            ← Milestone 5 — Destinations page components
+│   │   ├── DestinationsHero.tsx      ← Client (entry animations)
+│   │   ├── DestinationsOverview.tsx  ← Client (two-column intro + stat)
+│   │   ├── CountryCard.tsx           ← Server Component (portrait country card)
+│   │   ├── CountryShowcase.tsx       ← Client (animation wrapper around CountryCard)
+│   │   ├── WildlifeHighlights.tsx    ← Client (six wildlife encounter tiles)
+│   │   ├── SignatureExperienceCard.tsx ← Server Component (landscape experience card)
+│   │   ├── SignatureExperiences.tsx   ← Client (animation wrapper)
+│   │   ├── BestTimeToVisit.tsx        ← Client (regional season panels)
+│   │   ├── LodgeCard.tsx              ← Server Component (lodge preview card)
+│   │   ├── FeaturedLodges.tsx         ← Client (animation wrapper around LodgeCard)
+│   │   ├── MapPlaceholder.tsx         ← Client (architecture-only map placeholder)
+│   │   ├── DestinationsFAQ.tsx        ← Client (accordion, destinations-specific data)
+│   │   └── DestinationsCTA.tsx        ← Client (closing CTA)
 │   ├── footer/
 │   │   ├── Footer.tsx           ← Server Component, global footer
 │   │   └── FooterColumn.tsx     ← Server Component, reusable nav column
@@ -102,7 +124,9 @@ src/
 ├── lib/
 │   ├── constants/
 │   │   ├── homepage.ts          ← All homepage content data
-│   │   └── navigation.ts        ← Nav links, footer columns, social links
+│   │   ├── navigation.ts        ← Nav links, footer columns, social links
+│   │   ├── about.ts             ← All About page content data (Milestone 4)
+│   │   └── destinations.ts      ← All Destinations page content data (Milestone 5)
 │   ├── design-system/
 │   │   ├── index.ts             ← Barrel export (import from '@/lib/design-system')
 │   │   ├── colors.ts            ← PALETTE + COLORS + CSS_VARS
@@ -540,9 +564,9 @@ After each milestone:
 
 5. **No sitemap or robots.txt.** Should be added before deployment.
 
-6. **Placeholder page routes.** `/about`, `/blog`, `/contact`, `/destinations`,
-   `/gallery`, `/packages` all exist as stub pages from the original repo
-   scaffold. They will be replaced milestone by milestone.
+6. **Placeholder page routes.** `/blog`, `/contact`, `/gallery`, `/packages`
+   remain as stub pages from the original repo scaffold. They will be replaced
+   milestone by milestone. `/about` (M4) and `/destinations` (M5) are complete.
 
 ---
 
@@ -569,9 +593,68 @@ Only begin writing code after confirming the build is clean.
 
 ---
 
+## 13. Milestone 5 — Destinations Page Architectural Decisions
+
+**Commit:** pushed in M5 session (see git log for hash)
+
+### New files
+
+| File | Type | Notes |
+|------|------|-------|
+| `src/lib/constants/destinations.ts` | Data | All destinations page content — countries, wildlife, experiences, seasons, lodges, FAQ, CTAs |
+| `src/app/destinations/page.tsx` | Page | 10-section composition with SEO metadata |
+| `src/components/destinations/DestinationsHero.tsx` | Client | Entry animations; dark hero |
+| `src/components/destinations/DestinationsOverview.tsx` | Client | Two-column intro + stat callout |
+| `src/components/destinations/CountryCard.tsx` | **Server** | Portrait card with CSS-only hover |
+| `src/components/destinations/CountryShowcase.tsx` | Client | Animation wrapper around CountryCard |
+| `src/components/destinations/WildlifeHighlights.tsx` | Client | Six wildlife tiles with static icon map |
+| `src/components/destinations/SignatureExperienceCard.tsx` | **Server** | Landscape experience card; CSS-only hover |
+| `src/components/destinations/SignatureExperiences.tsx` | Client | Animation wrapper; 2×2 grid |
+| `src/components/destinations/BestTimeToVisit.tsx` | Client | Three regional panels; season accordion-style |
+| `src/components/destinations/LodgeCard.tsx` | **Server** | Lodge preview; 16:9 placeholder |
+| `src/components/destinations/FeaturedLodges.tsx` | Client | Animation wrapper around LodgeCard |
+| `src/components/destinations/MapPlaceholder.tsx` | Client | Architecture-only; see integration note in file |
+| `src/components/destinations/DestinationsFAQ.tsx` | Client | Accordion; destinations-specific data |
+| `src/components/destinations/DestinationsCTA.tsx` | Client | Closing CTA; matches About/FinalCTA pattern |
+
+### Key decisions
+
+**FAQ approach:** `DestinationsFAQ` follows the same accordion pattern as the
+homepage `FAQSection` but consumes `DESTINATIONS_FAQ_ITEMS` from its own
+constants file. No shared abstraction was created — both components differ in
+their CTA links and data sources. Extract a shared `<AccordionFAQ>` primitive
+if a third page requires this pattern.
+
+**Map placeholder isolation:** `MapPlaceholder` is a self-contained Client
+Component with a `MapCanvas` inner component. The integration guide for adding
+a real map library (Mapbox GL JS / Google Maps / Leaflet) is documented inside
+`MapPlaceholder.tsx`. The page composition (`destinations/page.tsx`) requires
+no changes when the map is introduced.
+
+**Server/Client split:** Three cards (`CountryCard`, `SignatureExperienceCard`,
+`LodgeCard`) are Server Components with CSS-only hover effects. Their parent
+section components are Client Components that handle only scroll-reveal
+animation — the minimal `'use client'` boundary pattern established in M3/M4.
+
+**Surface alternation (10 sections):**
+```
+DestinationsHero       → bg-deep
+DestinationsOverview   → bg-primary
+CountryShowcase        → bg-secondary
+WildlifeHighlights     → bg-dune
+SignatureExperiences   → bg-primary
+BestTimeToVisit        → bg-inverse
+FeaturedLodges         → bg-secondary
+MapPlaceholder         → bg-muted
+DestinationsFAQ        → bg-primary
+DestinationsCTA        → bg-deep
+```
+
+---
+
 ## 12. Suggested First Message for New Session
 
-Paste the following into the new Claude account to begin Milestone 4:
+Paste the following into the new Claude session to begin Milestone 6:
 
 ---
 
@@ -582,12 +665,14 @@ Paste the following into the new Claude account to begin Milestone 4:
 > **Canonical repo:** `https://github.com/chebitoch007/reve-africa-safaris.git`
 >
 > **Completed milestones:** 1 (Design System), 2 (Layout & Navigation),
-> 3A (Homepage Foundation), 3B (Homepage Completion)
+> 3A (Homepage Foundation), 3B (Homepage Completion), 4 (About Page),
+> 5 (Destinations Page)
 >
-> **Next milestone:** Milestone 4 — About Page
+> **Next milestone:** Milestone 6 — Journeys / Packages Page
 >
 > Start by cloning the repo, running `npm install`, verifying the build
-> passes, then reading the full file tree and the key files listed in
-> the handoff document before writing any code.
+> passes, then reading `HANDOFF.md` at the repo root before writing any code.
+> That document contains everything you need to know about the architecture,
+> design system, engineering rules, and component patterns.
 >
 > [Paste the full contents of this handoff document here]
