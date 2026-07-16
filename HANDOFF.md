@@ -27,9 +27,9 @@ start of each session. Never assume local files from a previous session exist.
 | 3A — Homepage Foundation | ✅ Complete | `5a71208` |
 | 3B — Homepage Completion | ✅ Complete | `79eb883` |
 | 4 — About Page | ✅ Complete | `4afa685` |
-| **5 — Destinations Page** | ✅ Complete | pushed this session |
-| 6 — Journeys / Packages Page | ⬜ Next | — |
-| 7 — Experiences Page | ⬜ Pending | — |
+| 5 — Destinations Page | ✅ Complete | `a837098` |
+| **6 — Safari Packages Page** | ✅ Complete | pushed this session |
+| 7 — Experiences Page | ⬜ Next | — |
 | 8 — Contact Page | ⬜ Pending | — |
 | 9 — Gallery Page | ⬜ Pending | — |
 
@@ -64,10 +64,10 @@ src/
 │   ├── page.tsx                 ← Homepage (11 sections)
 │   ├── about/page.tsx           ← ✅ About page (Milestone 4)
 │   ├── destinations/page.tsx    ← ✅ Destinations page (Milestone 5)
+│   ├── packages/page.tsx        ← ✅ Safari Packages page (Milestone 6)
 │   ├── blog/page.tsx            ← Stub placeholder
 │   ├── contact/page.tsx         ← Stub placeholder
-│   ├── gallery/page.tsx         ← Stub placeholder
-│   └── packages/page.tsx        ← Stub placeholder
+│   └── gallery/page.tsx         ← Stub placeholder
 │
 ├── components/
 │   ├── about/                   ← Milestone 4 — About page components
@@ -78,6 +78,18 @@ src/
 │   │   ├── MeetTheTeam.tsx      ← Client (animation wrapper around TeamCard)
 │   │   ├── ConservationCommitment.tsx ← Client (dark surface, stat cards)
 │   │   └── AboutCTA.tsx         ← Client (closing CTA)
+│   ├── packages/                ← Milestone 6 — Safari Packages page components
+│   │   ├── PackagesHero.tsx          ← Client (entry animations)
+│   │   ├── JourneyIntro.tsx          ← Client (philosophy + stat row)
+│   │   ├── AllPackages.tsx           ← Client (animation wrapper — reuses PackageCard)
+│   │   ├── JourneyCategoryCard.tsx   ← Server Component (icon + title + link card)
+│   │   ├── JourneyCategories.tsx     ← Client (animation wrapper, 4-col grid)
+│   │   ├── SignatureItinerary.tsx    ← Client (editorial showcase + day timeline)
+│   │   ├── WhatsIncluded.tsx         ← Client (included/excluded two-column dl)
+│   │   ├── AccommodationStandards.tsx← Client (three accommodation tiers)
+│   │   ├── BespokeProcess.tsx        ← Client (four-step custom planning)
+│   │   ├── PackagesFAQ.tsx           ← Client (accordion, packages-specific data)
+│   │   └── PackagesCTA.tsx           ← Client (closing CTA)
 │   ├── destinations/            ← Milestone 5 — Destinations page components
 │   │   ├── DestinationsHero.tsx      ← Client (entry animations)
 │   │   ├── DestinationsOverview.tsx  ← Client (two-column intro + stat)
@@ -126,7 +138,8 @@ src/
 │   │   ├── homepage.ts          ← All homepage content data
 │   │   ├── navigation.ts        ← Nav links, footer columns, social links
 │   │   ├── about.ts             ← All About page content data (Milestone 4)
-│   │   └── destinations.ts      ← All Destinations page content data (Milestone 5)
+│   │   ├── destinations.ts      ← All Destinations page content data (Milestone 5)
+│   │   └── packages.ts          ← All Safari Packages page content data (Milestone 6)
 │   ├── design-system/
 │   │   ├── index.ts             ← Barrel export (import from '@/lib/design-system')
 │   │   ├── colors.ts            ← PALETTE + COLORS + CSS_VARS
@@ -564,9 +577,10 @@ After each milestone:
 
 5. **No sitemap or robots.txt.** Should be added before deployment.
 
-6. **Placeholder page routes.** `/blog`, `/contact`, `/gallery`, `/packages`
-   remain as stub pages from the original repo scaffold. They will be replaced
-   milestone by milestone. `/about` (M4) and `/destinations` (M5) are complete.
+6. **Placeholder page routes.** `/blog`, `/contact`, `/gallery` remain as stub
+   pages from the original repo scaffold. They will be replaced milestone by
+   milestone. `/about` (M4), `/destinations` (M5), and `/packages` (M6) are
+   complete.
 
 ---
 
@@ -652,6 +666,64 @@ DestinationsCTA        → bg-deep
 
 ---
 
+## 14. Milestone 6 — Safari Packages Page Architectural Decisions
+
+**Commit:** pushed in M6 session (see git log for hash)
+
+### New files
+
+| File | Type | Notes |
+|------|------|-------|
+| `src/lib/constants/packages.ts` | Data | All packages page content. Re-exports `PackageData` type from `homepage.ts` rather than duplicating it. |
+| `src/app/packages/page.tsx` | Page | 10-section composition with SEO metadata |
+| `src/components/packages/PackagesHero.tsx` | Client | Two-column: headline left, subheadline + CTA right |
+| `src/components/packages/JourneyIntro.tsx` | Client | Philosophy copy + three-stat `<dl>` row |
+| `src/components/packages/AllPackages.tsx` | Client | Animation wrapper — **reuses existing `PackageCard` Server Component** |
+| `src/components/packages/JourneyCategoryCard.tsx` | **Server** | Icon card; static icon map pattern |
+| `src/components/packages/JourneyCategories.tsx` | Client | Animation wrapper; 4-col grid |
+| `src/components/packages/SignatureItinerary.tsx` | Client | Editorial flagship; `<ol>` timeline |
+| `src/components/packages/WhatsIncluded.tsx` | Client | Two-column `<dl>` included/excluded |
+| `src/components/packages/AccommodationStandards.tsx` | Client | Three accommodation tier cards |
+| `src/components/packages/BespokeProcess.tsx` | Client | Sticky-left intro + `<ol>` four steps |
+| `src/components/packages/PackagesFAQ.tsx` | Client | Accordion; packages-specific data |
+| `src/components/packages/PackagesCTA.tsx` | Client | Closing CTA; matches established pattern |
+
+### Key decisions
+
+**PackageCard reuse:** `AllPackages` imports the existing `PackageCard` Server
+Component from `src/components/home/PackageCard.tsx`. No duplication — the
+card was designed for reuse on this page (documented in its own header).
+`packages.ts` imports the `PackageData` interface from `homepage.ts` so the
+type is defined once.
+
+**Extended catalogue vs homepage preview:** `homepage.ts` holds three
+`FEATURED_PACKAGES` for the homepage preview. `packages.ts` holds all six
+`ALL_PACKAGES` including those three. The three overlap in data but are not
+technically duplicated — the homepage preview is intentionally a subset curated
+for the homepage context.
+
+**FAQ pattern note:** This is the third accordion FAQ implementation
+(homepage, destinations, packages). The M5 decision to hold on extracting a
+shared primitive still stands — each has a different data shape (`FAQItem`,
+`DestinationsFAQItem`, `PackagesFAQItem`). A shared `<AccordionFAQ items={[]}
+section={} prefix="" />` should be extracted before a fourth instance.
+
+**Surface alternation (10 sections):**
+```
+PackagesHero           → bg-deep
+JourneyIntro           → bg-primary
+AllPackages            → bg-secondary
+JourneyCategories      → bg-dune
+SignatureItinerary     → bg-inverse
+WhatsIncluded          → bg-primary
+AccommodationStandards → bg-dune
+BespokeProcess         → bg-secondary
+PackagesFAQ            → bg-primary
+PackagesCTA            → bg-deep
+```
+
+---
+
 ## 12. Suggested First Message for New Session
 
 Paste the following into the new Claude session to begin Milestone 6:
@@ -666,9 +738,9 @@ Paste the following into the new Claude session to begin Milestone 6:
 >
 > **Completed milestones:** 1 (Design System), 2 (Layout & Navigation),
 > 3A (Homepage Foundation), 3B (Homepage Completion), 4 (About Page),
-> 5 (Destinations Page)
+> 5 (Destinations Page), 6 (Safari Packages Page)
 >
-> **Next milestone:** Milestone 6 — Journeys / Packages Page
+> **Next milestone:** Milestone 7 — Experiences Page
 >
 > Start by cloning the repo, running `npm install`, verifying the build
 > passes, then reading `HANDOFF.md` at the repo root before writing any code.
