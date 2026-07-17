@@ -29,9 +29,9 @@ start of each session. Never assume local files from a previous session exist.
 | 4 — About Page | ✅ Complete | `4afa685` |
 | 5 — Destinations Page | ✅ Complete | `a837098` |
 | 6 — Safari Packages Page | ✅ Complete | `e8347fb` |
-| **7 — Gallery Page** | ✅ Complete | pushed this session |
-| 8 — Experiences Page | ⬜ Next | — |
-| 9 — Contact Page | ⬜ Pending | — |
+| 7 — Gallery Page | ✅ Complete | `69edd04` |
+| **8 — Blog Page** | ✅ Complete | pushed this session |
+| 9 — Contact Page | ⬜ Next | — |
 
 ---
 
@@ -66,7 +66,7 @@ src/
 │   ├── destinations/page.tsx    ← ✅ Destinations page (Milestone 5)
 │   ├── packages/page.tsx        ← ✅ Safari Packages page (Milestone 6)
 │   ├── gallery/page.tsx         ← ✅ Gallery page (Milestone 7)
-│   ├── blog/page.tsx            ← Stub placeholder
+│   ├── blog/page.tsx            ← ✅ Blog page (Milestone 8)
 │   └── contact/page.tsx         ← Stub placeholder
 │
 ├── components/
@@ -130,6 +130,16 @@ src/
 │   │   ├── Header.tsx           ← Client (scroll detection, mobile menu)
 │   │   ├── MobileMenu.tsx       ← Client (focus trap, scroll lock)
 │   │   └── NavLink.tsx          ← Server Component, styled anchor
+│   ├── blog/                    ← Milestone 8 — Blog page components
+│   │   ├── BlogHero.tsx              ← Client (entry animations; dark two-column hero)
+│   │   ├── FeaturedStory.tsx         ← Client (flagship article; editorial image+copy layout)
+│   │   ├── BlogCard.tsx              ← Server Component (article card; CSS hover)
+│   │   ├── LatestStories.tsx         ← Client (animation wrapper; 3-col article grid)
+│   │   ├── BlogCategories.tsx        ← Client (6 category cards; static icon map)
+│   │   ├── EditorialPhilosophy.tsx   ← Client (dark surface; 3 numbered pillars)
+│   │   ├── NewsletterSection.tsx     ← Client (form interaction; stub submit handler)
+│   │   ├── BlogFAQ.tsx               ← Client (thin wrapper around AccordionFAQ)
+│   │   └── BlogCTA.tsx               ← Client (closing CTA; matches established pattern)
 │   ├── gallery/                 ← Milestone 7 — Gallery page components
 │   │   ├── GalleryHero.tsx           ← Client (entry animations; dark centred hero)
 │   │   ├── GalleryIntro.tsx          ← Client (editorial intro + stat callout)
@@ -152,7 +162,8 @@ src/
 │   │   ├── about.ts             ← All About page content data (Milestone 4)
 │   │   ├── destinations.ts      ← All Destinations page content data (Milestone 5)
 │   │   ├── packages.ts          ← All Safari Packages page content data (Milestone 6)
-│   │   └── gallery.ts           ← All Gallery page content data (Milestone 7)
+│   │   ├── gallery.ts           ← All Gallery page content data (Milestone 7)
+│   │   └── blog.ts              ← All Blog page content data (Milestone 8)
 │   ├── design-system/
 │   │   ├── index.ts             ← Barrel export (import from '@/lib/design-system')
 │   │   ├── colors.ts            ← PALETTE + COLORS + CSS_VARS
@@ -590,10 +601,9 @@ After each milestone:
 
 5. **No sitemap or robots.txt.** Should be added before deployment.
 
-6. **Placeholder page routes.** `/blog` and `/contact` remain as stub pages
-   from the original repo scaffold. They will be replaced milestone by
-   milestone. `/about` (M4), `/destinations` (M5), `/packages` (M6), and
-   `/gallery` (M7) are complete.
+6. **Placeholder page routes.** `/contact` remains as a stub page from the
+   original scaffold. `/about` (M4), `/destinations` (M5), `/packages` (M6),
+   `/gallery` (M7), and `/blog` (M8) are complete.
 
 ---
 
@@ -822,9 +832,70 @@ No two adjacent sections share a surface — the alternation rule is maintained.
 
 ---
 
-## 12. Suggested First Message for New Session
+## 16. Milestone 8 — Blog Page Architectural Decisions
 
-Paste the following into the new Claude session to begin Milestone 6:
+**Commit:** pushed in M8 session (see git log for hash)
+
+### New files
+
+| File | Type | Notes |
+|------|------|-------|
+| `src/lib/constants/blog.ts` | Data | All blog page content — hero, featured story, 6 articles, 6 categories, 3 editorial pillars, newsletter copy, 5 FAQ items, CTA |
+| `src/app/blog/page.tsx` | Page | 8-section composition with SEO metadata — replaces former stub |
+| `src/components/blog/BlogHero.tsx` | Client | Two-column dark hero: headline left, subheadline+rule right |
+| `src/components/blog/FeaturedStory.tsx` | Client | Flagship article; image panel (60%) left, content panel right at lg+ |
+| `src/components/blog/BlogCard.tsx` | **Server** | Reusable article card; 16:10 image placeholder; CSS-only hover |
+| `src/components/blog/LatestStories.tsx` | Client | Animation wrapper; 1→2→3 col responsive grid; stagger animation |
+| `src/components/blog/BlogCategories.tsx` | Client | Six category cards; static icon map pattern; dune surface |
+| `src/components/blog/EditorialPhilosophy.tsx` | Client | Dark inverse surface; sticky-left intro; numbered pillars |
+| `src/components/blog/NewsletterSection.tsx` | Client | Form interaction; stub submit; full accessible form markup |
+| `src/components/blog/BlogFAQ.tsx` | Client | Thin wrapper delegating to `AccordionFAQ` |
+| `src/components/blog/BlogCTA.tsx` | Client | Closing CTA; matches M4–M7 established pattern |
+
+### Key decisions
+
+**BlogCard is a Server Component.** The card itself has no interactivity — all
+hover effects are CSS (`group-hover:scale-105`, `group-hover:text-[...]`). The
+`LatestStories` parent is the minimal Client Component that provides scroll-reveal
+animation. This is the same Server card / Client animation-wrapper pattern used
+for `CountryCard`, `GalleryTile`, `GalleryCategoryCard`, `BlogCard`, etc.
+
+**AccordionFAQ reuse.** `BlogFAQ` is the fifth consumer of the shared
+`AccordionFAQ` primitive. The extraction in M7 continues to pay off — no new
+accordion logic was written.
+
+**Newsletter form — architecture only.** `NewsletterSection` provides complete
+accessible form markup (associated `<label>`, `aria-invalid`, `aria-describedby`,
+`role="alert"` on errors, `role="status"` + `aria-live="polite"` on success)
+ready for backend integration. The `handleSubmit` stub is clearly documented
+with a TODO comment. No backend call is made.
+
+**Static icon map.** `BlogCategories` uses the established `ICON_MAP` pattern
+(Record of component types keyed by string) rather than dynamic imports or
+conditional JSX. Consistent with `WildlifeHighlights` and `JourneyCategoryCard`.
+
+**Surface alternation (8 sections):**
+```
+BlogHero              → bg-deep     (basalt-950)
+FeaturedStory         → bg-secondary(chalk-100)
+LatestStories         → bg-primary  (chalk-50)
+BlogCategories        → bg-dune     (dune-100)
+EditorialPhilosophy   → bg-inverse  (basalt-900)
+NewsletterSection     → bg-muted    (chalk-200)
+BlogFAQ               → bg-primary  (chalk-50)
+BlogCTA               → bg-deep     (basalt-950)
+```
+No two adjacent sections share a surface — alternation rule maintained.
+
+**Documentation fix (M7 inconsistency).** The M7 handoff left section 12
+("Suggested First Message") out of numerical order (after section 15) and
+referenced "Milestone 8 — Experiences Page" incorrectly. Both corrected here.
+The Experiences page was not planned as a milestone in the original roadmap;
+M8 is the Blog page per the original prompt.
+
+---
+
+## 12. Suggested First Message for New Session
 
 ---
 
@@ -836,9 +907,10 @@ Paste the following into the new Claude session to begin Milestone 6:
 >
 > **Completed milestones:** 1 (Design System), 2 (Layout & Navigation),
 > 3A (Homepage Foundation), 3B (Homepage Completion), 4 (About Page),
-> 5 (Destinations Page), 6 (Safari Packages Page), 7 (Gallery Page)
+> 5 (Destinations Page), 6 (Safari Packages Page), 7 (Gallery Page),
+> 8 (Blog Page)
 >
-> **Next milestone:** Milestone 8 — Experiences Page
+> **Next milestone:** Milestone 9 — Contact Page
 >
 > Start by cloning the repo, running `npm install`, verifying the build
 > passes, then reading `HANDOFF.md` at the repo root before writing any code.
