@@ -28,10 +28,10 @@ start of each session. Never assume local files from a previous session exist.
 | 3B — Homepage Completion | ✅ Complete | `79eb883` |
 | 4 — About Page | ✅ Complete | `4afa685` |
 | 5 — Destinations Page | ✅ Complete | `a837098` |
-| **6 — Safari Packages Page** | ✅ Complete | pushed this session |
-| 7 — Experiences Page | ⬜ Next | — |
-| 8 — Contact Page | ⬜ Pending | — |
-| 9 — Gallery Page | ⬜ Pending | — |
+| 6 — Safari Packages Page | ✅ Complete | `e8347fb` |
+| **7 — Gallery Page** | ✅ Complete | pushed this session |
+| 8 — Experiences Page | ⬜ Next | — |
+| 9 — Contact Page | ⬜ Pending | — |
 
 ---
 
@@ -65,9 +65,9 @@ src/
 │   ├── about/page.tsx           ← ✅ About page (Milestone 4)
 │   ├── destinations/page.tsx    ← ✅ Destinations page (Milestone 5)
 │   ├── packages/page.tsx        ← ✅ Safari Packages page (Milestone 6)
+│   ├── gallery/page.tsx         ← ✅ Gallery page (Milestone 7)
 │   ├── blog/page.tsx            ← Stub placeholder
-│   ├── contact/page.tsx         ← Stub placeholder
-│   └── gallery/page.tsx         ← Stub placeholder
+│   └── contact/page.tsx         ← Stub placeholder
 │
 ├── components/
 │   ├── about/                   ← Milestone 4 — About page components
@@ -130,8 +130,20 @@ src/
 │   │   ├── Header.tsx           ← Client (scroll detection, mobile menu)
 │   │   ├── MobileMenu.tsx       ← Client (focus trap, scroll lock)
 │   │   └── NavLink.tsx          ← Server Component, styled anchor
+│   ├── gallery/                 ← Milestone 7 — Gallery page components
+│   │   ├── GalleryHero.tsx           ← Client (entry animations; dark centred hero)
+│   │   ├── GalleryIntro.tsx          ← Client (editorial intro + stat callout)
+│   │   ├── GalleryTile.tsx           ← Server Component (individual grid tile; CSS hover)
+│   │   ├── GalleryGrid.tsx           ← Client (animation wrapper; 18-item masonry grid)
+│   │   ├── BehindTheLens.tsx         ← Client (guide vignettes with pull quotes)
+│   │   ├── ConservationNote.tsx      ← Client (photography ethics + principles dl)
+│   │   ├── GalleryCategoryCard.tsx   ← Server Component (category tile; CSS hover)
+│   │   ├── GalleryCategories.tsx     ← Client (animation wrapper; 6-col category grid)
+│   │   ├── GalleryFAQ.tsx            ← Client (thin wrapper around AccordionFAQ)
+│   │   └── GalleryCTA.tsx            ← Client (closing CTA; matches established pattern)
 │   └── ui/
-│       └── Logo.tsx             ← Server Component, wordmark
+│       ├── Logo.tsx             ← Server Component, wordmark
+│       └── AccordionFAQ.tsx     ← Client Component, shared FAQ accordion primitive (M7)
 │
 ├── lib/
 │   ├── constants/
@@ -139,7 +151,8 @@ src/
 │   │   ├── navigation.ts        ← Nav links, footer columns, social links
 │   │   ├── about.ts             ← All About page content data (Milestone 4)
 │   │   ├── destinations.ts      ← All Destinations page content data (Milestone 5)
-│   │   └── packages.ts          ← All Safari Packages page content data (Milestone 6)
+│   │   ├── packages.ts          ← All Safari Packages page content data (Milestone 6)
+│   │   └── gallery.ts           ← All Gallery page content data (Milestone 7)
 │   ├── design-system/
 │   │   ├── index.ts             ← Barrel export (import from '@/lib/design-system')
 │   │   ├── colors.ts            ← PALETTE + COLORS + CSS_VARS
@@ -577,10 +590,10 @@ After each milestone:
 
 5. **No sitemap or robots.txt.** Should be added before deployment.
 
-6. **Placeholder page routes.** `/blog`, `/contact`, `/gallery` remain as stub
-   pages from the original repo scaffold. They will be replaced milestone by
-   milestone. `/about` (M4), `/destinations` (M5), and `/packages` (M6) are
-   complete.
+6. **Placeholder page routes.** `/blog` and `/contact` remain as stub pages
+   from the original repo scaffold. They will be replaced milestone by
+   milestone. `/about` (M4), `/destinations` (M5), `/packages` (M6), and
+   `/gallery` (M7) are complete.
 
 ---
 
@@ -724,6 +737,91 @@ PackagesCTA            → bg-deep
 
 ---
 
+## 15. Milestone 7 — Gallery Page Architectural Decisions
+
+**Commit:** pushed in M7 session (see git log for hash)
+
+### New files
+
+| File | Type | Notes |
+|------|------|-------|
+| `src/lib/constants/gallery.ts` | Data | All gallery page content — hero, intro, 18-item grid, vignettes, conservation note, 6 categories, FAQ, CTA |
+| `src/app/gallery/page.tsx` | Page | 8-section composition with SEO metadata — replaces former stub |
+| `src/components/ui/AccordionFAQ.tsx` | **Shared Client** | Extracted shared FAQ accordion primitive — see below |
+| `src/components/gallery/GalleryHero.tsx` | Client | Dark centred hero; full-viewport; scroll indicator |
+| `src/components/gallery/GalleryIntro.tsx` | Client | Two-column: body copy left, stat callout right |
+| `src/components/gallery/GalleryTile.tsx` | **Server** | Individual grid tile; fills parent `position:absolute`; CSS-only hover |
+| `src/components/gallery/GalleryGrid.tsx` | Client | Animation wrapper; 18-tile CSS grid; `motion.div` is the grid cell (carries span classes) |
+| `src/components/gallery/BehindTheLens.tsx` | Client | Two guide vignettes; `<blockquote>` + `<cite>` semantics; dark inverse surface |
+| `src/components/gallery/ConservationNote.tsx` | Client | Photography ethics; `<dl>` principles list; dune surface |
+| `src/components/gallery/GalleryCategoryCard.tsx` | **Server** | Square aspect-ratio category tile; CSS-only hover |
+| `src/components/gallery/GalleryCategories.tsx` | Client | Animation wrapper; 2→3→6 col responsive grid |
+| `src/components/gallery/GalleryFAQ.tsx` | Client | Thin wrapper delegating entirely to `AccordionFAQ` |
+| `src/components/gallery/GalleryCTA.tsx` | Client | Closing CTA; dual button row; matches M4/M5/M6 pattern |
+
+### Migrated files
+
+| File | Change |
+|------|--------|
+| `src/components/home/FAQSection.tsx` | Migrated to `AccordionFAQ`; now a 5-line wrapper |
+| `src/components/destinations/DestinationsFAQ.tsx` | Migrated to `AccordionFAQ`; now a 5-line wrapper |
+| `src/components/packages/PackagesFAQ.tsx` | Migrated to `AccordionFAQ`; now a 5-line wrapper |
+
+### Key decisions
+
+**AccordionFAQ extraction:** The M6 handoff note predicted that a shared
+`<AccordionFAQ>` should be extracted before a fourth FAQ instance. That
+threshold was reached in M7. The primitive lives in `src/components/ui/`
+(alongside `Logo.tsx`) and accepts four props:
+
+```ts
+interface AccordionFAQProps {
+  items:     AccordionFAQItem[];   // { id, question, answer }
+  section:   AccordionFAQSection;  // { eyebrow, headline, body, cta: { label, href } }
+  headingId: string;               // unique <h2> id for aria-labelledby
+  prefix:    string;               // namespaces panel/trigger IDs (e.g. 'faq', 'gfaq')
+}
+```
+
+TypeScript structural typing means the existing page-specific interfaces
+(`FAQItem`, `DestinationsFAQItem`, `PackagesFAQItem`, `GalleryFAQItem`) are
+all assignable to `AccordionFAQItem` without any change to the constants files
+— they all share the `{ id, question, answer }` shape.
+
+**GalleryGrid cell pattern:** The animation wrapper `GalleryGrid` makes each
+`motion.div` the actual CSS grid cell, placing span classes (`lg:col-span-2`,
+`lg:row-span-2`) directly on the motion wrapper. `GalleryTile` renders with
+`position:absolute inset-0` inside it. This avoids the `display:contents`
+problem (which would have stripped the element from the grid flow while
+preserving children, losing the span context).
+
+**GalleryTile is a Server Component:** Individual tiles have no interactivity
+— hover effects are pure CSS (`group-hover:scale-105`, `opacity-0` →
+`opacity-100`). The `motion.div` wrapper in `GalleryGrid` (Client) handles
+scroll-reveal animation without forcing the tile itself to be a Client
+Component. Pattern consistent with M5/M6 Server card approach.
+
+**18-image grid with span variety:** The grid uses `auto-rows-[240px]` with
+three span variants — `normal` (1×1), `wide` (2×1, `lg:col-span-2`), `tall`
+(1×2, `lg:row-span-2`). Span variants are confined to `lg:` breakpoint; mobile
+and tablet render all tiles as equal single-cell items. This is documented in
+Known Issues item 3.
+
+**Surface alternation (8 sections):**
+```
+GalleryHero          → bg-deep     (basalt-950)
+GalleryIntro         → bg-primary  (chalk-50)
+GalleryGrid          → bg-secondary(chalk-100)
+BehindTheLens        → bg-inverse  (basalt-900)
+ConservationNote     → bg-dune     (dune-100)
+GalleryCategories    → bg-muted    (chalk-200)
+GalleryFAQ           → bg-primary  (chalk-50)
+GalleryCTA           → bg-deep     (basalt-950)
+```
+No two adjacent sections share a surface — the alternation rule is maintained.
+
+---
+
 ## 12. Suggested First Message for New Session
 
 Paste the following into the new Claude session to begin Milestone 6:
@@ -738,9 +836,9 @@ Paste the following into the new Claude session to begin Milestone 6:
 >
 > **Completed milestones:** 1 (Design System), 2 (Layout & Navigation),
 > 3A (Homepage Foundation), 3B (Homepage Completion), 4 (About Page),
-> 5 (Destinations Page), 6 (Safari Packages Page)
+> 5 (Destinations Page), 6 (Safari Packages Page), 7 (Gallery Page)
 >
-> **Next milestone:** Milestone 7 — Experiences Page
+> **Next milestone:** Milestone 8 — Experiences Page
 >
 > Start by cloning the repo, running `npm install`, verifying the build
 > passes, then reading `HANDOFF.md` at the repo root before writing any code.
