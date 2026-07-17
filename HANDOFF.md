@@ -30,8 +30,8 @@ start of each session. Never assume local files from a previous session exist.
 | 5 — Destinations Page | ✅ Complete | `a837098` |
 | 6 — Safari Packages Page | ✅ Complete | `e8347fb` |
 | 7 — Gallery Page | ✅ Complete | `69edd04` |
-| **8 — Blog Page** | ✅ Complete | pushed this session |
-| 9 — Contact Page | ⬜ Next | — |
+| 8 — Blog Page | ✅ Complete | `6f88518` |
+| **9 — Contact Page** | ✅ Complete | pushed this session |
 
 ---
 
@@ -67,7 +67,7 @@ src/
 │   ├── packages/page.tsx        ← ✅ Safari Packages page (Milestone 6)
 │   ├── gallery/page.tsx         ← ✅ Gallery page (Milestone 7)
 │   ├── blog/page.tsx            ← ✅ Blog page (Milestone 8)
-│   └── contact/page.tsx         ← Stub placeholder
+│   └── contact/page.tsx         ← ✅ Contact page (Milestone 9)
 │
 ├── components/
 │   ├── about/                   ← Milestone 4 — About page components
@@ -130,6 +130,14 @@ src/
 │   │   ├── Header.tsx           ← Client (scroll detection, mobile menu)
 │   │   ├── MobileMenu.tsx       ← Client (focus trap, scroll lock)
 │   │   └── NavLink.tsx          ← Server Component, styled anchor
+│   ├── contact/                 ← Milestone 9 — Contact page components
+│   │   ├── ContactHero.tsx           ← Client (entry animations; dark two-column hero)
+│   │   ├── ConciergeIntro.tsx        ← Client (personal service intro + commitment list)
+│   │   ├── ContactMethods.tsx        ← Client (phone/email/WhatsApp/hours cards)
+│   │   ├── EnquiryForm.tsx           ← Client (full accessible enquiry form; stub submit)
+│   │   ├── OfficeLocation.tsx        ← Client (address, travel dl, map placeholder)
+│   │   ├── ContactFAQ.tsx            ← Client (thin wrapper around AccordionFAQ)
+│   │   └── ContactCTA.tsx            ← Client (final CTA; bg-inverse surface)
 │   ├── blog/                    ← Milestone 8 — Blog page components
 │   │   ├── BlogHero.tsx              ← Client (entry animations; dark two-column hero)
 │   │   ├── FeaturedStory.tsx         ← Client (flagship article; editorial image+copy layout)
@@ -163,7 +171,8 @@ src/
 │   │   ├── destinations.ts      ← All Destinations page content data (Milestone 5)
 │   │   ├── packages.ts          ← All Safari Packages page content data (Milestone 6)
 │   │   ├── gallery.ts           ← All Gallery page content data (Milestone 7)
-│   │   └── blog.ts              ← All Blog page content data (Milestone 8)
+│   │   ├── blog.ts              ← All Blog page content data (Milestone 8)
+│   │   └── contact.ts           ← All Contact page content data (Milestone 9)
 │   ├── design-system/
 │   │   ├── index.ts             ← Barrel export (import from '@/lib/design-system')
 │   │   ├── colors.ts            ← PALETTE + COLORS + CSS_VARS
@@ -601,9 +610,9 @@ After each milestone:
 
 5. **No sitemap or robots.txt.** Should be added before deployment.
 
-6. **Placeholder page routes.** `/contact` remains as a stub page from the
-   original scaffold. `/about` (M4), `/destinations` (M5), `/packages` (M6),
-   `/gallery` (M7), and `/blog` (M8) are complete.
+6. **All primary page routes are now complete.** `/about` (M4), `/destinations`
+   (M5), `/packages` (M6), `/gallery` (M7), `/blog` (M8), and `/contact` (M9)
+   are all implemented. No stub pages remain.
 
 ---
 
@@ -895,9 +904,71 @@ M8 is the Blog page per the original prompt.
 
 ---
 
-## 12. Suggested First Message for New Session
+## 17. Milestone 9 — Contact Page Architectural Decisions
+
+**Commit:** pushed in M9 session (see git log for hash)
+
+### New files
+
+| File | Type | Notes |
+|------|------|-------|
+| `src/lib/constants/contact.ts` | Data | All contact page content — hero, concierge intro, 4 contact methods, form field config, 4 select option lists, 6 FAQ items, office details, CTA |
+| `src/app/contact/page.tsx` | Page | 7-section composition with SEO metadata — replaces former stub |
+| `src/components/contact/ContactHero.tsx` | Client | Two-column dark hero; subheadline with left-rule |
+| `src/components/contact/ConciergeIntro.tsx` | Client | Body copy left; commitment checklist right |
+| `src/components/contact/ContactMethods.tsx` | Client | 4-col card grid; cards with `href` render as `<Link>`, without as `<div>` |
+| `src/components/contact/EnquiryForm.tsx` | Client | Full accessible enquiry form; stub submit; see accessibility notes below |
+| `src/components/contact/OfficeLocation.tsx` | Client | Address + detail `<dl>` left; map placeholder right |
+| `src/components/contact/ContactFAQ.tsx` | Client | Thin wrapper; sixth `AccordionFAQ` consumer |
+| `src/components/contact/ContactCTA.tsx` | Client | Final CTA; `bg-inverse` (not `bg-deep`) — see surface note below |
+
+### Key decisions
+
+**`useId()` for form field IDs.** `EnquiryForm` uses React 18's `useId()` hook
+to generate stable, unique IDs for all `<label htmlFor>` / `<input id>` pairs.
+This is safe in concurrent rendering and avoids ID collisions if the form is
+ever rendered more than once on a page.
+
+**Error focus management.** On submit with validation errors, the component
+calls `document.getElementById(id(firstErrorField))?.focus()` to move focus
+to the first invalid field. This provides a clear keyboard/screen-reader
+experience without needing a summary error region.
+
+**`<fieldset>`/`<legend>` for grouped selects.** The three travel-preference
+selects (month, group size, budget) are wrapped in a `<fieldset>` with an
+`sr-only` `<legend>` ("Travel preferences"). This correctly groups them
+semantically without imposing visual structure.
+
+**`ContactCTA` uses `bg-inverse` not `bg-deep`.** The hero is `bg-deep`
+(basalt-950). Using `bg-deep` for the CTA too would create a deep→…→deep
+bookend. `bg-inverse` (basalt-900) maintains the dark closing energy while
+preserving the surface alternation rule.
+
+**Map placeholder with `role="img"`.** The map placeholder `<div>` carries
+`role="img"` and `aria-label` describing the location. This ensures screen
+readers can announce it meaningfully while the production maps integration
+is pending. No maps API is included (out of scope for M9).
+
+**Contact methods — conditional rendering.** `ContactMethods` renders cards
+with `href` as `<Link>` elements (phone, email, WhatsApp) and the hours card
+(no href) as a `<div>`. The icon map follows the established static Record
+pattern from `BlogCategories`.
+
+**Surface alternation (7 sections):**
+```
+ContactHero       → bg-deep      (basalt-950)
+ConciergeIntro    → bg-primary   (chalk-50)
+ContactMethods    → bg-secondary (chalk-100)
+EnquiryForm       → bg-primary   (chalk-50)
+OfficeLocation    → bg-dune      (dune-100)
+ContactFAQ        → bg-primary   (chalk-50)
+ContactCTA        → bg-inverse   (basalt-900)
+```
+No two adjacent sections share a surface — alternation rule maintained.
 
 ---
+
+## 12. Suggested First Message for New Session
 
 > You are continuing development of the RÊVE AFRICA SAFARIS luxury safari
 > website. Read the full project handoff document below before writing
@@ -908,13 +979,12 @@ M8 is the Blog page per the original prompt.
 > **Completed milestones:** 1 (Design System), 2 (Layout & Navigation),
 > 3A (Homepage Foundation), 3B (Homepage Completion), 4 (About Page),
 > 5 (Destinations Page), 6 (Safari Packages Page), 7 (Gallery Page),
-> 8 (Blog Page)
+> 8 (Blog Page), 9 (Contact Page)
 >
-> **Next milestone:** Milestone 9 — Contact Page
+> **All primary pages are complete.** The next work items are site-wide
+> polish, performance, or new features as directed.
 >
 > Start by cloning the repo, running `npm install`, verifying the build
 > passes, then reading `HANDOFF.md` at the repo root before writing any code.
-> That document contains everything you need to know about the architecture,
-> design system, engineering rules, and component patterns.
 >
 > [Paste the full contents of this handoff document here]
