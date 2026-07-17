@@ -38,7 +38,7 @@ export const PRIMARY_NAV: NavGroup[] = [
   },
   {
     label: 'Journeys',
-    href:  '/journeys',
+    href:  '/packages',
   },
   {
     label: 'About',
@@ -64,7 +64,7 @@ export const FOOTER_DESTINATIONS: NavLink[] = [
 ];
 
 export const FOOTER_EXPLORE: NavLink[] = [
-  { label: 'All Journeys',      href: '/journeys' },
+  { label: 'All Journeys',      href: '/packages' },
   { label: 'Experiences',       href: '/experiences' },
   { label: 'Private Safaris',   href: '/experiences/private' },
   { label: 'Conservation',      href: '/experiences/conservation' },

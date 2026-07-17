@@ -89,10 +89,11 @@ export const BASE_METADATA: Metadata = {
 
   twitter: {
     card:        'summary_large_image',
+    site:        SITE.twitterHandle,
     title:       `${SITE.name} — ${SITE.tagline}`,
     description: SITE.description,
     creator:     SITE.twitterHandle,
-    images:      ['/og/default.jpg'],
+    images:      [{ url: '/og/default.jpg', alt: `${SITE.name} — ${SITE.tagline}` }],
   },
 
   icons: {
@@ -128,14 +129,16 @@ export const VIEWPORT: Viewport = {
 // ─────────────────────────────────────────────
 
 export interface PageMetadataOptions {
-  title:       string;
+  title:        string;
   description?: string;
   path?:        string;
   image?:       string;
+  /** Additional page-specific keywords merged with site-level keywords */
+  keywords?:    string[];
 }
 
 export function buildPageMetadata(options: PageMetadataOptions): Metadata {
-  const { title, description, path = '', image } = options;
+  const { title, description, path = '', image, keywords } = options;
   const url         = `${SITE.url}${path}`;
   const ogImage     = image ?? '/og/default.jpg';
   const desc        = description ?? SITE.description;
@@ -144,6 +147,7 @@ export function buildPageMetadata(options: PageMetadataOptions): Metadata {
     title,
     description: desc,
     alternates:  { canonical: url },
+    ...(keywords ? { keywords: [...(BASE_METADATA.keywords as string[]), ...keywords] } : {}),
     openGraph: {
       title,
       description: desc,
@@ -151,9 +155,11 @@ export function buildPageMetadata(options: PageMetadataOptions): Metadata {
       images: [{ url: ogImage, width: 1200, height: 630, alt: title }],
     },
     twitter: {
+      card:        'summary_large_image',
       title,
       description: desc,
-      images: [ogImage],
+      creator:     SITE.twitterHandle,
+      images:      [{ url: ogImage, alt: title }],
     },
   };
 }

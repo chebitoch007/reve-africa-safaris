@@ -1,0 +1,16 @@
+{
+  "name": "Rêve Africa Safaris",
+  "short_name": "Rêve Africa",
+  "description": "Extraordinary luxury safari journeys across wild Africa",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#FAF9F5",
+  "theme_color": "#131510",
+  "icons": [
+    {
+      "src": "/favicon.ico",
+      "sizes": "any",
+      "type": "image/x-icon"
+    }
+  ]
+}

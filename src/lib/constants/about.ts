@@ -188,6 +188,6 @@ export const ABOUT_CTA = {
   headline:  'Your Africa\nawaits',
   body:      'Every extraordinary journey begins with a single conversation. Tell us when you dream of going, what you hope to witness, and we will design a journey that exceeds every expectation.',
   primaryCTA:   { label: 'Plan Your Safari',  href: '/contact' },
-  secondaryCTA: { label: 'View Our Journeys', href: '/journeys' },
+  secondaryCTA: { label: 'View Our Journeys', href: '/packages' },
   detail: 'No obligation. No templates. Just your Africa, designed with care.',
 } as const;

@@ -480,6 +480,6 @@ export const DESTINATIONS_CTA = {
   headline:    'Tell us where\nyou dream\nof going',
   body:        'Every extraordinary African journey begins with a conversation. Share your destination, your timing, and your vision — we will design the rest.',
   primaryCTA:  { label: 'Begin Planning',      href: '/contact' },
-  secondaryCTA:{ label: 'Browse Our Journeys', href: '/journeys' },
+  secondaryCTA:{ label: 'Browse Our Journeys', href: '/packages' },
   detail:      'No obligation. A dedicated specialist will respond within 24 hours.',
 } as const;

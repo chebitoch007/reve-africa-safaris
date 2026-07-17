@@ -14,7 +14,7 @@ export const HERO_CONTENT = {
   headline:     'Where the\nWilderness\nBegins',
   subheadline:  'Bespoke safari journeys crafted for those who seek the\nextraordinary. Intimate, transformative, and entirely your own.',
   primaryCTA:   { label: 'Plan Your Safari',  href: '/contact' },
-  secondaryCTA: { label: 'Explore Journeys',  href: '/journeys' },
+  secondaryCTA: { label: 'Explore Journeys',  href: '/packages' },
 } as const;
 
 // ─────────────────────────────────────────────
@@ -109,7 +109,7 @@ export const CTA_CONTENT = {
   headline:    'Your Africa\nawaits',
   body:        'Every great safari begins with a conversation. Tell us where you dream of going — we\'ll handle every detail from there.',
   primaryCTA:  { label: 'Start Planning',    href: '/contact' },
-  secondaryCTA:{ label: 'View All Journeys', href: '/journeys' },
+  secondaryCTA:{ label: 'View All Journeys', href: '/packages' },
 } as const;
 
 // ─────────────────────────────────────────────
@@ -255,7 +255,7 @@ export const PACKAGES_SECTION = {
   eyebrow:  'Featured Journeys',
   headline: 'Carefully crafted\nitineraries',
   body:     'Each package is a starting point — a framework built from years of experience that we then tailor entirely to you.',
-  viewAll:  { label: 'View All Journeys', href: '/journeys' },
+  viewAll:  { label: 'View All Journeys', href: '/packages' },
 } as const;
 
 // ─────────────────────────────────────────────
@@ -469,6 +469,6 @@ export const FINAL_CTA_CONTENT = {
   headline:    'Let\'s start\nplanning',
   body:        'Share your dream and we\'ll do the rest. A dedicated safari specialist will be in touch within 24 hours.',
   primaryCTA:  { label: 'Get in Touch',        href: '/contact' },
-  secondaryCTA:{ label: 'Browse All Journeys', href: '/journeys' },
+  secondaryCTA:{ label: 'Browse All Journeys', href: '/packages' },
   detail:      'No obligation. No hard sell. Just great safari planning.',
 } as const;
