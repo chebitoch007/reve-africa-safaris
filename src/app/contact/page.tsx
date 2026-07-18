@@ -15,6 +15,7 @@
 
 import type { Metadata } from 'next';
 import { buildPageMetadata }    from '@/lib/metadata';
+import { FaqPageJsonLd }        from '@/components/seo/JsonLd';
 import { ContactHero }          from '@/components/contact/ContactHero';
 import { ConciergeIntro }       from '@/components/contact/ConciergeIntro';
 import { ContactMethods }       from '@/components/contact/ContactMethods';
@@ -22,6 +23,7 @@ import { EnquiryForm }          from '@/components/contact/EnquiryForm';
 import { OfficeLocation }       from '@/components/contact/OfficeLocation';
 import { ContactFAQ }           from '@/components/contact/ContactFAQ';
 import { ContactCTA }           from '@/components/contact/ContactCTA';
+import { CONTACT_FAQ_ITEMS }    from '@/lib/constants/contact';
 
 export const metadata: Metadata = buildPageMetadata({
   title:       'Contact — Plan Your Bespoke African Safari',
@@ -33,6 +35,7 @@ export const metadata: Metadata = buildPageMetadata({
 export default function ContactPage() {
   return (
     <>
+      <FaqPageJsonLd items={CONTACT_FAQ_ITEMS} />
       <ContactHero />
       <ConciergeIntro />
       <ContactMethods />

@@ -19,6 +19,7 @@
 
 import type { Metadata } from 'next';
 import { buildPageMetadata }      from '@/lib/metadata';
+import { FaqPageJsonLd }          from '@/components/seo/JsonLd';
 import { Hero }                   from '@/components/home/Hero';
 import { Introduction }           from '@/components/home/Introduction';
 import { DestinationsPreview }    from '@/components/home/DestinationsPreview';
@@ -30,6 +31,7 @@ import { TestimonialsSection }    from '@/components/home/TestimonialsSection';
 import { GalleryPreview }         from '@/components/home/GalleryPreview';
 import { FAQSection }             from '@/components/home/FAQSection';
 import { FinalCTA }               from '@/components/home/FinalCTA';
+import { FAQ_ITEMS }              from '@/lib/constants/homepage';
 
 export const metadata: Metadata = buildPageMetadata({
   title:       'Extraordinary Safari Journeys Across Africa',
@@ -40,6 +42,7 @@ export const metadata: Metadata = buildPageMetadata({
 export default function HomePage() {
   return (
     <>
+      <FaqPageJsonLd items={FAQ_ITEMS} />
       <Hero />
       <Introduction />
       <DestinationsPreview />

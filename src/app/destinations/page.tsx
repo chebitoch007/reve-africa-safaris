@@ -18,6 +18,7 @@
 
 import type { Metadata } from 'next';
 import { buildPageMetadata }             from '@/lib/metadata';
+import { FaqPageJsonLd }                 from '@/components/seo/JsonLd';
 import { DestinationsHero }             from '@/components/destinations/DestinationsHero';
 import { DestinationsOverview }         from '@/components/destinations/DestinationsOverview';
 import { CountryShowcase }              from '@/components/destinations/CountryShowcase';
@@ -28,6 +29,7 @@ import { FeaturedLodges }               from '@/components/destinations/Featured
 import { MapPlaceholder }               from '@/components/destinations/MapPlaceholder';
 import { DestinationsFAQ }             from '@/components/destinations/DestinationsFAQ';
 import { DestinationsCTA }             from '@/components/destinations/DestinationsCTA';
+import { DESTINATIONS_FAQ_ITEMS }       from '@/lib/constants/destinations';
 
 export const metadata: Metadata = buildPageMetadata({
   title:       'Destinations — East & Southern Africa Safari Destinations',
@@ -38,6 +40,7 @@ export const metadata: Metadata = buildPageMetadata({
 export default function DestinationsPage() {
   return (
     <>
+      <FaqPageJsonLd items={DESTINATIONS_FAQ_ITEMS} />
       <DestinationsHero />
       <DestinationsOverview />
       <CountryShowcase />

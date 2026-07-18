@@ -16,6 +16,7 @@
 
 import type { Metadata } from 'next';
 import { buildPageMetadata }         from '@/lib/metadata';
+import { FaqPageJsonLd }             from '@/components/seo/JsonLd';
 import { GalleryHero }               from '@/components/gallery/GalleryHero';
 import { GalleryIntro }              from '@/components/gallery/GalleryIntro';
 import { GalleryGrid }               from '@/components/gallery/GalleryGrid';
@@ -24,6 +25,7 @@ import { ConservationNote }          from '@/components/gallery/ConservationNote
 import { GalleryCategories }         from '@/components/gallery/GalleryCategories';
 import { GalleryFAQ }                from '@/components/gallery/GalleryFAQ';
 import { GalleryCTA }                from '@/components/gallery/GalleryCTA';
+import { GALLERY_FAQ_ITEMS }         from '@/lib/constants/gallery';
 
 export const metadata: Metadata = buildPageMetadata({
   title:       'Gallery — Safari Photography Across East & Southern Africa',
@@ -34,6 +36,7 @@ export const metadata: Metadata = buildPageMetadata({
 export default function GalleryPage() {
   return (
     <>
+      <FaqPageJsonLd items={GALLERY_FAQ_ITEMS} />
       <GalleryHero />
       <GalleryIntro />
       <GalleryGrid />

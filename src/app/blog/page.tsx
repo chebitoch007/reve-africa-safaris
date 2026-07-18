@@ -16,6 +16,7 @@
 
 import type { Metadata } from 'next';
 import { buildPageMetadata }      from '@/lib/metadata';
+import { FaqPageJsonLd }          from '@/components/seo/JsonLd';
 import { BlogHero }               from '@/components/blog/BlogHero';
 import { FeaturedStory }          from '@/components/blog/FeaturedStory';
 import { LatestStories }          from '@/components/blog/LatestStories';
@@ -24,6 +25,7 @@ import { EditorialPhilosophy }    from '@/components/blog/EditorialPhilosophy';
 import { NewsletterSection }      from '@/components/blog/NewsletterSection';
 import { BlogFAQ }                from '@/components/blog/BlogFAQ';
 import { BlogCTA }                from '@/components/blog/BlogCTA';
+import { BLOG_FAQ_ITEMS }         from '@/lib/constants/blog';
 
 export const metadata: Metadata = buildPageMetadata({
   title:       'Field Notes — Safari Journal & Editorial Dispatches',
@@ -35,6 +37,7 @@ export const metadata: Metadata = buildPageMetadata({
 export default function BlogPage() {
   return (
     <>
+      <FaqPageJsonLd items={BLOG_FAQ_ITEMS} />
       <BlogHero />
       <FeaturedStory />
       <LatestStories />

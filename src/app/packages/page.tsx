@@ -18,6 +18,7 @@
 
 import type { Metadata } from 'next';
 import { buildPageMetadata }            from '@/lib/metadata';
+import { FaqPageJsonLd }                from '@/components/seo/JsonLd';
 import { PackagesHero }                 from '@/components/packages/PackagesHero';
 import { JourneyIntro }                 from '@/components/packages/JourneyIntro';
 import { AllPackages }                  from '@/components/packages/AllPackages';
@@ -28,6 +29,7 @@ import { AccommodationStandards }       from '@/components/packages/Accommodatio
 import { BespokeProcess }               from '@/components/packages/BespokeProcess';
 import { PackagesFAQ }                  from '@/components/packages/PackagesFAQ';
 import { PackagesCTA }                  from '@/components/packages/PackagesCTA';
+import { PACKAGES_FAQ_ITEMS }           from '@/lib/constants/packages';
 
 export const metadata: Metadata = buildPageMetadata({
   title:       'Safari Packages — Curated Luxury Journeys Across Africa',
@@ -38,6 +40,7 @@ export const metadata: Metadata = buildPageMetadata({
 export default function PackagesPage() {
   return (
     <>
+      <FaqPageJsonLd items={PACKAGES_FAQ_ITEMS} />
       <PackagesHero />
       <JourneyIntro />
       <AllPackages />

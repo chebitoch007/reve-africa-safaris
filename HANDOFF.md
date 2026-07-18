@@ -32,7 +32,8 @@ start of each session. Never assume local files from a previous session exist.
 | 7 — Gallery Page | ✅ Complete | `69edd04` |
 | 8 — Blog Page | ✅ Complete | `6f88518` |
 | 9 — Contact Page | ✅ Complete | `008ecab` |
-| **10 — SEO & Performance** | ✅ Complete | pushed this session |
+| 10 — SEO & Performance | ✅ Complete | `755dc5e` |
+| **11 — Production Polish (RC)** | ✅ Complete | pushed this session |
 
 ---
 
@@ -565,7 +566,7 @@ Primary nav (from `src/lib/constants/navigation.ts`):
 ```
 /destinations    → Kenya, Tanzania, Botswana, Rwanda, Zimbabwe, Namibia
 /experiences     → Game Drives, Gorilla Trekking, Ballooning, Walking, Conservation, Fly-in
-/journeys        → (packages listing)
+/packages        → Safari packages listing (was /journeys — corrected in M10)
 /about           → (about page)
 /contact         → (contact page)
 ```
@@ -1053,3 +1054,95 @@ No two adjacent sections share a surface — alternation rule maintained.
 - Content Security Policy (requires third-party integration audit)
 - Page-specific JSON-LD (e.g. `FAQPage` schema on FAQ sections, `TouristDestination` on destinations page)
 - Visual polish and micro-interactions
+
+---
+
+## 19. Milestone 11 — Production Polish (Release Candidate)
+
+**Commit:** pushed in M11 session (see git log for hash)
+
+### Summary
+
+Milestone 11 is the final implementation milestone. The repository is now in Release Candidate (RC) state — all seven primary routes are complete, production-ready, and deployment-ready.
+
+### Changes Made
+
+#### FAQPage JSON-LD — all FAQ pages
+
+`FaqPageJsonLd` component added to `src/components/seo/JsonLd.tsx`. Every page that renders an `AccordionFAQ` section now also renders a `FAQPage` schema, making those pages eligible for Google FAQ rich results.
+
+Pages updated: `/` (homepage), `/destinations`, `/packages`, `/gallery`, `/blog`, `/contact`.
+
+The `/about` page has no FAQ section — correctly omitted.
+
+The component accepts `FaqJsonLdItem[]` (just `{ question, answer }`), which all existing FAQ constant arrays satisfy via structural typing — no changes to the constants files were required.
+
+#### README.md
+
+Complete production-quality README written, covering:
+- Project overview and goals
+- Full technology stack with versions
+- Prerequisites, installation, development, and build instructions
+- Project directory structure
+- Architecture overview (rendering strategy, Server/Client split, design system, content architecture)
+- Pages table
+- SEO, accessibility, performance, and security headers documentation
+- Deployment notes and pre-launch checklist
+- License statement
+
+#### HANDOFF.md
+
+- Milestone 11 added to status table
+- Section 8 navigation routes corrected (`/journeys` → `/packages`)
+- This M11 architectural decisions section added
+
+### CSP Decision (Deferred — Documented)
+
+Content Security Policy was assessed during M11. The Next.js 16 documentation explicitly states that nonce-based CSP (the recommended approach) **requires dynamic rendering**, which conflicts with the current fully-static generation strategy. Adding a nonce-based CSP would force all pages to render dynamically, eliminating the performance and cost advantages of static generation.
+
+A static CSP with `'unsafe-inline'` was rejected as it would not provide meaningful XSS protection given the inline styles and JSON-LD `dangerouslySetInnerHTML` already in use.
+
+**Decision:** CSP remains deferred. It should be implemented as a dedicated task when:
+1. The deployment platform is confirmed (to choose the proxy/middleware approach)
+2. Third-party origins (analytics, booking API, maps, CDN) are known
+3. If the site is converted to dynamic rendering for personalisation features
+
+This is documented in Known Issues item 6 and in README.md.
+
+### Pre-Launch External Dependencies
+
+The following items cannot be completed without external assets or decisions — they are documented here and in README.md:
+
+| Item | Blocker |
+|------|---------|
+| Real photography | Client asset delivery |
+| Verified testimonials | Client asset delivery |
+| OG images | Photography + brand assets |
+| Full favicon set | Final logo SVG |
+| Enquiry form backend | CRM / email provider selection |
+| Newsletter backend | Mailing list provider selection |
+| Maps integration | Maps API provider selection |
+| Content Security Policy | Third-party origin audit + deployment platform choice |
+| Analytics | Analytics provider selection |
+
+### Release Candidate State
+
+- ✅ TypeScript strict mode — zero errors
+- ✅ Production build — all 9 routes build cleanly (7 pages + sitemap + 404)
+- ✅ All pages fully static (`○ Static`)
+- ✅ Site-wide JSON-LD: Organization + TourOperator + WebSite
+- ✅ FAQPage JSON-LD: 6 pages with FAQ sections
+- ✅ Complete metadata on every page (title, description, OG, Twitter card, canonical)
+- ✅ `/sitemap.xml` generated at build
+- ✅ `robots.txt` referencing sitemap
+- ✅ Skip-to-main-content link (first focusable element)
+- ✅ Security response headers (5 headers)
+- ✅ Custom 404 page
+- ✅ Single `<h1>` per page, correct heading hierarchy throughout
+- ✅ `aria-current="page"` on active nav items
+- ✅ Full form accessibility (enquiry form, newsletter)
+- ✅ `useReducedMotion()` in all 110+ animated components
+- ✅ CSS `prefers-reduced-motion` global override
+- ✅ Self-hosted fonts, no external CDN dependencies
+- ✅ Production README
+- ✅ Complete HANDOFF documentation

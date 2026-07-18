@@ -119,3 +119,47 @@ export function SiteJsonLd() {
     </>
   );
 }
+
+// ─────────────────────────────────────────────
+// FAQPage schema — for pages with FAQ accordions
+// ─────────────────────────────────────────────
+//
+// Added in Milestone 11. Each page that renders an AccordionFAQ
+// section imports and renders <FaqPageJsonLd items={...} /> to
+// gain FAQ rich results eligibility in Google Search.
+//
+// Usage (in a page Server Component):
+//   import { FaqPageJsonLd } from '@/components/seo/JsonLd';
+//   import { FAQ_ITEMS } from '@/lib/constants/homepage';
+//   <FaqPageJsonLd items={FAQ_ITEMS} />
+
+export interface FaqJsonLdItem {
+  question: string;
+  answer:   string;
+}
+
+interface FaqPageJsonLdProps {
+  items: FaqJsonLdItem[];
+}
+
+export function FaqPageJsonLd({ items }: FaqPageJsonLdProps) {
+  const schema = {
+    '@context':   'https://schema.org',
+    '@type':      'FAQPage',
+    mainEntity:   items.map((item) => ({
+      '@type':          'Question',
+      name:             item.question,
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text:    item.answer,
+      },
+    })),
+  };
+
+  return (
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+    />
+  );
+}
