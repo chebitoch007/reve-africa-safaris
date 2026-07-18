@@ -227,6 +227,19 @@ No environment variables are required for the current static implementation. Whe
 
 ---
 
+## Documentation
+
+Additional planning and production documentation lives in the [`docs/`](./docs/) directory:
+
+| Document | Purpose |
+|----------|---------|
+| [`docs/IMAGE_ASSET_PLAN.md`](./docs/IMAGE_ASSET_PLAN.md) | Phase 1 — Full audit of every image slot across all 7 pages (98 slots), with subject, composition, resolution, alt text, and search keywords for each |
+| [`docs/MASTER_PHOTO_LIBRARY.md`](./docs/MASTER_PHOTO_LIBRARY.md) | Phase 2A — Consolidated catalogue of the 44 unique photographs required after reuse analysis (down from 98 slots), with per-image editorial brief and sourcing details |
+| [`docs/IMAGE_REUSE_MATRIX.md`](./docs/IMAGE_REUSE_MATRIX.md) | Phase 2A — Complete mapping of every unique photograph to every page, route, component, crop type, and loading priority where it is used |
+| [`docs/IMAGE_SOURCING_GUIDE.md`](./docs/IMAGE_SOURCING_GUIDE.md) | Phase 2A — Operational sourcing guide covering source platforms, licence types, per-image search queries, evaluation criteria, editorial consistency standards, and file-handling workflow |
+
+---
+
 ## Pre-Launch Checklist
 
 - [ ] Replace gradient image placeholders with real photography (`<Image fill>` comments mark every location)
