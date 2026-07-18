@@ -238,6 +238,7 @@ Additional planning and production documentation lives in the [`docs/`](./docs/)
 | [`docs/IMAGE_REUSE_MATRIX.md`](./docs/IMAGE_REUSE_MATRIX.md) | Phase 2A — Complete mapping of every unique photograph to every page, route, component, crop type, and loading priority where it is used |
 | [`docs/IMAGE_SOURCING_GUIDE.md`](./docs/IMAGE_SOURCING_GUIDE.md) | Phase 2A — Operational sourcing guide covering source platforms, licence types, per-image search queries, evaluation criteria, editorial consistency standards, and file-handling workflow |
 | [`docs/IMAGE_ASSET_TRACKER.md`](./docs/IMAGE_ASSET_TRACKER.md) | Phase 2B — Live tracking document for all 44 unique images through the sourcing and integration pipeline; includes per-image status, licence fields, model release tracking, integration checklist, OG image status, and pre-launch checklist |
+| [`docs/BUILDER_PROMPT_BATCH1.md`](./docs/BUILDER_PROMPT_BATCH1.md) | Phase 3 Batch 1 — Self-contained implementation prompt covering all P0 LCP images, TypeScript interface fixes (`DestinationData`, `GalleryItem`), folder structure creation, and hero image integration across all 7 pages |
 
 ---
 
