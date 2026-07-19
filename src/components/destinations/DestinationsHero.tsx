@@ -15,6 +15,7 @@
  */
 
 import Link from 'next/link';
+import Image from 'next/image';
 import { motion, useReducedMotion } from 'framer-motion';
 import { cn } from '@/lib/design-system';
 import { DURATION, EASE, VIEWPORT_ONCE } from '@/lib/design-system';
@@ -55,27 +56,13 @@ export function DestinationsHero() {
         className="absolute inset-0 z-0"
         aria-hidden="true"
       >
-        <div
-          className="absolute inset-0"
-          style={{
-            background: `
-              radial-gradient(ellipse at 60% 40%, rgba(158,139,77,0.12) 0%, transparent 55%),
-              radial-gradient(ellipse at 20% 70%, rgba(98,122,83,0.07) 0%, transparent 45%),
-              linear-gradient(150deg, #0C0D0B 0%, #131510 45%, #1C1F18 100%)
-            `,
-          }}
-        />
-        {/* Noise texture */}
-        <div
-          className="absolute inset-0 opacity-[0.035]"
-          style={{
-            backgroundImage: `url("data:image/svg+xml,%3Csvg width='200' height='200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E")`,
-          }}
-        />
-        {/* Amber horizon glow */}
-        <div
-          className="absolute bottom-0 left-0 right-0 h-1/2 opacity-[0.05]"
-          style={{ background: 'radial-gradient(ellipse at 30% 100%, #D4A017, transparent 55%)' }}
+        <Image
+          src="/images/destinations/hero/img-013-east-africa-aerial-wilderness.jpg"
+          alt="Aerial view of the vast East African wilderness landscape"
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover"
         />
       </motion.div>
 

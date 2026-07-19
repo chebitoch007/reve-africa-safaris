@@ -20,6 +20,7 @@
  * Replace placeholder div with <Image fill priority> when photography arrives.
  */
 
+import Image from 'next/image';
 import { motion, useReducedMotion } from 'framer-motion';
 import { cn } from '@/lib/design-system';
 import { DURATION, EASE, VIEWPORT_ONCE } from '@/lib/design-system';
@@ -67,27 +68,13 @@ export function AboutHero() {
         className="absolute inset-0 z-0"
         aria-hidden="true"
       >
-        <div
-          className="absolute inset-0"
-          style={{
-            background: `
-              radial-gradient(ellipse at 70% 50%, #282C22 0%, transparent 55%),
-              radial-gradient(ellipse at 20% 80%, rgba(212,160,23,0.07) 0%, transparent 45%),
-              linear-gradient(145deg, #131510 0%, #0C0D0B 55%, #1C1F18 100%)
-            `,
-          }}
-        />
-        {/* Noise texture */}
-        <div
-          className="absolute inset-0 opacity-[0.04]"
-          style={{
-            backgroundImage: `url("data:image/svg+xml,%3Csvg width='200' height='200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E")`,
-          }}
-        />
-        {/* Amber glow — lower right */}
-        <div
-          className="absolute bottom-0 right-0 w-1/2 h-1/2 opacity-[0.06]"
-          style={{ background: 'radial-gradient(ellipse at 80% 100%, #D4A017, transparent 60%)' }}
+        <Image
+          src="/images/about/hero/img-025-safari-guide-field.jpg"
+          alt="Safari guide tracking wildlife in the East African bush at dawn"
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover"
         />
       </motion.div>
 

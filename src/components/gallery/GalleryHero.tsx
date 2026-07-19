@@ -14,6 +14,7 @@
  * photography is available — preferably a dramatic wildlife photograph.
  */
 
+import Image from 'next/image';
 import { motion, useReducedMotion } from 'framer-motion';
 import { cn } from '@/lib/design-system';
 import { DURATION, EASE } from '@/lib/design-system';
@@ -53,22 +54,13 @@ export function GalleryHero() {
         className="absolute inset-0"
         aria-hidden="true"
       >
-        <div
-          className="absolute inset-0"
-          style={{
-            background: `
-              radial-gradient(ellipse at 35% 55%, rgba(158,139,77,0.22) 0%, transparent 55%),
-              radial-gradient(ellipse at 70% 30%, rgba(73,92,61,0.18) 0%, transparent 50%),
-              linear-gradient(165deg, #1C1F18 0%, #0C0D0B 60%, #131510 100%)
-            `,
-          }}
-        />
-        {/* Vignette */}
-        <div
-          className="absolute inset-0"
-          style={{
-            background: 'radial-gradient(ellipse at 50% 50%, transparent 30%, rgba(12,13,11,0.65) 100%)',
-          }}
+        <Image
+          src="/images/gallery/hero/img-027-safari-photographer-golden-hour.jpg"
+          alt="Photographer with telephoto lens on safari at golden hour"
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover"
         />
       </motion.div>
 

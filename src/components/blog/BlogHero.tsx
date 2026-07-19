@@ -13,6 +13,7 @@
  * flagship editorial photograph is available.
  */
 
+import Image from 'next/image';
 import { motion, useReducedMotion } from 'framer-motion';
 import { cn } from '@/lib/design-system';
 import { DURATION, EASE } from '@/lib/design-system';
@@ -53,23 +54,13 @@ export function BlogHero() {
         className="absolute inset-0"
         aria-hidden="true"
       >
-        <div
-          className="absolute inset-0"
-          style={{
-            background: `
-              radial-gradient(ellipse at 20% 70%, rgba(158,139,77,0.18) 0%, transparent 50%),
-              radial-gradient(ellipse at 80% 20%, rgba(73,92,61,0.14) 0%, transparent 48%),
-              linear-gradient(165deg, #1C1F18 0%, #0C0D0B 55%, #131510 100%)
-            `,
-          }}
-        />
-        {/* Vignette */}
-        <div
-          className="absolute inset-0"
-          style={{
-            background:
-              'radial-gradient(ellipse at 50% 50%, transparent 35%, rgba(12,13,11,0.6) 100%)',
-          }}
+        <Image
+          src="/images/blog/hero/img-036-safari-planning-desk.jpg"
+          alt="Field notes and binoculars on a camp table in the African bush"
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover"
         />
       </motion.div>
 

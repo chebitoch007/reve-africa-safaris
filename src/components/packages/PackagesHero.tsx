@@ -14,6 +14,7 @@
  */
 
 import Link from 'next/link';
+import Image from 'next/image';
 import { motion, useReducedMotion } from 'framer-motion';
 import { cn } from '@/lib/design-system';
 import { DURATION, EASE } from '@/lib/design-system';
@@ -53,27 +54,13 @@ export function PackagesHero() {
         className="absolute inset-0 z-0"
         aria-hidden="true"
       >
-        <div
-          className="absolute inset-0"
-          style={{
-            background: `
-              radial-gradient(ellipse at 75% 50%, rgba(158,139,77,0.13) 0%, transparent 50%),
-              radial-gradient(ellipse at 15% 80%, rgba(98,122,83,0.06) 0%, transparent 45%),
-              linear-gradient(155deg, #0C0D0B 0%, #131510 50%, #1C1F18 100%)
-            `,
-          }}
-        />
-        {/* Noise texture */}
-        <div
-          className="absolute inset-0 opacity-[0.035]"
-          style={{
-            backgroundImage: `url("data:image/svg+xml,%3Csvg width='200' height='200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E")`,
-          }}
-        />
-        {/* Amber horizon glow */}
-        <div
-          className="absolute bottom-0 right-0 w-2/3 h-1/2 opacity-[0.07]"
-          style={{ background: 'radial-gradient(ellipse at 80% 100%, #D4A017, transparent 55%)' }}
+        <Image
+          src="/images/packages/hero/img-035-game-drive-pov-dawn.jpg"
+          alt="Point-of-view from inside a safari vehicle at dawn, looking out over the African plains"
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover"
         />
       </motion.div>
 

@@ -13,6 +13,7 @@
  * conversational rather than panoramic.
  */
 
+import Image from 'next/image';
 import { motion, useReducedMotion } from 'framer-motion';
 import { cn } from '@/lib/design-system';
 import { DURATION, EASE } from '@/lib/design-system';
@@ -51,22 +52,13 @@ export function ContactHero() {
         className="absolute inset-0"
         aria-hidden="true"
       >
-        <div
-          className="absolute inset-0"
-          style={{
-            background: `
-              radial-gradient(ellipse at 25% 60%, rgba(158,139,77,0.20) 0%, transparent 52%),
-              radial-gradient(ellipse at 75% 25%, rgba(98,122,83,0.14) 0%, transparent 48%),
-              linear-gradient(160deg, #1C1F18 0%, #0C0D0B 58%, #131510 100%)
-            `,
-          }}
-        />
-        <div
-          className="absolute inset-0"
-          style={{
-            background:
-              'radial-gradient(ellipse at 50% 50%, transparent 30%, rgba(12,13,11,0.55) 100%)',
-          }}
+        <Image
+          src="/images/contact/hero/img-036-safari-planning-desk.jpg"
+          alt="Safari specialist at a desk with maps and planning materials"
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover"
         />
       </motion.div>
 

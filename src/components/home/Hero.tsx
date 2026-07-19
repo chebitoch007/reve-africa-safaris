@@ -25,6 +25,7 @@
  */
 
 import Link from 'next/link';
+import Image from 'next/image';
 import { motion, useReducedMotion } from 'framer-motion';
 import { cn } from '@/lib/design-system';
 import { HERO_CONTENT } from '@/lib/constants/homepage';
@@ -114,28 +115,21 @@ export function Hero() {
         className="absolute inset-0 z-0"
         aria-hidden="true"
       >
-        <div
-          className="absolute inset-0"
-          style={{
-            background: `
-              radial-gradient(ellipse at 60% 40%, #363B2D 0%, transparent 60%),
-              linear-gradient(160deg, #1C1F18 0%, #0C0D0B 45%, #282C22 100%)
-            `,
-          }}
+        <Image
+          src="/images/homepage/hero/img-001-maasai-mara-dawn-landscape.jpg"
+          alt="Dawn light over the Maasai Mara savanna, Kenya"
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover"
         />
-        {/* Subtle texture overlay */}
+        {/* Retain the amber horizon glow overlay — it enhances the real image */}
         <div
-          className="absolute inset-0 opacity-[0.03]"
-          style={{
-            backgroundImage: `url("data:image/svg+xml,%3Csvg width='200' height='200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E")`,
-          }}
-        />
-        {/* Amber horizon glow */}
-        <div
-          className="absolute bottom-0 left-0 right-0 h-64 opacity-20"
+          className="absolute bottom-0 left-0 right-0 h-64 opacity-15 z-[1]"
           style={{
             background: 'linear-gradient(to top, #D4A017, transparent)',
           }}
+          aria-hidden="true"
         />
       </motion.div>
 

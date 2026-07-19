@@ -47,7 +47,11 @@ export interface DestinationData {
   tagline:     string;
   description: string;
   href:        string;
-  /** Placeholder gradient stop colours used until real photography is added */
+  /** Production photography path — relative to /public */
+  imageSrc:    string;
+  /** Alt text for the destination image */
+  imageAlt:    string;
+  /** Placeholder gradient stop colours — retained as fallback */
   placeholderFrom: string;
   placeholderTo:   string;
   highlights:  readonly string[];
@@ -61,6 +65,8 @@ export const FEATURED_DESTINATIONS: DestinationData[] = [
     tagline:     'The Great Migration',
     description: 'Witness one of nature\'s greatest spectacles across the rolling savanna of the Maasai Mara. Kenya is safari at its most iconic.',
     href:        '/destinations/kenya',
+    imageSrc:    '/images/homepage/destinations-preview/img-001-maasai-mara-dawn-landscape.jpg',
+    imageAlt:    'Dawn light over the Maasai Mara savanna, Kenya',
     placeholderFrom: '#9E8B4D',
     placeholderTo:   '#363B2D',
     highlights:  ['Maasai Mara', 'Amboseli', 'Laikipia'],
@@ -72,6 +78,8 @@ export const FEATURED_DESTINATIONS: DestinationData[] = [
     tagline:     'The Endless Plains',
     description: 'From the infinite Serengeti to the volcanic wonder of Ngorongoro, Tanzania offers an unrivalled canvas for wildlife encounters.',
     href:        '/destinations/tanzania',
+    imageSrc:    '/images/homepage/destinations-preview/img-002-serengeti-plains-landscape.jpg',
+    imageAlt:    'The endless golden plains of the Serengeti, Tanzania',
     placeholderFrom: '#7D6D3A',
     placeholderTo:   '#282C22',
     highlights:  ['Serengeti', 'Ngorongoro', 'Zanzibar'],
@@ -83,6 +91,8 @@ export const FEATURED_DESTINATIONS: DestinationData[] = [
     tagline:     'The Pearl of Africa',
     description: 'Trek through ancient rainforest to encounter mountain gorillas in their natural habitat. Uganda is Africa\'s most intimate wilderness.',
     href:        '/destinations/uganda',
+    imageSrc:    '/images/homepage/destinations-preview/img-004-bwindi-rainforest-interior.jpg',
+    imageAlt:    'Morning light filtering through the ancient rainforest at Bwindi, Uganda',
     placeholderFrom: '#495C3D',
     placeholderTo:   '#1C1F18',
     highlights:  ['Bwindi', 'Queen Elizabeth', 'Murchison Falls'],
@@ -94,6 +104,8 @@ export const FEATURED_DESTINATIONS: DestinationData[] = [
     tagline:     'Land of a Thousand Hills',
     description: 'Among mist-wrapped volcanoes, come face to face with endangered mountain gorillas and golden monkeys in the heart of Central Africa.',
     href:        '/destinations/rwanda',
+    imageSrc:    '/images/homepage/destinations-preview/img-005-rwanda-volcanoes-mist.jpg',
+    imageAlt:    'Mist-wrapped volcanic peaks of Volcanoes National Park, Rwanda',
     placeholderFrom: '#627A53',
     placeholderTo:   '#131510',
     highlights:  ['Volcanoes NP', 'Nyungwe Forest', 'Lake Kivu'],
@@ -390,17 +402,69 @@ export interface GalleryItem {
   id:              string;
   label:           string;
   span:            'normal' | 'wide' | 'tall';
+  /** Production photography path — relative to /public. Empty string until image is sourced. */
+  imageSrc:        string;
+  /** Alt text for the gallery image */
+  imageAlt:        string;
   placeholderFrom: string;
   placeholderTo:   string;
 }
 
 export const GALLERY_ITEMS: GalleryItem[] = [
-  { id: 'g1', label: 'Maasai Mara at Dawn',     span: 'wide',   placeholderFrom: '#9E8B4D', placeholderTo: '#363B2D' },
-  { id: 'g2', label: 'Mountain Gorilla, Rwanda', span: 'tall',   placeholderFrom: '#495C3D', placeholderTo: '#131510' },
-  { id: 'g3', label: 'Serengeti Sunset',         span: 'normal', placeholderFrom: '#7D6D3A', placeholderTo: '#282C22' },
-  { id: 'g4', label: 'Elephant, Amboseli',       span: 'normal', placeholderFrom: '#4F4A44', placeholderTo: '#0C0D0B' },
-  { id: 'g5', label: 'Ngorongoro Crater',        span: 'normal', placeholderFrom: '#627A53', placeholderTo: '#1C1F18' },
-  { id: 'g6', label: 'Zanzibar, Indian Ocean',   span: 'normal', placeholderFrom: '#839A73', placeholderTo: '#282C22' },
+  {
+    id:              'g1',
+    label:           'Maasai Mara at Dawn',
+    span:            'wide',
+    imageSrc:        '',
+    imageAlt:        'Dawn mist rising over the Maasai Mara, Kenya',
+    placeholderFrom: '#9E8B4D',
+    placeholderTo:   '#363B2D',
+  },
+  {
+    id:              'g2',
+    label:           'Mountain Gorilla, Rwanda',
+    span:            'tall',
+    imageSrc:        '',
+    imageAlt:        'Mountain gorilla in Volcanoes National Park, Rwanda',
+    placeholderFrom: '#495C3D',
+    placeholderTo:   '#131510',
+  },
+  {
+    id:              'g3',
+    label:           'Serengeti Sunset',
+    span:            'normal',
+    imageSrc:        '',
+    imageAlt:        'The Serengeti at golden hour, Tanzania',
+    placeholderFrom: '#7D6D3A',
+    placeholderTo:   '#282C22',
+  },
+  {
+    id:              'g4',
+    label:           'Elephant, Amboseli',
+    span:            'normal',
+    imageSrc:        '',
+    imageAlt:        'African elephant family in Amboseli, Kenya',
+    placeholderFrom: '#4F4A44',
+    placeholderTo:   '#0C0D0B',
+  },
+  {
+    id:              'g5',
+    label:           'Ngorongoro Crater',
+    span:            'normal',
+    imageSrc:        '',
+    imageAlt:        'Wildlife on the floor of the Ngorongoro Crater, Tanzania',
+    placeholderFrom: '#627A53',
+    placeholderTo:   '#1C1F18',
+  },
+  {
+    id:              'g6',
+    label:           'Zanzibar, Indian Ocean',
+    span:            'normal',
+    imageSrc:        '',
+    imageAlt:        'Turquoise Indian Ocean waters, Zanzibar',
+    placeholderFrom: '#839A73',
+    placeholderTo:   '#282C22',
+  },
 ];
 
 export const GALLERY_SECTION = {
