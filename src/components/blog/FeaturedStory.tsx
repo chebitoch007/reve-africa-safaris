@@ -15,6 +15,7 @@
  */
 
 import Link from 'next/link';
+import Image from 'next/image';
 import { motion, useReducedMotion } from 'framer-motion';
 import { ArrowRight, Clock, Calendar } from 'lucide-react';
 import { cn } from '@/lib/design-system';
@@ -78,25 +79,12 @@ export function FeaturedStory() {
               className="relative overflow-hidden"
               style={{ minHeight: 'clamp(300px, 45vw, 580px)' }}
             >
-              {/* ── Image placeholder ──────────────────────────────────────
-                  Replace with <Image fill> when photography is available.
-                  Should be a wide editorial photo matching the article topic.
-              ────────────────────────────────────────────────────────────── */}
-              <div
-                className="absolute inset-0 transition-transform duration-[900ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-105"
-                style={{
-                  background: `linear-gradient(160deg, ${FEATURED_STORY.placeholderFrom} 0%, ${FEATURED_STORY.placeholderTo} 100%)`,
-                }}
-                role="img"
-                aria-label={FEATURED_STORY.imageAlt}
-              />
-              {/* Noise */}
-              <div
-                className="absolute inset-0 opacity-[0.05]"
-                style={{
-                  backgroundImage: `url("data:image/svg+xml,%3Csvg width='100' height='100' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100' height='100' filter='url(%23n)'/%3E%3C/svg%3E")`,
-                }}
-                aria-hidden="true"
+              <Image
+                src={FEATURED_STORY.imageSrc}
+                alt={FEATURED_STORY.imageAlt}
+                fill
+                sizes="(max-width: 1024px) 100vw, 60vw"
+                className="object-cover transition-transform duration-[900ms] ease-[cubic-bezier(0.22,1,0.36,1)]"
               />
               {/* Category badge */}
               <div className="absolute top-6 left-6">

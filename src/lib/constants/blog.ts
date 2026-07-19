@@ -52,6 +52,7 @@ export const FEATURED_STORY = {
   excerpt:
     'Every year, more than a million wildebeest make one of nature\'s most perilous journeys across the Mara River into Tanzania. We spent three weeks in the field documenting the crossings — the chaos, the crocodiles, and the extraordinary stillness that follows when the dust settles.',
   cta:             { label: 'Read the story', href: '/blog/the-crossing' },
+  imageSrc:        '/images/blog/featured/img-014-wildebeest-mara-crossing.jpg',
   placeholderFrom: '#4A5C35',
   placeholderTo:   '#1C1F18',
   imageAlt:        'Wildebeest crossing the Mara River at dawn during the Great Migration',
@@ -70,6 +71,7 @@ export interface ArticleData {
   headline:        string;
   excerpt:         string;
   href:            string;
+  imageSrc:        string;
   placeholderFrom: string;
   placeholderTo:   string;
   imageAlt:        string;
@@ -86,6 +88,7 @@ export const LATEST_STORIES: ArticleData[] = [
     excerpt:
       'Ol Pejeta Conservancy is home to the world\'s last two northern white rhinos. We speak with the team working around the clock to ensure no more species disappear on their watch.',
     href:            '/blog/ol-pejeta-rhino',
+    imageSrc:        '/images/blog/articles/img-022-black-rhino-etosha.jpg',
     placeholderFrom: '#5A6C45',
     placeholderTo:   '#131510',
     imageAlt:        'Black rhinoceros in the Ol Pejeta Conservancy, Kenya',
@@ -100,6 +103,7 @@ export const LATEST_STORIES: ArticleData[] = [
     excerpt:
       'The Okavango Delta at sunset is unlike anywhere else on earth. Our photography specialist shares the positions, timings, and patience that produce extraordinary light.',
     href:            '/blog/okavango-photography',
+    imageSrc:        '/images/blog/articles/img-006-okavango-delta-aerial.jpg',
     placeholderFrom: '#4A6B4A',
     placeholderTo:   '#0C0D0B',
     imageAlt:        'Aerial view of the Okavango Delta at golden hour, Botswana',
@@ -114,6 +118,7 @@ export const LATEST_STORIES: ArticleData[] = [
     excerpt:
       'The mountain gorillas draw travellers to Rwanda, but the country\'s other experiences — its culture, its lakes, its unlikely elegance — are equally worth seeking out.',
     href:            '/blog/rwanda-beyond-gorillas',
+    imageSrc:        '/images/blog/articles/img-005-rwanda-volcanoes-mist.jpg',
     placeholderFrom: '#3D5C3A',
     placeholderTo:   '#0C0D0B',
     imageAlt:        'Rolling hills and tea plantations of Rwanda at dawn',
@@ -128,6 +133,7 @@ export const LATEST_STORIES: ArticleData[] = [
     excerpt:
       'There is no bad time to visit Africa. But there is always a best time — depending on what you want to see, where you want to go, and what kind of experience you are seeking.',
     href:            '/blog/when-to-go-africa',
+    imageSrc:        '/images/blog/articles/img-012-acacia-sunset-silhouette.jpg',
     placeholderFrom: '#8F7A3A',
     placeholderTo:   '#282C22',
     imageAlt:        'Acacia trees silhouetted against an East African sunset',
@@ -142,6 +148,7 @@ export const LATEST_STORIES: ArticleData[] = [
     excerpt:
       'The Maasai people have coexisted with East Africa\'s wildlife for generations. To understand the Mara is to understand the culture that helped shape it.',
     href:            '/blog/maasai-mara-culture',
+    imageSrc:        '/images/blog/articles/img-024-maasai-elder-portrait.jpg',
     placeholderFrom: '#7B3B2A',
     placeholderTo:   '#1C1510',
     imageAlt:        'Maasai elder in traditional red shuka against the Mara landscape',
@@ -156,6 +163,7 @@ export const LATEST_STORIES: ArticleData[] = [
     excerpt:
       'Samburu National Reserve holds more leopard sightings per square kilometre than almost anywhere on the continent. We joined a tracking team to find out why.',
     href:            '/blog/samburu-leopard',
+    imageSrc:        '/images/blog/articles/img-019-leopard-acacia-samburu.jpg',
     placeholderFrom: '#8F7A3A',
     placeholderTo:   '#1C1F18',
     imageAlt:        'Leopard resting in an acacia tree in Samburu National Reserve, Kenya',

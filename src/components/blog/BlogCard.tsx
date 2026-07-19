@@ -12,6 +12,7 @@
  */
 
 import Link from 'next/link';
+import Image from 'next/image';
 import { Clock, Calendar, ArrowRight } from 'lucide-react';
 import { cn } from '@/lib/design-system';
 import type { ArticleData } from '@/lib/constants/blog';
@@ -38,26 +39,14 @@ export function BlogCard({ article }: BlogCardProps) {
       <div
         className="relative overflow-hidden shrink-0"
         style={{ paddingBottom: '62.5%' }}
-        role="img"
-        aria-label={article.imageAlt}
+        role="presentation"
       >
-        <div
-          className={cn(
-            'absolute inset-0',
-            'transition-transform duration-[700ms] ease-[cubic-bezier(0.22,1,0.36,1)]',
-            'group-hover:scale-105',
-          )}
-          style={{
-            background: `linear-gradient(160deg, ${article.placeholderFrom} 0%, ${article.placeholderTo} 100%)`,
-          }}
-        />
-        {/* Noise texture */}
-        <div
-          className="absolute inset-0 opacity-[0.05]"
-          style={{
-            backgroundImage: `url("data:image/svg+xml,%3Csvg width='100' height='100' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100' height='100' filter='url(%23n)'/%3E%3C/svg%3E")`,
-          }}
-          aria-hidden="true"
+        <Image
+          src={article.imageSrc}
+          alt={article.imageAlt}
+          fill
+          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+          className="object-cover transition-transform duration-[700ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-105"
         />
         {/* Category badge */}
         <div className="absolute top-4 left-4">
