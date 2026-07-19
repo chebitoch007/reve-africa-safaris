@@ -59,6 +59,8 @@ export interface FullGalleryItem {
   label:           string;
   category:        GalleryCategory;
   location:        string;
+  imageSrc:        string;
+  imageAlt:        string;
   span:            'normal' | 'wide' | 'tall';
   placeholderFrom: string;
   placeholderTo:   string;
@@ -78,6 +80,8 @@ export const GALLERY_GRID_ITEMS: FullGalleryItem[] = [
     label:           'Maasai Mara at Dawn',
     category:        'landscapes',
     location:        'Kenya',
+    imageSrc:        '/images/gallery/grid/img-041-gallery-mara-dawn-wide.jpg',
+    imageAlt:        'Dawn mist rising over the Maasai Mara, Kenya',
     span:            'wide',
     placeholderFrom: '#9E8B4D',
     placeholderTo:   '#363B2D',
@@ -87,6 +91,8 @@ export const GALLERY_GRID_ITEMS: FullGalleryItem[] = [
     label:           'Mountain Gorilla, Volcanoes',
     category:        'wildlife',
     location:        'Rwanda',
+    imageSrc:        '/images/gallery/grid/img-015-mountain-gorilla-silverback.jpg',
+    imageAlt:        'Mountain gorilla in Volcanoes National Park, Rwanda',
     span:            'tall',
     placeholderFrom: '#495C3D',
     placeholderTo:   '#131510',
@@ -96,6 +102,8 @@ export const GALLERY_GRID_ITEMS: FullGalleryItem[] = [
     label:           'Serengeti Sunset',
     category:        'landscapes',
     location:        'Tanzania',
+    imageSrc:        '/images/gallery/grid/img-012-acacia-sunset-silhouette.jpg',
+    imageAlt:        'Acacia tree silhouetted against a blazing East African sunset',
     span:            'normal',
     placeholderFrom: '#7D6D3A',
     placeholderTo:   '#282C22',
@@ -105,6 +113,8 @@ export const GALLERY_GRID_ITEMS: FullGalleryItem[] = [
     label:           'Elephant, Amboseli',
     category:        'wildlife',
     location:        'Kenya',
+    imageSrc:        '/images/gallery/grid/img-017-elephant-amboseli-kilimanjaro.jpg',
+    imageAlt:        'African elephant family in Amboseli, Kenya',
     span:            'normal',
     placeholderFrom: '#4F4A44',
     placeholderTo:   '#0C0D0B',
@@ -114,6 +124,8 @@ export const GALLERY_GRID_ITEMS: FullGalleryItem[] = [
     label:           'Ngorongoro Crater',
     category:        'landscapes',
     location:        'Tanzania',
+    imageSrc:        '/images/gallery/grid/img-009-ngorongoro-crater-floor.jpg',
+    imageAlt:        'Wildlife on the floor of the Ngorongoro Crater, Tanzania',
     span:            'normal',
     placeholderFrom: '#627A53',
     placeholderTo:   '#1C1F18',
@@ -123,6 +135,8 @@ export const GALLERY_GRID_ITEMS: FullGalleryItem[] = [
     label:           'Zanzibar, Indian Ocean',
     category:        'landscapes',
     location:        'Tanzania',
+    imageSrc:        '/images/gallery/grid/img-008-zanzibar-indian-ocean.jpg',
+    imageAlt:        'Turquoise Indian Ocean waters, Zanzibar',
     span:            'wide',
     placeholderFrom: '#839A73',
     placeholderTo:   '#282C22',
@@ -132,6 +146,8 @@ export const GALLERY_GRID_ITEMS: FullGalleryItem[] = [
     label:           'Leopard at Rest, Samburu',
     category:        'wildlife',
     location:        'Kenya',
+    imageSrc:        '/images/gallery/grid/img-019-leopard-acacia-samburu.jpg',
+    imageAlt:        'Leopard resting in an acacia tree, Samburu National Reserve, Kenya',
     span:            'normal',
     placeholderFrom: '#8F7A3A',
     placeholderTo:   '#1C1F18',
@@ -141,6 +157,8 @@ export const GALLERY_GRID_ITEMS: FullGalleryItem[] = [
     label:           'Okavango Delta, Aerial',
     category:        'aerial',
     location:        'Botswana',
+    imageSrc:        '/images/gallery/grid/img-006-okavango-delta-aerial.jpg',
+    imageAlt:        'Aerial view of the Okavango Delta waterways, Botswana',
     span:            'tall',
     placeholderFrom: '#4A6B4A',
     placeholderTo:   '#0C0D0B',
@@ -150,6 +168,8 @@ export const GALLERY_GRID_ITEMS: FullGalleryItem[] = [
     label:           'Maasai Elder',
     category:        'culture',
     location:        'Kenya',
+    imageSrc:        '/images/gallery/grid/img-024-maasai-elder-portrait.jpg',
+    imageAlt:        'Maasai elder in traditional red shuka against the Maasai Mara, Kenya',
     span:            'normal',
     placeholderFrom: '#7B3B2A',
     placeholderTo:   '#2C1A14',
@@ -159,6 +179,8 @@ export const GALLERY_GRID_ITEMS: FullGalleryItem[] = [
     label:           'Cheetah, Ol Pejeta',
     category:        'conservation',
     location:        'Kenya',
+    imageSrc:        '/images/gallery/grid/img-021-cheetah-ol-pejeta.jpg',
+    imageAlt:        'Cheetah in the Ol Pejeta Conservancy, Kenya',
     span:            'normal',
     placeholderFrom: '#A08040',
     placeholderTo:   '#282C22',
@@ -168,6 +190,8 @@ export const GALLERY_GRID_ITEMS: FullGalleryItem[] = [
     label:           'Lion Pride at Dusk',
     category:        'wildlife',
     location:        'Tanzania',
+    imageSrc:        '/images/gallery/grid/img-020-lion-pride-dusk.jpg',
+    imageAlt:        'Lion pride resting at dusk on the Serengeti plains, Tanzania',
     span:            'wide',
     placeholderFrom: '#6B4A1C',
     placeholderTo:   '#1C1510',
@@ -177,6 +201,8 @@ export const GALLERY_GRID_ITEMS: FullGalleryItem[] = [
     label:           'Wildebeest Migration',
     category:        'wildlife',
     location:        'Kenya',
+    imageSrc:        '/images/gallery/grid/img-014-wildebeest-mara-crossing.jpg',
+    imageAlt:        'Wildebeest crossing the Mara River during the Great Migration, Kenya',
     span:            'normal',
     placeholderFrom: '#5A6040',
     placeholderTo:   '#131510',
@@ -186,6 +212,8 @@ export const GALLERY_GRID_ITEMS: FullGalleryItem[] = [
     label:           'Rhino, Etosha',
     category:        'conservation',
     location:        'Namibia',
+    imageSrc:        '/images/gallery/grid/img-022-black-rhino-etosha.jpg',
+    imageAlt:        'Black rhinoceros at a waterhole in Etosha National Park, Namibia',
     span:            'normal',
     placeholderFrom: '#7A7060',
     placeholderTo:   '#282C22',
@@ -195,6 +223,8 @@ export const GALLERY_GRID_ITEMS: FullGalleryItem[] = [
     label:           'Victoria Falls',
     category:        'landscapes',
     location:        'Zimbabwe',
+    imageSrc:        '/images/gallery/grid/img-010-victoria-falls-zimbabwe.jpg',
+    imageAlt:        'Victoria Falls in full flow, Zimbabwe',
     span:            'normal',
     placeholderFrom: '#3A6060',
     placeholderTo:   '#0C0D0B',
@@ -204,6 +234,8 @@ export const GALLERY_GRID_ITEMS: FullGalleryItem[] = [
     label:           'Balloon Safari, Serengeti',
     category:        'aerial',
     location:        'Tanzania',
+    imageSrc:        '/images/gallery/grid/img-003-balloon-serengeti-dawn.jpg',
+    imageAlt:        'Hot air balloon at dawn over the Serengeti plains, Tanzania',
     span:            'wide',
     placeholderFrom: '#D4A017',
     placeholderTo:   '#363B2D',
@@ -213,6 +245,8 @@ export const GALLERY_GRID_ITEMS: FullGalleryItem[] = [
     label:           'Hippo Pool at Sunset',
     category:        'intimate',
     location:        'Kenya',
+    imageSrc:        '/images/gallery/grid/img-023-hippo-pool-sunset.jpg',
+    imageAlt:        'Hippos in a sunset pool on the Maasai Mara, Kenya',
     span:            'normal',
     placeholderFrom: '#4A3030',
     placeholderTo:   '#1C1510',
@@ -222,6 +256,8 @@ export const GALLERY_GRID_ITEMS: FullGalleryItem[] = [
     label:           'Gorilla Mother & Infant',
     category:        'intimate',
     location:        'Rwanda',
+    imageSrc:        '/images/gallery/grid/img-016-gorilla-mother-infant.jpg',
+    imageAlt:        'Mountain gorilla mother and infant in Volcanoes National Park, Rwanda',
     span:            'tall',
     placeholderFrom: '#3A4A3A',
     placeholderTo:   '#0C0D0B',
@@ -231,6 +267,8 @@ export const GALLERY_GRID_ITEMS: FullGalleryItem[] = [
     label:           'Deception Valley, Dunes',
     category:        'landscapes',
     location:        'Botswana',
+    imageSrc:        '/images/gallery/grid/img-011-kalahari-desert-botswana.jpg',
+    imageAlt:        'Ancient dunes and desert landscape of the Kalahari, Botswana',
     span:            'normal',
     placeholderFrom: '#B38612',
     placeholderTo:   '#282C22',
@@ -251,6 +289,8 @@ export interface LensVignette {
   quote:           string;
   credit:          string;
   role:            string;
+  imageSrc:        string;
+  imageAlt:        string;
   placeholderFrom: string;
   placeholderTo:   string;
 }
@@ -261,6 +301,8 @@ export const LENS_VIGNETTES: LensVignette[] = [
     quote:           'We waited three hours in the same position for the light to fall correctly on the gorilla family. The moment came and lasted perhaps forty seconds.',
     credit:          'James Mwangi',
     role:            'Head Guide, Rwanda',
+    imageSrc:        '/images/gallery/guides/img-025-safari-guide-field.jpg',
+    imageAlt:        'James Mwangi, Head Guide in Rwanda, photographing in the field',
     placeholderFrom: '#495C3D',
     placeholderTo:   '#131510',
   },
@@ -269,6 +311,8 @@ export const LENS_VIGNETTES: LensVignette[] = [
     quote:           'The Mara at five in the morning is a different world. The light arrives slowly, then all at once. You have to be ready long before you need to be.',
     credit:          'Amina Ochieng',
     role:            'Senior Guide, Kenya',
+    imageSrc:        '/images/gallery/guides/img-026-female-guide-portrait.jpg',
+    imageAlt:        'Amina Ochieng, Senior Guide in Kenya, on the Maasai Mara at dawn',
     placeholderFrom: '#9E8B4D',
     placeholderTo:   '#363B2D',
   },
@@ -308,6 +352,8 @@ export interface GalleryCategoryItem {
   label:           string;
   category:        GalleryCategory;
   count:           number;
+  imageSrc:        string;
+  imageAlt:        string;
   placeholderFrom: string;
   placeholderTo:   string;
 }
@@ -318,6 +364,8 @@ export const GALLERY_CATEGORY_ITEMS: GalleryCategoryItem[] = [
     label:           'Wildlife',
     category:        'wildlife',
     count:           47,
+    imageSrc:        '/images/gallery/categories/img-020-lion-pride-dusk.jpg',
+    imageAlt:        'Lion pride resting at dusk, Tanzania',
     placeholderFrom: '#363B2D',
     placeholderTo:   '#0C0D0B',
   },
@@ -326,6 +374,8 @@ export const GALLERY_CATEGORY_ITEMS: GalleryCategoryItem[] = [
     label:           'Landscapes',
     category:        'landscapes',
     count:           38,
+    imageSrc:        '/images/gallery/categories/img-001-maasai-mara-dawn-landscape.jpg',
+    imageAlt:        'Dawn light over the Maasai Mara savanna, Kenya',
     placeholderFrom: '#9E8B4D',
     placeholderTo:   '#282C22',
   },
@@ -334,6 +384,8 @@ export const GALLERY_CATEGORY_ITEMS: GalleryCategoryItem[] = [
     label:           'Culture',
     category:        'culture',
     count:           24,
+    imageSrc:        '/images/gallery/categories/img-024-maasai-elder-portrait.jpg',
+    imageAlt:        'Maasai elder in traditional red shuka, Kenya',
     placeholderFrom: '#7B3B2A',
     placeholderTo:   '#1C1510',
   },
@@ -342,6 +394,8 @@ export const GALLERY_CATEGORY_ITEMS: GalleryCategoryItem[] = [
     label:           'Conservation',
     category:        'conservation',
     count:           19,
+    imageSrc:        '/images/gallery/categories/img-021-cheetah-ol-pejeta.jpg',
+    imageAlt:        'Cheetah in the Ol Pejeta Conservancy, Kenya',
     placeholderFrom: '#495C3D',
     placeholderTo:   '#131510',
   },
@@ -350,6 +404,8 @@ export const GALLERY_CATEGORY_ITEMS: GalleryCategoryItem[] = [
     label:           'Aerial',
     category:        'aerial',
     count:           15,
+    imageSrc:        '/images/gallery/categories/img-006-okavango-delta-aerial.jpg',
+    imageAlt:        'Aerial view of the Okavango Delta, Botswana',
     placeholderFrom: '#4A6B4A',
     placeholderTo:   '#0C0D0B',
   },
@@ -358,6 +414,8 @@ export const GALLERY_CATEGORY_ITEMS: GalleryCategoryItem[] = [
     label:           'Intimate',
     category:        'intimate',
     count:           22,
+    imageSrc:        '/images/gallery/categories/img-015-mountain-gorilla-silverback.jpg',
+    imageAlt:        'Mountain gorilla in Volcanoes National Park, Rwanda',
     placeholderFrom: '#3A4A3A',
     placeholderTo:   '#0C0D0B',
   },

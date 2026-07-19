@@ -11,6 +11,7 @@
  * Uses blockquote + cite semantics.
  */
 
+import Image from 'next/image';
 import { motion, useReducedMotion } from 'framer-motion';
 import { cn } from '@/lib/design-system';
 import { DURATION, EASE, VIEWPORT_ONCE } from '@/lib/design-system';
@@ -105,18 +106,12 @@ export function BehindTheLens() {
                   className="relative h-64 overflow-hidden"
                   aria-hidden="true"
                 >
-                  <div
-                    className="absolute inset-0"
-                    style={{
-                      background: `linear-gradient(160deg, ${vignette.placeholderFrom} 0%, ${vignette.placeholderTo} 100%)`,
-                    }}
-                  />
-                  {/* Noise */}
-                  <div
-                    className="absolute inset-0 opacity-[0.05]"
-                    style={{
-                      backgroundImage: `url("data:image/svg+xml,%3Csvg width='100' height='100' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100' height='100' filter='url(%23n)'/%3E%3C/svg%3E")`,
-                    }}
+                  <Image
+                    src={vignette.imageSrc}
+                    alt={vignette.imageAlt}
+                    fill
+                    sizes="(max-width: 1024px) 100vw, 50vw"
+                    className="object-cover"
                   />
                 </div>
 

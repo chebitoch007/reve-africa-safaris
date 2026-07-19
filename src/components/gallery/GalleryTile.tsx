@@ -11,6 +11,7 @@
  * photography is available.
  */
 
+import Image from 'next/image';
 import { cn } from '@/lib/design-system';
 import type { FullGalleryItem } from '@/lib/constants/gallery';
 
@@ -24,25 +25,12 @@ export function GalleryTile({ item }: GalleryTileProps) {
       className="group absolute inset-0"
       aria-label={`${item.label}, ${item.location}`}
     >
-      {/* ── Placeholder background ─────────────────────────────────────
-          Replace this <div> with <Image fill> when photography is available.
-          Each tile carries its own palette gradient for visual variety.
-      ────────────────────────────────────────────────────────────── */}
-      <div
-        className="absolute inset-0 transition-transform duration-[800ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-105"
-        style={{
-          background: `linear-gradient(160deg, ${item.placeholderFrom} 0%, ${item.placeholderTo} 100%)`,
-        }}
-        aria-hidden="true"
-      />
-
-      {/* Noise texture overlay */}
-      <div
-        className="absolute inset-0 opacity-[0.05]"
-        style={{
-          backgroundImage: `url("data:image/svg+xml,%3Csvg width='100' height='100' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100' height='100' filter='url(%23n)'/%3E%3C/svg%3E")`,
-        }}
-        aria-hidden="true"
+      <Image
+        src={item.imageSrc}
+        alt={item.imageAlt}
+        fill
+        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+        className="object-cover transition-transform duration-[800ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-105"
       />
 
       {/* Hover overlay — gradient + caption */}
