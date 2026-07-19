@@ -12,6 +12,7 @@
  * Replace the gradient <div> with <Image fill> when photography is available.
  */
 
+import Image from 'next/image';
 import { MapPin } from 'lucide-react';
 import { cn } from '@/lib/design-system';
 import type { FeaturedLodge } from '@/lib/constants/destinations';
@@ -23,7 +24,7 @@ interface LodgeCardProps {
 export function LodgeCard({ lodge }: LodgeCardProps) {
   const {
     name, location, country, description,
-    attributes, placeholderFrom, placeholderTo,
+    attributes, imageSrc, imageAlt,
   } = lodge;
 
   return (
@@ -37,22 +38,13 @@ export function LodgeCard({ lodge }: LodgeCardProps) {
         className="relative overflow-hidden shrink-0"
         style={{ aspectRatio: '16/9' }}
       >
-        {/* Placeholder gradient */}
-        <div
-          className="absolute inset-0 transition-transform duration-[700ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-105"
-          style={{
-            background: `linear-gradient(155deg, ${placeholderFrom} 0%, ${placeholderTo} 100%)`,
-          }}
-          aria-hidden="true"
-        >
-          {/* Noise texture */}
-          <div
-            className="absolute inset-0 opacity-[0.06]"
-            style={{
-              backgroundImage: `url("data:image/svg+xml,%3Csvg width='100' height='100' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100' height='100' filter='url(%23n)'/%3E%3C/svg%3E")`,
-            }}
-          />
-        </div>
+        <Image
+          src={imageSrc}
+          alt={imageAlt}
+          fill
+          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+          className="object-cover transition-transform duration-[700ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-105"
+        />
 
         {/* Country badge */}
         <div className="absolute top-4 left-4 z-[1]">

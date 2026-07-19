@@ -6,6 +6,7 @@
  */
 
 import Link from 'next/link';
+import Image from 'next/image';
 import { Clock, MapPin, Check, ArrowRight } from 'lucide-react';
 import { cn } from '@/lib/design-system';
 import type { PackageData } from '@/lib/constants/homepage';
@@ -18,40 +19,23 @@ export function PackageCard({ pkg }: PackageCardProps) {
   const {
     name, duration, destination, region,
     description, highlights, startingFrom,
-    href, placeholderFrom, placeholderTo, badge,
+    href, imageSrc, imageAlt, badge,
   } = pkg;
 
   return (
     <article className="group flex flex-col overflow-hidden bg-[var(--color-bg-primary)] border border-[var(--color-border-light)] transition-shadow duration-[400ms] hover:shadow-[0_8px_28px_-4px_rgba(12,13,11,0.12)]">
 
-      {/* Image placeholder — replace with <Image fill> when photography available */}
-      <div
-        className="relative h-52 overflow-hidden shrink-0"
-        style={{ background: `linear-gradient(160deg, ${placeholderFrom} 0%, ${placeholderTo} 100%)` }}
-        aria-hidden="true"
-      >
-        {/* Noise texture */}
-        <div
-          className="absolute inset-0 opacity-[0.05]"
-          style={{
-            backgroundImage: `url("data:image/svg+xml,%3Csvg width='100' height='100' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100' height='100' filter='url(%23n)'/%3E%3C/svg%3E")`,
-          }}
+      <div className="relative h-52 overflow-hidden shrink-0">
+        <Image
+          src={imageSrc}
+          alt={imageAlt}
+          fill
+          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+          className="object-cover transition-transform duration-[700ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-105"
         />
-        {/* Hover scale on placeholder */}
-        <div
-          className="absolute inset-0 transition-transform duration-[700ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-105"
-          style={{ background: 'inherit' }}
-        />
-        {/* Badge */}
         {badge && (
-          <div className="absolute top-4 left-4">
-            <span className={cn(
-              'inline-block px-3 py-1.5',
-              'font-[var(--font-inter)] font-medium uppercase tracking-[0.18em] text-[9px]',
-              'bg-[var(--color-accent-primary)] text-[var(--color-bg-inverse)]',
-            )}>
-              {badge}
-            </span>
+          <div className="absolute top-4 left-4 z-[1]">
+            <span className={cn('inline-block px-3 py-1.5 font-[var(--font-inter)] font-medium uppercase tracking-[0.18em] text-[9px] bg-[var(--color-accent-primary)] text-[var(--color-bg-inverse)]')}>{badge}</span>
           </div>
         )}
       </div>

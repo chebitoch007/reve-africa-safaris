@@ -41,6 +41,8 @@ export interface DestinationCountry {
   tagline:          string;
   description:      string;
   href:             string;
+  imageSrc:         string;
+  imageAlt:         string;
   highlights:       readonly string[];
   bestMonths:       string;
   placeholderFrom:  string;
@@ -55,6 +57,8 @@ export const COUNTRIES: DestinationCountry[] = [
     tagline:         'Safari at its most iconic',
     description:     'Home to the Maasai Mara, Amboseli, and Laikipia — Kenya is where the safari tradition was forged. Sweeping savannas, the Great Migration, and some of Africa\'s finest lodges.',
     href:            '/destinations/kenya',
+    imageSrc:        '/images/destinations/countries/img-001-maasai-mara-dawn-landscape.jpg',
+    imageAlt:        'Dawn light over the Maasai Mara savanna, Kenya',
     highlights:      ['Great Migration', 'Big Five', 'Maasai Culture', 'Ballooning'],
     bestMonths:      'Jul – Oct, Jan – Mar',
     placeholderFrom: '#9E8B4D',
@@ -67,6 +71,8 @@ export const COUNTRIES: DestinationCountry[] = [
     tagline:         'The infinite Serengeti',
     description:     'The Serengeti, Ngorongoro Crater, Tarangire, and Ruaha together form Africa\'s most diverse wildlife canvas. Add Zanzibar and you have the complete East African journey.',
     href:            '/destinations/tanzania',
+    imageSrc:        '/images/destinations/countries/img-002-serengeti-plains-landscape.jpg',
+    imageAlt:        'The endless golden plains of the Serengeti, Tanzania',
     highlights:      ['Serengeti Plains', 'Ngorongoro Crater', 'Zanzibar Beaches', 'Kilimanjaro'],
     bestMonths:      'Jun – Oct, Jan – Feb',
     placeholderFrom: '#7D6D3A',
@@ -79,6 +85,8 @@ export const COUNTRIES: DestinationCountry[] = [
     tagline:         'Land of a thousand hills',
     description:     'In the mist-wrapped Volcanoes National Park, Rwanda offers one of the world\'s most profound wildlife encounters: tracking endangered mountain gorillas through ancient forest.',
     href:            '/destinations/rwanda',
+    imageSrc:        '/images/destinations/countries/img-005-rwanda-volcanoes-mist.jpg',
+    imageAlt:        'Mist-wrapped volcanic peaks of Volcanoes National Park, Rwanda',
     highlights:      ['Gorilla Trekking', 'Golden Monkeys', 'Volcanoes NP', 'Lake Kivu'],
     bestMonths:      'Jun – Sep, Dec – Feb',
     placeholderFrom: '#627A53',
@@ -91,6 +99,8 @@ export const COUNTRIES: DestinationCountry[] = [
     tagline:         'The pearl of Africa',
     description:     'Bwindi Impenetrable Forest shelters half the world\'s mountain gorillas. Combined with Queen Elizabeth National Park and Murchison Falls, Uganda is Africa\'s most intimate wilderness.',
     href:            '/destinations/uganda',
+    imageSrc:        '/images/destinations/countries/img-004-bwindi-rainforest-interior.jpg',
+    imageAlt:        'Morning light filtering through the ancient rainforest at Bwindi, Uganda',
     highlights:      ['Bwindi Gorillas', 'Chimp Tracking', 'Murchison Falls', 'Tree-climbing Lions'],
     bestMonths:      'Jun – Sep, Dec – Feb',
     placeholderFrom: '#495C3D',
@@ -103,6 +113,8 @@ export const COUNTRIES: DestinationCountry[] = [
     tagline:         'The last great wilderness',
     description:     'Botswana is defined by exclusivity. Strict low-volume tourism means vast private concessions, extraordinary elephant populations, and an undisturbed quality to every game drive.',
     href:            '/destinations/botswana',
+    imageSrc:        '/images/destinations/countries/img-006-okavango-delta-aerial.jpg',
+    imageAlt:        'Aerial view of the Okavango Delta waterways, Botswana',
     highlights:      ['Okavango Delta', 'Chobe Elephants', 'Kalahari Desert', 'Makgadikgadi Pans'],
     bestMonths:      'May – Oct',
     placeholderFrom: '#B8A44A',
@@ -115,6 +127,8 @@ export const COUNTRIES: DestinationCountry[] = [
     tagline:         'Where desert meets wild',
     description:     'Namibia\'s landscapes are unlike anywhere else on earth — the soaring red dunes of Sossusvlei, the ancient Namib Desert, Etosha\'s salt pan teaming with wildlife.',
     href:            '/destinations/namibia',
+    imageSrc:        '/images/destinations/countries/img-007-sossusvlei-dunes-namibia.jpg',
+    imageAlt:        'The iconic red dunes of Sossusvlei at dawn, Namibia',
     highlights:      ['Sossusvlei Dunes', 'Etosha NP', 'Damaraland', 'Skeleton Coast'],
     bestMonths:      'May – Sep',
     placeholderFrom: '#C4A35A',
@@ -201,6 +215,8 @@ export interface SignatureExperience {
   description:     string;
   detail:          string;
   href:            string;
+  imageSrc:        string;
+  imageAlt:        string;
   placeholderFrom: string;
   placeholderTo:   string;
 }
@@ -212,6 +228,8 @@ export const SIGNATURE_EXPERIENCES: SignatureExperience[] = [
     description:     'Drift at dawn over the Serengeti or Maasai Mara, watching the landscape glow gold as the savanna wakes below.',
     detail:          'Kenya & Tanzania',
     href:            '/contact',
+    imageSrc:        '/images/destinations/experiences/img-003-balloon-serengeti-dawn.jpg',
+    imageAlt:        'Hot air balloon at dawn over the Serengeti plains, Tanzania',
     placeholderFrom: '#D4A017',
     placeholderTo:   '#7D6D3A',
   },
@@ -221,6 +239,8 @@ export const SIGNATURE_EXPERIENCES: SignatureExperience[] = [
     description:     'On foot, the bush reveals itself at a different scale — tracks, dung, insects, birds, and the electric awareness that you are on the same level as everything else.',
     detail:          'Multiple destinations',
     href:            '/contact',
+    imageSrc:        '/images/destinations/experiences/img-033-walking-safari-guide.jpg',
+    imageAlt:        'Safari guide leading guests on a walking safari through the African bush',
     placeholderFrom: '#627A53',
     placeholderTo:   '#1C1F18',
   },
@@ -230,6 +250,8 @@ export const SIGNATURE_EXPERIENCES: SignatureExperience[] = [
     description:     'Connect remote wilderness areas by light aircraft, covering ground in minutes that would take days by road. Each landing strip reveals a different world.',
     detail:          'Kenya, Tanzania & Botswana',
     href:            '/contact',
+    imageSrc:        '/images/destinations/experiences/img-034-bush-plane-airstrip.jpg',
+    imageAlt:        'Light aircraft on a bush airstrip in the East African wilderness',
     placeholderFrom: '#9E8B4D',
     placeholderTo:   '#282C22',
   },
@@ -239,6 +261,8 @@ export const SIGNATURE_EXPERIENCES: SignatureExperience[] = [
     description:     'Spend four hours — not one — with a semi-habituated gorilla group in Bwindi. Reserved for a very small number of guests per day, this is the most intimate wildlife experience in Africa.',
     detail:          'Uganda',
     href:            '/contact',
+    imageSrc:        '/images/destinations/experiences/img-015-mountain-gorilla-silverback.jpg',
+    imageAlt:        'Mountain gorilla in Volcanoes National Park, Rwanda',
     placeholderFrom: '#495C3D',
     placeholderTo:   '#131510',
   },
@@ -352,6 +376,8 @@ export interface FeaturedLodge {
   country:         string;
   description:     string;
   attributes:      readonly string[];
+  imageSrc:        string;
+  imageAlt:        string;
   placeholderFrom: string;
   placeholderTo:   string;
 }
@@ -364,6 +390,8 @@ export const FEATURED_LODGES: FeaturedLodge[] = [
     country:         'Kenya',
     description:     'A six-tent private camp within a 35,000-acre conservancy. Walking distance from the Mara River, with uninterrupted views across the migration corridor.',
     attributes:      ['6 Private Tents', 'Full Board', 'Private Conservancy', 'Walking Safaris'],
+    imageSrc:        '/images/destinations/lodges/img-031-mobile-expedition-camp.jpg',
+    imageAlt:        'Luxury tented camp at dusk in the Maasai Mara conservancy, Kenya',
     placeholderFrom: '#9E8B4D',
     placeholderTo:   '#363B2D',
   },
@@ -374,6 +402,8 @@ export const FEATURED_LODGES: FeaturedLodge[] = [
     country:         'Tanzania',
     description:     'A mobile tented camp that follows the migration across the Serengeti, repositioning seasonally to place guests in the heart of the action.',
     attributes:      ['Mobile Camp', 'Migration-following', 'All-Inclusive', 'Expert Guides'],
+    imageSrc:        '/images/destinations/lodges/img-002-serengeti-plains-landscape.jpg',
+    imageAlt:        'Mobile tented camp on the Serengeti plains, Tanzania',
     placeholderFrom: '#7D6D3A',
     placeholderTo:   '#1C1F18',
   },
@@ -384,6 +414,8 @@ export const FEATURED_LODGES: FeaturedLodge[] = [
     country:         'Uganda',
     description:     'Nestled within a private forest clearing on the boundary of Bwindi Impenetrable Forest. Eight cottages, each positioned for treetop gorilla sightings.',
     attributes:      ['Forest Setting', 'Gorilla Permits', 'Local Community', 'Spa'],
+    imageSrc:        '/images/destinations/lodges/img-004-bwindi-rainforest-interior.jpg',
+    imageAlt:        'Forest lodge nestled in the rainforest at Bwindi, Uganda',
     placeholderFrom: '#495C3D',
     placeholderTo:   '#1C1F18',
   },
@@ -394,6 +426,8 @@ export const FEATURED_LODGES: FeaturedLodge[] = [
     country:         'Botswana',
     description:     'An island camp in the heart of the Okavango Delta, accessible only by mokoro canoe or light aircraft. Total immersion in the world\'s largest inland delta.',
     attributes:      ['Island Setting', 'Mokoro Safaris', 'Water Activities', 'Private Concession'],
+    imageSrc:        '/images/destinations/lodges/img-032-mokoro-okavango-waterway.jpg',
+    imageAlt:        'Mokoro canoe on the waterways of the Okavango Delta, Botswana',
     placeholderFrom: '#B8A44A',
     placeholderTo:   '#4A3F1E',
   },

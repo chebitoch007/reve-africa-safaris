@@ -18,6 +18,7 @@
  */
 
 import Link from 'next/link';
+import Image from 'next/image';
 import { ArrowRight, Calendar } from 'lucide-react';
 import { cn } from '@/lib/design-system';
 import type { DestinationCountry } from '@/lib/constants/destinations';
@@ -30,7 +31,7 @@ export function CountryCard({ country }: CountryCardProps) {
   const {
     name, region, tagline, description,
     href, highlights, bestMonths,
-    placeholderFrom, placeholderTo,
+    imageSrc, imageAlt,
   } = country;
 
   return (
@@ -41,22 +42,13 @@ export function CountryCard({ country }: CountryCardProps) {
         'aspect-[3/4]',
       )}
     >
-      {/* ── Background placeholder ─────────────────────────────
-          Replace with <Image fill> when photography is available.
-      ──────────────────────────────────────────────────────── */}
-      <div
-        className="absolute inset-0 transition-transform duration-[800ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-105"
-        aria-hidden="true"
-        style={{
-          background: `linear-gradient(160deg, ${placeholderFrom} 0%, ${placeholderTo} 100%)`,
-        }}
-      >
-        {/* Noise texture */}
-        <div
-          className="absolute inset-0 opacity-[0.06]"
-          style={{
-            backgroundImage: `url("data:image/svg+xml,%3Csvg width='100' height='100' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100' height='100' filter='url(%23n)'/%3E%3C/svg%3E")`,
-          }}
+      <div className="absolute inset-0 overflow-hidden">
+        <Image
+          src={imageSrc}
+          alt={imageAlt}
+          fill
+          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+          className="object-cover transition-transform duration-[800ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-105"
         />
       </div>
 

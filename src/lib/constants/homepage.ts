@@ -215,6 +215,8 @@ export interface PackageData {
   highlights:      readonly string[];
   startingFrom:    string;
   href:            string;
+  imageSrc:        string;
+  imageAlt:        string;
   placeholderFrom: string;
   placeholderTo:   string;
   badge?:          string;
@@ -231,6 +233,8 @@ export const FEATURED_PACKAGES: PackageData[] = [
     highlights:      ['Private game drives', 'River crossing viewpoints', 'Luxury tented camp', 'Maasai cultural visit'],
     startingFrom:    'From USD 6,500 per person',
     href:            '/journeys/mara-migration',
+    imageSrc:        '/images/homepage/packages/img-014-wildebeest-mara-crossing.jpg',
+    imageAlt:        'Wildebeest crossing the Mara River during the Great Migration, Kenya',
     placeholderFrom: '#9E8B4D',
     placeholderTo:   '#363B2D',
     badge:           'Most Popular',
@@ -245,6 +249,8 @@ export const FEATURED_PACKAGES: PackageData[] = [
     highlights:      ['Hot air balloon safari', 'Crater floor game drive', 'Mobile camp experience', 'Olduvai Gorge visit'],
     startingFrom:    'From USD 8,200 per person',
     href:            '/journeys/serengeti-secrets',
+    imageSrc:        '/images/homepage/packages/img-003-balloon-serengeti-dawn.jpg',
+    imageAlt:        'Hot air balloon at dawn over the Serengeti plains, Tanzania',
     placeholderFrom: '#7D6D3A',
     placeholderTo:   '#1C1F18',
   },
@@ -258,8 +264,56 @@ export const FEATURED_PACKAGES: PackageData[] = [
     highlights:      ['Mountain gorilla tracking', 'Golden monkey trek', 'Luxury forest lodge', 'Conservation briefing'],
     startingFrom:    'From USD 7,800 per person',
     href:            '/journeys/gorilla-highlands',
+    imageSrc:        '/images/homepage/packages/img-015-mountain-gorilla-silverback.jpg',
+    imageAlt:        'Mountain gorilla in Volcanoes National Park, Rwanda',
     placeholderFrom: '#495C3D',
     placeholderTo:   '#131510',
+  },
+  {
+    id:              'botswana-immersion',
+    name:            'Botswana Immersion',
+    duration:        '9 Days',
+    destination:     'Botswana',
+    region:          'Okavango & Chobe',
+    description:     'Total wilderness immersion in Botswana\'s most iconic ecosystems — the Okavango Delta by mokoro and Chobe\'s legendary elephant herds by boat.',
+    highlights:      ['Okavango mokoro safari', 'Chobe river cruise', 'Private concession camps', 'Big Five game drives'],
+    startingFrom:    'From USD 9,400 per person',
+    href:            '/journeys/botswana-immersion',
+    imageSrc:        '/images/homepage/packages/img-018-chobe-elephants-river.jpg',
+    imageAlt:        'Elephant herd on the Chobe River, Botswana',
+    placeholderFrom: '#B8A44A',
+    placeholderTo:   '#4A3F1E',
+  },
+  {
+    id:              'east-africa-grand-tour',
+    name:            'East Africa Grand Tour',
+    duration:        '14 Days',
+    destination:     'Kenya & Tanzania',
+    region:          'Mara, Serengeti & Amboseli',
+    description:     'The definitive East African safari — from the Maasai Mara and Amboseli\'s elephants beneath Kilimanjaro to the Serengeti and Ngorongoro Crater.',
+    highlights:      ['Maasai Mara game drives', 'Amboseli & Kilimanjaro views', 'Serengeti migration', 'Ngorongoro Crater'],
+    startingFrom:    'From USD 12,800 per person',
+    href:            '/journeys/east-africa-grand-tour',
+    imageSrc:        '/images/homepage/packages/img-017-elephant-amboseli-kilimanjaro.jpg',
+    imageAlt:        'Elephant herd in Amboseli with Mount Kilimanjaro, Kenya',
+    placeholderFrom: '#9E8B4D',
+    placeholderTo:   '#282C22',
+    badge:           'Best Seller',
+  },
+  {
+    id:              'namibia-desert-dunes',
+    name:            'Namibia Desert & Dunes',
+    duration:        '10 Days',
+    destination:     'Namibia',
+    region:          'Sossusvlei, Etosha & Damaraland',
+    description:     'An expedition through the world\'s oldest desert — the soaring red dunes of Sossusvlei, Etosha\'s wildlife, and the desert-adapted giants of Damaraland.',
+    highlights:      ['Sossusvlei sunrise dunes', 'Etosha game drives', 'Desert-adapted elephants', 'Skeleton Coast'],
+    startingFrom:    'From USD 8,600 per person',
+    href:            '/journeys/namibia-desert-dunes',
+    imageSrc:        '/images/homepage/packages/img-007-sossusvlei-dunes-namibia.jpg',
+    imageAlt:        'The iconic red dunes of Sossusvlei at dawn, Namibia',
+    placeholderFrom: '#C4A35A',
+    placeholderTo:   '#5C3F20',
   },
 ];
 
