@@ -90,6 +90,8 @@ export interface TeamMember {
   origin:       string;
   bio:          string;
   expertise:    readonly string[];
+  imageSrc:     string;
+  imageAlt:     string;
   /** Placeholder gradient stops — swap for <Image> when photography available */
   placeholderFrom: string;
   placeholderTo:   string;
@@ -103,6 +105,8 @@ export const TEAM_MEMBERS: TeamMember[] = [
     origin:          'Kenya',
     bio:             'Born in Naivasha, Amara holds a degree in ecology from the University of Nairobi and has led over 800 expeditions across East Africa. She is a Fellow of the Kenya Professional Safari Guides Association.',
     expertise:       ['Maasai Mara', 'Laikipia', 'Amboseli'],
+    imageSrc:        '/images/about/team/img-037-team-amara-nkosi.jpg',
+    imageAlt:        'Amara Nkosi, Co-Founder and Head of Expeditions at Rêve Africa Safaris',
     placeholderFrom: '#9E8B4D',
     placeholderTo:   '#282C22',
   },
@@ -113,6 +117,8 @@ export const TEAM_MEMBERS: TeamMember[] = [
     origin:          'Kenya',
     bio:             'A former wildlife ranger with the Kenya Wildlife Service, David brings an unmatched depth of field knowledge. He is the architect of our community partnership programme and oversees all conservation commitments.',
     expertise:       ['Wildlife conservation', 'Community relations', 'Northern Kenya'],
+    imageSrc:        '/images/about/team/img-038-team-david-mwangi.jpg',
+    imageAlt:        'David Mwangi, Co-Founder and Conservation Director at Rêve Africa Safaris',
     placeholderFrom: '#495C3D',
     placeholderTo:   '#131510',
   },
@@ -123,6 +129,8 @@ export const TEAM_MEMBERS: TeamMember[] = [
     origin:          'Tanzania',
     bio:             'With roots in Arusha and fluency in Swahili, Arabic, and English, Fatima designs itineraries across Tanzania and Rwanda. Her expertise in gorilla trekking permits is unrivalled in the industry.',
     expertise:       ['Serengeti', 'Ngorongoro', 'Gorilla trekking'],
+    imageSrc:        '/images/about/team/img-039-team-fatima-alrashid.jpg',
+    imageAlt:        'Fatima Al-Rashid, Senior Safari Consultant at Rêve Africa Safaris',
     placeholderFrom: '#7D6D3A',
     placeholderTo:   '#1C1F18',
   },
@@ -133,6 +141,8 @@ export const TEAM_MEMBERS: TeamMember[] = [
     origin:          'Botswana',
     bio:             'Raised on the edge of the Okavango Delta, Sipho is our guide and specialist for Botswana, Zimbabwe, and Namibia. He is a certified Master Tracker and wilderness first responder.',
     expertise:       ['Okavango Delta', 'Chobe', 'Hwange'],
+    imageSrc:        '/images/about/team/img-040-team-sipho-dlamini.jpg',
+    imageAlt:        'Sipho Dlamini, Southern Africa Specialist at Rêve Africa Safaris',
     placeholderFrom: '#627A53',
     placeholderTo:   '#363B2D',
   },

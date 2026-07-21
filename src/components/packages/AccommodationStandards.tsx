@@ -12,6 +12,7 @@
  * The three tiers stack vertically on mobile, grid on desktop.
  */
 
+import Image from 'next/image';
 import { motion, useReducedMotion } from 'framer-motion';
 import { cn } from '@/lib/design-system';
 import { DURATION, EASE, VIEWPORT_ONCE } from '@/lib/design-system';
@@ -124,22 +125,14 @@ export function AccommodationStandards() {
               <div
                 className="relative overflow-hidden shrink-0"
                 style={{ aspectRatio: '16/9' }}
-                aria-hidden="true"
               >
-                <div
-                  className="absolute inset-0 transition-transform duration-[700ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-105"
-                  style={{
-                    background: `linear-gradient(155deg, ${standard.placeholderFrom} 0%, ${standard.placeholderTo} 100%)`,
-                  }}
-                >
-                  {/* Noise texture */}
-                  <div
-                    className="absolute inset-0 opacity-[0.06]"
-                    style={{
-                      backgroundImage: `url("data:image/svg+xml,%3Csvg width='100' height='100' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100' height='100' filter='url(%23n)'/%3E%3C/svg%3E")`,
-                    }}
-                  />
-                </div>
+                <Image
+                  src={standard.imageSrc}
+                  alt={standard.imageAlt}
+                  fill
+                  sizes="(max-width: 640px) 100vw, 33vw"
+                  className="object-cover transition-transform duration-[700ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-105"
+                />
 
                 {/* Tier badge */}
                 <div className="absolute top-4 left-4 z-[1]">

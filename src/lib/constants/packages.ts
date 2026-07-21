@@ -262,6 +262,8 @@ export const SIGNATURE_ITINERARY = {
     },
   ],
   href:         '/contact',
+  imageSrc:     '/images/packages/signature/img-014-wildebeest-mara-crossing.jpg',
+  imageAlt:     'Wildebeest crossing the Mara River during the Great Migration',
   placeholderFrom: '#9E8B4D',
   placeholderTo:   '#1C1F18',
 } as const;
@@ -439,6 +441,8 @@ export interface AccommodationStandard {
   title:       string;
   description: string;
   examples:    readonly string[];
+  imageSrc:    string;
+  imageAlt:    string;
   placeholderFrom: string;
   placeholderTo:   string;
 }
@@ -450,6 +454,8 @@ export const ACCOMMODATION_STANDARDS: AccommodationStandard[] = [
     title:           'Established camps & lodges',
     description:     'The gold standard of safari accommodation — permanent tented camps and stone lodges with ensuite bathrooms, quality linens, and guiding teams who know every inch of their territory.',
     examples:        ['Angama Mara, Kenya', 'Singita Grumeti, Tanzania', 'Mombo Camp, Botswana'],
+    imageSrc:        '/images/packages/accommodation/img-029-luxury-tent-interior.jpg',
+    imageAlt:        'Interior of a luxury safari tent with views of the African bush',
     placeholderFrom: '#9E8B4D',
     placeholderTo:   '#363B2D',
   },
@@ -459,6 +465,8 @@ export const ACCOMMODATION_STANDARDS: AccommodationStandard[] = [
     title:           'Private houses & exclusive-use camps',
     description:     'Entire properties reserved for your group alone. A dedicated team, a vehicle, and a piece of Africa that belongs, briefly, entirely to you.',
     examples:        ['Mahali Mzuri, Kenya', 'Roho ya Selous, Tanzania', 'Duba Plains Camp, Botswana'],
+    imageSrc:        '/images/packages/accommodation/img-030-private-camp-deck-view.jpg',
+    imageAlt:        'Private camp deck overlooking the African wilderness at sunset',
     placeholderFrom: '#B8A44A',
     placeholderTo:   '#4A3F1E',
   },
@@ -468,6 +476,8 @@ export const ACCOMMODATION_STANDARDS: AccommodationStandard[] = [
     title:           'Mobile camps that follow the action',
     description:     'Repositioned seasonally to keep guests at the heart of wildlife events. Lightweight luxury — the essence of safari without compromise on comfort.',
     examples:        ['Serengeti Under Canvas', 'Ol Donyo Walking Camp', 'Makgadikgadi Migration Camp'],
+    imageSrc:        '/images/packages/accommodation/img-031-mobile-expedition-camp.jpg',
+    imageAlt:        'Mobile expedition camp on the Serengeti plains during the migration',
     placeholderFrom: '#627A53',
     placeholderTo:   '#1C1F18',
   },

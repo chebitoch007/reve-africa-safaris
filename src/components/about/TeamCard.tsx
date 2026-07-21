@@ -9,6 +9,7 @@
  * is available. Each member has unique placeholderFrom/placeholderTo values.
  */
 
+import Image from 'next/image';
 import { cn } from '@/lib/design-system';
 import { MapPin } from 'lucide-react';
 import type { TeamMember } from '@/lib/constants/about';
@@ -25,26 +26,13 @@ export function TeamCard({ member }: TeamCardProps) {
           Portrait ratio: 3:4 (portrait orientation).
       ────────────────────────────────────────────────────────── */}
       <div className="relative overflow-hidden shrink-0" style={{ aspectRatio: '3/4' }}>
-        <div
-          className="absolute inset-0 transition-transform duration-[700ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-105"
-          style={{
-            background: `linear-gradient(165deg, ${member.placeholderFrom} 0%, ${member.placeholderTo} 100%)`,
-          }}
-          aria-hidden="true"
-        >
-          {/* Noise texture */}
-          <div
-            className="absolute inset-0 opacity-[0.06]"
-            style={{
-              backgroundImage: `url("data:image/svg+xml,%3Csvg width='200' height='200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E")`,
-            }}
-          />
-          {/* Subtle vignette */}
-          <div
-            className="absolute inset-0 opacity-40"
-            style={{ background: 'linear-gradient(to top, rgba(12,13,11,0.55) 0%, transparent 55%)' }}
-          />
-        </div>
+        <Image
+          src={member.imageSrc}
+          alt={member.imageAlt}
+          fill
+          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+          className="object-cover object-top transition-transform duration-[700ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-105"
+        />
 
         {/* Origin tag — overlaid bottom-left */}
         <div className="absolute bottom-4 left-4 flex items-center gap-2">
