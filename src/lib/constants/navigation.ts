@@ -3,37 +3,36 @@
  *
  * All navigation data lives here, separate from UI components.
  * Swap content without touching any component.
+ *
+ * NOTE: Unbuilt routes are redirected to the closest real page
+ * to prevent 404s until dedicated pages are implemented.
  */
 
 import type { NavLink, NavGroup } from '@/types';
-
-// ─────────────────────────────────────────────
-// Primary navigation
-// ─────────────────────────────────────────────
 
 export const PRIMARY_NAV: NavGroup[] = [
   {
     label: 'Destinations',
     href:  '/destinations',
     children: [
-      { label: 'Kenya',      href: '/destinations/kenya' },
-      { label: 'Tanzania',   href: '/destinations/tanzania' },
-      { label: 'Botswana',   href: '/destinations/botswana' },
-      { label: 'Rwanda',     href: '/destinations/rwanda' },
-      { label: 'Zimbabwe',   href: '/destinations/zimbabwe' },
-      { label: 'Namibia',    href: '/destinations/namibia' },
+      { label: 'Kenya',      href: '/destinations' },
+      { label: 'Tanzania',   href: '/destinations' },
+      { label: 'Botswana',   href: '/destinations' },
+      { label: 'Rwanda',     href: '/destinations' },
+      { label: 'Zimbabwe',   href: '/destinations' },
+      { label: 'Namibia',    href: '/destinations' },
     ],
   },
   {
     label: 'Experiences',
-    href:  '/experiences',
+    href:  '/packages',
     children: [
-      { label: 'Private Game Drives',    href: '/experiences/game-drives' },
-      { label: 'Gorilla Trekking',       href: '/experiences/gorilla-trekking' },
-      { label: 'Hot Air Ballooning',     href: '/experiences/ballooning' },
-      { label: 'Walking Safaris',        href: '/experiences/walking-safaris' },
-      { label: 'Conservation Stays',     href: '/experiences/conservation' },
-      { label: 'Fly-in Safaris',         href: '/experiences/fly-in' },
+      { label: 'Private Game Drives',    href: '/packages' },
+      { label: 'Gorilla Trekking',       href: '/packages' },
+      { label: 'Hot Air Ballooning',     href: '/packages' },
+      { label: 'Walking Safaris',        href: '/packages' },
+      { label: 'Conservation Stays',     href: '/packages' },
+      { label: 'Fly-in Safaris',         href: '/packages' },
     ],
   },
   {
@@ -50,44 +49,36 @@ export const PRIMARY_NAV: NavGroup[] = [
   },
 ];
 
-// ─────────────────────────────────────────────
-// Footer navigation columns
-// ─────────────────────────────────────────────
-
 export const FOOTER_DESTINATIONS: NavLink[] = [
-  { label: 'Kenya',      href: '/destinations/kenya' },
-  { label: 'Tanzania',   href: '/destinations/tanzania' },
-  { label: 'Botswana',   href: '/destinations/botswana' },
-  { label: 'Rwanda',     href: '/destinations/rwanda' },
-  { label: 'Zimbabwe',   href: '/destinations/zimbabwe' },
-  { label: 'Namibia',    href: '/destinations/namibia' },
+  { label: 'Kenya',      href: '/destinations' },
+  { label: 'Tanzania',   href: '/destinations' },
+  { label: 'Botswana',   href: '/destinations' },
+  { label: 'Rwanda',     href: '/destinations' },
+  { label: 'Zimbabwe',   href: '/destinations' },
+  { label: 'Namibia',    href: '/destinations' },
 ];
 
 export const FOOTER_EXPLORE: NavLink[] = [
   { label: 'All Journeys',      href: '/packages' },
-  { label: 'Experiences',       href: '/experiences' },
-  { label: 'Private Safaris',   href: '/experiences/private' },
-  { label: 'Conservation',      href: '/experiences/conservation' },
-  { label: 'Safari Planning',   href: '/plan' },
+  { label: 'Experiences',       href: '/packages' },
+  { label: 'Private Safaris',   href: '/packages' },
+  { label: 'Conservation',      href: '/packages' },
+  { label: 'Safari Planning',   href: '/contact' },
 ];
 
 export const FOOTER_COMPANY: NavLink[] = [
   { label: 'About Us',          href: '/about' },
-  { label: 'Our Philosophy',    href: '/about/philosophy' },
-  { label: 'Sustainability',    href: '/about/sustainability' },
-  { label: 'Partners',          href: '/about/partners' },
+  { label: 'Our Philosophy',    href: '/about' },
+  { label: 'Sustainability',    href: '/about' },
+  { label: 'Partners',          href: '/about' },
   { label: 'Contact',           href: '/contact' },
 ];
 
 export const FOOTER_LEGAL: NavLink[] = [
-  { label: 'Privacy Policy',       href: '/legal/privacy' },
-  { label: 'Terms & Conditions',   href: '/legal/terms' },
-  { label: 'Cookie Policy',        href: '/legal/cookies' },
+  { label: 'Privacy Policy',       href: '/contact' },
+  { label: 'Terms & Conditions',   href: '/contact' },
+  { label: 'Cookie Policy',        href: '/contact' },
 ];
-
-// ─────────────────────────────────────────────
-// Social links
-// ─────────────────────────────────────────────
 
 export interface SocialLink {
   label:    string;
@@ -96,19 +87,7 @@ export interface SocialLink {
 }
 
 export const SOCIAL_LINKS: SocialLink[] = [
-  {
-    label:    'Instagram',
-    href:     'https://instagram.com/reveafricasafaris',
-    platform: 'instagram',
-  },
-  {
-    label:    'Facebook',
-    href:     'https://facebook.com/reveafricasafaris',
-    platform: 'facebook',
-  },
-  {
-    label:    'YouTube',
-    href:     'https://youtube.com/@reveafricasafaris',
-    platform: 'youtube',
-  },
+  { label: 'Instagram', href: 'https://instagram.com/reveafricasafaris', platform: 'instagram' },
+  { label: 'Facebook',  href: 'https://facebook.com/reveafricasafaris',  platform: 'facebook'  },
+  { label: 'YouTube',   href: 'https://youtube.com/@reveafricasafaris',  platform: 'youtube'   },
 ];
