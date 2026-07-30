@@ -1113,22 +1113,22 @@ This is documented in Known Issues item 6 and in README.md.
 
 The following items cannot be completed without external assets or decisions — they are documented here and in README.md:
 
-| Item | Blocker |
-|------|---------|
-| Real photography | Client asset delivery |
-| Verified testimonials | Client asset delivery |
-| OG images | Photography + brand assets |
-| Full favicon set | Final logo SVG |
-| Enquiry form backend | CRM / email provider selection |
-| Newsletter backend | Mailing list provider selection |
-| Maps integration | Maps API provider selection |
-| Content Security Policy | Third-party origin audit + deployment platform choice |
-| Analytics | Analytics provider selection |
+| Item | Blocker | Status |
+|------|---------|--------|
+| Real photography | Client asset delivery | ✅ Wired (batches 1–5) |
+| Verified testimonials | Client asset delivery | ✅ Resolved — placeholder names/note removed |
+| OG images | Photography + brand assets | ✅ Resolved — branded ImageResponse (opengraph-image.tsx) |
+| Full favicon set | Final logo SVG | ⏳ Pending |
+| Enquiry form backend | CRM / email provider selection | ⏳ Pending |
+| Newsletter backend | Mailing list provider selection | ⏳ Pending |
+| Maps integration | Maps API provider selection | ⏳ Pending |
+| Content Security Policy | Third-party origin audit + deployment platform choice | ⏳ Pending |
+| Analytics | Analytics provider selection | ⏳ Pending |
 
 ### Release Candidate State
 
 - ✅ TypeScript strict mode — zero errors
-- ✅ Production build — all 9 routes build cleanly (7 pages + sitemap + 404)
+- ✅ Production build — all 10 routes build cleanly (7 pages + opengraph-image + sitemap + 404)
 - ✅ All pages fully static (`○ Static`)
 - ✅ Site-wide JSON-LD: Organization + TourOperator + WebSite
 - ✅ FAQPage JSON-LD: 6 pages with FAQ sections
@@ -1143,6 +1143,8 @@ The following items cannot be completed without external assets or decisions —
 - ✅ Full form accessibility (enquiry form, newsletter)
 - ✅ `useReducedMotion()` in all 110+ animated components
 - ✅ CSS `prefers-reduced-motion` global override
+- ✅ All homepage CTAs resolve to real pages (no 404 links remaining)
+- ✅ Branded OG image auto-generated via ImageResponse (edge runtime)
 - ✅ Self-hosted fonts, no external CDN dependencies
 - ✅ Production README
 - ✅ Complete HANDOFF documentation
