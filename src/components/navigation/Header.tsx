@@ -59,6 +59,9 @@ export function Header() {
         className={cn(
           // Layout
           'fixed top-0 left-0 right-0 z-[30]',
+          // Always white text — header sits over dark hero image or solid
+          // basalt background; body { color: text-primary } must not cascade in.
+          'text-[var(--color-text-inverse)]',
           'transition-all duration-[400ms] ease-[cubic-bezier(0.4,0,0.2,1)]',
           // Scrolled: solid dark background
           scrolled

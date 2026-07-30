@@ -102,7 +102,7 @@ export function Hero() {
   return (
     <section
       aria-label="Welcome to Rêve Africa Safaris"
-      className="relative w-full min-h-screen flex flex-col overflow-hidden"
+      className="relative w-full min-h-screen flex flex-col overflow-hidden text-[var(--color-text-inverse)]"
     >
       {/* ── Background placeholder ────────────────────────────────
           Replace this div with <Image fill priority> when photography
