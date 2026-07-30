@@ -98,22 +98,38 @@ export function Header() {
                   label={group.label}
                   isActive={isActive}
                   variant="header"
+                  scrolled={scrolled}
                 />
               );
             })}
           </nav>
 
           {/* ── Desktop CTA ─────────────────────────── */}
+          {/*
+           * Contrast strategy:
+           * – transparent state (over hero image):
+           *     white text + white border at 60% opacity → clearly legible over
+           *     the dark directional overlay that covers the left portion of the image.
+           * – scrolled state (solid basalt-900 background):
+           *     full white text + full white border → maximum contrast on dark bg.
+           *
+           * Both states use transition-all so border, colour, and bg animate
+           * together in sync with the header's own 400ms background transition.
+           */}
           <div className="hidden lg:flex items-center gap-6">
             <Link
               href="/contact"
               className={cn(
                 'inline-block px-6 py-3',
                 'font-[var(--font-inter)] font-medium uppercase tracking-[0.2em] text-[10px]',
-                'border border-[rgba(255,255,255,0.35)]',
+                // Text: always chalk-50 — highest contrast on both dark states
                 'text-[var(--color-text-inverse)]',
-                'transition-all duration-[250ms]',
-                'hover:border-[var(--color-text-inverse)] hover:bg-[rgba(255,255,255,0.08)]',
+                // Border: full white when scrolled, 60% opacity over hero image
+                // (raised from the original 35% which was too faint)
+                'transition-all duration-[400ms] ease-[cubic-bezier(0.4,0,0.2,1)]',
+                scrolled
+                  ? 'border border-[rgba(255,255,255,1)] hover:bg-white hover:text-[var(--color-bg-inverse)]'
+                  : 'border border-[rgba(255,255,255,0.6)] hover:border-[rgba(255,255,255,1)] hover:bg-[rgba(255,255,255,0.1)]',
                 'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-accent-primary)] focus-visible:ring-offset-2 focus-visible:ring-offset-transparent rounded-[2px]',
               )}
             >

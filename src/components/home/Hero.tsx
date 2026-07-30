@@ -225,17 +225,34 @@ export function Hero() {
               {HERO_CONTENT.primaryCTA.label}
             </Link>
 
-            {/* Secondary */}
+            {/* Secondary
+             *
+             * Contrast strategy: this button sits over a variable background
+             * image — the hero gradient darkens the left half heavily but the
+             * right edge and mobile reflow can expose lighter image areas.
+             *
+             * Fixes applied vs original:
+             *   border opacity: 0.30 → 0.65 (clearly visible on any image tone)
+             *   bg:             none → rgba(0,0,0,0.15) (thin dark scrim)
+             *   backdrop-blur:  added — blurs the image behind the button,
+             *                   ensuring sufficient contrast regardless of what
+             *                   the underlying image shows at any viewport width.
+             *   hover border:   0.70 → 1.0 (full white on interaction)
+             *   hover bg:       0.06 → rgba(255,255,255,0.12) (visible feedback)
+             *   text:           text-inverse (chalk-50 / #FAF9F5) — unchanged,
+             *                   always >7:1 on any dark or blurred surface.
+             */}
             <Link
               href={HERO_CONTENT.secondaryCTA.href}
               className={cn(
                 'inline-flex items-center justify-center gap-2',
                 'px-8 py-4 min-w-[10rem]',
-                'border border-[rgba(255,255,255,0.3)]',
+                'border border-[rgba(255,255,255,0.65)]',
+                'bg-[rgba(0,0,0,0.15)] backdrop-blur-sm',
                 'text-[var(--color-text-inverse)]',
                 'font-[var(--font-inter)] font-medium uppercase tracking-[0.18em] text-[11px]',
                 'transition-all duration-[300ms] ease-[cubic-bezier(0.4,0,0.2,1)]',
-                'hover:border-[rgba(255,255,255,0.7)] hover:bg-[rgba(255,255,255,0.06)]',
+                'hover:border-[rgba(255,255,255,1)] hover:bg-[rgba(255,255,255,0.12)]',
                 'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-accent-primary)] focus-visible:ring-offset-2 focus-visible:ring-offset-transparent',
               )}
             >
