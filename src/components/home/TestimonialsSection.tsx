@@ -157,21 +157,6 @@ export function TestimonialsSection() {
           ))}
         </div>
 
-        {/* Placeholder notice */}
-        <motion.p
-          custom={0.3}
-          variants={reduced ? {} : fadeUp}
-          initial="hidden"
-          whileInView="visible"
-          viewport={VIEWPORT_ONCE}
-          className={cn(
-            'mt-8 text-center',
-            'font-[var(--font-inter)] text-xs italic',
-            'text-[var(--color-text-muted)]',
-          )}
-        >
-          {TESTIMONIALS_SECTION.note}
-        </motion.p>
       </div>
     </section>
   );
