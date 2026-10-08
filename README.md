@@ -72,6 +72,41 @@ npx tsc --noEmit
 
 ---
 
+## Asset validation
+
+`scripts/check-images.mjs` audits the images in `public/images` using only Node built-ins (no dependencies). It is read-only: it never modifies images or source files.
+
+```bash
+npm run check:images                      # summary grouped by folder
+npm run check:images -- --verbose         # list every finding per file
+npm run check:images -- --dir public/images/about
+npm run check:images -- --markdown        # write docs/IMAGE_REPLACEMENT_CHECKLIST.md
+npm run check:images -- --strict          # exit 1 if any error is found
+```
+
+| Flag | Effect |
+|------|--------|
+| `--dir <path>` | Scan a different directory (default `public/images`). |
+| `--strict` | Exit with code `1` if any **error** is found. Without it the exit code is `0`. Not wired into `build` or CI. |
+| `--markdown` | Generate [`docs/IMAGE_REPLACEMENT_CHECKLIST.md`](./docs/IMAGE_REPLACEMENT_CHECKLIST.md) (image path, issue type, file it is used in, minimum width). |
+| `--verbose` | Print each finding instead of only folder counts. |
+| `--help` | Show usage. |
+
+**What it checks** (`.jpg`, `.jpeg`, `.png`, `.webp`, `.avif`):
+
+| Severity | Check |
+|----------|-------|
+| Error | **Zero-byte** file. |
+| Error | **Format mismatch**: the file's magic bytes don't match its extension (e.g. a WebP saved as `.jpg`). |
+| Error | **Missing reference**: a string literal in `src/` (or a CSS `url()`) points at an image that doesn't exist on disk. |
+| Error | **Unreadable dimensions**: the format is valid but the header can't be parsed. |
+| Warning | **Low width**: under 1920 px for images in a `hero/` folder, under 1200 px for all others. |
+| Info | **Unreferenced**: on disk but not referenced as a string literal in `src/`. |
+
+Only static string literals are detected; paths built at runtime (e.g. `` `/images/${slug}.jpg` ``) are not, so treat "unreferenced" as a hint. Files that are empty or unrecognisable are reported once and are not also counted as unreadable. Exit code `2` means bad usage (unknown flag, missing directory). After replacing images, re-run with `--markdown` to refresh the checklist.
+
+---
+
 ## Project Structure
 
 ```
