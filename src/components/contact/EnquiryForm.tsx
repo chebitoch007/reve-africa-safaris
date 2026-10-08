@@ -8,15 +8,24 @@
  * bg-dune (dune-100) on right panel.
  *
  * ── Architecture ──────────────────────────────────────────────────────
- * Frontend only. The submit handler is a stub that prevents default and
- * transitions to a success state. Future integration: replace handleSubmit
- * with a POST to your API route / email service (Resend, SendGrid, etc.).
+ * Submits as JSON straight from the browser to Formspree. The endpoint
+ * comes from NEXT_PUBLIC_FORMSPREE_ENDPOINT, which Next.js inlines at
+ * BUILD time (rebuild after changing it). If it is missing or empty the
+ * form shows an error state — it never reports a fake success.
+ *
+ * Status machine: idle → submitting → success | error. After an error the
+ * user's input is preserved and they can resubmit.
+ *
+ * Spam: a hidden honeypot field (_gotcha) is submitted with the payload;
+ * Formspree discards submissions where it is filled in.
  *
  * ── Accessibility ─────────────────────────────────────────────────────
  * - Every input has an explicit <label> associated via htmlFor/id
  * - Required fields marked with aria-required and a visible * indicator
  * - Validation errors use aria-describedby + aria-invalid + role="alert"
  * - Success state uses role="status" + aria-live="polite"
+ * - Submit failures use a role="alert" message that receives focus
+ * - Honeypot is aria-hidden, off-screen and removed from the tab order
  * - Focus ring pattern consistent with design system
  * - No autocomplete suppressed — browser autofill is helpful here
  * - <fieldset>/<legend> used for grouped select fields
@@ -24,16 +33,16 @@
  * ── Validation ────────────────────────────────────────────────────────
  * Client-side only. Fields validated on submit; individual field errors
  * cleared on change. Email format validated with a simple regex.
- * No server-side validation (no backend in scope).
+ * Formspree field-level errors, if returned, are mapped back onto fields.
  * ──────────────────────────────────────────────────────────────────────
  */
 
-import { useState, useId } from 'react';
+import { useState, useId, useRef, useEffect } from 'react';
 import { motion, AnimatePresence, useReducedMotion } from 'framer-motion';
-import { ArrowRight, CheckCircle } from 'lucide-react';
+import { ArrowRight, CheckCircle, LoaderCircle } from 'lucide-react';
 import { cn } from '@/lib/design-system';
 import { DURATION, EASE, VIEWPORT_ONCE } from '@/lib/design-system';
-import { ENQUIRY_FORM } from '@/lib/constants/contact';
+import { ENQUIRY_FORM, CONTACT_METHODS } from '@/lib/constants/contact';
 
 // ─────────────────────────────────────────────
 // Types
@@ -53,6 +62,14 @@ interface FormValues {
 
 type FormErrors = Partial<Record<keyof FormValues, string>>;
 
+type SubmitStatus = 'idle' | 'submitting' | 'success' | 'error';
+
+/** Shape of a Formspree JSON error response (all fields optional). */
+interface FormspreeErrorBody {
+  error?:  string;
+  errors?: Array<{ field?: string; code?: string; message?: string }>;
+}
+
 const EMPTY: FormValues = {
   firstName:    '',
   lastName:     '',
@@ -64,6 +81,35 @@ const EMPTY: FormValues = {
   budget:       '',
   message:      '',
 };
+
+// ─────────────────────────────────────────────
+// Submission config
+// ─────────────────────────────────────────────
+
+/**
+ * Must be referenced as a literal `process.env.NEXT_PUBLIC_*` expression so
+ * Next.js can inline it at build time (dynamic lookups are not inlined).
+ */
+const FORMSPREE_ENDPOINT = process.env.NEXT_PUBLIC_FORMSPREE_ENDPOINT?.trim() ?? '';
+
+const SUBMIT_TIMEOUT_MS = 20_000;
+const SUBMITTING_LABEL  = 'Sending…';
+
+const ERROR_NOT_CONFIGURED =
+  'Our online enquiry form is not accepting messages right now.';
+const ERROR_NETWORK =
+  'We could not reach our server. Please check your connection and try again.';
+const ERROR_TIMEOUT =
+  'The request took too long. Please try again.';
+const ERROR_GENERIC =
+  'Something went wrong while sending your enquiry. Please try again.';
+const ERROR_FIELDS =
+  'Please check the highlighted fields and try again.';
+
+/** Fallback contact route shown alongside submit errors (from constants). */
+const FALLBACK_EMAIL = CONTACT_METHODS.find((m) => m.label === 'Email');
+
+const FIELD_KEYS = Object.keys(EMPTY) as Array<keyof FormValues>;
 
 // ─────────────────────────────────────────────
 // Validation
@@ -165,7 +211,19 @@ export function EnquiryForm() {
 
   const [values,    setValues]    = useState<FormValues>(EMPTY);
   const [errors,    setErrors]    = useState<FormErrors>({});
-  const [submitted, setSubmitted] = useState(false);
+  const [status,      setStatus]      = useState<SubmitStatus>('idle');
+  const [submitError, setSubmitError] = useState<string | null>(null);
+
+  const errorRef     = useRef<HTMLDivElement>(null);
+  const honeypotRef  = useRef<HTMLInputElement>(null);
+
+  const isSubmitting = status === 'submitting';
+
+  // Move focus to the submit-error message so keyboard and screen-reader
+  // users land on it. Re-fires on every transition into 'error'.
+  useEffect(() => {
+    if (status === 'error') errorRef.current?.focus();
+  }, [status]);
 
   // Field id helpers
   const id = (field: keyof FormValues) => `${uid}-${field}`;
@@ -183,21 +241,93 @@ export function EnquiryForm() {
   };
 
   /**
-   * Stub submit handler.
-   * TODO: Replace with POST to your API route / email service.
+   * Validates, then POSTs JSON to Formspree.
+   * Input values are never cleared on failure; they are only reset after a
+   * confirmed success.
    */
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    if (isSubmitting) return;
+
     const newErrors = validate(values);
     if (Object.keys(newErrors).length > 0) {
       setErrors(newErrors);
+      setSubmitError(null);
+      setStatus('idle');
       // Move focus to first error field
       const firstErrorField = Object.keys(newErrors)[0] as keyof FormValues;
       document.getElementById(id(firstErrorField))?.focus();
       return;
     }
-    // Stub success — replace with actual API call
-    setSubmitted(true);
+
+    setErrors({});
+    setSubmitError(null);
+
+    // Never pretend to succeed when there is nowhere to send the enquiry.
+    if (!FORMSPREE_ENDPOINT) {
+      console.error(
+        '[EnquiryForm] NEXT_PUBLIC_FORMSPREE_ENDPOINT is missing or empty. ' +
+        'Set it in your environment and rebuild (see README → Environment Variables).',
+      );
+      setSubmitError(ERROR_NOT_CONFIGURED);
+      setStatus('error');
+      return;
+    }
+
+    setStatus('submitting');
+
+    const controller = new AbortController();
+    const timeout    = window.setTimeout(() => controller.abort(), SUBMIT_TIMEOUT_MS);
+
+    try {
+      const response = await fetch(FORMSPREE_ENDPOINT, {
+        method:  'POST',
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify({
+          firstName:    values.firstName.trim(),
+          lastName:     values.lastName.trim(),
+          email:        values.email.trim(),
+          phone:        values.phone.trim(),
+          destinations: values.destinations.trim(),
+          travelMonth:  values.travelMonth,
+          groupSize:    values.groupSize,
+          budget:       values.budget,
+          message:      values.message.trim(),
+          _gotcha:      honeypotRef.current?.value ?? '',
+        }),
+        signal: controller.signal,
+      });
+
+      if (response.ok) {
+        setValues(EMPTY);
+        setStatus('success');
+        return;
+      }
+
+      // Not OK — surface field-level problems if Formspree reported any.
+      const body = (await response.json().catch(() => null)) as FormspreeErrorBody | null;
+      const fieldErrors: FormErrors = {};
+      for (const item of body?.errors ?? []) {
+        const field = item.field as keyof FormValues | undefined;
+        if (field && FIELD_KEYS.includes(field) && item.message) {
+          fieldErrors[field] = item.message;
+        }
+      }
+
+      if (Object.keys(fieldErrors).length > 0) {
+        setErrors(fieldErrors);
+        setSubmitError(ERROR_FIELDS);
+      } else {
+        setSubmitError(ERROR_GENERIC);
+      }
+      setStatus('error');
+    } catch (err) {
+      const aborted = err instanceof DOMException && err.name === 'AbortError';
+      setSubmitError(aborted ? ERROR_TIMEOUT : ERROR_NETWORK);
+      setStatus('error');
+    } finally {
+      window.clearTimeout(timeout);
+    }
   };
 
   return (
@@ -267,7 +397,7 @@ export function EnquiryForm() {
             viewport={VIEWPORT_ONCE}
           >
             <AnimatePresence mode="wait" initial={false}>
-              {submitted ? (
+              {status === 'success' ? (
                 /* ── Success state ──────────────────────────────── */
                 <motion.div
                   key="success"
@@ -308,10 +438,30 @@ export function EnquiryForm() {
                   onSubmit={handleSubmit}
                   noValidate
                   aria-label="Safari enquiry form"
+                  aria-busy={isSubmitting}
                   initial={{ opacity: 1 }}
                   exit={{ opacity: 0 }}
                   className="space-y-6"
                 >
+                  {/* Honeypot — hidden from sighted users and assistive tech.
+                      Real users never fill it; bots usually do. */}
+                  <div
+                    aria-hidden="true"
+                    className="absolute -left-[9999px] h-px w-px overflow-hidden"
+                  >
+                    <label>
+                      Leave this field empty
+                      <input
+                        ref={honeypotRef}
+                        type="text"
+                        name="_gotcha"
+                        tabIndex={-1}
+                        autoComplete="off"
+                        defaultValue=""
+                      />
+                    </label>
+                  </div>
+
                   {/* Name row */}
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                     <div>
@@ -514,10 +664,38 @@ export function EnquiryForm() {
                     <FieldError id={errId('message')} message={errors.message} />
                   </div>
 
+                  {/* Submit error (also reached when the endpoint is unset) */}
+                  {status === 'error' && submitError && (
+                    <div
+                      ref={errorRef}
+                      role="alert"
+                      tabIndex={-1}
+                      className={cn(
+                        'border border-red-300 bg-red-50 px-5 py-4',
+                        'font-[var(--font-inter)] text-sm leading-relaxed text-red-800',
+                        'focus:outline-none focus-visible:ring-2 focus-visible:ring-red-500',
+                      )}
+                    >
+                      <p className="font-medium">We could not send your enquiry.</p>
+                      <p>
+                        {submitError}
+                        {FALLBACK_EMAIL?.href && (
+                          <>
+                            {' '}You can also email us at{' '}
+                            <a href={FALLBACK_EMAIL.href} className="underline underline-offset-2">
+                              {FALLBACK_EMAIL.value}
+                            </a>.
+                          </>
+                        )}
+                      </p>
+                    </div>
+                  )}
+
                   {/* Submit row */}
                   <div className="flex flex-col sm:flex-row sm:items-center gap-5 pt-2">
                     <button
                       type="submit"
+                      disabled={isSubmitting}
                       className={cn(
                         'inline-flex items-center justify-center gap-2',
                         'px-10 py-4',
@@ -528,10 +706,21 @@ export function EnquiryForm() {
                         'focus-visible:outline-none focus-visible:ring-2',
                         'focus-visible:ring-[var(--color-accent-primary)]',
                         'focus-visible:ring-offset-2',
+                        'disabled:cursor-not-allowed disabled:opacity-70',
+                        'disabled:hover:gap-2 disabled:hover:bg-[var(--color-bg-inverse)]',
                       )}
                     >
-                      {ENQUIRY_FORM.submitLabel}
-                      <ArrowRight size={13} strokeWidth={1.5} aria-hidden="true" />
+                      {isSubmitting ? SUBMITTING_LABEL : ENQUIRY_FORM.submitLabel}
+                      {isSubmitting ? (
+                        <LoaderCircle
+                          size={13}
+                          strokeWidth={1.5}
+                          className="motion-safe:animate-spin"
+                          aria-hidden="true"
+                        />
+                      ) : (
+                        <ArrowRight size={13} strokeWidth={1.5} aria-hidden="true" />
+                      )}
                     </button>
 
                     <p className="font-[var(--font-inter)] font-light text-xs italic text-[var(--color-text-muted)]">
