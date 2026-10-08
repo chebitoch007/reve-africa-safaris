@@ -223,7 +223,20 @@ The project deploys as a standard Next.js static build. Recommended platforms:
 
 ### Environment Variables
 
-No environment variables are required for the current static implementation. When enquiry form, newsletter, maps, and analytics integrations are added, document their keys in a `.env.example` file.
+Copy `.env.example` to `.env.local` and fill in the values:
+
+```bash
+cp .env.example .env.local
+```
+
+| Variable | Required | Purpose |
+|----------|----------|---------|
+| `NEXT_PUBLIC_FORMSPREE_ENDPOINT` | For the enquiry form | Full Formspree form URL, e.g. `https://formspree.io/f/xxxxxxxx`. Create a form in your [Formspree](https://formspree.io) dashboard to get it. |
+
+- `NEXT_PUBLIC_` variables are inlined into the JavaScript bundle at **build time**. After changing the value, rebuild (`npm run build`) or redeploy. On Vercel/Netlify, set it in the project settings and trigger a new build.
+- The endpoint is public by design (it ships to the browser). Spam is limited by a hidden honeypot field; do not put secrets in `NEXT_PUBLIC_` variables.
+- If the variable is missing or empty, the enquiry form shows an error and a fallback email address instead of reporting success.
+- The newsletter form is not yet connected and needs no variable.
 
 ---
 
@@ -248,7 +261,7 @@ Additional planning and production documentation lives in the [`docs/`](./docs/)
 - [ ] Replace placeholder testimonials with verified guest reviews (`src/lib/constants/homepage.ts`)
 - [ ] Create OG images (`/og/default.jpg` + page-specific variants, 1200×630px)
 - [ ] Produce full favicon set from final logo (`/icon.svg`, `/apple-touch-icon.png`, `/favicon-16x16.png`)
-- [ ] Connect enquiry form to CRM or email handler (stub in `EnquiryForm.tsx`)
+- [ ] Set `NEXT_PUBLIC_FORMSPREE_ENDPOINT` in the production environment and send a test enquiry (form code is complete)
 - [ ] Connect newsletter form to mailing list provider (stub in `NewsletterSection.tsx`)
 - [ ] Add maps integration to `MapPlaceholder.tsx` and `OfficeLocation.tsx`
 - [ ] Implement Content Security Policy once all third-party origins are known
