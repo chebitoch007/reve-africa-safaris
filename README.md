@@ -81,6 +81,7 @@ npm run check:images                      # summary grouped by folder
 npm run check:images -- --verbose         # list every finding per file
 npm run check:images -- --dir public/images/about
 npm run check:images -- --markdown        # write docs/IMAGE_REPLACEMENT_CHECKLIST.md
+npm run check:images -- --dir public/images/about --markdown --out /tmp/about.md
 npm run check:images -- --strict          # exit 1 if any error is found
 ```
 
@@ -88,7 +89,8 @@ npm run check:images -- --strict          # exit 1 if any error is found
 |------|--------|
 | `--dir <path>` | Scan a different directory (default `public/images`). |
 | `--strict` | Exit with code `1` if any **error** is found. Without it the exit code is `0`. Not wired into `build` or CI. |
-| `--markdown` | Generate [`docs/IMAGE_REPLACEMENT_CHECKLIST.md`](./docs/IMAGE_REPLACEMENT_CHECKLIST.md) (image path, issue type, file it is used in, minimum width). |
+| `--markdown` | Generate [`docs/IMAGE_REPLACEMENT_CHECKLIST.md`](./docs/IMAGE_REPLACEMENT_CHECKLIST.md) (image path, issue type, file it is used in, minimum width). With a non-default `--dir` it requires `--out` (exit code `2` otherwise), so a partial scan can't overwrite the real checklist. |
+| `--out <path>` | With `--markdown`, write the checklist to `<path>` instead of the default location. Relative paths resolve against the current directory. |
 | `--verbose` | Print each finding instead of only folder counts. |
 | `--help` | Show usage. |
 

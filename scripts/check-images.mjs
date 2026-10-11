@@ -3,20 +3,28 @@
  * check-images.mjs — image integrity checker for public/images.
  *
  * Pure Node (no dependencies). Read-only with respect to the images and src/;
- * the only file it can write is docs/IMAGE_REPLACEMENT_CHECKLIST.md (--markdown).
+ * the only file it can write is the replacement checklist (--markdown): by
+ * default docs/IMAGE_REPLACEMENT_CHECKLIST.md, or the path given with --out.
  *
  * Usage:
  *   npm run check:images
  *   npm run check:images -- --dir public/images/about
  *   npm run check:images -- --verbose
  *   npm run check:images -- --markdown
+ *   npm run check:images -- --dir public/images/about --markdown --out /tmp/about.md
  *   npm run check:images -- --strict
  *
  * Flags:
  *   --dir <path>   Directory to scan (default: public/images). Relative paths
  *                  resolve against the current working directory.
  *   --strict       Exit with code 1 if any ERROR is found (default exit is 0).
- *   --markdown     Write docs/IMAGE_REPLACEMENT_CHECKLIST.md.
+ *   --markdown     Write the replacement checklist (default path:
+ *                  docs/IMAGE_REPLACEMENT_CHECKLIST.md).
+ *   --out <path>   Write the checklist to <path> instead (requires --markdown).
+ *                  Relative paths resolve against the current working
+ *                  directory. Required when --markdown is combined with a
+ *                  --dir other than the default, so a partial scan can never
+ *                  overwrite the real docs/IMAGE_REPLACEMENT_CHECKLIST.md.
  *   --verbose      List every finding per file, not just folder counts.
  *   --help         Show this help.
  *
@@ -38,7 +46,8 @@
  *   - Only static string literals are detected. Paths built at runtime
  *     (template literals with ${...}, concatenation) are invisible to the
  *     reference check, so "unreferenced" is informational only.
- *   - Exit codes: 0 normally; 1 with --strict and errors; 2 for bad usage.
+ *   - Exit codes: 0 normally; 1 with --strict and errors; 2 for bad usage
+ *     (including --markdown with a non-default --dir and no --out).
  */
 
 import { promises as fs } from 'node:fs';
@@ -103,7 +112,7 @@ function usageError(message) {
 }
 
 function parseArgs(argv) {
-  const opts = { dir: null, strict: false, markdown: false, verbose: false, help: false };
+  const opts = { dir: null, out: null, strict: false, markdown: false, verbose: false, help: false };
   for (let i = 0; i < argv.length; i++) {
     const arg = argv[i];
     if (arg === '--strict') opts.strict = true;
@@ -117,6 +126,13 @@ function parseArgs(argv) {
     } else if (arg.startsWith('--dir=')) {
       opts.dir = arg.slice('--dir='.length);
       if (!opts.dir) usageError('--dir requires a path.');
+    } else if (arg === '--out') {
+      const value = argv[++i];
+      if (!value || value.startsWith('--')) usageError('--out requires a path.');
+      opts.out = value;
+    } else if (arg.startsWith('--out=')) {
+      opts.out = arg.slice('--out='.length);
+      if (!opts.out) usageError('--out requires a path.');
     } else usageError(`unknown argument "${arg}".`);
   }
   return opts;
@@ -127,7 +143,9 @@ function printHelp() {
 
   --dir <path>   Directory to scan (default: public/images)
   --strict       Exit 1 if any error is found (default exit code is 0)
-  --markdown     Write docs/IMAGE_REPLACEMENT_CHECKLIST.md
+  --markdown     Write the replacement checklist (default path: docs/IMAGE_REPLACEMENT_CHECKLIST.md)
+  --out <path>   Write the checklist to <path> instead (requires --markdown; also
+                 required when --markdown is used with a non-default --dir)
   --verbose      List every finding per file
   --help         Show this help
 
@@ -598,6 +616,16 @@ async function main() {
   }
 
   const scanDir = opts.dir ? path.resolve(process.cwd(), opts.dir) : DEFAULT_DIR;
+
+  // Guard: a partial scan must never overwrite the real checklist.
+  if (opts.out && !opts.markdown) usageError('--out requires --markdown.');
+  if (opts.markdown && !opts.out && path.resolve(scanDir) !== path.resolve(DEFAULT_DIR)) {
+    usageError(
+      `--markdown with --dir "${opts.dir}" would overwrite ${toPosix(path.relative(ROOT, CHECKLIST_PATH))} ` +
+        'with a partial scan. Pass --out <path> to write the checklist elsewhere.',
+    );
+  }
+  const checklistPath = opts.out ? path.resolve(process.cwd(), opts.out) : CHECKLIST_PATH;
   try {
     const stat = await fs.stat(scanDir);
     if (!stat.isDirectory()) usageError(`not a directory: ${scanDir}`);
@@ -702,9 +730,11 @@ async function main() {
   if (opts.markdown) {
     const rows = [...checklist.values()].sort((a, b) => a.path.localeCompare(b.path));
     const scanDirRel = toPosix(path.relative(ROOT, scanDir)) || '.';
-    await fs.mkdir(path.dirname(CHECKLIST_PATH), { recursive: true });
-    await fs.writeFile(CHECKLIST_PATH, buildChecklistMarkdown({ rows, totals, scanDirRel }), 'utf8');
-    console.log(`\nWrote ${toPosix(path.relative(ROOT, CHECKLIST_PATH))} (${rows.length} image(s) listed).`);
+    await fs.mkdir(path.dirname(checklistPath), { recursive: true });
+    await fs.writeFile(checklistPath, buildChecklistMarkdown({ rows, totals, scanDirRel }), 'utf8');
+    const relOut = path.relative(ROOT, checklistPath);
+    const shownOut = relOut.startsWith('..') || path.isAbsolute(relOut) ? checklistPath : toPosix(relOut);
+    console.log(`\nWrote ${shownOut} (${rows.length} image(s) listed).`);
   }
 
   const errorCount =
