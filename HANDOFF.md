@@ -187,9 +187,6 @@ src/
 │   ├── fonts.ts                 ← next/font/local config for Cormorant + Inter
 │   └── metadata.ts              ← BASE_METADATA, VIEWPORT, buildPageMetadata()
 │
-├── styles/
-│   └── globals.css              ← Legacy file from original scaffold (ignore)
-│
 └── types/
     └── index.ts                 ← Shared TS types: NavLink, NavGroup, ImageAsset, etc.
 ```

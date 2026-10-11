@@ -1439,15 +1439,15 @@ These items are tracked in `IMAGE_ASSET_PLAN.md` Section 3.3 and must be complet
 
 | Item | Status | Notes |
 |------|--------|-------|
-| Remove `public/file.svg` | ☐ | Next.js scaffold — not referenced by any component |
-| Remove `public/globe.svg` | ☐ | Next.js scaffold |
-| Remove `public/next.svg` | ☐ | Next.js scaffold |
-| Remove `public/vercel.svg` | ☐ | Next.js scaffold |
-| Remove `public/window.svg` | ☐ | Next.js scaffold |
+| Remove `public/file.svg` | ✅ | Next.js scaffold — not referenced by any component |
+| Remove `public/globe.svg` | ✅ | Next.js scaffold |
+| Remove `public/next.svg` | ✅ | Next.js scaffold |
+| Remove `public/vercel.svg` | ✅ | Next.js scaffold |
+| Remove `public/window.svg` | ✅ | Next.js scaffold |
 | Replace `public/favicon.ico` | ☐ | Scaffold default — requires final logo SVG |
-| Add `/icon.svg` | ☐ | Referenced in metadata; depends on final logo |
-| Add `/apple-touch-icon.png` | ☐ | Referenced in metadata |
-| Add `/favicon-16x16.png` | ☐ | Referenced in metadata |
+| Add `/icon.svg` | ☐ | Depends on final logo; re-add the `icons.icon` entry in `src/lib/metadata.ts` (removed in `chore/dead-links-and-cleanup`) |
+| Add `/apple-touch-icon.png` | ☐ | Re-add `icons.apple` in `src/lib/metadata.ts` (removed in `chore/dead-links-and-cleanup`) |
+| Add `/favicon-16x16.png` | ☐ | Re-add `icons.shortcut` in `src/lib/metadata.ts` (removed in `chore/dead-links-and-cleanup`) |
 | `DestinationData` interface — add `imageSrc: string` | ☐ | `src/lib/constants/homepage.ts` |
 | `FEATURED_DESTINATIONS` — populate `imageSrc` for all 4 entries | ☐ | `src/lib/constants/homepage.ts` |
 | `GalleryItem` interface — add `imageSrc: string` | ☐ | `src/lib/constants/homepage.ts` |
