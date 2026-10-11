@@ -96,10 +96,10 @@ export const BASE_METADATA: Metadata = {
     images:      [{ url: '/og/default.jpg', alt: `${SITE.name} — ${SITE.tagline}` }],
   },
 
+  // /icon.svg, /apple-touch-icon.png and /favicon-16x16.png are not declared
+  // until the final logo assets exist (see docs/IMAGE_ASSET_TRACKER.md).
   icons: {
-    icon:        [{ url: '/favicon.ico' }, { url: '/icon.svg', type: 'image/svg+xml' }],
-    apple:       [{ url: '/apple-touch-icon.png' }],
-    shortcut:    '/favicon-16x16.png',
+    icon:        [{ url: '/favicon.ico' }],
   },
 
   manifest: '/site.webmanifest',

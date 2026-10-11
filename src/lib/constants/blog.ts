@@ -42,6 +42,12 @@ export const BLOG_HERO = {
 // 2. Featured Story
 // ─────────────────────────────────────────────
 
+/** Call-to-action on the featured story. `href` is omitted until /blog/[slug] exists. */
+export interface StoryCta {
+  label: string;
+  href?: string;
+}
+
 export const FEATURED_STORY = {
   id:              'fs-1',
   category:        'wildlife' as BlogCategory,
@@ -51,7 +57,8 @@ export const FEATURED_STORY = {
   headline:        'The Crossing: Following the Great Migration from the Mara River to the Plains',
   excerpt:
     'Every year, more than a million wildebeest make one of nature\'s most perilous journeys across the Mara River into Tanzania. We spent three weeks in the field documenting the crossings — the chaos, the crocodiles, and the extraordinary stillness that follows when the dust settles.',
-  cta:             { label: 'Read the story', href: '/blog/the-crossing' },
+  // add href once /blog/[slug] exists
+  cta:             { label: 'Read the story' } as StoryCta,
   imageSrc:        '/images/blog/featured/img-014-wildebeest-mara-crossing.jpg',
   placeholderFrom: '#4A5C35',
   placeholderTo:   '#1C1F18',
@@ -70,7 +77,8 @@ export interface ArticleData {
   publishedAt:     string;
   headline:        string;
   excerpt:         string;
-  href:            string;
+  /** Omitted until /blog/[slug] exists; the card then renders as non-interactive. */
+  href?:           string;
   imageSrc:        string;
   placeholderFrom: string;
   placeholderTo:   string;
@@ -87,7 +95,7 @@ export const LATEST_STORIES: ArticleData[] = [
     headline:        'Inside Ol Pejeta: How Conservancy Models Are Changing the Future of the Black Rhino',
     excerpt:
       'Ol Pejeta Conservancy is home to the world\'s last two northern white rhinos. We speak with the team working around the clock to ensure no more species disappear on their watch.',
-    href:            '/blog/ol-pejeta-rhino',
+    // add href once /blog/[slug] exists
     imageSrc:        '/images/blog/articles/img-022-black-rhino-etosha.jpg',
     placeholderFrom: '#5A6C45',
     placeholderTo:   '#131510',
@@ -102,7 +110,7 @@ export const LATEST_STORIES: ArticleData[] = [
     headline:        'Golden Hour in the Okavango: A Photographer\'s Guide to Botswana\'s Delta',
     excerpt:
       'The Okavango Delta at sunset is unlike anywhere else on earth. Our photography specialist shares the positions, timings, and patience that produce extraordinary light.',
-    href:            '/blog/okavango-photography',
+    // add href once /blog/[slug] exists
     imageSrc:        '/images/blog/articles/img-006-okavango-delta-aerial.jpg',
     placeholderFrom: '#4A6B4A',
     placeholderTo:   '#0C0D0B',
@@ -117,7 +125,7 @@ export const LATEST_STORIES: ArticleData[] = [
     headline:        'Rwanda Beyond the Gorillas: What Most Visitors Miss in the Land of a Thousand Hills',
     excerpt:
       'The mountain gorillas draw travellers to Rwanda, but the country\'s other experiences — its culture, its lakes, its unlikely elegance — are equally worth seeking out.',
-    href:            '/blog/rwanda-beyond-gorillas',
+    // add href once /blog/[slug] exists
     imageSrc:        '/images/blog/articles/img-005-rwanda-volcanoes-mist.jpg',
     placeholderFrom: '#3D5C3A',
     placeholderTo:   '#0C0D0B',
@@ -132,7 +140,7 @@ export const LATEST_STORIES: ArticleData[] = [
     headline:        'When to Go: A Season-by-Season Guide to East and Southern Africa',
     excerpt:
       'There is no bad time to visit Africa. But there is always a best time — depending on what you want to see, where you want to go, and what kind of experience you are seeking.',
-    href:            '/blog/when-to-go-africa',
+    // add href once /blog/[slug] exists
     imageSrc:        '/images/blog/articles/img-012-acacia-sunset-silhouette.jpg',
     placeholderFrom: '#8F7A3A',
     placeholderTo:   '#282C22',
@@ -147,7 +155,7 @@ export const LATEST_STORIES: ArticleData[] = [
     headline:        'The Maasai and the Mara: Understanding a Relationship Built Over Centuries',
     excerpt:
       'The Maasai people have coexisted with East Africa\'s wildlife for generations. To understand the Mara is to understand the culture that helped shape it.',
-    href:            '/blog/maasai-mara-culture',
+    // add href once /blog/[slug] exists
     imageSrc:        '/images/blog/articles/img-024-maasai-elder-portrait.jpg',
     placeholderFrom: '#7B3B2A',
     placeholderTo:   '#1C1510',
@@ -162,7 +170,7 @@ export const LATEST_STORIES: ArticleData[] = [
     headline:        'The Leopard of Samburu: Six Days Tracking Africa\'s Most Elusive Cat',
     excerpt:
       'Samburu National Reserve holds more leopard sightings per square kilometre than almost anywhere on the continent. We joined a tracking team to find out why.',
-    href:            '/blog/samburu-leopard',
+    // add href once /blog/[slug] exists
     imageSrc:        '/images/blog/articles/img-019-leopard-acacia-samburu.jpg',
     placeholderFrom: '#8F7A3A',
     placeholderTo:   '#1C1F18',

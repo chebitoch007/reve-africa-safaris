@@ -10,7 +10,7 @@
  *   - Tagline headline
  *   - Short description
  *   - Highlight tags
- *   - "Explore" link
+ *   - "Enquire" link (to the enquiry form until per-country pages exist)
  *
  * The card uses CSS hover transitions only (no Framer Motion) so it
  * remains a Server Component and renders without JS.
@@ -144,7 +144,7 @@ export function DestinationCard({
           ))}
         </div>
 
-        {/* Explore link */}
+        {/* Enquire link */}
         <Link
           href={href}
           className={cn(
@@ -158,9 +158,9 @@ export function DestinationCard({
             'focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--color-bg-inverse)]',
             'rounded-[2px]',
           )}
-          aria-label={`Explore ${country}`}
+          aria-label={`Plan a safari to ${country}`}
         >
-          Explore
+          Enquire
           <ArrowRight
             size={13}
             strokeWidth={1.5}

@@ -5,7 +5,9 @@
  * Used by LatestStories (Client animation wrapper).
  *
  * Displays: image placeholder, category badge, reading time, date,
- * headline, excerpt, and a read-more arrow link.
+ * headline, excerpt, and a read-more arrow link. Until the article page
+ * exists (no `href`), the card is non-interactive: no hover effects and a
+ * quiet "Coming soon" label instead of the link.
  *
  * Replace the gradient placeholder <div> with <Image fill> when
  * photography is available.
@@ -22,14 +24,19 @@ interface BlogCardProps {
 }
 
 export function BlogCard({ article }: BlogCardProps) {
+  const { href } = article;
+  const interactive = Boolean(href);
+
   return (
     <article
       className={cn(
-        'group flex flex-col overflow-hidden',
+        'flex flex-col overflow-hidden',
         'bg-[var(--color-bg-primary)]',
         'border border-[var(--color-border-light)]',
-        'transition-shadow duration-[400ms]',
-        'hover:shadow-[0_8px_32px_-4px_rgba(12,13,11,0.1)]',
+        interactive && [
+          'group transition-shadow duration-[400ms]',
+          'hover:shadow-[0_8px_32px_-4px_rgba(12,13,11,0.1)]',
+        ],
       )}
     >
       {/* ── Image placeholder ──────────────────────────────────────────
@@ -46,7 +53,10 @@ export function BlogCard({ article }: BlogCardProps) {
           alt={article.imageAlt}
           fill
           sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-          className="object-cover transition-transform duration-[700ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-105"
+          className={cn(
+            'object-cover',
+            interactive && 'transition-transform duration-[700ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-105',
+          )}
         />
         {/* Category badge */}
         <div className="absolute top-4 left-4">
@@ -92,8 +102,8 @@ export function BlogCard({ article }: BlogCardProps) {
             'text-[clamp(1.3rem,1.8vw+0.3rem,1.6rem)]',
             'leading-[1.2] tracking-[-0.01em]',
             'text-[var(--color-text-primary)]',
-            'mb-3 transition-colors duration-[200ms]',
-            'group-hover:text-[var(--color-text-accent)]',
+            'mb-3',
+            interactive && 'transition-colors duration-[200ms] group-hover:text-[var(--color-text-accent)]',
           )}
         >
           {article.headline}
@@ -112,25 +122,37 @@ export function BlogCard({ article }: BlogCardProps) {
           {article.excerpt}
         </p>
 
-        {/* Read link */}
-        <Link
-          href={article.href}
-          aria-label={`Read article: ${article.headline}`}
-          className={cn(
-            'inline-flex items-center gap-2 self-start',
-            'font-[var(--font-inter)] font-medium uppercase tracking-[0.18em] text-[9.5px]',
-            'text-[var(--color-text-muted)]',
-            'border-b border-[var(--color-border-light)] pb-0.5',
-            'transition-all duration-[250ms]',
-            'hover:text-[var(--color-text-primary)] hover:border-[var(--color-border-strong)] hover:gap-3',
-            'focus-visible:outline-none focus-visible:ring-2',
-            'focus-visible:ring-[var(--color-accent-primary)]',
-            'focus-visible:ring-offset-2 rounded-[2px]',
-          )}
-        >
-          Read
-          <ArrowRight size={10} strokeWidth={1.5} aria-hidden="true" />
-        </Link>
+        {/* Read link — or a quiet label until the article page exists */}
+        {href ? (
+          <Link
+            href={href}
+            aria-label={`Read article: ${article.headline}`}
+            className={cn(
+              'inline-flex items-center gap-2 self-start',
+              'font-[var(--font-inter)] font-medium uppercase tracking-[0.18em] text-[9.5px]',
+              'text-[var(--color-text-muted)]',
+              'border-b border-[var(--color-border-light)] pb-0.5',
+              'transition-all duration-[250ms]',
+              'hover:text-[var(--color-text-primary)] hover:border-[var(--color-border-strong)] hover:gap-3',
+              'focus-visible:outline-none focus-visible:ring-2',
+              'focus-visible:ring-[var(--color-accent-primary)]',
+              'focus-visible:ring-offset-2 rounded-[2px]',
+            )}
+          >
+            Read
+            <ArrowRight size={10} strokeWidth={1.5} aria-hidden="true" />
+          </Link>
+        ) : (
+          <span
+            className={cn(
+              'self-start',
+              'font-[var(--font-inter)] font-medium uppercase tracking-[0.18em] text-[9.5px]',
+              'text-[var(--color-text-muted)]',
+            )}
+          >
+            Coming soon
+          </span>
+        )}
       </div>
     </article>
   );

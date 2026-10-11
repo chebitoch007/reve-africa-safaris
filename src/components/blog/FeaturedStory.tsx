@@ -33,6 +33,7 @@ const fadeUp = {
 
 export function FeaturedStory() {
   const reduced = useReducedMotion();
+  const { cta } = FEATURED_STORY;
 
   return (
     <section
@@ -171,23 +172,34 @@ export function FeaturedStory() {
                 whileInView="visible"
                 viewport={VIEWPORT_ONCE}
               >
-                <Link
-                  href={FEATURED_STORY.cta.href}
-                  className={cn(
-                    'inline-flex items-center gap-2',
-                    'font-[var(--font-inter)] font-medium uppercase tracking-[0.18em] text-[10px]',
-                    'text-[var(--color-text-secondary)]',
-                    'border-b border-[var(--color-border-default)] pb-0.5',
-                    'transition-all duration-[250ms]',
-                    'hover:text-[var(--color-text-primary)] hover:border-[var(--color-text-primary)] hover:gap-3',
-                    'focus-visible:outline-none focus-visible:ring-2',
-                    'focus-visible:ring-[var(--color-accent-primary)]',
-                    'focus-visible:ring-offset-2 rounded-[2px]',
-                  )}
-                >
-                  {FEATURED_STORY.cta.label}
-                  <ArrowRight size={12} strokeWidth={1.5} aria-hidden="true" />
-                </Link>
+                {cta.href ? (
+                  <Link
+                    href={cta.href}
+                    className={cn(
+                      'inline-flex items-center gap-2',
+                      'font-[var(--font-inter)] font-medium uppercase tracking-[0.18em] text-[10px]',
+                      'text-[var(--color-text-secondary)]',
+                      'border-b border-[var(--color-border-default)] pb-0.5',
+                      'transition-all duration-[250ms]',
+                      'hover:text-[var(--color-text-primary)] hover:border-[var(--color-text-primary)] hover:gap-3',
+                      'focus-visible:outline-none focus-visible:ring-2',
+                      'focus-visible:ring-[var(--color-accent-primary)]',
+                      'focus-visible:ring-offset-2 rounded-[2px]',
+                    )}
+                  >
+                    {cta.label}
+                    <ArrowRight size={12} strokeWidth={1.5} aria-hidden="true" />
+                  </Link>
+                ) : (
+                  <span
+                    className={cn(
+                      'font-[var(--font-inter)] font-medium uppercase tracking-[0.18em] text-[10px]',
+                      'text-[var(--color-text-muted)]',
+                    )}
+                  >
+                    Coming soon
+                  </span>
+                )}
               </motion.div>
             </div>
           </div>

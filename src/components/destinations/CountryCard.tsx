@@ -4,7 +4,8 @@
  * Server Component — static destination country card.
  * Renders the full-overlay card: gradient placeholder ready for <Image fill>,
  * country badge, region, tagline, description (hover-reveal), highlight tags,
- * best-months badge, and an "Explore" link.
+ * best-months badge, and an "Enquire" link (to the enquiry form
+ * until per-country pages exist).
  *
  * CSS-only hover (no Framer Motion) keeps this a Server Component.
  * The Client animation wrapper (CountryShowcase) handles scroll reveals.
@@ -134,7 +135,7 @@ export function CountryCard({ country }: CountryCardProps) {
           ))}
         </ul>
 
-        {/* Explore link */}
+        {/* Enquire link */}
         <Link
           href={href}
           className={cn(
@@ -148,9 +149,9 @@ export function CountryCard({ country }: CountryCardProps) {
             'focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--color-bg-inverse)]',
             'rounded-[2px]',
           )}
-          aria-label={`Explore ${name} safaris`}
+          aria-label={`Plan a safari to ${name}`}
         >
-          Explore
+          Enquire
           <ArrowRight size={13} strokeWidth={1.5} aria-hidden="true" />
         </Link>
       </div>
