@@ -15,8 +15,6 @@ import { cn } from '@/lib/design-system';
 import type { ExperienceData } from '@/lib/constants/homepage';
 
 // ── Icon map (only the icons used by ExperienceData) ──────────────
-type IconName = ExperienceData['icon'];
-
 const ICON_MAP: Record<string, React.ComponentType<LucideProps>> = {
   Crown,
   Camera,

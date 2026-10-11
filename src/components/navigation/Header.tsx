@@ -20,7 +20,7 @@
  * - Keyboard navigable — all interactive elements reachable via Tab
  */
 
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useCallback, useSyncExternalStore } from 'react';
 import { usePathname } from 'next/navigation';
 import { Menu } from 'lucide-react';
 import Link from 'next/link';
@@ -33,22 +33,27 @@ import { PRIMARY_NAV } from '@/lib/constants/navigation';
 const SCROLL_THRESHOLD = 64;
 const MOBILE_MENU_ID   = 'mobile-nav-menu';
 
+// ── Scroll store (useSyncExternalStore) ───────────────────
+// Subscribes to window scroll; the snapshot is a boolean, so React only
+// re-renders when the threshold is crossed. The server snapshot is `false`
+// (transparent header), matching the first client render during hydration.
+function subscribeToScroll(onChange: () => void) {
+  window.addEventListener('scroll', onChange, { passive: true });
+  return () => window.removeEventListener('scroll', onChange);
+}
+const getScrolledSnapshot       = () => window.scrollY > SCROLL_THRESHOLD;
+const getScrolledServerSnapshot = () => false;
+
 export function Header() {
   const pathname          = usePathname();
-  const [scrolled,   setScrolled]   = useState(false);
   const [menuOpen,   setMenuOpen]   = useState(false);
 
   // ── Scroll detection ────────────────────────────────────
-  const handleScroll = useCallback(() => {
-    setScrolled(window.scrollY > SCROLL_THRESHOLD);
-  }, []);
-
-  useEffect(() => {
-    // Set initial state (in case page loads mid-scroll)
-    handleScroll();
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, [handleScroll]);
+  const scrolled = useSyncExternalStore(
+    subscribeToScroll,
+    getScrolledSnapshot,
+    getScrolledServerSnapshot,
+  );
 
   const openMenu  = useCallback(() => setMenuOpen(true), []);
   const closeMenu = useCallback(() => setMenuOpen(false), []);

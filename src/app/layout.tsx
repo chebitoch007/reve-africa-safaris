@@ -38,6 +38,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
   return (
     <html
       lang="en-GB"
+      data-scroll-behavior="smooth"
       className={getFontClassNames()}
       suppressHydrationWarning
     >

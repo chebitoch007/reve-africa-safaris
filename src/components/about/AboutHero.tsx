@@ -23,7 +23,7 @@
 import Image from 'next/image';
 import { motion, useReducedMotion } from 'framer-motion';
 import { cn } from '@/lib/design-system';
-import { DURATION, EASE, VIEWPORT_ONCE } from '@/lib/design-system';
+import { DURATION, EASE } from '@/lib/design-system';
 import { ABOUT_HERO } from '@/lib/constants/about';
 
 const itemVariant = {

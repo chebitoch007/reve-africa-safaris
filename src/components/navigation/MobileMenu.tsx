@@ -196,8 +196,8 @@ export function MobileMenu({ isOpen, onClose, nav }: MobileMenuProps) {
                 {/* Sub-links */}
                 {group.children && group.children.length > 0 && (
                   <ul className="pl-4 pb-4 space-y-3 mt-3" role="list">
-                    {group.children.map((child) => (
-                      <li key={child.href}>
+                    {group.children.map((child, childIndex) => (
+                      <li key={`${group.label}-${child.href}-${childIndex}`}>
                         <Link
                           href={child.href}
                           onClick={onClose}

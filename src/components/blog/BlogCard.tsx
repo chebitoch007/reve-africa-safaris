@@ -15,7 +15,7 @@
 
 import Link from 'next/link';
 import Image from 'next/image';
-import { Clock, Calendar, ArrowRight } from 'lucide-react';
+import { Clock, ArrowRight } from 'lucide-react';
 import { cn } from '@/lib/design-system';
 import type { ArticleData } from '@/lib/constants/blog';
 
