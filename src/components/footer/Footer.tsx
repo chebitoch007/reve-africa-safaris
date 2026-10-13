@@ -202,9 +202,9 @@ export function Footer() {
               aria-label="Legal navigation"
               className="flex flex-wrap items-center gap-x-6 gap-y-2"
             >
-              {FOOTER_LEGAL.map((link, index) => (
+              {FOOTER_LEGAL.map((link) => (
                 <Link
-                  key={`${link.href}-${index}`}
+                  key={link.label}
                   href={link.href}
                   className={cn(
                     'font-[var(--font-inter)] text-xs',

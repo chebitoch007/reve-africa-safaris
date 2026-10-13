@@ -18,6 +18,7 @@ export const PRIMARY_NAV: NavGroup[] = [
       { label: 'Kenya',      href: '/destinations#kenya' },
       { label: 'Tanzania',   href: '/destinations#tanzania' },
       { label: 'Rwanda',     href: '/destinations#rwanda' },
+      { label: 'Uganda',     href: '/destinations#uganda' },
       { label: 'Botswana',   href: '/destinations#botswana' },
       { label: 'Namibia',    href: '/destinations#namibia' },
     ],
@@ -50,6 +51,7 @@ export const FOOTER_DESTINATIONS: NavLink[] = [
   { label: 'Kenya',      href: '/destinations#kenya' },
   { label: 'Tanzania',   href: '/destinations#tanzania' },
   { label: 'Rwanda',     href: '/destinations#rwanda' },
+  { label: 'Uganda',     href: '/destinations#uganda' },
   { label: 'Botswana',   href: '/destinations#botswana' },
   { label: 'Namibia',    href: '/destinations#namibia' },
 ];
