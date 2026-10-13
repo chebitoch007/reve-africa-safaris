@@ -145,7 +145,7 @@ export const EXPERIENCES: ExperienceData[] = [
     id:              'photography',
     icon:            'Camera',
     title:           'Photography Expeditions',
-    description:     'Specialist photography safaris with expert guidance, optimal positioning, and unhurried time in the field.',
+    description:     'Photography safaris with optimal positioning and unhurried time in the field.',
     href:            '/packages',
     placeholderFrom: '#4F4A44',
     placeholderTo:   '#0C0D0B',
@@ -154,7 +154,7 @@ export const EXPERIENCES: ExperienceData[] = [
     id:              'family',
     icon:            'Users',
     title:           'Family Adventures',
-    description:     'Safari experiences designed for families — age-appropriate activities, specialist guides, and memories that last a lifetime.',
+    description:     'Safari experiences designed for families — age-appropriate activities and memories that last a lifetime.',
     href:            '/packages',
     placeholderFrom: '#7D6D3A',
     placeholderTo:   '#363B2D',
@@ -459,29 +459,29 @@ export const FAQ_ITEMS: FAQItem[] = [
   {
     id:       'faq-3',
     question: 'Are your itineraries truly bespoke, or are they based on set tours?',
-    answer:   'Every itinerary we design is built from scratch around you — your interests, travel style, group size, and budget. We use our deep knowledge of each destination to create a journey that is entirely original. We do not operate group departures or fixed tour schedules.',
+    answer:   'Every itinerary we design is built from scratch around you — your interests, travel style, group size, and budget. We do not operate group departures or fixed tour schedules.',
   },
   {
     id:       'faq-4',
     question: 'What level of accommodation do you offer?',
-    answer:   'We work exclusively with handpicked lodges, tented camps, and private conservancy properties that meet our standards for location, design, and service. Our portfolio ranges from intimate owner-run camps to iconic five-star lodges — and everything in between. We match accommodation to your preferences and budget.',
+    answer:   'When we choose lodges, tented camps and private conservancy properties, we look at location, design, hospitality and how they treat people and wildlife. Options can range from intimate owner-run camps to five-star lodges, and we match accommodation to your preferences and budget.',
   },
   {
     id:       'faq-5',
     question: 'Is safari travel safe?',
-    answer:   'Africa\'s premier safari destinations are safe and well-managed environments visited by hundreds of thousands of travellers each year. We work exclusively with reputable lodges and guide operations, provide comprehensive pre-departure information, and maintain 24/7 support throughout your journey. We also recommend comprehensive travel insurance.',
+    answer:   'Africa\'s premier safari destinations are safe and well-managed environments visited by hundreds of thousands of travellers each year. We also recommend comprehensive travel insurance.',
   },
   {
     id:       'faq-6',
     question: 'Do you cater for families with young children?',
-    answer:   'Absolutely. We design family safaris specifically around the ages and interests of your children — selecting child-friendly lodges, age-appropriate activities, and experienced family guides. Many of our partner properties offer dedicated family programmes and bush education for younger guests.',
+    answer:   'Absolutely. We design family safaris specifically around the ages and interests of your children — selecting child-friendly lodges and age-appropriate activities.',
   },
 ];
 
 export const FAQ_SECTION = {
   eyebrow:  'Common Questions',
   headline: 'Everything you\nneed to know',
-  body:     'Our team is always happy to answer any questions not covered here.',
+  body:     'We are always happy to answer any questions not covered here.',
   cta:      { label: 'Contact Us', href: '/contact' },
 } as const;
 
@@ -492,7 +492,7 @@ export const FAQ_SECTION = {
 export const FINAL_CTA_CONTENT = {
   eyebrow:     'Your Safari Awaits',
   headline:    'Let\'s start\nplanning',
-  body:        'Share your dream and we\'ll do the rest. A dedicated safari specialist will be in touch within 24 hours.',
+  body:        'Share your dream and we\'ll do the rest. One of us will be in touch within 24 hours.',
   primaryCTA:  { label: 'Get in Touch',        href: '/contact' },
   secondaryCTA:{ label: 'Browse All Journeys', href: '/packages' },
   detail:      'No obligation. No hard sell. Just great safari planning.',

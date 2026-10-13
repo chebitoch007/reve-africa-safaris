@@ -173,14 +173,6 @@ export function BlogCategories() {
                     >
                       {item.label}
                     </h3>
-                    <span
-                      className={cn(
-                        'font-[var(--font-inter)] font-light text-xs shrink-0',
-                        'text-[var(--color-text-muted)]',
-                      )}
-                    >
-                      {item.count} articles
-                    </span>
                   </div>
 
                   {/* Description */}

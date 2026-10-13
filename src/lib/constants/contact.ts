@@ -9,7 +9,6 @@
  *  2. ConciergeIntro       — bespoke service introduction
  *  3. ContactMethods       — phone, email, office, hours
  *  4. EnquiryForm          — luxury enquiry form (frontend only)
- *  5. OfficeLocation       — office & travel information
  *  6. ContactFAQ           — shared AccordionFAQ
  *  7. ContactCTA           — final CTA
  */
@@ -31,16 +30,16 @@ export const CONTACT_HERO = {
 
 export const CONCIERGE_INTRO = {
   eyebrow:  'Personal Service',
-  headline: 'Your dedicated\nconcierge',
+  headline: 'Speak directly\nwith us',
   body: [
-    'When you contact Rêve Africa Safaris, you speak directly with a specialist — not a call centre, not a booking engine. Every enquiry is received by a member of our core team who has travelled to the destinations we design itineraries for.',
-    'We take time to understand what you are looking for before we propose anything. A first conversation might last twenty minutes. Some last much longer. We believe the quality of a safari is determined long before departure — in the care taken during planning.',
+    'When you contact Rêve Africa Safaris, you speak directly with one of the two founders. Every enquiry is received by one of us.',
+    'We take time to understand what you are looking for before we propose anything. We believe the quality of a safari is determined long before departure, in the care taken during planning.',
   ],
   commitment: {
     label: 'Our commitment',
     items: [
       { id: 'c1', text: 'Response within 24 hours on business days' },
-      { id: 'c2', text: 'Dedicated specialist assigned to your enquiry' },
+      { id: 'c2', text: 'Your enquiry is handled by one of us' },
       { id: 'c3', text: 'No obligation — every consultation is complimentary' },
       { id: 'c4', text: 'Complete discretion and data privacy' },
     ],
@@ -159,42 +158,7 @@ export const ENQUIRY_FORM = {
   submitLabel:    'Send Enquiry',
   privacyNote:    'Your information is kept strictly confidential and will never be shared with third parties. Read our privacy policy.',
   successHeadline: 'Thank you — we\'ve received your enquiry.',
-  successBody:    'A member of our team will be in touch within 24 hours on business days. If your travel dates are urgent, please call us directly.',
-} as const;
-
-// ─────────────────────────────────────────────
-// 5. Office Location
-// ─────────────────────────────────────────────
-
-export interface LocationDetail {
-  id:    string;
-  label: string;
-  value: string;
-}
-
-export const OFFICE_LOCATION = {
-  eyebrow:  'Find Us',
-  headline: 'Our office\nin Nairobi',
-  intro:    'We are based in Nairobi, Kenya — a city that sits at the gateway to some of East Africa\'s finest safari destinations. Our office is open to clients by appointment.',
-
-  address: {
-    street:   'Karen Road, Karen',
-    city:     'Nairobi',
-    country:  'Kenya',
-    postcode: '00502',
-  },
-
-  details: [
-    { id: 'ld-1', label: 'Nearest airport',   value: 'Wilson Airport (WIL) — 12 km' },
-    { id: 'ld-2', label: 'International hub', value: 'Jomo Kenyatta International (NBO) — 18 km' },
-    { id: 'ld-3', label: 'Time zone',         value: 'East Africa Time — UTC+3 (no DST)' },
-    { id: 'ld-4', label: 'Visits',            value: 'By appointment only — please contact us to arrange' },
-  ] as LocationDetail[],
-
-  travelNote: {
-    label: 'Visiting Nairobi?',
-    body:  'If you are travelling through Nairobi on your way to or from a safari, we would love to meet in person. Let us know your dates and we will arrange a meeting at our office or at a location convenient to you.',
-  },
+  successBody:    'One of us will be in touch within 24 hours on business days.',
 } as const;
 
 // ─────────────────────────────────────────────
@@ -212,7 +176,7 @@ export const CONTACT_FAQ_ITEMS: ContactFAQItem[] = [
     id:       'cfaq-1',
     question: 'How quickly will you respond to my enquiry?',
     answer:
-      'We respond to all enquiries within 24 hours on business days (Monday to Friday, East Africa Time). For urgent requests or time-sensitive travel dates, we recommend calling us directly — our telephone line is staffed from 08:00 to 18:00 EAT.',
+      'We respond to all enquiries within 24 hours on business days (Monday to Friday, East Africa Time).',
   },
   {
     id:       'cfaq-2',
@@ -224,7 +188,7 @@ export const CONTACT_FAQ_ITEMS: ContactFAQItem[] = [
     id:       'cfaq-3',
     question: 'Do you handle group bookings and corporate travel?',
     answer:
-      'Yes — we design journeys for private individuals, families, small groups, and corporate travel alike. For groups of six or more, we offer dedicated group planning support and can arrange exclusive-use lodge options, private aircraft, and bespoke activities at scale.',
+      'Yes — we design journeys for private individuals, families, small groups, and corporate travel alike.',
   },
   {
     id:       'cfaq-4',
@@ -236,13 +200,7 @@ export const CONTACT_FAQ_ITEMS: ContactFAQItem[] = [
     id:       'cfaq-5',
     question: 'Can I make changes to an itinerary once planning has begun?',
     answer:
-      'Absolutely — and we expect it. Safari planning is an iterative process. We work through multiple revisions with every client until the itinerary is exactly right. There is no additional charge for revisions during the planning phase.',
-  },
-  {
-    id:       'cfaq-6',
-    question: 'Do you work with travel agents and tour operators?',
-    answer:
-      'Yes — we work with a select number of trusted travel agencies and operators on a trade basis. If you are a travel professional interested in partnering with us, please use the enquiry form and mention your agency in the message field.',
+      'Absolutely, and we expect it. Safari planning is an iterative process, and we will refine the itinerary with you until it is right.',
   },
 ] as const;
 

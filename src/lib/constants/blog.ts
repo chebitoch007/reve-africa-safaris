@@ -35,152 +35,7 @@ export const BLOG_HERO = {
   eyebrow:    'Field Notes',
   headline:   'Stories from\nwild Africa',
   subheadline:
-    'Dispatches from the field — wildlife encounters, conservation insights, destination guides, and the quiet moments that define a life spent in Africa.',
-} as const;
-
-// ─────────────────────────────────────────────
-// 2. Featured Story
-// ─────────────────────────────────────────────
-
-/** Call-to-action on the featured story. `href` is omitted until /blog/[slug] exists. */
-export interface StoryCta {
-  label: string;
-  href?: string;
-}
-
-export const FEATURED_STORY = {
-  id:              'fs-1',
-  category:        'wildlife' as BlogCategory,
-  categoryLabel:   'Wildlife',
-  readingTime:     '9 min read',
-  publishedAt:     '14 June 2025',
-  headline:        'The Crossing: Following the Great Migration from the Mara River to the Plains',
-  excerpt:
-    'Every year, more than a million wildebeest make one of nature\'s most perilous journeys across the Mara River into Tanzania. We spent three weeks in the field documenting the crossings — the chaos, the crocodiles, and the extraordinary stillness that follows when the dust settles.',
-  // add href once /blog/[slug] exists
-  cta:             { label: 'Read the story' } as StoryCta,
-  imageSrc:        '/images/blog/featured/img-014-wildebeest-mara-crossing.jpg',
-  placeholderFrom: '#4A5C35',
-  placeholderTo:   '#1C1F18',
-  imageAlt:        'Wildebeest crossing the Mara River at dawn during the Great Migration',
-} as const;
-
-// ─────────────────────────────────────────────
-// 3. Latest Stories — Article list
-// ─────────────────────────────────────────────
-
-export interface ArticleData {
-  id:              string;
-  category:        BlogCategory;
-  categoryLabel:   string;
-  readingTime:     string;
-  publishedAt:     string;
-  headline:        string;
-  excerpt:         string;
-  /** Omitted until /blog/[slug] exists; the card then renders as non-interactive. */
-  href?:           string;
-  imageSrc:        string;
-  placeholderFrom: string;
-  placeholderTo:   string;
-  imageAlt:        string;
-}
-
-export const LATEST_STORIES: ArticleData[] = [
-  {
-    id:              'a-01',
-    category:        'conservation',
-    categoryLabel:   'Conservation',
-    readingTime:     '6 min read',
-    publishedAt:     '2 July 2025',
-    headline:        'Inside Ol Pejeta: How Conservancy Models Are Changing the Future of the Black Rhino',
-    excerpt:
-      'Ol Pejeta Conservancy is home to the world\'s last two northern white rhinos. We speak with the team working around the clock to ensure no more species disappear on their watch.',
-    // add href once /blog/[slug] exists
-    imageSrc:        '/images/blog/articles/img-022-black-rhino-etosha.jpg',
-    placeholderFrom: '#5A6C45',
-    placeholderTo:   '#131510',
-    imageAlt:        'Black rhinoceros in the Ol Pejeta Conservancy, Kenya',
-  },
-  {
-    id:              'a-02',
-    category:        'photography',
-    categoryLabel:   'Photography',
-    readingTime:     '7 min read',
-    publishedAt:     '18 June 2025',
-    headline:        'Golden Hour in the Okavango: A Photographer\'s Guide to Botswana\'s Delta',
-    excerpt:
-      'The Okavango Delta at sunset is unlike anywhere else on earth. Our photography specialist shares the positions, timings, and patience that produce extraordinary light.',
-    // add href once /blog/[slug] exists
-    imageSrc:        '/images/blog/articles/img-006-okavango-delta-aerial.jpg',
-    placeholderFrom: '#4A6B4A',
-    placeholderTo:   '#0C0D0B',
-    imageAlt:        'Aerial view of the Okavango Delta at golden hour, Botswana',
-  },
-  {
-    id:              'a-03',
-    category:        'destinations',
-    categoryLabel:   'Destinations',
-    readingTime:     '8 min read',
-    publishedAt:     '5 June 2025',
-    headline:        'Rwanda Beyond the Gorillas: What Most Visitors Miss in the Land of a Thousand Hills',
-    excerpt:
-      'The mountain gorillas draw travellers to Rwanda, but the country\'s other experiences — its culture, its lakes, its unlikely elegance — are equally worth seeking out.',
-    // add href once /blog/[slug] exists
-    imageSrc:        '/images/blog/articles/img-005-rwanda-volcanoes-mist.jpg',
-    placeholderFrom: '#3D5C3A',
-    placeholderTo:   '#0C0D0B',
-    imageAlt:        'Rolling hills and tea plantations of Rwanda at dawn',
-  },
-  {
-    id:              'a-04',
-    category:        'safari-planning',
-    categoryLabel:   'Safari Planning',
-    readingTime:     '10 min read',
-    publishedAt:     '22 May 2025',
-    headline:        'When to Go: A Season-by-Season Guide to East and Southern Africa',
-    excerpt:
-      'There is no bad time to visit Africa. But there is always a best time — depending on what you want to see, where you want to go, and what kind of experience you are seeking.',
-    // add href once /blog/[slug] exists
-    imageSrc:        '/images/blog/articles/img-012-acacia-sunset-silhouette.jpg',
-    placeholderFrom: '#8F7A3A',
-    placeholderTo:   '#282C22',
-    imageAlt:        'Acacia trees silhouetted against an East African sunset',
-  },
-  {
-    id:              'a-05',
-    category:        'culture',
-    categoryLabel:   'Culture',
-    readingTime:     '5 min read',
-    publishedAt:     '10 May 2025',
-    headline:        'The Maasai and the Mara: Understanding a Relationship Built Over Centuries',
-    excerpt:
-      'The Maasai people have coexisted with East Africa\'s wildlife for generations. To understand the Mara is to understand the culture that helped shape it.',
-    // add href once /blog/[slug] exists
-    imageSrc:        '/images/blog/articles/img-024-maasai-elder-portrait.jpg',
-    placeholderFrom: '#7B3B2A',
-    placeholderTo:   '#1C1510',
-    imageAlt:        'Maasai elder in traditional red shuka against the Mara landscape',
-  },
-  {
-    id:              'a-06',
-    category:        'wildlife',
-    categoryLabel:   'Wildlife',
-    readingTime:     '6 min read',
-    publishedAt:     '28 April 2025',
-    headline:        'The Leopard of Samburu: Six Days Tracking Africa\'s Most Elusive Cat',
-    excerpt:
-      'Samburu National Reserve holds more leopard sightings per square kilometre than almost anywhere on the continent. We joined a tracking team to find out why.',
-    // add href once /blog/[slug] exists
-    imageSrc:        '/images/blog/articles/img-019-leopard-acacia-samburu.jpg',
-    placeholderFrom: '#8F7A3A',
-    placeholderTo:   '#1C1F18',
-    imageAlt:        'Leopard resting in an acacia tree in Samburu National Reserve, Kenya',
-  },
-];
-
-export const LATEST_STORIES_SECTION = {
-  eyebrow:  'From the Journal',
-  headline: 'Latest\nfield notes',
+    'Notes and ideas from the two of us as we build Rêve Africa Safaris.',
 } as const;
 
 // ─────────────────────────────────────────────
@@ -192,7 +47,6 @@ export interface BlogCategoryItem {
   category:    BlogCategory;
   label:       string;
   description: string;
-  count:       number;
   icon:        string;
 }
 
@@ -202,7 +56,6 @@ export const BLOG_CATEGORY_ITEMS: BlogCategoryItem[] = [
     category:    'wildlife',
     label:       'Wildlife',
     description: 'Behavioural studies, rare sightings, and the science behind Africa\'s iconic animals.',
-    count:       24,
     icon:        'Footprints',
   },
   {
@@ -210,7 +63,6 @@ export const BLOG_CATEGORY_ITEMS: BlogCategoryItem[] = [
     category:    'conservation',
     label:       'Conservation',
     description: 'The people, policies, and projects working to protect wild Africa for future generations.',
-    count:       18,
     icon:        'Leaf',
   },
   {
@@ -218,7 +70,6 @@ export const BLOG_CATEGORY_ITEMS: BlogCategoryItem[] = [
     category:    'destinations',
     label:       'Destinations',
     description: 'In-depth guides to the parks, reserves, and landscapes that define our itineraries.',
-    count:       31,
     icon:        'MapPin',
   },
   {
@@ -226,7 +77,6 @@ export const BLOG_CATEGORY_ITEMS: BlogCategoryItem[] = [
     category:    'photography',
     label:       'Photography',
     description: 'Technique, timing, and the stories behind our most memorable field photographs.',
-    count:       16,
     icon:        'Camera',
   },
   {
@@ -234,7 +84,6 @@ export const BLOG_CATEGORY_ITEMS: BlogCategoryItem[] = [
     category:    'safari-planning',
     label:       'Safari Planning',
     description: 'Practical guidance on when to go, what to pack, and how to plan a journey of your own.',
-    count:       22,
     icon:        'BookOpen',
   },
   {
@@ -242,7 +91,6 @@ export const BLOG_CATEGORY_ITEMS: BlogCategoryItem[] = [
     category:    'culture',
     label:       'Culture',
     description: 'The communities, traditions, and living histories woven into every landscape we visit.',
-    count:       14,
     icon:        'Users',
   },
 ];
@@ -251,40 +99,6 @@ export const BLOG_CATEGORIES_SECTION = {
   eyebrow:  'Browse by Theme',
   headline: 'Explore\nthe journal',
   body:     'Dispatches organised by subject — from practical planning guides to intimate wildlife encounters.',
-} as const;
-
-// ─────────────────────────────────────────────
-// 5. Editorial Philosophy
-// ─────────────────────────────────────────────
-
-export interface PhilosophyPillar {
-  id:    string;
-  label: string;
-  body:  string;
-}
-
-export const PHILOSOPHY_PILLARS: PhilosophyPillar[] = [
-  {
-    id:    'pp-1',
-    label: 'Written from the field',
-    body:  'Every piece in this journal is written by someone who has been there — our guides, specialists, and the guests whose experiences have shaped our understanding of wild Africa. We do not publish from behind a desk.',
-  },
-  {
-    id:    'pp-2',
-    label: 'Conservation before content',
-    body:  'We only write about what we believe in. If a practice, destination, or lodge does not meet our ethical standards, it does not appear on these pages. Our editorial independence is non-negotiable.',
-  },
-  {
-    id:    'pp-3',
-    label: 'Depth over frequency',
-    body:  'We publish slowly and carefully. A single well-researched story about a single place is worth more to us than a dozen thin posts written for visibility. We believe the people who travel with us prefer it that way.',
-  },
-];
-
-export const EDITORIAL_PHILOSOPHY_SECTION = {
-  eyebrow:  'Our Approach',
-  headline: 'How we\ntell stories',
-  intro:    'This journal is not a content calendar. It is a record of what we have witnessed, learned, and believe — about Africa, about travel, and about the responsibility that comes with both.',
 } as const;
 
 // ─────────────────────────────────────────────
@@ -316,27 +130,12 @@ export const BLOG_FAQ_ITEMS: BlogFAQItem[] = [
   {
     id:       'bfaq-1',
     question: 'Who writes the articles in this journal?',
-    answer:   'All articles are written by our guides, specialists, and in some cases by guests who have experienced our journeys first-hand. We do not commission freelance content or publish press releases. Every piece reflects a genuine field experience.',
-  },
-  {
-    id:       'bfaq-2',
-    question: 'How often do you publish new content?',
-    answer:   'We publish when we have something worth saying — typically two to four times a month. We deliberately do not maintain a high-frequency publishing schedule, as we believe quality and depth serve our readers better than volume.',
+    answer:   'Notes and ideas from the two of us as we build Rêve Africa Safaris.',
   },
   {
     id:       'bfaq-3',
     question: 'Can I republish or share articles from this journal?',
-    answer:   'Personal sharing — via email, social media, or conversation — is always welcome. Commercial reproduction, republication, or use of our photography without written permission is not permitted. Please contact us if you have a specific request.',
-  },
-  {
-    id:       'bfaq-4',
-    question: 'Do you accept guest contributions or sponsored content?',
-    answer:   'We occasionally publish contributions from voices we trust — scientists, conservationists, and experienced travellers whose perspective adds genuine value. We do not accept paid or sponsored content of any kind. Our editorial independence is the foundation of this journal.',
-  },
-  {
-    id:       'bfaq-5',
-    question: 'Can I use these articles to help plan my safari?',
-    answer:   'Absolutely — that is partly why we write them. Our destination guides, seasonal planning articles, and photography advice are all drawn from real experience. If you find something that speaks to a journey you are considering, contact our team and we will build an itinerary around it.',
+    answer:   'Personal sharing, via email, social media or conversation, is always welcome. Please contact us if you have a specific request.',
   },
 ] as const;
 

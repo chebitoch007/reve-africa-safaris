@@ -54,7 +54,7 @@ export function ContactHero() {
       >
         <Image
           src="/images/contact/hero/img-036-safari-planning-desk.jpg"
-          alt="Safari specialist at a desk with maps and planning materials"
+          alt="Maps and planning materials on a desk"
           fill
           priority
           sizes="100vw"

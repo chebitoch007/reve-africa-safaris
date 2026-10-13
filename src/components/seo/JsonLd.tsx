@@ -36,18 +36,10 @@ function OrganizationSchema() {
     },
     contactPoint: {
       '@type':        'ContactPoint',
-      telephone:      '+254700000000',
       contactType:    'customer service',
       email:          'hello@reveafricasafaris.com',
       areaServed:     'Worldwide',
       availableLanguage: ['English'],
-    },
-    address: {
-      '@type':           'PostalAddress',
-      streetAddress:     'Karen Road, Karen',
-      addressLocality:   'Nairobi',
-      postalCode:        '00502',
-      addressCountry:    'KE',
     },
     sameAs: [
       'https://www.instagram.com/reveafricasafaris',
@@ -62,14 +54,6 @@ function OrganizationSchema() {
       'Botswana',
       'Namibia',
       'Zimbabwe',
-    ],
-    knowsAbout: [
-      'Luxury safari',
-      'Wildlife safari',
-      'Gorilla trekking',
-      'Hot air balloon safari',
-      'Conservation travel',
-      'Bespoke travel',
     ],
   };
 

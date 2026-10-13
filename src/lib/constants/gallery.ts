@@ -8,7 +8,6 @@
  *  1. GalleryHero          — dark editorial hero
  *  2. GalleryIntro         — two-column philosophy intro
  *  3. GalleryGrid          — masonry-style full photo grid (main content)
- *  4. BehindTheLens        — photographer notes / editorial vignettes
  *  6. GalleryCategories    — filter categories (visual only, no JS filter)
  *  7. GalleryFAQ           — accordion FAQ
  *  8. GalleryCTA           — closing call to action
@@ -27,8 +26,8 @@ export type { GalleryItem };
 
 export const GALLERY_HERO = {
   eyebrow:    'Visual Stories',
-  headline:   'Africa through\nour lens',
-  subheadline: 'Photography from the field — every frame a moment of stillness in the wild.',
+  headline:   'A first look\nat Africa',
+  subheadline: 'Illustrative imagery from the destinations we are building journeys for.',
 } as const;
 
 // ─────────────────────────────────────────────
@@ -36,11 +35,10 @@ export const GALLERY_HERO = {
 // ─────────────────────────────────────────────
 
 export const GALLERY_INTRO = {
-  eyebrow:  'Life in the Field',
+  eyebrow:  'About These Images',
   headline: 'Stories told\nin light',
   body: [
-    'Every image in this gallery was captured by our guides and photography specialists during real expeditions across East and Southern Africa. These are not stock photographs — they are moments witnessed first-hand.',
-    'We believe that great wildlife photography requires patience, knowledge, and respect for the subject. Our guides know when to hold still, when to wait, and when a scene needs no intervention at all.',
+    'The photography on this site is illustrative: free-to-use images from Unsplash and Pexels, together with AI-generated landscapes, chosen to give a feel for each destination. These are not photographs from our own trips. We will add our own photography once we begin hosting guests.',
   ],
   stat: {
     value: '6',
@@ -280,50 +278,6 @@ export const GALLERY_GRID_SECTION = {
 } as const;
 
 // ─────────────────────────────────────────────
-// 4. Behind the Lens
-// ─────────────────────────────────────────────
-
-export interface LensVignette {
-  id:              string;
-  quote:           string;
-  credit:          string;
-  role:            string;
-  imageSrc:        string;
-  imageAlt:        string;
-  placeholderFrom: string;
-  placeholderTo:   string;
-}
-
-export const LENS_VIGNETTES: LensVignette[] = [
-  {
-    id:              'lv-1',
-    quote:           'We waited three hours in the same position for the light to fall correctly on the gorilla family. The moment came and lasted perhaps forty seconds.',
-    credit:          'James Mwangi',
-    role:            'Head Guide, Rwanda',
-    imageSrc:        '/images/gallery/guides/img-025-safari-guide-field.jpg',
-    imageAlt:        'James Mwangi, Head Guide in Rwanda, photographing in the field',
-    placeholderFrom: '#495C3D',
-    placeholderTo:   '#131510',
-  },
-  {
-    id:              'lv-2',
-    quote:           'The Mara at five in the morning is a different world. The light arrives slowly, then all at once. You have to be ready long before you need to be.',
-    credit:          'Amina Ochieng',
-    role:            'Senior Guide, Kenya',
-    imageSrc:        '/images/gallery/guides/img-026-female-guide-portrait.jpg',
-    imageAlt:        'Amina Ochieng, Senior Guide in Kenya, on the Maasai Mara at dawn',
-    placeholderFrom: '#9E8B4D',
-    placeholderTo:   '#363B2D',
-  },
-];
-
-export const BEHIND_LENS_SECTION = {
-  eyebrow:  'From Our Guides',
-  headline: 'Behind the\nframe',
-  body:     'Our guides carry cameras because they care about what they see. These are their words.',
-} as const;
-
-// ─────────────────────────────────────────────
 // 6. Gallery Categories
 // ─────────────────────────────────────────────
 
@@ -331,7 +285,6 @@ export interface GalleryCategoryItem {
   id:              string;
   label:           string;
   category:        GalleryCategory;
-  count:           number;
   imageSrc:        string;
   imageAlt:        string;
   placeholderFrom: string;
@@ -343,7 +296,6 @@ export const GALLERY_CATEGORY_ITEMS: GalleryCategoryItem[] = [
     id:              'cat-1',
     label:           'Wildlife',
     category:        'wildlife',
-    count:           47,
     imageSrc:        '/images/gallery/categories/img-020-lion-pride-dusk.jpg',
     imageAlt:        'Lion pride resting at dusk, Tanzania',
     placeholderFrom: '#363B2D',
@@ -353,7 +305,6 @@ export const GALLERY_CATEGORY_ITEMS: GalleryCategoryItem[] = [
     id:              'cat-2',
     label:           'Landscapes',
     category:        'landscapes',
-    count:           38,
     imageSrc:        '/images/gallery/categories/img-001-maasai-mara-dawn-landscape.jpg',
     imageAlt:        'Dawn light over the Maasai Mara savanna, Kenya',
     placeholderFrom: '#9E8B4D',
@@ -363,7 +314,6 @@ export const GALLERY_CATEGORY_ITEMS: GalleryCategoryItem[] = [
     id:              'cat-3',
     label:           'Culture',
     category:        'culture',
-    count:           24,
     imageSrc:        '/images/gallery/categories/img-024-maasai-elder-portrait.jpg',
     imageAlt:        'Maasai elder in traditional red shuka, Kenya',
     placeholderFrom: '#7B3B2A',
@@ -373,7 +323,6 @@ export const GALLERY_CATEGORY_ITEMS: GalleryCategoryItem[] = [
     id:              'cat-4',
     label:           'Conservation',
     category:        'conservation',
-    count:           19,
     imageSrc:        '/images/gallery/categories/img-021-cheetah-ol-pejeta.jpg',
     imageAlt:        'Cheetah in the Ol Pejeta Conservancy, Kenya',
     placeholderFrom: '#495C3D',
@@ -383,7 +332,6 @@ export const GALLERY_CATEGORY_ITEMS: GalleryCategoryItem[] = [
     id:              'cat-5',
     label:           'Aerial',
     category:        'aerial',
-    count:           15,
     imageSrc:        '/images/gallery/categories/img-006-okavango-delta-aerial.jpg',
     imageAlt:        'Aerial view of the Okavango Delta, Botswana',
     placeholderFrom: '#4A6B4A',
@@ -393,7 +341,6 @@ export const GALLERY_CATEGORY_ITEMS: GalleryCategoryItem[] = [
     id:              'cat-6',
     label:           'Intimate',
     category:        'intimate',
-    count:           22,
     imageSrc:        '/images/gallery/categories/img-015-mountain-gorilla-silverback.jpg',
     imageAlt:        'Mountain gorilla in Volcanoes National Park, Rwanda',
     placeholderFrom: '#3A4A3A',
@@ -420,37 +367,32 @@ export interface GalleryFAQItem {
 
 export const GALLERY_FAQ_ITEMS: GalleryFAQItem[] = [
   {
-    id:       'gfaq-1',
-    question: 'Can I purchase prints of these images?',
-    answer:   'Many images in our collection are available as fine-art prints, produced on archival paper by our partner printing studio in Nairobi. Please contact us with the image you are interested in and we will provide print size options, pricing, and delivery information.',
-  },
-  {
     id:       'gfaq-2',
     question: 'Do you offer dedicated photography safaris?',
-    answer:   'Yes — we design photography-focused itineraries for both enthusiast and professional photographers. These journeys are structured around optimal light, with early morning and late afternoon drives, customised vehicle positioning, and, where appropriate, accompanied by a specialist photography guide. Contact us to discuss your specific needs.',
+    answer:   'Yes — we design photography-focused itineraries for both enthusiast and professional photographers. These journeys are structured around optimal light, with early morning and late afternoon drives, and customised vehicle positioning. Contact us to discuss your specific needs.',
   },
   {
     id:       'gfaq-3',
     question: 'What camera equipment should I bring on safari?',
-    answer:   'For wildlife photography, a telephoto lens of at least 300mm (ideally 400–600mm) is essential. A fast memory card, extra batteries, and a quality dust bag are important. We provide comprehensive pre-departure equipment guidance to all guests. We also recommend a compact camera or smartphone for documenting the smaller moments.',
+    answer:   'For wildlife photography, a telephoto lens of at least 300mm (ideally 400–600mm) is essential. A fast memory card, extra batteries, and a quality dust bag are important. We also recommend a compact camera or smartphone for documenting the smaller moments.',
   },
   {
     id:       'gfaq-4',
     question: 'Can I use these images for personal or commercial purposes?',
-    answer:   'Images in this gallery are the property of Rêve Africa Safaris and our guide-photographers. Personal, non-commercial use with credit is welcomed. For commercial licensing enquiries, please contact us directly with the intended use and we will discuss terms accordingly.',
+    answer:   'Most images on this site are free-to-use photographs from Unsplash and Pexels, or AI-generated landscapes. They remain the property of their respective creators under those licences. If you would like to know the source of a particular image, please ask us.',
   },
   {
     id:       'gfaq-5',
     question: 'How do I know where a photograph was taken?',
-    answer:   'Each image in the collection is captioned with the subject and country of origin. If you would like more specific location information — or are interested in visiting a particular area you have seen here — our team is happy to help you plan accordingly.',
+    answer:   'Not every image is labelled with its exact location, and some are illustrative. If you would like to know where a particular image was taken, or where it came from, please ask us.',
   },
 ] as const;
 
 export const GALLERY_FAQ_SECTION = {
   eyebrow:  'Photography Questions',
-  headline: 'Questions\nabout our work',
-  body:     'Our guides and specialists are always happy to discuss technique, locations, or print enquiries.',
-  cta:      { label: 'Contact a Specialist', href: '/contact' },
+  headline: 'Questions\nabout these images',
+  body:     'We are always happy to discuss destinations, photography safaris, or the images you see here.',
+  cta:      { label: 'Get in Touch', href: '/contact' },
 } as const;
 
 // ─────────────────────────────────────────────

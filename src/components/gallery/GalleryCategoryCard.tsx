@@ -5,7 +5,7 @@
  * Used by GalleryCategories (Client animation wrapper).
  *
  * Visual: square tile with placeholder gradient background, category label,
- * and image count. CSS hover scales the background and reveals count.
+ * label. CSS hover scales the background.
  *
  * Replace the placeholder <div> with <Image fill> when photography available.
  */
@@ -22,7 +22,7 @@ export function GalleryCategoryCard({ item }: GalleryCategoryCardProps) {
   return (
     <article
       className="group relative overflow-hidden aspect-square"
-      aria-label={`${item.label} — ${item.count} photographs`}
+      aria-label={item.label}
     >
       <Image
         src={item.imageSrc}
@@ -47,14 +47,6 @@ export function GalleryCategoryCard({ item }: GalleryCategoryCardProps) {
           'group-hover:-translate-y-1',
         )}>
           {item.label}
-        </p>
-        <p className={cn(
-          'font-[var(--font-inter)] font-light text-xs tracking-[0.1em]',
-          'text-[rgba(255,255,255,0.5)]',
-          'opacity-0 translate-y-2 transition-all duration-[300ms]',
-          'group-hover:opacity-100 group-hover:translate-y-0',
-        )}>
-          {item.count} photographs
         </p>
       </div>
     </article>

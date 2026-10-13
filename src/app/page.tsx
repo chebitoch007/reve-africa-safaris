@@ -31,7 +31,7 @@ import { FAQ_ITEMS }              from '@/lib/constants/homepage';
 
 export const metadata: Metadata = buildPageMetadata({
   title:       'Extraordinary Safari Journeys Across Africa',
-  description: 'Rêve Africa Safaris crafts intimate, transformative expeditions to Africa\'s most magnificent wilderness destinations. Bespoke luxury safaris for the discerning traveller.',
+  description: 'Rêve Africa Safaris is a new, founder-led safari company designing journeys across East and Southern Africa, planned by hand around each traveller.',
   path:        '/',
 });
 

@@ -16,9 +16,8 @@ export const SITE = {
   name:        'Rêve Africa Safaris',
   tagline:     'Extraordinary Journeys Across Wild Africa',
   description:
-    'Rêve Africa Safaris crafts intimate, transformative expeditions to Africa\'s ' +
-    'most magnificent wilderness destinations — from the Maasai Mara to the ' +
-    'Okavango Delta. Bespoke luxury safaris designed for the discerning traveller.',
+    'Rêve Africa Safaris is a new, founder-led safari company designing journeys across ' +
+    'East and Southern Africa, planned by hand around each traveller.',
   url:         'https://reveafricasafaris.com',
   locale:      'en_GB',
   twitterHandle: '@reveafricasafaris',

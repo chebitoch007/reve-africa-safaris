@@ -8,7 +8,6 @@
  *   2. ConciergeIntro    — bg-primary   — personal service philosophy
  *   3. ContactMethods    — bg-secondary — phone, email, WhatsApp, hours
  *   4. EnquiryForm       — bg-primary   — luxury enquiry form
- *   5. OfficeLocation    — bg-dune      — address, travel info, map placeholder
  *   6. ContactFAQ        — bg-primary   — shared accordion FAQ
  *   7. ContactCTA        — bg-inverse   — final CTA
  */
@@ -20,7 +19,6 @@ import { ContactHero }          from '@/components/contact/ContactHero';
 import { ConciergeIntro }       from '@/components/contact/ConciergeIntro';
 import { ContactMethods }       from '@/components/contact/ContactMethods';
 import { EnquiryForm }          from '@/components/contact/EnquiryForm';
-import { OfficeLocation }       from '@/components/contact/OfficeLocation';
 import { ContactFAQ }           from '@/components/contact/ContactFAQ';
 import { ContactCTA }           from '@/components/contact/ContactCTA';
 import { CONTACT_FAQ_ITEMS }    from '@/lib/constants/contact';
@@ -28,7 +26,7 @@ import { CONTACT_FAQ_ITEMS }    from '@/lib/constants/contact';
 export const metadata: Metadata = buildPageMetadata({
   title:       'Contact — Plan Your Bespoke African Safari',
   description:
-    'Begin planning your luxury safari with Rêve Africa Safaris. Speak directly with a specialist — complimentary consultation, no obligation. Based in Nairobi, Kenya.',
+    'Begin planning your safari with Rêve Africa Safaris. Speak directly with one of the two founders: complimentary consultation, no obligation.',
   path: '/contact',
 });
 
@@ -40,7 +38,6 @@ export default function ContactPage() {
       <ConciergeIntro />
       <ContactMethods />
       <EnquiryForm />
-      <OfficeLocation />
       <ContactFAQ />
       <ContactCTA />
     </>

@@ -362,7 +362,7 @@ export const SEASONAL_GUIDE: CountrySeason[] = [
 export const SEASONAL_SECTION = {
   eyebrow:  'When to Travel',
   headline: 'Every season\nhas its own\nreward',
-  body:     'There is no single "best time" to visit Africa — only the best time for what you want to see. Our specialists will match your travel window to the experience you are seeking.',
+  body:     'There is no single "best time" to visit Africa — only the best time for what you want to see. We will match your travel window to the experience you are seeking.',
 } as const;
 
 // ─────────────────────────────────────────────
@@ -427,8 +427,8 @@ export const DESTINATIONS_FAQ_ITEMS: DestinationsFAQItem[] = [
 export const DESTINATIONS_FAQ_SECTION = {
   eyebrow:  'Destination Questions',
   headline: 'Answers to the\nquestions we\nhear most',
-  body:     'If your question isn\'t answered here, our specialists are always ready to help.',
-  cta:      { label: 'Contact a Specialist', href: '/contact' },
+  body:     'If your question isn\'t answered here, we are always ready to help.',
+  cta:      { label: 'Get in Touch', href: '/contact' },
 } as const;
 
 // ─────────────────────────────────────────────
@@ -441,5 +441,5 @@ export const DESTINATIONS_CTA = {
   body:        'Every extraordinary African journey begins with a conversation. Share your destination, your timing, and your vision — we will design the rest.',
   primaryCTA:  { label: 'Begin Planning',      href: '/contact' },
   secondaryCTA:{ label: 'Browse Our Journeys', href: '/packages' },
-  detail:      'No obligation. A dedicated specialist will respond within 24 hours.',
+  detail:      'No obligation. One of us will respond within 24 hours.',
 } as const;
