@@ -104,63 +104,6 @@ export function OurStory() {
             ))}
           </div>
         </div>
-
-        {/* ── Divider ────────────────────────────────────────────── */}
-        <motion.div
-          initial={{ scaleX: 0, originX: 0 }}
-          whileInView={{ scaleX: 1 }}
-          viewport={VIEWPORT_ONCE}
-          transition={{ duration: DURATION.cinematic, ease: EASE.cinematic }}
-          className="h-px bg-[var(--color-border-light)] mb-20 lg:mb-28"
-          aria-hidden="true"
-        />
-
-        {/* ── Pull quote ─────────────────────────────────────────── */}
-        <motion.blockquote
-          custom={0.1}
-          variants={reduced ? {} : fadeUp}
-          initial="hidden"
-          whileInView="visible"
-          viewport={VIEWPORT_ONCE}
-          className="relative"
-          cite="#about-founders"
-        >
-          {/* Decorative opening mark */}
-          <span
-            className={cn(
-              'absolute -top-4 -left-2 lg:-left-4',
-              'font-[var(--font-cormorant)] font-light',
-              'text-[6rem] lg:text-[8rem] leading-none',
-              'text-[var(--color-accent-primary)] opacity-20',
-              'select-none pointer-events-none',
-            )}
-            aria-hidden="true"
-          >
-            &ldquo;
-          </span>
-
-          <p className={cn(
-            'relative font-[var(--font-cormorant)] font-light italic',
-            'text-[clamp(1.75rem,3.5vw+0.5rem,3rem)]',
-            'leading-[1.25] tracking-[-0.01em]',
-            'text-[var(--color-text-primary)]',
-            'max-w-4xl mb-8',
-            'pl-6 lg:pl-10',
-          )}>
-            {OUR_STORY.pullQuote.text}
-          </p>
-
-          <footer className="pl-6 lg:pl-10 flex items-center gap-4">
-            <span className="block h-px w-8 bg-[var(--color-accent-primary)]" aria-hidden="true" />
-            <cite className={cn(
-              'font-[var(--font-inter)] not-italic font-medium',
-              'text-xs tracking-[0.2em] uppercase',
-              'text-[var(--color-text-muted)]',
-            )}>
-              {OUR_STORY.pullQuote.credit}
-            </cite>
-          </footer>
-        </motion.blockquote>
       </div>
     </section>
   );

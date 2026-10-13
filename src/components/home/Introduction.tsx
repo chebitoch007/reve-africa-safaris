@@ -36,19 +36,6 @@ const fadeUp = {
   }),
 };
 
-const statVariant = {
-  hidden:  { opacity: 0, y: 16 },
-  visible: (i: number) => ({
-    opacity: 1,
-    y: 0,
-    transition: {
-      duration: DURATION.slow,
-      ease:     EASE.cinematic,
-      delay:    0.1 * i,
-    },
-  }),
-};
-
 export function Introduction() {
   const prefersReducedMotion = useReducedMotion();
 
@@ -131,56 +118,6 @@ export function Introduction() {
             ))}
           </div>
         </div>
-
-        {/* ── Divider ─────────────────────────────────────── */}
-        <motion.div
-          initial={{ scaleX: 0, originX: 0 }}
-          whileInView={{ scaleX: 1 }}
-          viewport={VIEWPORT_ONCE}
-          transition={{ duration: DURATION.cinematic, ease: EASE.cinematic }}
-          className="h-px bg-[var(--color-border-light)] mb-16"
-          aria-hidden="true"
-        />
-
-        {/* ── Stats row ────────────────────────────────────── */}
-        <dl
-          className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-4"
-          aria-label="Company highlights"
-        >
-          {INTRO_CONTENT.stats.map((stat, i) => (
-            <motion.div
-              key={stat.label}
-              custom={i}
-              variants={prefersReducedMotion ? {} : statVariant}
-              initial="hidden"
-              whileInView="visible"
-              viewport={VIEWPORT_ONCE}
-              className="flex flex-col gap-2"
-            >
-              <dt className="sr-only">{stat.label}</dt>
-              <dd
-                className={cn(
-                  'font-[var(--font-cormorant)] font-light italic',
-                  'text-[clamp(2rem,3vw,2.75rem)]',
-                  'leading-none tracking-[-0.02em]',
-                  'text-[var(--color-accent-primary)]',
-                )}
-                aria-label={`${stat.value} — ${stat.label}`}
-              >
-                {stat.value}
-              </dd>
-              <span
-                className={cn(
-                  'font-[var(--font-inter)] font-medium uppercase',
-                  'text-[9px] tracking-[0.22em]',
-                  'text-[var(--color-text-muted)]',
-                )}
-              >
-                {stat.label}
-              </span>
-            </motion.div>
-          ))}
-        </dl>
       </div>
     </section>
   );

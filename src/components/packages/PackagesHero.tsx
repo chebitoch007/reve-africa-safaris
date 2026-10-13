@@ -153,18 +153,6 @@ export function PackagesHero() {
               >
                 {PACKAGES_HERO.primaryCTA.label}
               </Link>
-
-              {/* Est. detail */}
-              <div className="hidden sm:flex items-center gap-3" aria-hidden="true">
-                <div className="h-px w-6 bg-[var(--color-border-inverse)]" />
-                <span className={cn(
-                  'font-[var(--font-inter)] font-medium uppercase',
-                  'text-[9px] tracking-[0.26em] leading-none',
-                  'text-[var(--color-text-inverse-muted)]',
-                )}>
-                  Est. 2009
-                </span>
-              </div>
             </motion.div>
           </div>
         </div>

@@ -12,7 +12,7 @@
 export const ABOUT_HERO = {
   eyebrow:    'Our Story',
   headline:   'Born from a\npassion for\nwild Africa',
-  subheadline: 'We are guides, conservationists, and storytellers — bound by a shared conviction that the wilderness deserves our deepest reverence.',
+  subheadline: 'A new, founder-led safari company, built with care.',
 } as const;
 
 // ─────────────────────────────────────────────
@@ -21,25 +21,21 @@ export const ABOUT_HERO = {
 
 export const OUR_STORY = {
   eyebrow:  'The Beginning',
-  headline: 'Fifteen years of\nlistening to the land',
+  headline: 'A new company,\nbuilt with care',
   chapters: [
     {
       id:   'founding',
-      body: 'Rêve Africa Safaris was founded in 2009 by Amara Nkosi and David Mwangi — two guides who had spent a decade leading expeditions across East Africa for larger operators and found themselves yearning to do things differently. More slowly. More intimately. With greater care for the communities and ecosystems they moved through.',
+      body: 'Rêve Africa Safaris was started in 2026 by siblings Eliphaz Chebitoch and Purity Langat. Purity brings a background in tourism and hospitality; Eliphaz built the digital side of the business. We are a two-person company at the start of our journey.',
     },
     {
       id:   'philosophy',
-      body: 'The name — Rêve, French for dream — was chosen deliberately. Not because Africa is a fantasy to be consumed, but because witnessing a lioness hunt at first light, or sitting in silence as a herd of elephants crosses a river at dusk, reaches something in us that ordinary life rarely touches.',
+      body: 'The name Rêve is French for dream. We chose it deliberately: not because Africa is a fantasy to be consumed, but because of what a journey there can mean.',
     },
     {
       id:   'today',
-      body: 'Today we operate across six countries, with a small team of hand-selected guides, naturalists, and cultural interpreters. Every itinerary is built from first principles — no templates, no group departures, no compromises on the quality of the experience.',
+      body: 'Today we are a team of two. We are building journeys for East and Southern Africa, and we will only offer what we can deliver well.',
     },
   ],
-  pullQuote: {
-    text:   'Africa is not a backdrop. It is the reason — the whole, humbling, magnificent reason.',
-    credit: 'Amara Nkosi, Co-Founder',
-  },
 } as const;
 
 // ─────────────────────────────────────────────
@@ -56,13 +52,13 @@ export interface ApproachPillar {
 export const OUR_APPROACH = {
   eyebrow:  'How We Work',
   headline: 'Three principles\nthat shape every\njourney',
-  body:     'We do not believe in cookie-cutter safaris. Every trip we design is shaped by three convictions that have guided us since we began.',
+  body:     'We do not believe in cookie-cutter safaris. Every trip we design is shaped by three convictions.',
   pillars: [
     {
       id:          'intimacy',
       number:      'I',
       title:       'Intimacy over scale',
-      description: 'Small groups. Private vehicles. Guides who know the land they walk on. We deliberately limit the number of journeys we run each year so that every client receives our complete attention — from the first conversation to the last farewell at the airstrip.',
+      description: 'We design journeys for small groups and private vehicles, and give each traveller our complete attention, from the first conversation to the last farewell at the airstrip.',
     },
     {
       id:          'authenticity',
@@ -74,7 +70,7 @@ export const OUR_APPROACH = {
       id:          'accountability',
       number:      'III',
       title:       'Accountability to place',
-      description: 'Every dollar spent on a Rêve journey contributes directly to the communities and conservation areas we pass through. We work only with partners who share our commitment, and we are transparent about how travel fees are distributed.',
+      description: 'We want to work only with partners who share our commitment to the places and communities we travel through.',
     },
   ] satisfies ApproachPillar[],
 } as const;

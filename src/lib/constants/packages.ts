@@ -19,7 +19,7 @@ import type { PackageData } from '@/lib/constants/homepage';
 export const PACKAGES_HERO = {
   eyebrow:    'Safari Journeys',
   headline:   'Itineraries built\naround wonder,\nnot convenience',
-  subheadline: 'Every journey we offer has been walked, driven, and lived — refined over years of guiding guests across East and Southern Africa.',
+  subheadline: 'Sample itineraries across East and Southern Africa, each one tailored around you.',
   primaryCTA:  { label: 'Enquire About a Journey', href: '/contact' },
 } as const;
 
@@ -34,9 +34,6 @@ export const JOURNEY_INTRO = {
     'Most safari operators start with logistics: where can we get a vehicle, which lodge has availability, what\'s the easiest route. We start with a different question: what would make this journey truly extraordinary for this particular person?',
     'The result is an approach that feels less like tour operating and more like having a deeply knowledgeable friend plan the trip of a lifetime. Our itineraries are starting points — refined through conversation until they become uniquely yours.',
   ],
-  stat1: { value: '15+',  label: 'Years of experience' },
-  stat2: { value: '800+', label: 'Journeys designed' },
-  stat3: { value: '6',    label: 'Countries we know deeply' },
 } as const;
 
 // ─────────────────────────────────────────────

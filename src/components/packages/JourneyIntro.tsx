@@ -25,7 +25,6 @@ const fadeUp = {
 
 export function JourneyIntro() {
   const reduced = useReducedMotion();
-  const stats   = [JOURNEY_INTRO.stat1, JOURNEY_INTRO.stat2, JOURNEY_INTRO.stat3];
 
   return (
     <section
@@ -97,46 +96,6 @@ export function JourneyIntro() {
             ))}
           </div>
         </div>
-
-        {/* ── Divider ──────────────────────────────────────────── */}
-        <motion.div
-          initial={{ scaleX: 0, originX: 0 }}
-          whileInView={{ scaleX: 1 }}
-          viewport={VIEWPORT_ONCE}
-          transition={{ duration: DURATION.cinematic, ease: EASE.cinematic }}
-          className="h-px bg-[var(--color-border-light)] mb-16 lg:mb-20"
-          aria-hidden="true"
-        />
-
-        {/* ── Stats row ─────────────────────────────────────────── */}
-        <dl className="grid grid-cols-1 sm:grid-cols-3 gap-px bg-[var(--color-border-light)]">
-          {stats.map((stat, i) => (
-            <motion.div
-              key={stat.label}
-              custom={i * 0.08}
-              variants={reduced ? {} : fadeUp}
-              initial="hidden"
-              whileInView="visible"
-              viewport={VIEWPORT_ONCE}
-              className="bg-[var(--color-bg-primary)] px-8 lg:px-10 py-8"
-            >
-              <dt className={cn(
-                'font-[var(--font-inter)] font-medium uppercase',
-                'text-[9px] tracking-[0.22em] leading-none',
-                'text-[var(--color-text-muted)] mb-3',
-              )}>
-                {stat.label}
-              </dt>
-              <dd className={cn(
-                'font-[var(--font-cormorant)] font-light italic',
-                'text-[clamp(2.5rem,4vw,3.5rem)] leading-none',
-                'text-[var(--color-accent-primary)]',
-              )}>
-                {stat.value}
-              </dd>
-            </motion.div>
-          ))}
-        </dl>
       </div>
     </section>
   );

@@ -25,14 +25,7 @@ export const INTRO_CONTENT = {
   eyebrow:   'Our Philosophy',
   headline:  'Journeys as singular\nas the landscapes\nthat inspire them',
   body: [
-    'Rêve Africa Safaris was founded on a single conviction: that truly extraordinary travel demands extraordinary attention to detail. We do not operate tours. We design experiences — crafted around you, your rhythm, and the Africa you wish to discover.',
-    'From the great migrations of the Maasai Mara to the mountain gorillas of Rwanda, from the salt pans of Botswana to the peaks of Kilimanjaro — each journey we build is an original. Private guides, exclusive camps, and a commitment to conservation that ensures the wilderness endures.',
-  ],
-  stats: [
-    { value: '15+',  label: 'Years of experience' },
-    { value: '6',    label: 'Countries' },
-    { value: '100%', label: 'Bespoke itineraries' },
-    { value: '4.9',  label: 'Guest satisfaction' },
+    'Rêve Africa Safaris is a new, founder-led safari company. We are two people, and every journey is designed by hand around the traveller. We are at the beginning of our story, and we would rather earn your trust one carefully planned trip at a time than promise you a track record we have not built yet.',
   ],
 } as const;
 
@@ -320,7 +313,7 @@ export const FEATURED_PACKAGES: PackageData[] = [
 export const PACKAGES_SECTION = {
   eyebrow:  'Featured Journeys',
   headline: 'Carefully crafted\nitineraries',
-  body:     'Each package is a starting point — a framework built from years of experience that we then tailor entirely to you.',
+  body:     'Each package is a starting point — a framework that we then tailor entirely to you.',
   viewAll:  { label: 'View All Journeys', href: '/packages' },
 } as const;
 
@@ -366,40 +359,12 @@ export const TRUST_PILLARS: TrustPillar[] = [
     title:       '24/7 In-Journey Support',
     description: 'From the moment you depart to the moment you return, our team is available around the clock to ensure everything runs perfectly.',
   },
-  {
-    id:          'experience',
-    icon:        'Star',
-    title:       'Decades of Expertise',
-    description: 'With over fifteen years operating across East Africa, we have the relationships, knowledge, and experience to deliver the exceptional.',
-  },
 ];
 
 export const WHY_US_SECTION = {
   eyebrow:  'Why Rêve Africa',
   headline: 'Every detail\nconsidered',
   body:     'We are not a booking platform. We are safari specialists — and everything we do reflects that commitment.',
-} as const;
-
-// ─────────────────────────────────────────────
-// Statistics
-// ─────────────────────────────────────────────
-
-export interface StatisticData {
-  value:   string;
-  label:   string;
-  suffix?: string;
-}
-
-export const STATISTICS: StatisticData[] = [
-  { value: '15', label: 'Years of expertise',     suffix: '+' },
-  { value: '28', label: 'Safari destinations',    suffix: '+' },
-  { value: '3,200', label: 'Journeys delivered',  suffix: '+' },
-  { value: '96', label: 'Partner lodges & camps', suffix: '+' },
-];
-
-export const STATISTICS_SECTION = {
-  eyebrow:  'By the Numbers',
-  headline: 'Trusted by travellers\nacross the world',
 } as const;
 
 // ─────────────────────────────────────────────

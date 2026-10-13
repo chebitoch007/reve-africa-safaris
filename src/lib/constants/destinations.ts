@@ -24,7 +24,7 @@ export const DESTINATIONS_OVERVIEW = {
   eyebrow:  'Where We Travel',
   headline: 'A continent that\ndefies a single\ndescription',
   body: [
-    'We operate across six extraordinary countries — each offering a distinct character, a different rhythm, and wildlife encounters unlike anywhere else on earth.',
+    'We are building journeys across six extraordinary countries — each offering a distinct character, a different rhythm, and wildlife encounters unlike anywhere else on earth.',
     'Whether you are drawn by the iconic spectacle of the Great Migration, the intimate forest encounters of gorilla trekking, or the starlit silence of the Kalahari, we have the knowledge and the relationships to bring it to life.',
   ],
   stat: { value: '6', label: 'Countries', detail: 'across East and Southern Africa' },
@@ -139,7 +139,7 @@ export const COUNTRIES: DestinationCountry[] = [
 export const COUNTRIES_SECTION = {
   eyebrow:  'Our Destinations',
   headline: 'Six countries,\nsix characters',
-  body:     'Each destination we operate in has been chosen for the depth and quality of the wildlife experience it offers — not its proximity to an airport.',
+  body:     'Each destination we are building journeys for has been chosen for the depth and quality of the wildlife experience it offers — not its proximity to an airport.',
 } as const;
 
 // ─────────────────────────────────────────────

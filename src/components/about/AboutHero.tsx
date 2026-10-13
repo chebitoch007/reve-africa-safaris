@@ -147,7 +147,7 @@ export function AboutHero() {
               {ABOUT_HERO.subheadline}
             </motion.p>
 
-            {/* Divider + founding year */}
+            {/* Divider */}
             <motion.div
               variants={reduced ? {} : lineVariant}
               initial="hidden"
@@ -155,14 +155,6 @@ export function AboutHero() {
               className="flex items-center gap-6"
             >
               <div className="h-px flex-1 bg-[var(--color-border-inverse)]" aria-hidden="true" />
-              <span className={cn(
-                'font-[var(--font-inter)] font-medium uppercase',
-                'text-[9px] tracking-[0.3em] leading-none',
-                'text-[var(--color-text-inverse-muted)]',
-                'shrink-0',
-              )}>
-                Est. 2009
-              </span>
               <div className="h-px w-8 bg-[var(--color-accent-primary)]" aria-hidden="true" />
             </motion.div>
           </div>

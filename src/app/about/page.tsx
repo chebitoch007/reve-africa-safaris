@@ -23,7 +23,7 @@ import { AboutCTA }                   from '@/components/about/AboutCTA';
 
 export const metadata: Metadata = buildPageMetadata({
   title:       'About Us — Our Story, Team & Commitment',
-  description: 'Founded in 2009 by two East African guides, Rêve Africa Safaris was built on a single conviction: extraordinary travel demands extraordinary care. Meet our team and discover our approach.',
+  description: 'Meet the two founders of Rêve Africa Safaris, a new, founder-led safari company.',
   path:        '/about',
 });
 
