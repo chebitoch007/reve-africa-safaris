@@ -15,24 +15,21 @@ export const PRIMARY_NAV: NavGroup[] = [
     label: 'Destinations',
     href:  '/destinations',
     children: [
-      { label: 'Kenya',      href: '/destinations' },
-      { label: 'Tanzania',   href: '/destinations' },
-      { label: 'Botswana',   href: '/destinations' },
-      { label: 'Rwanda',     href: '/destinations' },
-      { label: 'Zimbabwe',   href: '/destinations' },
-      { label: 'Namibia',    href: '/destinations' },
+      { label: 'Kenya',      href: '/destinations#kenya' },
+      { label: 'Tanzania',   href: '/destinations#tanzania' },
+      { label: 'Rwanda',     href: '/destinations#rwanda' },
+      { label: 'Botswana',   href: '/destinations#botswana' },
+      { label: 'Namibia',    href: '/destinations#namibia' },
     ],
   },
   {
     label: 'Experiences',
-    href:  '/packages',
+    href:  '/destinations#signature-experiences',
     children: [
-      { label: 'Private Game Drives',    href: '/packages' },
-      { label: 'Gorilla Trekking',       href: '/packages' },
-      { label: 'Hot Air Ballooning',     href: '/packages' },
-      { label: 'Walking Safaris',        href: '/packages' },
-      { label: 'Conservation Stays',     href: '/packages' },
-      { label: 'Fly-in Safaris',         href: '/packages' },
+      { label: 'Gorilla Trekking',       href: '/destinations#experience-gorilla' },
+      { label: 'Hot Air Ballooning',     href: '/destinations#experience-balloon' },
+      { label: 'Walking Safaris',        href: '/destinations#experience-walking' },
+      { label: 'Fly-in Safaris',         href: '/destinations#experience-fly-in' },
     ],
   },
   {
@@ -50,27 +47,24 @@ export const PRIMARY_NAV: NavGroup[] = [
 ];
 
 export const FOOTER_DESTINATIONS: NavLink[] = [
-  { label: 'Kenya',      href: '/destinations' },
-  { label: 'Tanzania',   href: '/destinations' },
-  { label: 'Botswana',   href: '/destinations' },
-  { label: 'Rwanda',     href: '/destinations' },
-  { label: 'Zimbabwe',   href: '/destinations' },
-  { label: 'Namibia',    href: '/destinations' },
+  { label: 'Kenya',      href: '/destinations#kenya' },
+  { label: 'Tanzania',   href: '/destinations#tanzania' },
+  { label: 'Rwanda',     href: '/destinations#rwanda' },
+  { label: 'Botswana',   href: '/destinations#botswana' },
+  { label: 'Namibia',    href: '/destinations#namibia' },
 ];
 
 export const FOOTER_EXPLORE: NavLink[] = [
   { label: 'All Journeys',      href: '/packages' },
-  { label: 'Experiences',       href: '/packages' },
-  { label: 'Private Safaris',   href: '/packages' },
-  { label: 'Conservation',      href: '/packages' },
-  { label: 'Safari Planning',   href: '/contact' },
+  { label: 'Experiences',       href: '/destinations#signature-experiences' },
+  { label: 'Conservation',      href: '/about#conservation' },
+  { label: 'Safari Planning',   href: '/contact#contact-form' },
 ];
 
 export const FOOTER_COMPANY: NavLink[] = [
   { label: 'About Us',          href: '/about' },
-  { label: 'Our Philosophy',    href: '/about' },
-  { label: 'Sustainability',    href: '/about' },
-  { label: 'Partners',          href: '/about' },
+  { label: 'Our Philosophy',    href: '/about#our-approach' },
+  { label: 'Sustainability',    href: '/about#conservation' },
   { label: 'Contact',           href: '/contact' },
 ];
 

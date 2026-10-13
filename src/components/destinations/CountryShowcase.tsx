@@ -108,7 +108,9 @@ export function CountryShowcase() {
           {COUNTRIES.map((country, i) => (
             <motion.div
               key={country.id}
+              id={country.id}
               role="listitem"
+              className="scroll-mt-28"
               custom={i}
               variants={reduced ? {} : cardVariant}
               initial="hidden"

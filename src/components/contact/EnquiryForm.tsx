@@ -335,7 +335,7 @@ export function EnquiryForm() {
     <section
       id="contact-form"
       aria-labelledby="enquiry-form-heading"
-      className="py-24 md:py-36 bg-[var(--color-bg-primary)]"
+      className="scroll-mt-20 py-24 md:py-36 bg-[var(--color-bg-primary)]"
     >
       <div className="w-full mx-auto max-w-[90rem] px-5 sm:px-8 lg:px-16">
         <div className="grid grid-cols-1 lg:grid-cols-[1fr_2fr] gap-16 lg:gap-24">
