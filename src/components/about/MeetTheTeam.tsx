@@ -84,7 +84,7 @@ export function MeetTheTeam() {
                 'whitespace-pre-line',
               )}
             >
-              {'Guides who live\nwhat they lead'}
+              {'Two founders,\none company'}
             </motion.h2>
           </div>
 
@@ -101,13 +101,13 @@ export function MeetTheTeam() {
               'self-end',
             )}
           >
-            Our team is small by design. Every guide has been chosen not only for their field knowledge, but for the quality of attention they bring to every guest, every camp, and every encounter with the wild.
+            We are a team of two. You deal with us directly, from your first message to your return home.
           </motion.p>
         </div>
 
         {/* ── Team grid ────────────────────────────────────────── */}
         <div
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-px bg-[var(--color-border-light)]"
+          className="grid grid-cols-1 sm:grid-cols-2 gap-px max-w-4xl mx-auto bg-[var(--color-border-light)]"
           role="list"
           aria-label="Our team members"
         >

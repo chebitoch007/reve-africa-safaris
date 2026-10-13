@@ -26,30 +26,39 @@ export function TeamCard({ member }: TeamCardProps) {
           Portrait ratio: 3:4 (portrait orientation).
       ────────────────────────────────────────────────────────── */}
       <div className="relative overflow-hidden shrink-0" style={{ aspectRatio: '3/4' }}>
-        <Image
-          src={member.imageSrc}
-          alt={member.imageAlt}
-          fill
-          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
-          className="object-cover object-top transition-transform duration-[700ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-105"
-        />
-
-        {/* Origin tag — overlaid bottom-left */}
-        <div className="absolute bottom-4 left-4 flex items-center gap-2">
-          <MapPin
-            size={11}
-            strokeWidth={1.5}
-            className="text-[var(--color-accent-light)] shrink-0"
+        {member.imageSrc ? (
+          <Image
+            src={member.imageSrc}
+            alt={member.imageAlt ?? ''}
+            fill
+            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+            className="object-cover object-top transition-transform duration-[700ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-105"
+          />
+        ) : (
+          <div
+            className="absolute inset-0 bg-linear-to-br from-[var(--color-acacia-600)] to-[var(--color-bg-dark)]"
             aria-hidden="true"
           />
-          <span className={cn(
-            'font-[var(--font-inter)] font-medium uppercase',
-            'text-[9px] tracking-[0.22em] leading-none',
-            'text-[var(--color-chalk-300)]',
-          )}>
-            {member.origin}
-          </span>
-        </div>
+        )}
+
+        {/* Origin tag — overlaid bottom-left */}
+        {member.origin && (
+          <div className="absolute bottom-4 left-4 flex items-center gap-2">
+            <MapPin
+              size={11}
+              strokeWidth={1.5}
+              className="text-[var(--color-accent-light)] shrink-0"
+              aria-hidden="true"
+            />
+            <span className={cn(
+              'font-[var(--font-inter)] font-medium uppercase',
+              'text-[9px] tracking-[0.22em] leading-none',
+              'text-[var(--color-chalk-300)]',
+            )}>
+              {member.origin}
+            </span>
+          </div>
+        )}
       </div>
 
       {/* ── Content ──────────────────────────────────────────── */}
@@ -85,25 +94,27 @@ export function TeamCard({ member }: TeamCardProps) {
         </p>
 
         {/* Expertise tags */}
-        <ul
-          className="flex flex-wrap gap-2"
-          aria-label={`${member.name}'s areas of expertise`}
-        >
-          {member.expertise.map((tag) => (
-            <li
-              key={tag}
-              className={cn(
-                'font-[var(--font-inter)] font-medium',
-                'text-[10px] uppercase tracking-[0.18em] leading-none',
-                'text-[var(--color-text-secondary)]',
-                'border border-[var(--color-border-light)]',
-                'px-3 py-1.5',
-              )}
-            >
-              {tag}
-            </li>
-          ))}
-        </ul>
+        {member.expertise && member.expertise.length > 0 && (
+          <ul
+            className="flex flex-wrap gap-2"
+            aria-label={`${member.name}'s areas of expertise`}
+          >
+            {member.expertise.map((tag) => (
+              <li
+                key={tag}
+                className={cn(
+                  'font-[var(--font-inter)] font-medium',
+                  'text-[10px] uppercase tracking-[0.18em] leading-none',
+                  'text-[var(--color-text-secondary)]',
+                  'border border-[var(--color-border-light)]',
+                  'px-3 py-1.5',
+                )}
+              >
+                {tag}
+              </li>
+            ))}
+          </ul>
+        )}
       </div>
     </article>
   );
