@@ -1,26 +1,67 @@
 # RÊVE AFRICA SAFARIS — Attribution Log
 
 > **Batch:** 1 (P0 LCP Images)
-> **Status:** Batch 1 table below is the original sourcing plan (historical). Image files for 64 slots are now committed and optimised — see "Phase 1 — Optimisation & Provenance Record" at the end. 14 slots are still empty placeholders.
-> **Last updated:** Phase 1 optimisation (`assets/phase-1-heroes`)
+> **Status:** The original Batch 1 sourcing table was replaced on 13 Oct 2026 by the Image Provenance Register below; no provenance is recorded for any file yet. See also the Phase 1 section near the end.
+> **Last updated:** 13 Oct 2026 (provenance register rebuilt; `docs/image-provenance`)
 
 ---
 
-## Batch 1 — P0 LCP Images
+## Owner statement, 13 Oct 2026 (unverified)
 
-| Asset ID | Filename | Target Path | Platform | Photographer | Source URL | Licence | Attribution Required | Status |
-|----------|----------|-------------|----------|--------------|------------|---------|---------------------|--------|
-| IMG-001 | img-001-maasai-mara-dawn-landscape.jpg | public/images/homepage/hero/ | Unsplash | TBD | TBD | Unsplash Licence | No | ⏳ Placeholder |
-| IMG-001 (copy) | img-001-maasai-mara-dawn-landscape.jpg | public/images/homepage/destinations-preview/ | Unsplash | TBD | TBD | Unsplash Licence | No | ⏳ Placeholder |
-| IMG-002 | img-002-serengeti-plains-landscape.jpg | public/images/homepage/destinations-preview/ | Unsplash | TBD | TBD | Unsplash Licence | No | ⏳ Placeholder |
-| IMG-004 | img-004-bwindi-rainforest-interior.jpg | public/images/homepage/destinations-preview/ | Unsplash | TBD | TBD | Unsplash Licence | No | ⏳ Placeholder |
-| IMG-005 | img-005-rwanda-volcanoes-mist.jpg | public/images/homepage/destinations-preview/ | Unsplash | TBD | TBD | Unsplash Licence | No | ⏳ Placeholder |
-| IMG-025 | img-025-safari-guide-field.jpg | public/images/about/hero/ | Unsplash | TBD | TBD | Unsplash Licence | No | ⏳ Placeholder |
-| IMG-013 | img-013-east-africa-aerial-wilderness.jpg | public/images/destinations/hero/ | Unsplash | TBD | TBD | Unsplash Licence | No | ⏳ Placeholder |
-| IMG-035 | img-035-game-drive-pov-dawn.jpg | public/images/packages/hero/ | Unsplash | TBD | TBD | Unsplash Licence | No | ⏳ Placeholder |
-| IMG-027 | img-027-safari-photographer-golden-hour.jpg | public/images/gallery/hero/ | Unsplash | TBD | TBD | Unsplash Licence | No | ⏳ Placeholder |
-| IMG-036 | img-036-safari-planning-desk.jpg | public/images/blog/hero/ | Unsplash | TBD | TBD | Unsplash Licence | No | ⏳ Placeholder |
-| IMG-036 (copy) | img-036-safari-planning-desk.jpg | public/images/contact/hero/ | Unsplash | TBD | TBD | Unsplash Licence | No | ⏳ Placeholder |
+The Owner stated that real photographs were obtained from Unsplash and Pexels using the free-licence filters, and that AI images were generated with ChatGPT and depict places only (no animals, no people). No per-image records exist yet. This statement has not been verified and applies to the batch as a whole, not to any individual file.
+
+## Image Provenance Register
+
+One row per image ID (40 IDs covering 78 files). **UNKNOWN means "not yet recorded", not "approved".** No row here has been checked for source, creator, licence or release status.
+
+Notes:
+
+- The ID is the `img-NNN` part of the filename. The same ID can cover several files that are different crops or sizes (different content hashes), and it has not been checked whether they all show the same photograph.
+- Per-file detail (path, SHA-256, dimensions, size, flags) is in [`IMAGE_INVENTORY.csv`](./IMAGE_INVENTORY.csv).
+- This table replaces the original Batch 1 sourcing-plan table (Unsplash / TBD / Placeholder), which did not record real provenance.
+
+| Image ID | Files | Distinct content hashes | Empty files | source_type | source_url | creator | licence | ai_tool | ai_prompt | release_status |
+|---|---|---|---|---|---|---|---|---|---|---|
+| img-001 | 4 | 2 | 0 | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN |
+| img-002 | 3 | 1 | 1 | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN |
+| img-003 | 3 | 1 | 0 | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN |
+| img-004 | 3 | 1 | 1 | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN |
+| img-005 | 3 | 2 | 0 | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN |
+| img-006 | 4 | 2 | 0 | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN |
+| img-007 | 2 | 2 | 0 | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN |
+| img-008 | 2 | 1 | 0 | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN |
+| img-009 | 2 | 2 | 0 | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN |
+| img-010 | 1 | 1 | 0 | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN |
+| img-011 | 1 | 1 | 0 | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN |
+| img-012 | 3 | 1 | 0 | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN |
+| img-013 | 1 | 1 | 0 | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN |
+| img-014 | 4 | 3 | 0 | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN |
+| img-015 | 5 | 5 | 0 | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN |
+| img-016 | 1 | 1 | 0 | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN |
+| img-017 | 3 | 3 | 0 | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN |
+| img-018 | 1 | 1 | 0 | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN |
+| img-019 | 2 | 1 | 0 | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN |
+| img-020 | 2 | 2 | 0 | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN |
+| img-021 | 2 | 2 | 0 | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN |
+| img-022 | 2 | 2 | 0 | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN |
+| img-023 | 1 | 1 | 0 | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN |
+| img-024 | 3 | 0 | 3 | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN |
+| img-025 | 2 | 1 | 1 | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN |
+| img-026 | 1 | 0 | 1 | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN |
+| img-027 | 1 | 1 | 0 | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN |
+| img-029 | 1 | 1 | 0 | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN |
+| img-030 | 1 | 1 | 0 | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN |
+| img-031 | 2 | 1 | 1 | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN |
+| img-032 | 1 | 0 | 1 | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN |
+| img-033 | 1 | 1 | 0 | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN |
+| img-034 | 1 | 0 | 1 | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN |
+| img-035 | 1 | 1 | 0 | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN |
+| img-036 | 2 | 2 | 0 | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN |
+| img-037 | 1 | 0 | 1 | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN |
+| img-038 | 1 | 0 | 1 | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN |
+| img-039 | 1 | 0 | 1 | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN |
+| img-040 | 1 | 0 | 1 | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN |
+| img-041 | 2 | 1 | 0 | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN |
 
 ---
 
