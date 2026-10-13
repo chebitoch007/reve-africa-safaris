@@ -51,13 +51,12 @@ export const ALL_PACKAGES: PackageData[] = [
     region:          'Maasai Mara',
     description:     'Witness the Great Migration at its most dramatic — millions of wildebeest crossing the Mara River in an ancient spectacle of survival.',
     highlights:      ['Private game drives', 'River crossing viewpoints', 'Luxury tented camp', 'Maasai cultural visit'],
-    startingFrom:    'From USD 6,500 per person',
+    startingFrom:    'Price on request',
     href:            '/contact',
     imageSrc:        '/images/homepage/packages/img-014-wildebeest-mara-crossing.jpg',
     imageAlt:        'Wildebeest crossing the Mara River during the Great Migration, Kenya',
     placeholderFrom: '#9E8B4D',
     placeholderTo:   '#363B2D',
-    badge:           'Most Popular',
   },
   {
     id:              'serengeti-secrets',
@@ -67,7 +66,7 @@ export const ALL_PACKAGES: PackageData[] = [
     region:          'Serengeti & Ngorongoro',
     description:     'Journey across the endless Serengeti plains and descend into the ancient Ngorongoro Crater — one of Africa\'s great wildlife arenas.',
     highlights:      ['Hot air balloon safari', 'Crater floor game drive', 'Mobile camp experience', 'Olduvai Gorge visit'],
-    startingFrom:    'From USD 8,200 per person',
+    startingFrom:    'Price on request',
     href:            '/contact',
     imageSrc:        '/images/homepage/packages/img-003-balloon-serengeti-dawn.jpg',
     imageAlt:        'Hot air balloon at dawn over the Serengeti plains, Tanzania',
@@ -82,7 +81,7 @@ export const ALL_PACKAGES: PackageData[] = [
     region:          'Volcanoes & Bwindi',
     description:     'A rare encounter with mountain gorillas across two countries — trekking through ancient forest to meet our closest relatives face to face.',
     highlights:      ['Mountain gorilla tracking', 'Golden monkey trek', 'Luxury forest lodge', 'Conservation briefing'],
-    startingFrom:    'From USD 7,800 per person',
+    startingFrom:    'Price on request',
     href:            '/contact',
     imageSrc:        '/images/homepage/packages/img-015-mountain-gorilla-silverback.jpg',
     imageAlt:        'Mountain gorilla in Volcanoes National Park, Rwanda',
@@ -97,13 +96,12 @@ export const ALL_PACKAGES: PackageData[] = [
     region:          'Okavango & Chobe',
     description:     'The Okavango Delta by mokoro canoe, Chobe\'s legendary elephant herds by boat, and the silence of the Kalahari under a vast night sky.',
     highlights:      ['Okavango mokoro excursions', 'Chobe river safaris', 'Private island camp', 'Kalahari night drives'],
-    startingFrom:    'From USD 10,500 per person',
+    startingFrom:    'Price on request',
     href:            '/contact',
     imageSrc:        '/images/homepage/packages/img-018-chobe-elephants-river.jpg',
     imageAlt:        'Elephant herd on the Chobe River, Botswana',
     placeholderFrom: '#B8A44A',
     placeholderTo:   '#4A3F1E',
-    badge:           'Exclusive',
   },
   {
     id:              'east-africa-grand',
@@ -113,7 +111,7 @@ export const ALL_PACKAGES: PackageData[] = [
     region:          'Multi-destination',
     description:     'The definitive East African journey — Amboseli\'s elephants, the Mara at peak migration, Serengeti\'s endless plains, and Ngorongoro\'s ancient crater.',
     highlights:      ['Amboseli elephant herds', 'Mara river crossings', 'Serengeti balloon flight', 'Ngorongoro crater descent'],
-    startingFrom:    'From USD 13,500 per person',
+    startingFrom:    'Price on request',
     href:            '/contact',
     imageSrc:        '/images/homepage/packages/img-017-elephant-amboseli-kilimanjaro.jpg',
     imageAlt:        'Elephant herd in Amboseli with Mount Kilimanjaro, Kenya',
@@ -128,7 +126,7 @@ export const ALL_PACKAGES: PackageData[] = [
     region:          'Namib & Etosha',
     description:     'The world\'s oldest desert, towering red dunes at Sossusvlei, desert-adapted wildlife in Damaraland, and the wildlife theatre of Etosha.',
     highlights:      ['Sossusvlei dune walks at dawn', 'Desert-adapted elephant tracking', 'Etosha waterhole game drives', 'Skeleton Coast flyover'],
-    startingFrom:    'From USD 7,200 per person',
+    startingFrom:    'Price on request',
     href:            '/contact',
     imageSrc:        '/images/homepage/packages/img-007-sossusvlei-dunes-namibia.jpg',
     imageAlt:        'The iconic red dunes of Sossusvlei at dawn, Namibia',
@@ -138,9 +136,9 @@ export const ALL_PACKAGES: PackageData[] = [
 ] as const;
 
 export const ALL_PACKAGES_SECTION = {
-  eyebrow:  'Our Journeys',
-  headline: 'Six curated\nSafari journeys',
-  body:     'Each itinerary below is a proven journey — tested, refined, and loved. Every one can be adjusted, extended, or combined with other destinations to create your perfect trip.',
+  eyebrow:  'Sample Journeys',
+  headline: 'Six sample\nsafari journeys',
+  body:     'Each itinerary below is a sample journey: a starting point that we adjust, extend or combine with other destinations to create your perfect trip.',
 } as const;
 
 // ─────────────────────────────────────────────
@@ -174,7 +172,7 @@ export const JOURNEY_CATEGORIES: JourneyCategory[] = [
     id:          'gorilla',
     icon:        'TreePine',
     title:       'Gorilla Trekking',
-    description: 'Rare mountain gorilla encounters in Rwanda and Uganda. Permit allocation and specialist guide included.',
+    description: 'Rare mountain gorilla encounters in Rwanda and Uganda. Permit allocation and a guide included.',
     href:        '/contact',
   },
   {
@@ -188,7 +186,7 @@ export const JOURNEY_CATEGORIES: JourneyCategory[] = [
     id:          'photography',
     icon:        'Camera',
     title:       'Photography Expedition',
-    description: 'Extended game drives in optimal light, specialist photographic guides, and exclusive access to the best positions.',
+    description: 'Extended game drives in optimal light, with a focus on photography.',
     href:        '/contact',
   },
   {
@@ -217,7 +215,7 @@ export const JOURNEY_CATEGORIES: JourneyCategory[] = [
 export const CATEGORIES_SECTION = {
   eyebrow:  'Journey Types',
   headline: 'A journey for\nevery kind of\ntraveller',
-  body:     'Whatever brings you to Africa — a lifelong dream, a milestone anniversary, or sheer curiosity — we have designed journeys that speak to it.',
+  body:     'Whatever brings you to Africa — a lifelong dream, a milestone anniversary, or sheer curiosity — we can design a journey that speaks to it.',
 } as const;
 
 // ─────────────────────────────────────────────
@@ -225,7 +223,7 @@ export const CATEGORIES_SECTION = {
 // ─────────────────────────────────────────────
 
 export const SIGNATURE_ITINERARY = {
-  eyebrow:      'Signature Journey',
+  eyebrow:      'Sample Journey',
   label:        'The East Africa Grand Tour',
   duration:     '14 Days',
   countries:    'Kenya & Tanzania',
@@ -280,7 +278,7 @@ export const INCLUSIONS: InclusionItem[] = [
   {
     id:          'accommodation',
     title:       'Luxury Accommodation',
-    description: 'All nights in hand-selected lodges and camps. Every property is personally vetted by our team.',
+    description: 'Nights in lodges and camps chosen for location, design, hospitality and how they treat people and wildlife.',
     included:    true,
   },
   {
@@ -291,14 +289,14 @@ export const INCLUSIONS: InclusionItem[] = [
   },
   {
     id:          'guiding',
-    title:       'Expert Guiding',
-    description: 'A dedicated safari guide throughout, supplemented by specialist naturalists in key areas.',
+    title:       'Guiding',
+    description: 'A safari guide throughout.',
     included:    true,
   },
   {
     id:          'game-drives',
     title:       'All Game Activities',
-    description: 'Twice-daily game drives in private vehicles, plus all walking safaris, boat trips, and specialist activities.',
+    description: 'Twice-daily game drives in private vehicles, plus walking safaris and boat trips where the itinerary includes them.',
     included:    true,
   },
   {
@@ -328,9 +326,9 @@ export const INCLUSIONS: InclusionItem[] = [
 ] as const;
 
 export const INCLUSIONS_SECTION = {
-  eyebrow:  'What\'s Included',
+  eyebrow:  'What a journey like this typically includes',
   headline: 'Everything you\nneed — nothing\nyou don\'t',
-  body:     'Our journey prices are designed to be genuinely all-inclusive within Africa. The only additions are international flights and visa fees.',
+  body:     'Your written quote confirms exact inclusions. International flights and visa fees are normally additional.',
 } as const;
 
 // ─────────────────────────────────────────────
@@ -340,7 +338,7 @@ export const INCLUSIONS_SECTION = {
 export const BESPOKE_SECTION = {
   eyebrow:  'Bespoke Planning',
   headline: 'Nothing in our\ncatalogue feels\nquite right?',
-  body:     'Our catalogue represents journeys we believe in — but it is not exhaustive. We have designed journeys for single travellers, multi-generational families of twenty, professional photographers, wildlife researchers, and people celebrating every kind of occasion. If you have a vision, bring it to us.',
+  body:     'These sample journeys are starting points, not an exhaustive catalogue. If you have a vision, bring it to us.',
   steps: [
     {
       id:          'step-1',
@@ -352,19 +350,19 @@ export const BESPOKE_SECTION = {
       id:          'step-2',
       number:      '02',
       title:       'We design',
-      description: 'Within 48 hours, a dedicated specialist will draft a bespoke itinerary — with options, alternatives, and an honest assessment of the best time to travel.',
+      description: 'We draft a bespoke itinerary with options, alternatives, and an honest assessment of the best time to travel.',
     },
     {
       id:          'step-3',
       number:      '03',
       title:       'We refine together',
-      description: 'We iterate until every detail is exactly right. Most itineraries take two to three rounds of refinement. There is no pressure and no obligation.',
+      description: 'We iterate until every detail is exactly right. There is no pressure and no obligation.',
     },
     {
       id:          'step-4',
       number:      '04',
       title:       'We take care of everything',
-      description: 'From permits and park bookings to private aircraft and lodge arrangements — every detail is managed by us, so you simply arrive and experience.',
+      description: 'From permits and park bookings to flights and lodge arrangements, we arrange the details so you can simply arrive and experience.',
     },
   ],
   cta: { label: 'Begin Planning', href: '/contact' },
@@ -389,30 +387,30 @@ export const PACKAGES_FAQ_ITEMS: PackagesFAQItem[] = [
   {
     id:       'pfaq-2',
     question: 'Are the prices per person or per journey?',
-    answer:   'All prices shown are per person, based on double occupancy. Single supplement applies for solo travellers. Prices include everything within Africa as described under "What\'s Included" — accommodation, all meals, game activities, internal flights, and park fees. International flights are additional.',
+    answer:   'We quote per person on a double-occupancy basis unless you tell us otherwise. Your written quote lists exactly what is included.',
   },
   {
     id:       'pfaq-3',
     question: 'Can the itineraries be modified?',
-    answer:   'Every itinerary is a starting point. We can extend any journey, swap destinations, adjust the pace, add a beach extension, or combine two itineraries into one longer trip. Our specialists will work with you until the journey matches exactly what you\'re looking for.',
+    answer:   'Every itinerary is a starting point. We can extend any journey, swap destinations, adjust the pace, add a beach extension, or combine two itineraries into one longer trip. We will work with you until the journey matches exactly what you\'re looking for.',
   },
   {
     id:       'pfaq-4',
     question: 'What is the minimum group size?',
-    answer:   'There is no minimum. We regularly design journeys for solo travellers, couples, and small families. For private vehicles and exclusive access, two or more guests are ideal but not required. Larger groups can be accommodated with advance planning.',
+    answer:   'There is no minimum. We design journeys for solo travellers, couples, and small families. For private vehicles and exclusive access, two or more guests are ideal but not required. Larger groups can be accommodated with advance planning.',
   },
   {
     id:       'pfaq-5',
     question: 'Are children welcome on safari?',
-    answer:   'Absolutely — and we design wonderful family safaris. Most properties we work with accommodate children from five years old; some from birth in family suites. We build in age-appropriate activities and ensure pace is comfortable for younger guests. Please let us know children\'s ages when enquiring.',
+    answer:   'Absolutely, and we design family safaris. We build in age-appropriate activities and ensure the pace is comfortable for younger guests. Please let us know children\'s ages when enquiring.',
   },
 ] as const;
 
 export const PACKAGES_FAQ_SECTION = {
   eyebrow:  'Journey Questions',
   headline: 'Everything you\nneed to know\nbefore you go',
-  body:     'Our specialists are available to answer any question not covered here.',
-  cta:      { label: 'Ask a Specialist', href: '/contact' },
+  body:     'We are happy to answer any question not covered here.',
+  cta:      { label: 'Ask Us', href: '/contact' },
 } as const;
 
 // ─────────────────────────────────────────────
@@ -425,7 +423,7 @@ export const PACKAGES_CTA = {
   body:         'Every journey begins with a single conversation. Tell us your vision — we will take care of the rest.',
   primaryCTA:   { label: 'Plan My Safari',       href: '/contact' },
   secondaryCTA: { label: 'View Destinations',    href: '/destinations' },
-  detail:       'No deposit required to begin planning. A specialist responds within 24 hours.',
+  detail:       'No deposit required to begin planning. One of us responds within 24 hours.',
 } as const;
 
 // ─────────────────────────────────────────────
@@ -437,7 +435,7 @@ export interface AccommodationStandard {
   tier:        string;
   title:       string;
   description: string;
-  examples:    readonly string[];
+  examples?:   readonly string[];
   imageSrc:    string;
   imageAlt:    string;
   placeholderFrom: string;
@@ -449,8 +447,7 @@ export const ACCOMMODATION_STANDARDS: AccommodationStandard[] = [
     id:              'classic-luxury',
     tier:            'Classic Luxury',
     title:           'Established camps & lodges',
-    description:     'The gold standard of safari accommodation — permanent tented camps and stone lodges with ensuite bathrooms, quality linens, and guiding teams who know every inch of their territory.',
-    examples:        ['Angama Mara, Kenya', 'Singita Grumeti, Tanzania', 'Mombo Camp, Botswana'],
+    description:     'Permanent tented camps and stone lodges with ensuite bathrooms and quality linens.',
     imageSrc:        '/images/packages/accommodation/img-029-luxury-tent-interior.jpg',
     imageAlt:        'Interior of a luxury safari tent with views of the African bush',
     placeholderFrom: '#9E8B4D',
@@ -460,8 +457,7 @@ export const ACCOMMODATION_STANDARDS: AccommodationStandard[] = [
     id:              'private-exclusive',
     tier:            'Private & Exclusive',
     title:           'Private houses & exclusive-use camps',
-    description:     'Entire properties reserved for your group alone. A dedicated team, a vehicle, and a piece of Africa that belongs, briefly, entirely to you.',
-    examples:        ['Mahali Mzuri, Kenya', 'Roho ya Selous, Tanzania', 'Duba Plains Camp, Botswana'],
+    description:     'Entire properties reserved for your group alone, and a piece of Africa that belongs, briefly, entirely to you.',
     imageSrc:        '/images/packages/accommodation/img-030-private-camp-deck-view.jpg',
     imageAlt:        'Private camp deck overlooking the African wilderness at sunset',
     placeholderFrom: '#B8A44A',
@@ -472,7 +468,6 @@ export const ACCOMMODATION_STANDARDS: AccommodationStandard[] = [
     tier:            'Mobile & Expedition',
     title:           'Mobile camps that follow the action',
     description:     'Repositioned seasonally to keep guests at the heart of wildlife events. Lightweight luxury — the essence of safari without compromise on comfort.',
-    examples:        ['Serengeti Under Canvas', 'Ol Donyo Walking Camp', 'Makgadikgadi Migration Camp'],
     imageSrc:        '/images/packages/accommodation/img-031-mobile-expedition-camp.jpg',
     imageAlt:        'Mobile expedition camp on the Serengeti plains during the migration',
     placeholderFrom: '#627A53',
@@ -482,6 +477,6 @@ export const ACCOMMODATION_STANDARDS: AccommodationStandard[] = [
 
 export const ACCOMMODATION_SECTION = {
   eyebrow:  'Where You Stay',
-  headline: 'Three tiers of\nluxury — all\nexceptional',
-  body:     'Every property we place guests in has been personally assessed by our team. We look beyond star ratings to judge what matters: guiding excellence, ecological sensitivity, food quality, and — above all — location.',
+  headline: 'Three tiers of\nluxury',
+  body:     'When we choose lodges and camps, we look at location, design, hospitality and how they treat people and wildlife.',
 } as const;

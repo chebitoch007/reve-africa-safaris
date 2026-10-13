@@ -32,8 +32,8 @@ import { PackagesCTA }                  from '@/components/packages/PackagesCTA'
 import { PACKAGES_FAQ_ITEMS }           from '@/lib/constants/packages';
 
 export const metadata: Metadata = buildPageMetadata({
-  title:       'Safari Packages — Curated Luxury Journeys Across Africa',
-  description: 'Discover six curated safari journeys across Kenya, Tanzania, Rwanda, Uganda, Botswana, and Namibia. Every itinerary is a starting point — refined through conversation until it becomes uniquely yours.',
+  title:       'Sample Safari Journeys Across East & Southern Africa',
+  description: 'Six sample safari journeys across Kenya, Tanzania, Rwanda, Uganda, Botswana, and Namibia. Every itinerary is a starting point, refined through conversation until it becomes uniquely yours.',
   path:        '/packages',
 });
 

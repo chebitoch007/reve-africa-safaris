@@ -164,28 +164,30 @@ export function AccommodationStandards() {
                 </p>
 
                 {/* Example properties */}
-                <div>
-                  <p className={cn(
-                    'font-[var(--font-inter)] font-medium uppercase',
-                    'text-[9px] tracking-[0.22em] leading-none',
-                    'text-[var(--color-text-muted)] mb-3',
-                  )}>
-                    Examples
-                  </p>
-                  <ul className="flex flex-col gap-1.5" aria-label={`${standard.tier} example properties`}>
-                    {standard.examples.map((example) => (
-                      <li
-                        key={example}
-                        className={cn(
-                          'font-[var(--font-inter)] font-light text-sm italic',
-                          'text-[var(--color-text-secondary)]',
-                        )}
-                      >
-                        {example}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
+                {standard.examples && standard.examples.length > 0 && (
+                  <div>
+                    <p className={cn(
+                      'font-[var(--font-inter)] font-medium uppercase',
+                      'text-[9px] tracking-[0.22em] leading-none',
+                      'text-[var(--color-text-muted)] mb-3',
+                    )}>
+                      Examples
+                    </p>
+                    <ul className="flex flex-col gap-1.5" aria-label={`${standard.tier} example properties`}>
+                      {standard.examples.map((example) => (
+                        <li
+                          key={example}
+                          className={cn(
+                            'font-[var(--font-inter)] font-light text-sm italic',
+                            'text-[var(--color-text-secondary)]',
+                          )}
+                        >
+                          {example}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
               </div>
             </motion.article>
           ))}
