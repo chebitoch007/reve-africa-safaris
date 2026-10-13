@@ -9,7 +9,6 @@
  *  2. GalleryIntro         — two-column philosophy intro
  *  3. GalleryGrid          — masonry-style full photo grid (main content)
  *  4. BehindTheLens        — photographer notes / editorial vignettes
- *  5. ConservationNote     — photography ethics & conservation context
  *  6. GalleryCategories    — filter categories (visual only, no JS filter)
  *  7. GalleryFAQ           — accordion FAQ
  *  8. GalleryCTA           — closing call to action
@@ -322,25 +321,6 @@ export const BEHIND_LENS_SECTION = {
   eyebrow:  'From Our Guides',
   headline: 'Behind the\nframe',
   body:     'Our guides carry cameras because they care about what they see. These are their words.',
-} as const;
-
-// ─────────────────────────────────────────────
-// 5. Conservation Note
-// ─────────────────────────────────────────────
-
-export const CONSERVATION_NOTE = {
-  eyebrow:  'Photography & Ethics',
-  headline: 'Images with\nresponsibility',
-  body: [
-    'Every photograph taken in our company follows a strict code of conduct. We never alter animal behaviour for a shot, never approach closer than is comfortable for the subject, and never stay longer than the animal tolerates.',
-    'We believe that responsible photography is conservation photography. When guests leave with images they love, they become ambassadors for the places and animals they photographed.',
-  ],
-  principles: [
-    { id: 'p1', label: 'No baiting',         note: 'Animals are never attracted to positions for photographic advantage.' },
-    { id: 'p2', label: 'Distance respected', note: 'All standard buffer distances are observed at all times.' },
-    { id: 'p3', label: 'Minimal impact',     note: 'Vehicle positioning always prioritises animal comfort over composition.' },
-    { id: 'p4', label: 'No flash',           note: 'Artificial light that could disturb animals is never used in the field.' },
-  ],
 } as const;
 
 // ─────────────────────────────────────────────

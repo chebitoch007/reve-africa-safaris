@@ -332,84 +332,27 @@ export const TRUST_PILLARS: TrustPillar[] = [
   {
     id:          'bespoke',
     icon:        'Compass',
-    title:       'Tailor-made Itineraries',
-    description: 'Every journey is designed from scratch around your interests, travel style, and budget. No two safaris are ever the same.',
+    title:       'Designed around you',
+    description: 'Every journey is planned from scratch around your interests, travel style and budget.',
   },
   {
-    id:          'accommodation',
+    id:          'founders',
+    icon:        'Star',
+    title:       'Direct access to the founders',
+    description: 'You deal with the two of us, from your first message to your return home.',
+  },
+  {
+    id:          'partners',
     icon:        'Gem',
-    title:       'Handpicked Lodges',
-    description: 'We partner exclusively with lodges and camps that meet our exacting standards — for location, design, hospitality, and conservation.',
-  },
-  {
-    id:          'guides',
-    icon:        'Binoculars',
-    title:       'Expert Local Guides',
-    description: 'Our guides are among the finest in Africa — deeply knowledgeable, passionate, and dedicated to delivering transformative experiences.',
-  },
-  {
-    id:          'sustainability',
-    icon:        'Leaf',
-    title:       'Sustainable Tourism',
-    description: 'We are committed to low-impact travel, conservation partnerships, and ensuring that tourism benefits the communities around the parks.',
-  },
-  {
-    id:          'support',
-    icon:        'Shield',
-    title:       '24/7 In-Journey Support',
-    description: 'From the moment you depart to the moment you return, our team is available around the clock to ensure everything runs perfectly.',
+    title:       'Careful partner selection',
+    description: 'When we choose lodges and camps, we look at location, design, hospitality and how they treat people and wildlife.',
   },
 ];
 
 export const WHY_US_SECTION = {
   eyebrow:  'Why Rêve Africa',
   headline: 'Every detail\nconsidered',
-  body:     'We are not a booking platform. We are safari specialists — and everything we do reflects that commitment.',
-} as const;
-
-// ─────────────────────────────────────────────
-// Testimonials
-// ─────────────────────────────────────────────
-
-export interface TestimonialData {
-  id:       string;
-  quote:    string;
-  author:   string;
-  location: string;
-  journey:  string;
-  rating:   number;
-}
-
-export const TESTIMONIALS: TestimonialData[] = [
-  {
-    id:       'testimonial-1',
-    quote:    'Rêve Africa designed a journey that exceeded every expectation. From the moment we landed to our final sundowner in the Mara, every detail was perfect. This is how safari should be experienced.',
-    author:   'Catherine W.',
-    location: 'London, United Kingdom',
-    journey:  'Mara Migration Safari, Kenya',
-    rating:   5,
-  },
-  {
-    id:       'testimonial-2',
-    quote:    'We have travelled extensively across Africa, but nothing compared to our gorilla trekking experience in Rwanda. The guides\' knowledge was extraordinary. We will absolutely return.',
-    author:   'James & Patricia R.',
-    location: 'New York, United States',
-    journey:  'Gorilla Highlands, Rwanda & Uganda',
-    rating:   5,
-  },
-  {
-    id:       'testimonial-3',
-    quote:    'Planning a safari with three children felt daunting. The Rêve Africa team made every concern disappear. Our family came home transformed. It is, without question, the best holiday we have ever taken.',
-    author:   'The Henderson Family',
-    location: 'Sydney, Australia',
-    journey:  'Family Adventure, Tanzania',
-    rating:   5,
-  },
-];
-
-export const TESTIMONIALS_SECTION = {
-  eyebrow:  'Guest Experiences',
-  headline: 'Words from\nour travellers',
+  body:     'We are not a booking platform.',
 } as const;
 
 // ─────────────────────────────────────────────

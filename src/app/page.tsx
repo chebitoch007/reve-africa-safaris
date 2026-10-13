@@ -10,7 +10,6 @@
  *   4.  ExperiencesSection   — Six core travel experience types
  *   5.  PackagesSection      — Three featured safari packages
  *   6.  WhyUsSection         — Six trust pillars (dark surface)
- *   8.  TestimonialsSection  — Placeholder guest testimonials
  *   9.  GalleryPreview       — Photography placeholder grid
  *   10. FAQSection           — Six accordion FAQ items
  *   11. FinalCTA             — Closing call to action
@@ -25,7 +24,6 @@ import { DestinationsPreview }    from '@/components/home/DestinationsPreview';
 import { ExperiencesSection }     from '@/components/home/ExperiencesSection';
 import { PackagesSection }        from '@/components/home/PackagesSection';
 import { WhyUsSection }           from '@/components/home/WhyUsSection';
-import { TestimonialsSection }    from '@/components/home/TestimonialsSection';
 import { GalleryPreview }         from '@/components/home/GalleryPreview';
 import { FAQSection }             from '@/components/home/FAQSection';
 import { FinalCTA }               from '@/components/home/FinalCTA';
@@ -47,7 +45,6 @@ export default function HomePage() {
       <ExperiencesSection />
       <PackagesSection />
       <WhyUsSection />
-      <TestimonialsSection />
       <GalleryPreview />
       <FAQSection />
       <FinalCTA />

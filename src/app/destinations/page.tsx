@@ -10,7 +10,6 @@
  *   4. WildlifeHighlights     — bg-dune     — warm organic
  *   5. SignatureExperiences   — bg-primary  — curated experiences
  *   6. BestTimeToVisit        — bg-inverse  — dark, authoritative
- *   7. FeaturedLodges         — bg-secondary — lodge previews
  *   8. MapPlaceholder         — bg-muted    — architecture-only map
  *   9. DestinationsFAQ        — bg-primary  — accordion FAQ
  *  10. DestinationsCTA        — bg-deep     — dramatic close
@@ -25,7 +24,6 @@ import { CountryShowcase }              from '@/components/destinations/CountryS
 import { WildlifeHighlights }           from '@/components/destinations/WildlifeHighlights';
 import { SignatureExperiences }         from '@/components/destinations/SignatureExperiences';
 import { BestTimeToVisit }              from '@/components/destinations/BestTimeToVisit';
-import { FeaturedLodges }               from '@/components/destinations/FeaturedLodges';
 import { MapPlaceholder }               from '@/components/destinations/MapPlaceholder';
 import { DestinationsFAQ }             from '@/components/destinations/DestinationsFAQ';
 import { DestinationsCTA }             from '@/components/destinations/DestinationsCTA';
@@ -47,7 +45,6 @@ export default function DestinationsPage() {
       <WildlifeHighlights />
       <SignatureExperiences />
       <BestTimeToVisit />
-      <FeaturedLodges />
       <MapPlaceholder />
       <DestinationsFAQ />
       <DestinationsCTA />
