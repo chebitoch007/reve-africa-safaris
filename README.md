@@ -307,6 +307,10 @@ Additional planning and production documentation lives in the [`docs/`](./docs/)
 
 ---
 
+## Content truth policy
+
+Rêve Africa Safaris is a new company with two founders and has not yet operated a trip. Content is truthful by design: invented claims (history, team, statistics, testimonials, impact figures, lodges, prices) must never be re-added without evidence. See [`docs/TRUTH_AUDIT.md`](./docs/TRUTH_AUDIT.md).
+
 ## License
 
 Proprietary. All rights reserved — Rêve Africa Safaris.

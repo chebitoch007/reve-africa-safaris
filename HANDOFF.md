@@ -1145,3 +1145,8 @@ The following items cannot be completed without external assets or decisions —
 - ✅ Self-hosted fonts, no external CDN dependencies
 - ✅ Production README
 - ✅ Complete HANDOFF documentation
+
+
+## Content truth policy (added 13 Oct 2026)
+
+Rêve Africa Safaris is a **new company with two founders** (Eliphaz Chebitoch and Purity Langat) and has not yet operated a trip. Site content is truthful by design: do **not** re-add invented history, staff, credentials, statistics, testimonials, impact figures, lodges or published prices without evidence. See `docs/TRUTH_AUDIT.md` for what was removed and what still needs Owner confirmation.
