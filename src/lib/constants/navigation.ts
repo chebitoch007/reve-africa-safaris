@@ -59,14 +59,12 @@ export const FOOTER_DESTINATIONS: NavLink[] = [
 export const FOOTER_EXPLORE: NavLink[] = [
   { label: 'All Journeys',      href: '/packages' },
   { label: 'Experiences',       href: '/destinations#signature-experiences' },
-  { label: 'Conservation',      href: '/about#conservation' },
   { label: 'Safari Planning',   href: '/contact#contact-form' },
 ];
 
 export const FOOTER_COMPANY: NavLink[] = [
   { label: 'About Us',          href: '/about' },
   { label: 'Our Philosophy',    href: '/about#our-approach' },
-  { label: 'Sustainability',    href: '/about#conservation' },
   { label: 'Contact',           href: '/contact' },
 ];
 
