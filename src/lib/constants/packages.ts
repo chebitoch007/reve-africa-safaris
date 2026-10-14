@@ -423,7 +423,7 @@ export const PACKAGES_CTA = {
   body:         'Every journey begins with a single conversation. Tell us your vision — we will take care of the rest.',
   primaryCTA:   { label: 'Plan My Safari',       href: '/contact' },
   secondaryCTA: { label: 'View Destinations',    href: '/destinations' },
-  detail:       'No deposit required to begin planning. One of us responds within 24 hours.',
+  detail:       'No deposit required to begin planning. One of us responds within 24 hours.', // [OWNER-CONFIRM]: 24-hour response promise
 } as const;
 
 // ─────────────────────────────────────────────

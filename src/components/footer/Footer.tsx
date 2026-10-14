@@ -30,6 +30,23 @@ import {
   SOCIAL_LINKS,
   type SocialLink,
 } from '@/lib/constants/navigation';
+import {
+  CONTACT_EMAIL,
+  CONTACT_EMAIL_HREF,
+  CONTACT_PHONE,
+  CONTACT_PHONE_HREF,
+} from '@/lib/constants/contact';
+
+const CONTACT_LINK_CLASS = cn(
+  'font-[var(--font-inter)] text-sm',
+  'text-[var(--color-text-inverse-muted)]',
+  'transition-colors duration-[250ms]',
+  'hover:text-[var(--color-text-inverse)]',
+  'focus-visible:outline-none focus-visible:ring-2',
+  'focus-visible:ring-[var(--color-accent-primary)]',
+  'focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--color-bg-inverse)]',
+  'rounded-[2px]',
+);
 
 // ─────────────────────────────────────────────
 // Social icons — inline SVG
@@ -109,39 +126,21 @@ export function Footer() {
               designed for those who seek the extraordinary.
             </p>
 
-            {/* Contact detail */}
-            <div className="flex flex-col gap-2">
-              <a
-                href="mailto:enquiries@reveafricasafaris.com"
-                className={cn(
-                  'font-[var(--font-inter)] text-sm',
-                  'text-[var(--color-text-inverse-muted)]',
-                  'transition-colors duration-[250ms]',
-                  'hover:text-[var(--color-text-inverse)]',
-                  'focus-visible:outline-none focus-visible:ring-2',
-                  'focus-visible:ring-[var(--color-accent-primary)]',
-                  'focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--color-bg-inverse)]',
-                  'rounded-[2px]',
+            {/* Contact detail: each link renders only when its value is set */}
+            {(CONTACT_EMAIL || CONTACT_PHONE) && (
+              <div className="flex flex-col gap-2">
+                {CONTACT_EMAIL && (
+                  <a href={CONTACT_EMAIL_HREF} className={CONTACT_LINK_CLASS}>
+                    {CONTACT_EMAIL}
+                  </a>
                 )}
-              >
-                enquiries@reveafricasafaris.com
-              </a>
-              <a
-                href="tel:+441234567890"
-                className={cn(
-                  'font-[var(--font-inter)] text-sm',
-                  'text-[var(--color-text-inverse-muted)]',
-                  'transition-colors duration-[250ms]',
-                  'hover:text-[var(--color-text-inverse)]',
-                  'focus-visible:outline-none focus-visible:ring-2',
-                  'focus-visible:ring-[var(--color-accent-primary)]',
-                  'focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--color-bg-inverse)]',
-                  'rounded-[2px]',
+                {CONTACT_PHONE && (
+                  <a href={CONTACT_PHONE_HREF} className={CONTACT_LINK_CLASS}>
+                    {CONTACT_PHONE}
+                  </a>
                 )}
-              >
-                +44 (0) 123 456 7890
-              </a>
-            </div>
+              </div>
+            )}
           </div>
 
           {/* ── Destinations column ──────────────── */}

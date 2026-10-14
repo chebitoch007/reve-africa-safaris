@@ -441,5 +441,5 @@ export const DESTINATIONS_CTA = {
   body:        'Every extraordinary African journey begins with a conversation. Share your destination, your timing, and your vision — we will design the rest.',
   primaryCTA:  { label: 'Begin Planning',      href: '/contact' },
   secondaryCTA:{ label: 'Browse Our Journeys', href: '/packages' },
-  detail:      'No obligation. One of us will respond within 24 hours.',
+  detail:      'No obligation. One of us will respond within 24 hours.', // [OWNER-CONFIRM]: 24-hour response promise
 } as const;

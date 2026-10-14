@@ -10,8 +10,8 @@
  * (which is bg-deep) and avoid deep→…→deep bookending. Warm amber glow
  * and dual CTA row consistent with all prior page CTAs.
  *
- * Both buttons are anchor links: primary scrolls to #contact-form,
- * secondary is a tel: link for immediate phone contact.
+ * The primary button scrolls to #contact-form. The secondary phone
+ * button renders only when CONTACT_PHONE is set in contact.ts.
  */
 
 import Link from 'next/link';
@@ -137,23 +137,25 @@ export function ContactCTA() {
             {CONTACT_CTA.primaryCTA.label}
           </Link>
 
-          <Link
-            href={CONTACT_CTA.secondaryCTA.href}
-            className={cn(
-              'inline-flex items-center justify-center',
-              'px-10 py-4 min-w-[11rem]',
-              'border border-[rgba(255,255,255,0.2)]',
-              'text-[var(--color-text-inverse)]',
-              'font-[var(--font-inter)] font-medium uppercase tracking-[0.18em] text-[11px]',
-              'transition-all duration-[300ms]',
-              'hover:border-[rgba(255,255,255,0.55)] hover:bg-[rgba(255,255,255,0.05)]',
-              'focus-visible:outline-none focus-visible:ring-2',
-              'focus-visible:ring-[var(--color-accent-primary)]',
-              'focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--color-bg-inverse)]',
-            )}
-          >
-            {CONTACT_CTA.secondaryCTA.label}
-          </Link>
+          {CONTACT_CTA.secondaryCTA && (
+            <Link
+              href={CONTACT_CTA.secondaryCTA.href}
+              className={cn(
+                'inline-flex items-center justify-center',
+                'px-10 py-4 min-w-[11rem]',
+                'border border-[rgba(255,255,255,0.2)]',
+                'text-[var(--color-text-inverse)]',
+                'font-[var(--font-inter)] font-medium uppercase tracking-[0.18em] text-[11px]',
+                'transition-all duration-[300ms]',
+                'hover:border-[rgba(255,255,255,0.55)] hover:bg-[rgba(255,255,255,0.05)]',
+                'focus-visible:outline-none focus-visible:ring-2',
+                'focus-visible:ring-[var(--color-accent-primary)]',
+                'focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--color-bg-inverse)]',
+              )}
+            >
+              {CONTACT_CTA.secondaryCTA.label}
+            </Link>
+          )}
         </motion.div>
 
         {/* Detail */}

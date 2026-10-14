@@ -490,7 +490,7 @@ export const FAQ_SECTION = {
 export const FINAL_CTA_CONTENT = {
   eyebrow:     'Your Safari Awaits',
   headline:    'Let\'s start\nplanning',
-  body:        'Share your dream and we\'ll do the rest. One of us will be in touch within 24 hours.',
+  body:        'Share your dream and we\'ll do the rest. One of us will be in touch within 24 hours.', // [OWNER-CONFIRM]: 24-hour response promise
   primaryCTA:  { label: 'Get in Touch',        href: '/contact' },
   secondaryCTA:{ label: 'Browse All Journeys', href: '/packages' },
   detail:      'No obligation. No hard sell. Just great safari planning.',

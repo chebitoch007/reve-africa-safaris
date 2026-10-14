@@ -15,6 +15,7 @@
  */
 
 import { SITE } from '@/lib/metadata';
+import { CONTACT_EMAIL, CONTACT_PHONE } from '@/lib/constants/contact';
 
 // ─────────────────────────────────────────────
 // Organization schema
@@ -37,7 +38,8 @@ function OrganizationSchema() {
     contactPoint: {
       '@type':        'ContactPoint',
       contactType:    'customer service',
-      email:          'hello@reveafricasafaris.com',
+      ...(CONTACT_EMAIL ? { email: CONTACT_EMAIL } : {}),
+      ...(CONTACT_PHONE ? { telephone: CONTACT_PHONE } : {}),
       areaServed:     'Worldwide',
       availableLanguage: ['English'],
     },

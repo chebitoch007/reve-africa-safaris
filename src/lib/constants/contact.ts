@@ -7,7 +7,7 @@
  * Page sections (7 total):
  *  1. ContactHero          — dark editorial hero
  *  2. ConciergeIntro       — bespoke service introduction
- *  3. ContactMethods       — phone, email, office, hours
+ *  3. ContactMethods       — email always; phone, WhatsApp, hours when set
  *  4. EnquiryForm          — luxury enquiry form (frontend only)
  *  6. ContactFAQ           — shared AccordionFAQ
  *  7. ContactCTA           — final CTA
@@ -38,7 +38,7 @@ export const CONCIERGE_INTRO = {
   commitment: {
     label: 'Our commitment',
     items: [
-      { id: 'c1', text: 'Response within 24 hours on business days' },
+      { id: 'c1', text: 'Response within 24 hours on business days' }, // [OWNER-CONFIRM]: 24-hour response promise
       { id: 'c2', text: 'Your enquiry is handled by one of us' },
       { id: 'c3', text: 'No obligation — every consultation is complimentary' },
       { id: 'c4', text: 'Complete discretion and data privacy' },
@@ -50,6 +50,32 @@ export const CONCIERGE_INTRO = {
 // 3. Contact Methods
 // ─────────────────────────────────────────────
 
+// OWNER-FILL pattern: each value below lives here, ONCE, as a string.
+// An empty string means "not set": nothing renders anywhere (contact
+// page, CTA button, footer, JSON-LD). Fill them in only with real,
+// confirmed values. See docs/OWNER_FILL_CHECKLIST.md.
+
+/** The real email address. Single source of truth for the whole site. */
+export const CONTACT_EMAIL = 'enquiries@reveafricasafaris.com';
+
+// [OWNER-FILL]: real phone number, international format, as it should display
+export const CONTACT_PHONE: string = '';
+
+// [OWNER-FILL]: real WhatsApp number, international format, as it should display
+export const CONTACT_WHATSAPP: string = '';
+
+// [OWNER-FILL]: real opening hours, as they should display
+export const CONTACT_HOURS: string = '';
+
+/** Keep digits (and a leading +) only, for tel: and wa.me URLs. */
+const toDialable = (value: string): string => value.replace(/[^\d+]/g, '');
+
+export const CONTACT_EMAIL_HREF: string = CONTACT_EMAIL ? `mailto:${CONTACT_EMAIL}` : '';
+export const CONTACT_PHONE_HREF: string = CONTACT_PHONE ? `tel:${toDialable(CONTACT_PHONE)}` : '';
+export const CONTACT_WHATSAPP_HREF: string = CONTACT_WHATSAPP
+  ? `https://wa.me/${toDialable(CONTACT_WHATSAPP).replace(/^\+/, '')}`
+  : '';
+
 export interface ContactMethod {
   id:       string;
   label:    string;
@@ -59,39 +85,44 @@ export interface ContactMethod {
   href?:    string;
 }
 
-export const CONTACT_METHODS: ContactMethod[] = [
+const ALL_CONTACT_METHODS: ContactMethod[] = [
   {
     id:     'cm-1',
     label:  'Telephone',
-    value:  '+254 700 000 000',
-    detail: 'Available Monday–Friday, 08:00–18:00 EAT',
+    value:  CONTACT_PHONE,
+    detail: 'Call us directly', // Builder wording; the old text promised unconfirmed hours
     icon:   'Phone',
-    href:   'tel:+254700000000',
+    href:   CONTACT_PHONE_HREF,
   },
   {
     id:     'cm-2',
     label:  'Email',
-    value:  'hello@reveafricasafaris.com',
+    value:  CONTACT_EMAIL,
     detail: 'For detailed enquiries and itinerary requests',
     icon:   'Mail',
-    href:   'mailto:hello@reveafricasafaris.com',
+    href:   CONTACT_EMAIL_HREF,
   },
   {
     id:     'cm-3',
     label:  'WhatsApp',
-    value:  '+254 700 000 000',
+    value:  CONTACT_WHATSAPP,
     detail: 'Quick questions and real-time communication',
     icon:   'MessageCircle',
-    href:   'https://wa.me/254700000000',
+    href:   CONTACT_WHATSAPP_HREF,
   },
   {
     id:     'cm-4',
     label:  'Office Hours',
-    value:  'Mon – Fri  ·  08:00 – 18:00',
+    value:  CONTACT_HOURS,
     detail: 'East Africa Time (EAT / UTC+3)',
     icon:   'Clock',
   },
 ];
+
+/** Only methods that hold a real value are rendered. */
+export const CONTACT_METHODS: ContactMethod[] = ALL_CONTACT_METHODS.filter(
+  (method) => method.value !== '',
+);
 
 export const CONTACT_METHODS_SECTION = {
   eyebrow:  'Reach Us',
@@ -158,7 +189,7 @@ export const ENQUIRY_FORM = {
   submitLabel:    'Send Enquiry',
   privacyNote:    'Your information is kept strictly confidential and will never be shared with third parties. Read our privacy policy.',
   successHeadline: 'Thank you — we\'ve received your enquiry.',
-  successBody:    'One of us will be in touch within 24 hours on business days.',
+  successBody:    'One of us will be in touch within 24 hours on business days.', // [OWNER-CONFIRM]: 24-hour response promise
 } as const;
 
 // ─────────────────────────────────────────────
@@ -176,7 +207,7 @@ export const CONTACT_FAQ_ITEMS: ContactFAQItem[] = [
     id:       'cfaq-1',
     question: 'How quickly will you respond to my enquiry?',
     answer:
-      'We respond to all enquiries within 24 hours on business days (Monday to Friday, East Africa Time).',
+      'We respond to all enquiries within 24 hours on business days (Monday to Friday, East Africa Time).', // [OWNER-CONFIRM]: 24-hour response promise
   },
   {
     id:       'cfaq-2',
@@ -215,7 +246,17 @@ export const CONTACT_FAQ_SECTION = {
 // 7. Contact CTA
 // ─────────────────────────────────────────────
 
-export const CONTACT_CTA = {
+export interface ContactCtaContent {
+  eyebrow:       string;
+  headline:      string;
+  body:          string;
+  primaryCTA:    { label: string; href: string };
+  /** Rendered only when CONTACT_PHONE is set. */
+  secondaryCTA?: { label: string; href: string };
+  detail:        string;
+}
+
+export const CONTACT_CTA: ContactCtaContent = {
   eyebrow:    'The Journey Starts Here',
   headline:   'Africa is\nwaiting',
   body:       'Every journey we design begins as a conversation. Reach out — there is no obligation, and no question too small.',
@@ -223,9 +264,8 @@ export const CONTACT_CTA = {
     label: 'Send an Enquiry',
     href:  '#contact-form',
   },
-  secondaryCTA: {
-    label: 'Call Us Now',
-    href:  'tel:+254700000000',
-  },
+  secondaryCTA: CONTACT_PHONE_HREF
+    ? { label: 'Call Us Now', href: CONTACT_PHONE_HREF }
+    : undefined,
   detail: 'Complimentary consultation · No booking fees · Fully bespoke itineraries',
-} as const;
+};

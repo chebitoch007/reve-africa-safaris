@@ -3,10 +3,10 @@
 /**
  * ContactMethods
  *
- * Phone, email, WhatsApp and hours. Client Component — animation.
+ * Email, plus phone, WhatsApp and hours when set. Client Component — animation.
  * Surface: bg-secondary (chalk-100).
  *
- * Four method cards in a responsive grid. Cards with href render as
+ * One card per method that holds a value, in a responsive grid. Cards with href render as
  * <a> elements; the hours card (no href) renders as a <div>.
  * Static icon map consistent with BlogCategories pattern.
  */
