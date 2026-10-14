@@ -238,7 +238,7 @@ export const SIGNATURE_ITINERARY = {
     {
       day:         'Days 3–5',
       title:       'Maasai Mara',
-      description: 'Fly to the Mara. Three nights in a private conservancy camp with exclusive game-drive access. River crossing positioning during peak migration season (Jul–Oct).',
+      description: 'Fly to the Mara. Three nights in a private conservancy camp with game drives. River crossing positioning during peak migration season (Jul–Oct).',
     },
     {
       day:         'Days 6–8',
@@ -397,7 +397,7 @@ export const PACKAGES_FAQ_ITEMS: PackagesFAQItem[] = [
   {
     id:       'pfaq-4',
     question: 'What is the minimum group size?',
-    answer:   'There is no minimum. We design journeys for solo travellers, couples, and small families. For private vehicles and exclusive access, two or more guests are ideal but not required. Larger groups can be accommodated with advance planning.',
+    answer:   'There is no minimum. We design journeys for solo travellers, couples, and small families. For a private vehicle, two or more guests are ideal but not required. Larger groups can be accommodated with advance planning.',
   },
   {
     id:       'pfaq-5',

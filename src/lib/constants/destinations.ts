@@ -414,8 +414,8 @@ export const DESTINATIONS_FAQ_ITEMS: DestinationsFAQItem[] = [
   },
   {
     id:       'dfaq-4',
-    question: 'How exclusive are the destinations you work in?',
-    answer:   'We deliberately focus on areas where visitor numbers are managed. Botswana is the global exemplar — strict quotas mean its private concessions feel genuinely remote. We also prioritise private conservancies in Kenya and Tanzania that operate alongside, but separate from, the main national parks. In practice, this often means an entire game area to yourselves.',
+    question: 'How busy are the destinations you plan journeys in?',
+    answer:   'We deliberately focus on areas where visitor numbers are managed. Botswana is the global exemplar — strict quotas mean its private concessions feel genuinely remote. We also prioritise private conservancies in Kenya and Tanzania that operate alongside, but separate from, the main national parks. In some of these areas, that can mean very few other vehicles at a sighting.',
   },
   {
     id:       'dfaq-5',

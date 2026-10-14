@@ -136,7 +136,7 @@ export const EXPERIENCES: ExperienceData[] = [
     id:              'luxury-safaris',
     icon:            'Crown',
     title:           'Luxury Safaris',
-    description:     'Private game drives, exclusive camps, and extraordinary wildlife encounters across Africa\'s finest reserves.',
+    description:     'Private game drives, carefully chosen camps, and extraordinary wildlife encounters across some of Africa\'s great reserves.',
     href:            '/packages',
     placeholderFrom: '#9E8B4D',
     placeholderTo:   '#282C22',
