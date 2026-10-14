@@ -187,7 +187,7 @@ export const ENQUIRY_FORM = {
   ] as BudgetRange[],
 
   submitLabel:    'Send Enquiry',
-  privacyNote:    'Your information is kept strictly confidential and will never be shared with third parties. Read our privacy policy.',
+  privacyNote:    'Your information is kept strictly confidential and will never be shared with third parties. We use your details only to reply to your enquiry.', // [OWNER-CONFIRM]: the "never shared with third parties" claim; Formspree processes the form
   successHeadline: 'Thank you — we\'ve received your enquiry.',
   successBody:    'One of us will be in touch within 24 hours on business days.', // [OWNER-CONFIRM]: 24-hour response promise
 } as const;

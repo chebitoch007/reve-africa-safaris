@@ -10,7 +10,7 @@
  *  3. LatestStories         — article card grid
  *  4. BlogCategories        — category overview (informational only)
  *  5. EditorialPhilosophy   — storytelling approach
- *  6. NewsletterSection     — newsletter CTA (architecture only)
+ *  6. NewsletterSection     — newsletter CTA; rendered only when NEWSLETTER_ENABLED is true
  *  7. BlogFAQ               — accordion FAQ
  *  8. BlogCTA               — closing safari CTA
  */
@@ -105,6 +105,11 @@ export const BLOG_CATEGORIES_SECTION = {
 // 6. Newsletter CTA
 // ─────────────────────────────────────────────
 
+// [OWNER-FILL]: set to true only once a newsletter provider is connected
+// and the form really collects sign-ups. While false, /blog shows no
+// newsletter section.
+export const NEWSLETTER_ENABLED: boolean = false;
+
 export const NEWSLETTER_SECTION = {
   eyebrow:    'Stay Connected',
   headline:   'Field notes,\ndelivered',
@@ -112,7 +117,7 @@ export const NEWSLETTER_SECTION = {
   inputLabel: 'Email address',
   inputPlaceholder: 'your@email.com',
   buttonLabel:      'Subscribe',
-  privacyNote:      'No spam. Unsubscribe at any time. Read our privacy policy.',
+  privacyNote:      'No spam. Unsubscribe at any time.',
   successMessage:   'Thank you — your first dispatch will arrive soon.',
 } as const;
 

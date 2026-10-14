@@ -6,7 +6,7 @@
  * Section order + surface alternation:
  *   1. BlogHero             — bg-deep      — dark editorial entry
  *   4. BlogCategories       — bg-dune      — six category cards
- *   6. NewsletterSection    — bg-muted     — signup form (arch. only)
+ *   6. NewsletterSection    — bg-muted     — signup form; only when NEWSLETTER_ENABLED
  *   7. BlogFAQ              — bg-primary   — shared accordion FAQ
  *   8. BlogCTA              — bg-deep      — dramatic close
  */
@@ -19,7 +19,7 @@ import { BlogCategories }         from '@/components/blog/BlogCategories';
 import { NewsletterSection }      from '@/components/blog/NewsletterSection';
 import { BlogFAQ }                from '@/components/blog/BlogFAQ';
 import { BlogCTA }                from '@/components/blog/BlogCTA';
-import { BLOG_FAQ_ITEMS }         from '@/lib/constants/blog';
+import { BLOG_FAQ_ITEMS, NEWSLETTER_ENABLED } from '@/lib/constants/blog';
 
 export const metadata: Metadata = buildPageMetadata({
   title:       'Field Notes — Safari Journal & Editorial Dispatches',
@@ -34,7 +34,7 @@ export default function BlogPage() {
       <FaqPageJsonLd items={BLOG_FAQ_ITEMS} />
       <BlogHero />
       <BlogCategories />
-      <NewsletterSection />
+      {NEWSLETTER_ENABLED && <NewsletterSection />}
       <BlogFAQ />
       <BlogCTA />
     </>
