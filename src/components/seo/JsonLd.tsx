@@ -55,7 +55,6 @@ function OrganizationSchema() {
       'Uganda',
       'Botswana',
       'Namibia',
-      'Zimbabwe',
     ],
   };
 

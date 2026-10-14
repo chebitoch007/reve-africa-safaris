@@ -25,7 +25,7 @@ import { GALLERY_FAQ_ITEMS }         from '@/lib/constants/gallery';
 
 export const metadata: Metadata = buildPageMetadata({
   title:       'Gallery — Safari Photography Across East & Southern Africa',
-  description: 'Illustrative imagery of Kenya, Tanzania, Rwanda, Botswana, Zimbabwe and Namibia. Free-to-use photographs and AI-generated landscapes, not photographs from our own trips.',
+  description: 'Illustrative imagery of Kenya, Tanzania, Rwanda, Botswana and Namibia. Free-to-use photographs and AI-generated landscapes, not photographs from our own trips.',
   path:        '/gallery',
 });
 

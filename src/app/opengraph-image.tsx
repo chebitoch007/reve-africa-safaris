@@ -119,7 +119,7 @@ export default function OgImage() {
               maxWidth:   640,
             }}
           >
-            Bespoke luxury safari journeys crafted for those who seek the extraordinary.
+            Hand-planned safari journeys across East and Southern Africa.
           </div>
         </div>
 

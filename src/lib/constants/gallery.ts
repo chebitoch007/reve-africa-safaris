@@ -41,9 +41,9 @@ export const GALLERY_INTRO = {
     'The photography on this site is illustrative: free-to-use images from Unsplash and Pexels, together with AI-generated landscapes, chosen to give a feel for each destination. These are not photographs from our own trips. We will add our own photography once we begin hosting guests.',
   ],
   stat: {
-    value: '6',
+    value: '5',
     label: 'Countries',
-    note:  'Kenya · Tanzania · Botswana · Rwanda · Zimbabwe · Namibia',
+    note:  'Kenya · Tanzania · Botswana · Rwanda · Namibia',
   },
 } as const;
 
