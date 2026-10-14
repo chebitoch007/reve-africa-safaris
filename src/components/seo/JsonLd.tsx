@@ -16,12 +16,16 @@
 
 import { SITE } from '@/lib/metadata';
 import { CONTACT_EMAIL, CONTACT_PHONE } from '@/lib/constants/contact';
+import { SOCIAL_LINKS } from '@/lib/constants/navigation';
 
 // ─────────────────────────────────────────────
 // Organization schema
 // ─────────────────────────────────────────────
 
 function OrganizationSchema() {
+  // Built from the social URLs that are actually set; omitted when none.
+  const sameAs = SOCIAL_LINKS.map((social) => social.href).filter((href) => href !== '');
+
   const schema = {
     '@context':  'https://schema.org',
     '@type':     ['Organization', 'TourOperator'],
@@ -43,11 +47,7 @@ function OrganizationSchema() {
       areaServed:     'Worldwide',
       availableLanguage: ['English'],
     },
-    sameAs: [
-      'https://www.instagram.com/reveafricasafaris',
-      'https://www.facebook.com/reveafricasafaris',
-      'https://www.youtube.com/@reveafricasafaris',
-    ],
+    ...(sameAs.length > 0 ? { sameAs } : {}),
     areaServed: [
       'Kenya',
       'Tanzania',

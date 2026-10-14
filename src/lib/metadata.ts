@@ -20,7 +20,8 @@ export const SITE = {
     'East and Southern Africa, planned by hand around each traveller.',
   url:         'https://reveafricasafaris.com',
   locale:      'en_GB',
-  twitterHandle: '@reveafricasafaris',
+  // [OWNER-FILL]: real X/Twitter handle including the @; empty omits the twitter site/creator tags
+  twitterHandle: '' as string,
 } as const;
 
 // ─────────────────────────────────────────────
@@ -88,10 +89,11 @@ export const BASE_METADATA: Metadata = {
 
   twitter: {
     card:        'summary_large_image',
-    site:        SITE.twitterHandle,
+    ...(SITE.twitterHandle
+      ? { site: SITE.twitterHandle, creator: SITE.twitterHandle }
+      : {}),
     title:       `${SITE.name} — ${SITE.tagline}`,
     description: SITE.description,
-    creator:     SITE.twitterHandle,
     images:      [{ url: '/og/default.jpg', alt: `${SITE.name} — ${SITE.tagline}` }],
   },
 
@@ -157,7 +159,7 @@ export function buildPageMetadata(options: PageMetadataOptions): Metadata {
       card:        'summary_large_image',
       title,
       description: desc,
-      creator:     SITE.twitterHandle,
+      ...(SITE.twitterHandle ? { creator: SITE.twitterHandle } : {}),
       images:      [{ url: ogImage, alt: title }],
     },
   };

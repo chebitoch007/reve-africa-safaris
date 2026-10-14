@@ -86,8 +86,13 @@ export interface SocialLink {
   platform: 'instagram' | 'facebook' | 'twitter' | 'youtube' | 'linkedin';
 }
 
+// OWNER-FILL pattern: an empty href means the account does not exist yet.
+// The footer icon and the JSON-LD sameAs entry appear only once it is set.
 export const SOCIAL_LINKS: SocialLink[] = [
-  { label: 'Instagram', href: 'https://instagram.com/reveafricasafaris', platform: 'instagram' },
-  { label: 'Facebook',  href: 'https://facebook.com/reveafricasafaris',  platform: 'facebook'  },
-  { label: 'YouTube',   href: 'https://youtube.com/@reveafricasafaris',  platform: 'youtube'   },
+  // [OWNER-FILL]: full Instagram profile URL
+  { label: 'Instagram', href: '', platform: 'instagram' },
+  // [OWNER-FILL]: full Facebook page URL
+  { label: 'Facebook',  href: '', platform: 'facebook'  },
+  // [OWNER-FILL]: full YouTube channel URL
+  { label: 'YouTube',   href: '', platform: 'youtube'   },
 ];

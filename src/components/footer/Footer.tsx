@@ -96,6 +96,10 @@ const SOCIAL_ICONS: Record<SocialLink['platform'], React.ReactNode> = {
 
 export function Footer() {
   const currentYear = new Date().getFullYear();
+  // Only accounts with a real URL (and a known icon) are shown.
+  const activeSocials = SOCIAL_LINKS.filter(
+    (social) => social.href !== '' && SOCIAL_ICONS[social.platform],
+  );
 
   return (
     <footer
@@ -218,44 +222,48 @@ export function Footer() {
               ))}
             </nav>
 
-            {/* Divider — visible on sm+ */}
-            <span
-              className="hidden sm:block w-px h-4 bg-[var(--color-border-inverse)]"
-              aria-hidden="true"
-            />
+            {activeSocials.length > 0 && (
+              <>
+                {/* Divider — visible on sm+ */}
+                <span
+                  className="hidden sm:block w-px h-4 bg-[var(--color-border-inverse)]"
+                  aria-hidden="true"
+                />
 
-            {/* Social icons */}
-            <nav
-              aria-label="Social media links"
-              className="flex items-center gap-4"
-            >
-              {SOCIAL_LINKS.map((social) => {
-                const icon = SOCIAL_ICONS[social.platform];
-                if (!icon) return null;
+                {/* Social icons */}
+                <nav
+                  aria-label="Social media links"
+                  className="flex items-center gap-4"
+                >
+                  {activeSocials.map((social) => {
+                    const icon = SOCIAL_ICONS[social.platform];
+                    if (!icon) return null;
 
-                return (
-                  <a
-                    key={social.platform}
-                    href={social.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label={`Follow us on ${social.label} (opens in new tab)`}
-                    className={cn(
-                      'flex items-center justify-center w-8 h-8',
-                      'text-[var(--color-text-inverse-muted)]',
-                      'transition-colors duration-[250ms]',
-                      'hover:text-[var(--color-text-inverse)]',
-                      'focus-visible:outline-none focus-visible:ring-2',
-                      'focus-visible:ring-[var(--color-accent-primary)]',
-                      'focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--color-bg-inverse)]',
-                      'rounded-[2px]',
-                    )}
-                  >
-                    {icon}
-                  </a>
-                );
-              })}
-            </nav>
+                    return (
+                      <a
+                        key={social.platform}
+                        href={social.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label={`Follow us on ${social.label} (opens in new tab)`}
+                        className={cn(
+                          'flex items-center justify-center w-8 h-8',
+                          'text-[var(--color-text-inverse-muted)]',
+                          'transition-colors duration-[250ms]',
+                          'hover:text-[var(--color-text-inverse)]',
+                          'focus-visible:outline-none focus-visible:ring-2',
+                          'focus-visible:ring-[var(--color-accent-primary)]',
+                          'focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--color-bg-inverse)]',
+                          'rounded-[2px]',
+                        )}
+                      >
+                        {icon}
+                      </a>
+                    );
+                  })}
+                </nav>
+              </>
+            )}
           </div>
         </div>
       </div>
