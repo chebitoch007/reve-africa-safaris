@@ -10,6 +10,8 @@
 
 The Owner stated that real photographs were obtained from Unsplash and Pexels using the free-licence filters, and that AI images were generated with ChatGPT and depict places only (no animals, no people). No per-image records exist yet. This statement has not been verified and applies to the batch as a whole, not to any individual file.
 
+**Resizing and generation (Owner statement, unverified):** A Claude-run script resized every hero to 1920 px wide and every other image to 1200 px wide. Originals from Pexels and Unsplash were downscaled; AI-generated images were too small and were upscaled. AI prompts were written by the Architect chat in an earlier session (document: Image Sourcing Plan & AI Prompt Library). The Owner still holds the original downloads. Which files were upscaled is not recorded.
+
 ## Image Provenance Register
 
 One row per image ID (40 IDs covering 78 files). **UNKNOWN means "not yet recorded", not "approved".** No row here has been checked for source, creator, licence or release status.
