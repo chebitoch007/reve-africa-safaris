@@ -1,0 +1,16 @@
+/**
+ * RÊVE AFRICA SAFARIS — /privacy
+ *
+ * Static Server Component. Content: src/lib/constants/legal.ts.
+ * Indexing is controlled by LEGAL_PAGES_REVIEWED (see legal.ts).
+ */
+
+import type { Metadata } from 'next';
+import { buildLegalMetadata } from '@/lib/legal-metadata';
+import { LegalDocument } from '@/components/legal/LegalDocument';
+
+export const metadata: Metadata = buildLegalMetadata('privacy');
+
+export default function LegalPage() {
+  return <LegalDocument slug="privacy" />;
+}

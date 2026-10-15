@@ -11,6 +11,7 @@
 
 import type { MetadataRoute } from 'next';
 import { SITE } from '@/lib/metadata';
+import { LEGAL_PAGES, LEGAL_PAGES_REVIEWED } from '@/lib/constants/legal';
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const base = SITE.url;
@@ -60,6 +61,18 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority:        0.8,
     },
   ];
+
+  // Legal pages are listed only once they have been reviewed (see legal.ts).
+  if (LEGAL_PAGES_REVIEWED) {
+    for (const page of Object.values(LEGAL_PAGES)) {
+      routes.push({
+        url:             `${base}${page.path}`,
+        lastModified:    new Date(),
+        changeFrequency: 'yearly',
+        priority:        0.3,
+      });
+    }
+  }
 
   return routes;
 }

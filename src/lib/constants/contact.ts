@@ -187,6 +187,8 @@ export const ENQUIRY_FORM = {
   ] as BudgetRange[],
 
   submitLabel:    'Send Enquiry',
+  privacyLinkLabel: 'See our Privacy Policy',
+  privacyHref:      '/privacy',
   privacyNote:    'Your details are sent through our form provider and used only to reply to your enquiry.', // [OWNER-CONFIRM]: Formspree is the form provider; confirm this wording
   successHeadline: 'Thank you — we\'ve received your enquiry.',
   successBody:    'One of us will be in touch within 24 hours on business days.', // [OWNER-CONFIRM]: 24-hour response promise

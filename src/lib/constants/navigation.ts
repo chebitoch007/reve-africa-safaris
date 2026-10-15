@@ -75,9 +75,9 @@ export const FOOTER_COMPANY: NavLink[] = [
 ];
 
 export const FOOTER_LEGAL: NavLink[] = [
-  { label: 'Privacy Policy',       href: '/contact' },
-  { label: 'Terms & Conditions',   href: '/contact' },
-  { label: 'Cookie Policy',        href: '/contact' },
+  { label: 'Privacy Policy',       href: '/privacy' },
+  { label: 'Terms & Conditions',   href: '/terms' },
+  { label: 'Cookie Policy',        href: '/cookies' },
 ];
 
 export interface SocialLink {

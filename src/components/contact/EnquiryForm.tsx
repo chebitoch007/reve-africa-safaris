@@ -38,6 +38,7 @@
  */
 
 import { useState, useId, useRef, useEffect } from 'react';
+import Link from 'next/link';
 import { motion, AnimatePresence, useReducedMotion } from 'framer-motion';
 import { ArrowRight, CheckCircle, LoaderCircle } from 'lucide-react';
 import { cn } from '@/lib/design-system';
@@ -724,7 +725,14 @@ export function EnquiryForm() {
                     </button>
 
                     <p className="font-[var(--font-inter)] font-light text-xs italic text-[var(--color-text-muted)]">
-                      {ENQUIRY_FORM.privacyNote}
+                      {ENQUIRY_FORM.privacyNote}{' '}
+                      <Link
+                        href={ENQUIRY_FORM.privacyHref}
+                        className="underline underline-offset-2"
+                      >
+                        {ENQUIRY_FORM.privacyLinkLabel}
+                      </Link>
+                      .
                     </p>
                   </div>
                 </motion.form>
