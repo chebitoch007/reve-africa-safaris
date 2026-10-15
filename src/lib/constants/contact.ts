@@ -56,7 +56,7 @@ export const CONCIERGE_INTRO = {
 // confirmed values. See docs/OWNER_FILL_CHECKLIST.md.
 
 /** The real email address. Single source of truth for the whole site. */
-export const CONTACT_EMAIL = 'enquiries@reveafricasafaris.com';
+export const CONTACT_EMAIL: string = 'enquiries@reveafricasafaris.com';
 
 // [OWNER-FILL]: real phone number, international format, as it should display
 export const CONTACT_PHONE: string = '';
@@ -187,7 +187,7 @@ export const ENQUIRY_FORM = {
   ] as BudgetRange[],
 
   submitLabel:    'Send Enquiry',
-  privacyNote:    'Your information is kept strictly confidential and will never be shared with third parties. We use your details only to reply to your enquiry.', // [OWNER-CONFIRM]: the "never shared with third parties" claim; Formspree processes the form
+  privacyNote:    'Your details are sent through our form provider and used only to reply to your enquiry.', // [OWNER-CONFIRM]: Formspree is the form provider; confirm this wording
   successHeadline: 'Thank you — we\'ve received your enquiry.',
   successBody:    'One of us will be in touch within 24 hours on business days.', // [OWNER-CONFIRM]: 24-hour response promise
 } as const;
