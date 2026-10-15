@@ -78,7 +78,7 @@ Line numbers refer to the base commit `673a013` where known; otherwise the const
 - **Placeholder phone/WhatsApp** `+254 700 000 000`, "Mon-Fri 08:00-18:00" hours and the WhatsApp link remain on /contact and in the footer data.
 - **Newsletter** (`NewsletterSection`) collects nothing but promises a dispatch "soon" and "never more than twice a month". The blog newsletter copy and "Read our privacy policy" (no such page exists) are unchanged.
 - **Social profile URLs** in JSON-LD `sameAs` (Instagram, Facebook, YouTube) are unverified.
-- **Zimbabwe** is still listed in JSON-LD `areaServed`, gallery copy and a retired bio; it has no destination page.
+- **Zimbabwe** has been removed from JSON-LD `areaServed` and the gallery copy. The only remaining mention is the Victoria Falls image caption; there is no Zimbabwe destination page.
 - `app/opengraph-image.tsx` still reads "Bespoke luxury safari journeys crafted for those who seek the extraordinary."
 - Image provenance: see `ATTRIBUTION_LOG.md` and `IMAGE_INVENTORY.csv` (docs/image-provenance branch).
 

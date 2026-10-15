@@ -561,7 +561,7 @@ All image placeholders use this pattern. Document where to swap in real photos:
 
 Primary nav (from `src/lib/constants/navigation.ts`):
 ```
-/destinations    → Kenya, Tanzania, Botswana, Rwanda, Zimbabwe, Namibia
+/destinations    → Kenya, Tanzania, Rwanda, Uganda, Botswana, Namibia
 /experiences     → Game Drives, Gorilla Trekking, Ballooning, Walking, Conservation, Fly-in
 /packages        → Safari packages listing (was /journeys — corrected in M10)
 /about           → (about page)
