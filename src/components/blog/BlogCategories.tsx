@@ -7,8 +7,9 @@
  * Surface: bg-dune (dune-100).
  *
  * Informational only — no filtering, no links, no JS interaction.
- * Six categories presented as a responsive card grid with icon,
- * label, description, and article count.
+ * Shows only the categories listed in BLOG_CATEGORIES_WITH_ARTICLES, as a
+ * responsive card grid with icon, label and description. Renders nothing
+ * when no category has an article.
  *
  * Uses a static icon map (no dynamic imports) consistent with the
  * established WildlifeHighlights / JourneyCategoryCard pattern.
@@ -26,7 +27,11 @@ import {
 } from 'lucide-react';
 import { cn } from '@/lib/design-system';
 import { DURATION, EASE, VIEWPORT_ONCE } from '@/lib/design-system';
-import { BLOG_CATEGORY_ITEMS, BLOG_CATEGORIES_SECTION } from '@/lib/constants/blog';
+import {
+  BLOG_CATEGORY_ITEMS,
+  BLOG_CATEGORIES_SECTION,
+  BLOG_CATEGORIES_WITH_ARTICLES,
+} from '@/lib/constants/blog';
 
 // Static icon map — no dynamic import, no conditional rendering
 const ICON_MAP: Record<string, React.ComponentType<LucideProps>> = {
@@ -62,6 +67,12 @@ const cardVariant = {
 
 export function BlogCategories() {
   const reduced = useReducedMotion();
+
+  // Only categories that have an article are shown; none means no section.
+  const items = BLOG_CATEGORY_ITEMS.filter((item) =>
+    BLOG_CATEGORIES_WITH_ARTICLES.includes(item.category),
+  );
+  if (items.length === 0) return null;
 
   return (
     <section
@@ -132,7 +143,7 @@ export function BlogCategories() {
           role="list"
           aria-label="Journal categories"
         >
-          {BLOG_CATEGORY_ITEMS.map((item, i) => {
+          {items.map((item, i) => {
             const Icon = ICON_MAP[item.icon] ?? Leaf;
             return (
               <motion.div

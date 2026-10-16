@@ -8,7 +8,7 @@
  *  1. BlogHero              — dark editorial hero
  *  2. FeaturedStory         — flagship article showcase
  *  3. LatestStories         — article card grid
- *  4. BlogCategories        — category overview (informational only)
+ *  4. BlogCategories        — category overview (informational only; only categories with an article)
  *  5. EditorialPhilosophy   — storytelling approach
  *  6. NewsletterSection     — newsletter CTA; rendered only when NEWSLETTER_ENABLED is true
  *  7. BlogFAQ               — accordion FAQ
@@ -94,6 +94,11 @@ export const BLOG_CATEGORY_ITEMS: BlogCategoryItem[] = [
     icon:        'Users',
   },
 ];
+
+// Only categories that have at least one article are shown (cards are not
+// links). [OWNER-FILL]: add a category id here once an article exists for it.
+// While this list is empty, the whole category section is hidden.
+export const BLOG_CATEGORIES_WITH_ARTICLES: BlogCategory[] = [];
 
 export const BLOG_CATEGORIES_SECTION = {
   eyebrow:  'Browse by Theme',
