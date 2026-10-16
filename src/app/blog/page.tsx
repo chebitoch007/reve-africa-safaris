@@ -22,9 +22,9 @@ import { BlogCTA }                from '@/components/blog/BlogCTA';
 import { BLOG_FAQ_ITEMS, NEWSLETTER_ENABLED } from '@/lib/constants/blog';
 
 export const metadata: Metadata = buildPageMetadata({
-  title:       'Field Notes — Safari Journal & Editorial Dispatches',
+  title:       'Journal',
   description:
-    'Notes and ideas from the two of us as we build Rêve Africa Safaris.',
+    'Early notes from the two of us as we build Rêve Africa Safaris.',
   path: '/blog',
 });
 

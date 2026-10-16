@@ -35,7 +35,7 @@ export const BLOG_HERO = {
   eyebrow:    'Field Notes',
   headline:   'Stories from\nwild Africa',
   subheadline:
-    'Notes and ideas from the two of us as we build Rêve Africa Safaris.',
+    'Early notes from the two of us as we build Rêve Africa Safaris.',
 } as const;
 
 // ─────────────────────────────────────────────
