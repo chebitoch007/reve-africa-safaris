@@ -17,6 +17,7 @@
 import { SITE } from '@/lib/metadata';
 import { CONTACT_EMAIL, CONTACT_PHONE } from '@/lib/constants/contact';
 import { SOCIAL_LINKS } from '@/lib/constants/navigation';
+import type { Article } from '@/lib/constants/articles';
 
 // ─────────────────────────────────────────────
 // Organization schema
@@ -139,6 +140,42 @@ export function FaqPageJsonLd({ items }: FaqPageJsonLdProps) {
         text:    item.answer,
       },
     })),
+  };
+
+  return (
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+    />
+  );
+}
+
+// ─────────────────────────────────────────────
+// Article (journal posts)
+// Author and publisher are the organisation, never a person.
+// ─────────────────────────────────────────────
+
+export function ArticleJsonLd({ article }: { article: Article }) {
+  const organisation = {
+    '@type': 'Organization',
+    name:    SITE.name,
+    url:     SITE.url,
+  };
+
+  const schema = {
+    '@context':       'https://schema.org',
+    '@type':          'Article',
+    headline:         article.title,
+    description:      article.excerpt,
+    articleSection:   article.category,
+    datePublished:    article.publishedAt,
+    inLanguage:       'en',
+    mainEntityOfPage: {
+      '@type': 'WebPage',
+      '@id':   `${SITE.url}/blog/${article.slug}`,
+    },
+    author:    organisation,
+    publisher: organisation,
   };
 
   return (

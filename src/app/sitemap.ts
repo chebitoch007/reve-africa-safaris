@@ -12,6 +12,7 @@
 import type { MetadataRoute } from 'next';
 import { SITE } from '@/lib/metadata';
 import { LEGAL_PAGES, LEGAL_PAGES_REVIEWED } from '@/lib/constants/legal';
+import { ARTICLES } from '@/lib/constants/articles';
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const base = SITE.url;
@@ -61,6 +62,16 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority:        0.8,
     },
   ];
+
+  // One entry per journal article (see articles.ts).
+  for (const article of ARTICLES) {
+    routes.push({
+      url:             `${base}/blog/${article.slug}`,
+      lastModified:    new Date(`${article.publishedAt}T00:00:00Z`),
+      changeFrequency: 'monthly',
+      priority:        0.6,
+    });
+  }
 
   // Legal pages are listed only once they have been reviewed (see legal.ts).
   if (LEGAL_PAGES_REVIEWED) {
