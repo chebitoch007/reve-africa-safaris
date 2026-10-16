@@ -5,6 +5,7 @@
  *
  * Section order + surface alternation:
  *   1. BlogHero             — bg-deep      — dark editorial entry
+ *   2. ArticleList          — bg-primary   — the journal articles
  *   4. BlogCategories       — bg-dune      — six category cards
  *   6. NewsletterSection    — bg-muted     — signup form; only when NEWSLETTER_ENABLED
  *   7. BlogFAQ              — bg-primary   — shared accordion FAQ
@@ -15,6 +16,7 @@ import type { Metadata } from 'next';
 import { buildPageMetadata }      from '@/lib/metadata';
 import { FaqPageJsonLd }          from '@/components/seo/JsonLd';
 import { BlogHero }               from '@/components/blog/BlogHero';
+import { ArticleList }            from '@/components/blog/ArticleList';
 import { BlogCategories }         from '@/components/blog/BlogCategories';
 import { NewsletterSection }      from '@/components/blog/NewsletterSection';
 import { BlogFAQ }                from '@/components/blog/BlogFAQ';
@@ -33,6 +35,7 @@ export default function BlogPage() {
     <>
       <FaqPageJsonLd items={BLOG_FAQ_ITEMS} />
       <BlogHero />
+      <ArticleList />
       <BlogCategories />
       {NEWSLETTER_ENABLED && <NewsletterSection />}
       <BlogFAQ />
