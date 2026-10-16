@@ -10,6 +10,11 @@
 
 import type { NavLink, NavGroup } from '@/types';
 
+// Set to false to remove the Journal link from the header, mobile menu and footer.
+export const BLOG_IN_NAV: boolean = true;
+
+const JOURNAL_LINK: NavLink = { label: 'Journal', href: '/blog' };
+
 export const PRIMARY_NAV: NavGroup[] = [
   {
     label: 'Destinations',
@@ -37,6 +42,7 @@ export const PRIMARY_NAV: NavGroup[] = [
     label: 'Journeys',
     href:  '/packages',
   },
+  ...(BLOG_IN_NAV ? [JOURNAL_LINK] : []),
   {
     label: 'About',
     href:  '/about',
@@ -58,6 +64,7 @@ export const FOOTER_DESTINATIONS: NavLink[] = [
 
 export const FOOTER_EXPLORE: NavLink[] = [
   { label: 'All Journeys',      href: '/packages' },
+  ...(BLOG_IN_NAV ? [JOURNAL_LINK] : []),
   { label: 'Experiences',       href: '/destinations#signature-experiences' },
   { label: 'Safari Planning',   href: '/contact#contact-form' },
 ];
