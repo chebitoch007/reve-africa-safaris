@@ -1,114 +1,87 @@
 /**
  * Logo
  *
- * Company wordmark component. Server Component.
+ * Company logo component. Server Component.
  *
- * Renders the brand name in Cormorant Garamond italic with a
- * fine lettermark accent. Replace this component's internals
- * when the final SVG logo is available — the interface stays the same.
+ * Renders the supplied PNG logo files from /public/brand with next/image.
+ * Only a dark-background version exists (gold and copper artwork on a
+ * transparent background), so this component must only be placed on dark
+ * surfaces: the header (transparent over a hero, solid basalt once
+ * scrolled), the mobile menu drawer and the footer. There is no light
+ * variant; do not add one without a supplied asset.
+ *
+ * Next.js 16: the `priority` image prop is deprecated in favour of `preload`.
  *
  * @example
- *   <Logo />
- *   <Logo variant="inverse" size="lg" />
+ *   <Logo />                                  // compact, links to /
+ *   <Logo version="full" size="md" />         // full lockup with tagline
+ *   <Logo preload />                          // above-the-fold (header)
  */
 
+import Image from 'next/image';
 import Link from 'next/link';
 import { cn } from '@/lib/design-system';
 
-type LogoVariant = 'default' | 'inverse';
-type LogoSize    = 'sm' | 'md' | 'lg';
+type LogoVersion = 'compact' | 'full';
+type LogoSize    = 'sm' | 'md';
 
 interface LogoProps {
-  variant?:   LogoVariant;
+  /** compact = mark + name; full = mark + name + "Inspired by Africa" */
+  version?:   LogoVersion;
   size?:      LogoSize;
   className?: string;
   /** If false, renders without a link wrapper (e.g. on the homepage h1) */
   asLink?:    boolean;
   href?:      string;
+  /** Preload the image (use for the header logo only) */
+  preload?:   boolean;
 }
 
-const SIZE_STYLES: Record<LogoSize, { wordmark: string; eyebrow: string }> = {
-  sm: {
-    wordmark: 'text-xl leading-none tracking-[-0.02em]',
-    eyebrow:  'text-[8px] tracking-[0.22em]',
-  },
-  md: {
-    wordmark: 'text-2xl leading-none tracking-[-0.02em]',
-    eyebrow:  'text-[9px] tracking-[0.24em]',
-  },
-  lg: {
-    wordmark: 'text-3xl leading-none tracking-[-0.02em]',
-    eyebrow:  'text-[10px] tracking-[0.24em]',
-  },
+// Intrinsic pixel sizes of the supplied files (used for aspect ratio only;
+// rendered size comes from the height classes below).
+const LOGO_FILES: Record<LogoVersion, { src: string; width: number; height: number }> = {
+  compact: { src: '/brand/logo-compact.png', width: 640, height: 490 },
+  full:    { src: '/brand/logo-full.png',    width: 640, height: 536 },
 };
 
-const VARIANT_CLASSES: Record<LogoVariant, { wordmark: string; eyebrow: string; divider: string }> = {
-  default: {
-    wordmark: 'text-[var(--color-text-primary)]',
-    eyebrow:  'text-[var(--color-text-muted)]',
-    divider:  'bg-[var(--color-border-default)]',
-  },
-  inverse: {
-    wordmark: 'text-[var(--color-text-inverse)]',
-    eyebrow:  'text-[var(--color-text-inverse-muted)]',
-    divider:  'bg-[var(--color-border-inverse)]',
-  },
+// Fixed heights at every viewport: the logo never changes size on scroll,
+// so the header's height transition cannot shift it. 56px is the maximum
+// that fits inside the scrolled header (h-16 = 64px).
+const SIZE_CLASSES: Record<LogoSize, string> = {
+  sm: 'h-12 sm:h-14',
+  md: 'h-32',
 };
 
-function LogoMark({
-  variant = 'default',
-  size    = 'md',
-  className,
-}: Pick<LogoProps, 'variant' | 'size' | 'className'>) {
-  const v = VARIANT_CLASSES[variant ?? 'default'];
-  const s = SIZE_STYLES[size ?? 'md'];
-
-  return (
-    <span
-      className={cn('inline-flex flex-col items-start gap-[3px]', className)}
-      aria-label="Rêve Africa Safaris"
-    >
-      {/* Eyebrow — small uppercase label above wordmark */}
-      <span
-        className={cn(
-          'font-[var(--font-inter)] font-medium uppercase',
-          s.eyebrow,
-          v.eyebrow,
-        )}
-        aria-hidden="true"
-      >
-        Rêve Africa
-      </span>
-
-      {/* Thin rule between eyebrow and wordmark */}
-      <span
-        className={cn('w-full h-px', v.divider)}
-        aria-hidden="true"
-      />
-
-      {/* Primary wordmark */}
-      <span
-        className={cn(
-          'font-[var(--font-cormorant)] font-light italic',
-          s.wordmark,
-          v.wordmark,
-        )}
-      >
-        Safaris
-      </span>
-    </span>
-  );
-}
+// Approximate rendered widths, so next/image picks a suitably small file.
+const SIZES_ATTR: Record<LogoVersion, Record<LogoSize, string>> = {
+  compact: { sm: '74px',  md: '168px' },
+  full:    { sm: '70px',  md: '154px' },
+};
 
 export function Logo({
-  variant  = 'default',
-  size     = 'md',
+  version   = 'compact',
+  size      = 'sm',
   className,
-  asLink   = true,
-  href     = '/',
+  asLink    = true,
+  href      = '/',
+  preload   = false,
 }: LogoProps) {
+  const file = LOGO_FILES[version];
+
+  const image = (
+    <Image
+      src={file.src}
+      alt="Rêve Africa Safaris"
+      width={file.width}
+      height={file.height}
+      sizes={SIZES_ATTR[version][size]}
+      preload={preload}
+      className={cn('block w-auto', SIZE_CLASSES[size])}
+    />
+  );
+
   if (!asLink) {
-    return <LogoMark variant={variant} size={size} className={className} />;
+    return <span className={cn('inline-block', className)}>{image}</span>;
   }
 
   return (
@@ -121,7 +94,7 @@ export function Logo({
       )}
       aria-label="Rêve Africa Safaris — Home"
     >
-      <LogoMark variant={variant} size={size} />
+      {image}
     </Link>
   );
 }
