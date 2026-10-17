@@ -85,7 +85,7 @@ export function Header() {
           )}
         >
           {/* ── Logo ───────────────────────────────── */}
-          <Logo version="compact" size="sm" preload />
+          <Logo version="header" preload />
 
           {/* ── Desktop navigation ──────────────────── */}
           <nav

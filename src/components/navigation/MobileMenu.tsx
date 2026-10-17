@@ -136,7 +136,7 @@ export function MobileMenu({ isOpen, onClose, nav }: MobileMenuProps) {
       >
         {/* Panel header */}
         <div className="flex items-center justify-between px-6 py-5 border-b border-[var(--color-border-inverse)]">
-          <Logo version="compact" size="sm" />
+          <Logo version="header" />
 
           <button
             ref={closeButtonRef}

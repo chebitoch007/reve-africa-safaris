@@ -117,7 +117,7 @@ export function Footer() {
         >
           {/* ── Brand column ─────────────────────── */}
           <div className="flex flex-col gap-6">
-            <Logo version="full" size="md" />
+            <Logo version="full" />
 
             <p
               className={cn(
