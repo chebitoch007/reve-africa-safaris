@@ -3,6 +3,7 @@
 > **Batch:** 1 (P0 LCP Images)
 > **Status:** The original Batch 1 sourcing table was replaced on 13 Oct 2026 by the Image Provenance Register below; no provenance is recorded for any file yet. See also the Phase 1 section near the end.
 > **Last updated:** 13 Oct 2026 (provenance register rebuilt; `docs/image-provenance`)
+> **Brand assets added:** 17 Oct 2026 (logo set; see the Brand assets section)
 
 ---
 
@@ -64,6 +65,32 @@ Notes:
 | img-039 | 1 | 0 | 1 | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN |
 | img-040 | 1 | 0 | 1 | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN |
 | img-041 | 2 | 1 | 0 | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN |
+
+
+---
+
+## Brand assets (logo set), supplied 17 Oct 2026
+
+Seven files supplied by the Owner on 17 Oct 2026 for JOB 10. These are **brand assets (a logo), not stock images**, and are tracked here separately from the `img-NNN` register above. Per-file detail (path, SHA-256, dimensions, size) is in [`IMAGE_INVENTORY.csv`](./IMAGE_INVENTORY.csv) (rows with flag `LOGO`).
+
+| File | Dimensions | Use |
+|---|---|---|
+| `public/brand/logo-full.png` | 640×536 | Footer logo (mark, name and "Inspired by Africa" line) |
+| `public/brand/logo-compact.png` | 640×490 | Header and mobile-menu logo |
+| `public/brand/logo-mark.png` | 512×512 | JSON-LD Organization logo |
+| `src/app/favicon.ico` | 16/32/48 | Favicon |
+| `src/app/icon.png` | 512×512 | Icon (Next.js file convention) |
+| `src/app/apple-icon.png` | 180×180 | Apple touch icon |
+| `public/og/default.jpg` | 1200×630 | Default Open Graph / Twitter image |
+
+Provenance (as given for JOB 10; not independently verified):
+
+- **source_type:** AI-generated. **Tool:** ChatGPT (image generation). **Prompt:** not recorded.
+- Logo mockup supplied by the Owner on 17 Oct 2026. The files were derived by cropping and keying (background removal) from the Owner's mockup.
+- **Licence / release_status:** UNKNOWN (not yet recorded, not approved).
+- **No vector master exists.** All seven files are raster.
+- **Trademark and registry checks are pending.** Nothing here establishes that the name or logo is available to register or free of conflicting marks.
+- The three `brand/` logos have a transparent background and are for dark surfaces only; no light-background version exists.
 
 ---
 
