@@ -455,7 +455,7 @@ export const ACCOMMODATION_STANDARDS: AccommodationStandard[] = [
   },
   {
     id:              'private-exclusive',
-    tier:            'Private & Exclusive',
+    tier:            'Private',
     title:           'Private houses & exclusive-use camps',
     description:     'Entire properties reserved for your group alone, and a piece of Africa that belongs, briefly, entirely to you.',
     imageSrc:        '/images/packages/accommodation/img-030-private-camp-deck-view.jpg',

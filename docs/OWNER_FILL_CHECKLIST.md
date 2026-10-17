@@ -77,6 +77,7 @@ marked `[OWNER-CONFIRM]` in the code.
 | File:line | Statement |
 |---|---|
 | `src/lib/constants/contact.ts:41` | 24-hour response promise |
+| `src/lib/constants/contact.ts:44` | the "We use your details only to reply to your enquiry." assurance (replaced "Complete discretion and data privacy") |
 | `src/lib/constants/contact.ts:192` | enquiry form note: "sent through our form provider" (Formspree) and used only to reply |
 | `src/lib/constants/contact.ts:194` | 24-hour response promise |
 | `src/lib/constants/contact.ts:212` | 24-hour response promise |

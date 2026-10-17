@@ -32,7 +32,7 @@ export type BlogCategory =
 // ─────────────────────────────────────────────
 
 export const BLOG_HERO = {
-  eyebrow:    'Field Notes',
+  eyebrow:    'Journal',
   headline:   'Stories from\nwild Africa',
   subheadline:
     'Early notes from the two of us as we build Rêve Africa Safaris.',
@@ -103,7 +103,7 @@ export const BLOG_CATEGORIES_WITH_ARTICLES: BlogCategory[] = [];
 export const BLOG_CATEGORIES_SECTION = {
   eyebrow:  'Browse by Theme',
   headline: 'Explore\nthe journal',
-  body:     'Dispatches organised by subject — from practical planning guides to intimate wildlife encounters.',
+  body:     'Practical guides for planning your safari.',
 } as const;
 
 // ─────────────────────────────────────────────

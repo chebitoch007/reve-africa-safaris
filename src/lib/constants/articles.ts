@@ -40,7 +40,7 @@ export const ARTICLES: Article[] = [
     title:       'When to See the Great Migration',
     excerpt:     "The Great Migration has no fixed start date. Here is how the herds move through the year, and how to choose the season that suits what you most want to see.",
     category:    'Planning',
-    readingTime: '4 min',
+    readingTime: '3 min',
     publishedAt: '2026-10-16', // [OWNER-CONFIRM]: the real publish date
     sections: [
       {
@@ -100,7 +100,7 @@ export const ARTICLES: Article[] = [
     title:       'Gorilla Trekking: What to Know Before You Go',
     excerpt:     "A plain guide to how mountain gorilla trekking works in Rwanda and Uganda: permits, age limits, fitness, what the day looks like, and how to prepare.",
     category:    'Experiences',
-    readingTime: '5 min',
+    readingTime: '3 min',
     publishedAt: '2026-10-16', // [OWNER-CONFIRM]: the real publish date
     sections: [
       {
@@ -168,7 +168,7 @@ export const ARTICLES: Article[] = [
     title:       'What to Pack for an East African Safari',
     excerpt:     "Neutral colours, soft bags and a few local rules that surprise first-time travellers. A practical packing guide for safari in Kenya, Tanzania, Rwanda and Uganda.",
     category:    'Planning',
-    readingTime: '4 min',
+    readingTime: '2 min',
     publishedAt: '2026-10-16', // [OWNER-CONFIRM]: the real publish date
     sections: [
       {

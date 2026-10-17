@@ -41,7 +41,7 @@ export const CONCIERGE_INTRO = {
       { id: 'c1', text: 'Response within 24 hours on business days' }, // [OWNER-CONFIRM]: 24-hour response promise
       { id: 'c2', text: 'Your enquiry is handled by one of us' },
       { id: 'c3', text: 'No obligation — every consultation is complimentary' },
-      { id: 'c4', text: 'Complete discretion and data privacy' },
+      { id: 'c4', text: 'We use your details only to reply to your enquiry.' }, // [OWNER-CONFIRM]: details used only to reply (form provider processes the submission)
     ],
   },
 } as const;

@@ -3,7 +3,7 @@
 /**
  * AccommodationStandards
  *
- * Three accommodation tiers: Classic Luxury, Private & Exclusive,
+ * Three accommodation tiers: Classic Luxury, Private,
  * Mobile & Expedition. Client Component — scroll-reveal animations.
  * Surface: bg-dune (dune-100) — warm, tactile feel appropriate for
  * a section about physical places.

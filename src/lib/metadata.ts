@@ -14,7 +14,7 @@ import type { Metadata, Viewport } from 'next';
 
 export const SITE = {
   name:        'Rêve Africa Safaris',
-  tagline:     'Extraordinary Journeys Across Wild Africa',
+  tagline:     'Hand-planned safari journeys across East and Southern Africa',
   description:
     'Rêve Africa Safaris is a new, founder-led safari company designing journeys across ' +
     'East and Southern Africa, planned by hand around each traveller.',
@@ -56,10 +56,10 @@ export const BASE_METADATA: Metadata = {
     'Kenya safari',
     'Botswana safari',
     'Rwanda gorilla trekking',
-    'luxury travel Africa',
+    'gorilla trekking Rwanda Uganda',
     'private safari',
     'wildlife safari',
-    'conservation travel',
+    'Botswana Namibia safari',
   ],
 
   authors: [{ name: SITE.name, url: SITE.url }],

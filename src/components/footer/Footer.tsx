@@ -125,9 +125,7 @@ export function Footer() {
                 'text-[var(--color-text-inverse-muted)]',
               )}
             >
-              We craft intimate, transformative expeditions to Africa&rsquo;s
-              most magnificent wilderness destinations. Bespoke journeys
-              designed for those who seek the extraordinary.
+              Hand-planned safari journeys across East and Southern Africa
             </p>
 
             {/* Contact detail: each link renders only when its value is set */}
