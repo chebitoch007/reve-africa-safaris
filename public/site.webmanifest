@@ -1,7 +1,7 @@
 {
   "name": "Rêve Africa Safaris",
   "short_name": "Rêve Africa",
-  "description": "Extraordinary luxury safari journeys across wild Africa",
+  "description": "Hand-planned safari journeys across East and Southern Africa",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#FAF9F5",
@@ -11,6 +11,12 @@
       "src": "/favicon.ico",
       "sizes": "any",
       "type": "image/x-icon"
+    },
+    {
+      "src": "/icon.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
     }
   ]
 }
