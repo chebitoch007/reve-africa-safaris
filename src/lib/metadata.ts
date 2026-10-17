@@ -24,6 +24,14 @@ export const SITE = {
   twitterHandle: '' as string,
 } as const;
 
+// Default social-sharing image: the supplied logo artwork (public/og/default.jpg, 1200 × 630).
+export const OG_DEFAULT_IMAGE = {
+  url:    '/og/default.jpg',
+  width:  1200,
+  height: 630,
+  alt:    `${SITE.name} logo`,
+} as const;
+
 // ─────────────────────────────────────────────
 // Base metadata (merged at root layout)
 // ─────────────────────────────────────────────
@@ -77,14 +85,7 @@ export const BASE_METADATA: Metadata = {
     siteName:    SITE.name,
     title:       `${SITE.name} — ${SITE.tagline}`,
     description: SITE.description,
-    images: [
-      {
-        url:    '/og/default.jpg',
-        width:  1200,
-        height: 630,
-        alt:    `${SITE.name} — ${SITE.tagline}`,
-      },
-    ],
+    images: [OG_DEFAULT_IMAGE],
   },
 
   twitter: {
@@ -94,14 +95,12 @@ export const BASE_METADATA: Metadata = {
       : {}),
     title:       `${SITE.name} — ${SITE.tagline}`,
     description: SITE.description,
-    images:      [{ url: '/og/default.jpg', alt: `${SITE.name} — ${SITE.tagline}` }],
+    images:      [{ url: OG_DEFAULT_IMAGE.url, alt: OG_DEFAULT_IMAGE.alt }],
   },
 
-  // /icon.svg, /apple-touch-icon.png and /favicon-16x16.png are not declared
-  // until the final logo assets exist (see docs/IMAGE_ASSET_TRACKER.md).
-  icons: {
-    icon:        [{ url: '/favicon.ico' }],
-  },
+  // Icons come from the Next.js file conventions in src/app (favicon.ico,
+  // icon.png, apple-icon.png); file-based metadata overrides this object, so
+  // no `icons` field is declared here.
 
   manifest: '/site.webmanifest',
 
@@ -141,7 +140,9 @@ export interface PageMetadataOptions {
 export function buildPageMetadata(options: PageMetadataOptions): Metadata {
   const { title, description, path = '', image, keywords } = options;
   const url         = `${SITE.url}${path}`;
-  const ogImage     = image ?? '/og/default.jpg';
+  const ogImage     = image ?? OG_DEFAULT_IMAGE.url;
+  // The default image is the logo, so its alt must not be the page title.
+  const ogAlt       = image ? title : OG_DEFAULT_IMAGE.alt;
   const desc        = description ?? SITE.description;
 
   return {
@@ -153,14 +154,14 @@ export function buildPageMetadata(options: PageMetadataOptions): Metadata {
       title,
       description: desc,
       url,
-      images: [{ url: ogImage, width: 1200, height: 630, alt: title }],
+      images: [{ url: ogImage, width: 1200, height: 630, alt: ogAlt }],
     },
     twitter: {
       card:        'summary_large_image',
       title,
       description: desc,
       ...(SITE.twitterHandle ? { creator: SITE.twitterHandle } : {}),
-      images:      [{ url: ogImage, alt: title }],
+      images:      [{ url: ogImage, alt: ogAlt }],
     },
   };
 }

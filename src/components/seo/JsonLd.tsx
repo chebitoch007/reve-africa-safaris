@@ -36,9 +36,9 @@ function OrganizationSchema() {
     description: SITE.description,
     logo: {
       '@type':        'ImageObject',
-      url:            `${SITE.url}/og/default.jpg`,
-      width:          1200,
-      height:         630,
+      url:            `${SITE.url}/brand/logo-mark.png`,
+      width:          512,
+      height:         512,
     },
     contactPoint: {
       '@type':        'ContactPoint',
