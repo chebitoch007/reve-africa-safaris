@@ -3,13 +3,20 @@
 > **Purpose:** This document gives a new Claude session everything needed to
 > continue development without any prior context. Read it fully before writing
 > a single line of code.
+>
+> **Status note (17 Oct 2026):** Sections 1, 3, 8, 9, 10 and the Release
+> Candidate State below were corrected on this date. Sections 4, 7 and 13-18
+> are milestone records written before the truth pass and still describe
+> components and content that have since been removed (testimonials, stats,
+> conservation, lodges, office and similar). For the current state of the
+> content see `docs/TRUTH_AUDIT.md` and `docs/OWNER_FILL_CHECKLIST.md`.
 
 ---
 
 ## 1. Project Overview
 
 **Client:** Rêve Africa Safaris
-**Type:** Production-ready luxury safari website
+**Type:** Marketing website for a new, founder-led safari company (release candidate; not yet launched)
 **Canonical repository:** `https://github.com/chebitoch007/reve-africa-safaris.git`
 **Branch:** `main`
 
@@ -41,7 +48,7 @@ start of each session. Never assume local files from a previous session exist.
 
 | Tool | Version | Notes |
 |------|---------|-------|
-| Next.js | 16.2.10 | App Router, no Pages Router |
+| Next.js | 16.3.8 | App Router, no Pages Router; `next` and `eslint-config-next` pinned exactly |
 | React | 19.2.4 | |
 | TypeScript | ^5 | strict mode, no `any` |
 | Tailwind CSS | ^4 | **CSS-first config** — no `tailwind.config.ts` |
@@ -561,18 +568,21 @@ All image placeholders use this pattern. Document where to swap in real photos:
 
 Primary nav (from `src/lib/constants/navigation.ts`):
 ```
-/destinations    → Kenya, Tanzania, Rwanda, Uganda, Botswana, Namibia
-/experiences     → Game Drives, Gorilla Trekking, Ballooning, Walking, Conservation, Fly-in
-/packages        → Safari packages listing (was /journeys — corrected in M10)
-/about           → (about page)
-/contact         → (contact page)
+Destinations → /destinations (Kenya, Tanzania, Rwanda, Uganda, Botswana, Namibia, as #anchors)
+Experiences  → /destinations#signature-experiences (Gorilla Trekking, Hot Air Ballooning, Walking Safaris, Fly-in Safaris)
+Journeys     → /packages
+Journal      → /blog (shown while BLOG_IN_NAV is true)
+About        → /about
+Contact      → /contact
 ```
+Legal pages `/privacy`, `/terms` and `/cookies` are linked from the footer.
 
 **Header behaviour:**
 - Fixed position, `z-[30]`
-- Transparent + inverse (light) text when at top of page
+- Transparent + inverse (light) text when at top of page (the first section behind it has a dark background or overlay on every route, checked in code only, not in a browser)
 - Solid `bg-[var(--color-bg-inverse)]` after scrolling 64px
 - Height: 80px (top) → 64px (scrolled) on mobile; 96px → 64px on desktop
+- Logo: the square mark plus a live text wordmark (`src/components/ui/Logo.tsx`); only a dark-background logo exists, so the header must stay dark
 - All hero sections must account for the header height with a spacer div:
   ```jsx
   <div className="h-20 lg:h-24 shrink-0" aria-hidden="true" />
@@ -582,35 +592,35 @@ Primary nav (from `src/lib/constants/navigation.ts`):
 
 ## 9. GitHub Workflow
 
-After each milestone:
-1. `git add` only the files for that milestone
-2. Single conventional commit: `feat: {description}`
-3. Request PAT from user — it will be provided as a temporary token
-4. Push: `git push https://chebitoch007:{PAT}@github.com/chebitoch007/reve-africa-safaris.git main`
-5. Confirm push with the commit hash range shown
-6. **Never store, display, log, or reuse the PAT**
-7. Do not generate ZIP archives
+Current practice (replaces the original per-milestone push-to-main flow):
+1. Work on a named branch cut from the base the task names; Conventional Commits.
+2. Push only the named branches, only after the checks pass. Never push to
+   `main`, never merge, never open pull requests; the Owner merges.
+3. A token is supplied by the Owner for each push only. Pass it as a
+   per-command `http.extraheader` (never in the remote URL, the repo, documents
+   or reports), mask it in output, and ask the Owner to revoke it afterwards.
+4. Do not generate ZIP archives.
 
 ---
 
 ## 10. Known Issues / Technical Debt
 
-1. **No photography.** All images are CSS gradient placeholders. Each placeholder
-   has a comment documenting exactly where `<Image fill>` drops in.
+1. **Images are illustrative and provenance is unrecorded.** `public/images`
+   holds 78 files (stock photographs and AI-generated images, per an unverified
+   Owner statement); 14 are zero-byte empty slots. See `docs/ATTRIBUTION_LOG.md`
+   and `docs/IMAGE_INVENTORY.csv`.
 
-2. **Testimonials are placeholder.** `TestimonialsSection` renders a visible
-   note: *"These are placeholder testimonials."* Remove before launch.
+2. **Testimonials were removed.** None exist; do not re-add placeholders.
 
 3. **Gallery mobile layout.** The `wide` and `tall` grid span variants only
    apply at `lg:` breakpoint. On mobile all items render as equal tiles.
 
-4. **No OG images.** The `/og/` directory exists but contains only a `.gitkeep`.
-   Production-quality OG images (`/og/default.jpg` and page-specific variants)
-   should be created before launch. Dimensions: 1200×630px.
+4. **Default OG image.** `/og/default.jpg` (1200x630, the supplied logo artwork)
+   is used by every page. There are no page-specific OG images.
 
-5. **No favicon set.** Only `favicon.ico` (auto-generated by Next.js scaffold)
-   exists. Full favicon set (`/icon.svg`, `/apple-touch-icon.png`,
-   `/favicon-16x16.png`) should be produced from the final logo before launch.
+5. **Icons.** `favicon.ico`, `icon.png` and `apple-icon.png` live in `src/app`
+   and are emitted by the Next.js file conventions. There is no SVG master, so
+   there is no `/icon.svg`.
 
 6. **No Content Security Policy (CSP).** Security headers are implemented in
    `next.config.ts` but CSP is omitted — it requires an audit of all third-party
@@ -1113,9 +1123,9 @@ The following items cannot be completed without external assets or decisions —
 | Item | Blocker | Status |
 |------|---------|--------|
 | Real photography | Client asset delivery | ✅ Wired (batches 1–5) |
-| Verified testimonials | Client asset delivery | ✅ Resolved — placeholder names/note removed |
-| OG images | Photography + brand assets | ✅ Resolved — branded ImageResponse (opengraph-image.tsx) |
-| Full favicon set | Final logo SVG | ⏳ Pending |
+| Verified testimonials | Client asset delivery | ✅ Resolved — testimonials removed (none exist) |
+| OG images | Photography + brand assets | ✅ Resolved — supplied `/og/default.jpg` (the generated opengraph-image route was deleted) |
+| Full favicon set | Final logo | ✅ Resolved — favicon.ico, icon.png, apple-icon.png (no SVG master) |
 | Enquiry form backend | CRM / email provider selection | ⏳ Pending |
 | Newsletter backend | Mailing list provider selection | ⏳ Pending |
 | Maps integration | Maps API provider selection | ⏳ Pending |
@@ -1125,7 +1135,7 @@ The following items cannot be completed without external assets or decisions —
 ### Release Candidate State
 
 - ✅ TypeScript strict mode — zero errors
-- ✅ Production build — all 10 routes build cleanly (7 pages + opengraph-image + sitemap + 404)
+- ✅ Production build — all routes build cleanly (see the build output; at the time of this edit: pages, `/blog/[slug]` articles, icons, sitemap and 404)
 - ✅ All pages fully static (`○ Static`)
 - ✅ Site-wide JSON-LD: Organization + TourOperator + WebSite
 - ✅ FAQPage JSON-LD: 6 pages with FAQ sections
@@ -1141,7 +1151,7 @@ The following items cannot be completed without external assets or decisions —
 - ✅ `useReducedMotion()` in all 110+ animated components
 - ✅ CSS `prefers-reduced-motion` global override
 - ✅ All homepage CTAs resolve to real pages (no 404 links remaining)
-- ✅ Branded OG image auto-generated via ImageResponse (edge runtime)
+- ✅ Default OG image `/og/default.jpg` (supplied file, 1200x630)
 - ✅ Self-hosted fonts, no external CDN dependencies
 - ✅ Production README
 - ✅ Complete HANDOFF documentation

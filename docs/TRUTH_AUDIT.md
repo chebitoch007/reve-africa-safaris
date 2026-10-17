@@ -73,14 +73,14 @@ Line numbers refer to the base commit `673a013` where known; otherwise the const
 4. The per-person, double-occupancy FAQ answer.
 5. The Nairobi location: the office section and JSON-LD address were removed because no office is confirmed.
 
-## Not changed, needs a decision
+## Status of items listed as open on 13 Oct 2026 (updated 17 Oct 2026)
 
-- **Placeholder phone/WhatsApp** `+254 700 000 000`, "Mon-Fri 08:00-18:00" hours and the WhatsApp link remain on /contact and in the footer data.
-- **Newsletter** (`NewsletterSection`) collects nothing but promises a dispatch "soon" and "never more than twice a month". The blog newsletter copy and "Read our privacy policy" (no such page exists) are unchanged.
-- **Social profile URLs** in JSON-LD `sameAs` (Instagram, Facebook, YouTube) are unverified.
-- **Zimbabwe** has been removed from JSON-LD `areaServed` and the gallery copy. The only remaining mention is the Victoria Falls image caption; there is no Zimbabwe destination page.
-- `app/opengraph-image.tsx` still reads "Bespoke luxury safari journeys crafted for those who seek the extraordinary."
-- Image provenance: see `ATTRIBUTION_LOG.md` and `IMAGE_INVENTORY.csv` (docs/image-provenance branch).
+- **Placeholder phone/WhatsApp/hours:** resolved. The placeholder numbers and hours are gone. `CONTACT_PHONE`, `CONTACT_WHATSAPP` and `CONTACT_HOURS` in `contact.ts` are optional [OWNER-FILL] values, empty by default, and render nothing until set (see `OWNER_FILL_CHECKLIST.md`).
+- **Newsletter:** switched off (`NEWSLETTER_ENABLED = false` in `blog.ts`); the section is not rendered. A `/privacy` page now exists.
+- **Social profile URLs / JSON-LD `sameAs`:** resolved. `sameAs` is built only from non-empty `SOCIAL_LINKS` URLs and omitted when none are set; the footer social block and each icon render only when their own URL is set.
+- **Zimbabwe:** unchanged. It has been removed from JSON-LD `areaServed` and the gallery copy; the only remaining mention is the Victoria Falls image caption. There is no Zimbabwe destination page.
+- **Open Graph image:** resolved. The generated `app/opengraph-image.tsx` (with the old "luxury ... extraordinary" tagline) has been deleted; every page uses the supplied `/og/default.jpg`.
+- **Image provenance:** see `ATTRIBUTION_LOG.md` and `IMAGE_INVENTORY.csv`. Provenance is still UNKNOWN for every stock/AI image and unverified for the brand assets.
 
 ## Legitimate forbidden-term hits
 

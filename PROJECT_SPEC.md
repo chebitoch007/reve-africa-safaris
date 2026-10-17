@@ -1,12 +1,14 @@
 # RÊVE AFRICA SAFARIS
 
+> **Historical planning document, superseded by the current site.** This was the original brief. The built site differs from it in the ways noted inline below. For what the site actually is and says, see `docs/TRUTH_AUDIT.md`, `docs/OWNER_FILL_CHECKLIST.md` and the code in `src/lib/constants/`.
+
 ## Project Overview
 
-RÊVE AFRICA SAFARIS is a luxury African tour and travel company that offers unforgettable safari experiences across East and Southern Africa.
+RÊVE AFRICA SAFARIS is a new, founder-led safari company designing journeys across East and Southern Africa, planned by hand around each traveller. (The original brief called it a luxury company; the site makes no claim it cannot support.)
 
 The website should inspire visitors to explore Africa through premium wildlife adventures, cultural experiences, beach holidays, and tailor-made journeys.
 
-The overall experience must communicate elegance, trust, exclusivity, and adventure.
+The overall experience must communicate elegance, trust, and adventure. (Exclusivity was in the original brief; the site does not claim it.)
 
 ---
 
@@ -154,9 +156,13 @@ Blog
 
 Contact
 
-Privacy Policy
+Privacy Policy (`/privacy`)
 
-Terms
+Terms (`/terms`)
+
+Cookies (`/cookies`)
+
+(These three exist and are `noindex` and out of the sitemap until `LEGAL_PAGES_REVIEWED` is set to `true`.)
 
 ---
 
@@ -174,13 +180,11 @@ Popular Packages
 
 Why Choose Us
 
-Testimonials
-
 Photo Gallery
 
-Instagram
-
 Call To Action
+
+(Testimonials and Instagram sections were removed: no guest testimonials exist and no social accounts have been created yet.)
 
 Footer
 
@@ -200,7 +204,7 @@ Botswana
 
 Namibia
 
-South Africa
+(South Africa is not a destination; the destination set is these six.)
 
 ---
 
@@ -236,15 +240,15 @@ Fast Loading
 
 Accessibility
 
-WhatsApp Inquiry
+WhatsApp Inquiry (optional: shown only when a number is set in `contact.ts`)
 
 Contact Form
 
-Newsletter
+Newsletter (built but switched off: `NEWSLETTER_ENABLED = false`)
 
-Google Maps
+Google Maps (not built: `MapPlaceholder.tsx` stands in)
 
-Social Links
+Social Links (optional: each shown only when its URL is set in `navigation.ts`)
 
 Image Gallery
 
@@ -282,11 +286,11 @@ Framer Motion
 
 Lucide Icons
 
-Cloudinary
+Cloudinary (not used: images are served from `public/images`)
 
 Formspree
 
-Vercel
+Vercel (hosting not decided)
 
 GitHub
 
@@ -327,8 +331,6 @@ DestinationCard.tsx
 PackageCard.tsx
 
 Gallery.tsx
-
-Testimonials.tsx
 
 FAQ.tsx
 

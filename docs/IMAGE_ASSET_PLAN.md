@@ -114,17 +114,12 @@ All photography must meet these minimum standards before integration:
 | Path | Type | Status |
 |------|------|--------|
 | `public/fonts/` | Typography | ✅ Production-ready (self-hosted woff2) |
-| `public/og/.gitkeep` | OG Image placeholder | ❌ Missing — stub file only |
+| `public/og/default.jpg` | Default OG image | ✅ Supplied 17 Oct 2026 (1200×630) |
 | `public/robots.txt` | SEO | ✅ Production-ready |
-| `public/site.webmanifest` | PWA manifest | ✅ Production-ready |
-| `public/favicon.ico` | Favicon | ⚠️ Scaffold default — must be replaced |
-| `public/file.svg` | Next.js scaffold | ❌ Remove before launch |
-| `public/globe.svg` | Next.js scaffold | ❌ Remove before launch |
-| `public/next.svg` | Next.js scaffold | ❌ Remove before launch |
-| `public/vercel.svg` | Next.js scaffold | ❌ Remove before launch |
-| `public/window.svg` | Next.js scaffold | ❌ Remove before launch |
+| `public/site.webmanifest` | PWA manifest | ✅ Lists `favicon.ico` and the 512px `icon.png` (no 192px icon file exists) |
+| `src/app/favicon.ico`, `icon.png`, `apple-icon.png` | Favicon and app icons | ✅ Supplied 17 Oct 2026 (file conventions) |
 
-**No production photography exists anywhere in the repository.**
+**Image status (17 Oct 2026):** `public/images` holds 78 illustrative files, of which 14 are empty slots; provenance is unrecorded (see `IMAGE_INVENTORY.csv` and `ATTRIBUTION_LOG.md`). The scaffold SVGs listed in the original plan have already been deleted.
 
 ### 3.2 Placeholder Pattern Summary
 
@@ -149,11 +144,11 @@ One exception: `DestinationCard.tsx` already uses `<Image src={destination.image
 
 ### 3.3 OG Image Status
 
-The `/og/` directory contains only a `.gitkeep` file. All seven pages reference `/og/default.jpg` as a fallback. No page-specific OG images have been defined in `buildPageMetadata()` calls. All OG images are missing.
+`public/og/default.jpg` (1200×630, the supplied logo artwork) exists and is the default for every page. No page-specific OG images have been defined in `buildPageMetadata()` calls.
 
 ### 3.4 Favicon Status
 
-Only the scaffold `favicon.ico` exists. The metadata references `/icon.svg`, `/apple-touch-icon.png`, and `/favicon-16x16.png` — none of these exist. These depend on the final logo SVG and are outside the scope of this photography plan, but are noted as blocking pre-launch items.
+`favicon.ico`, `icon.png` and `apple-icon.png` are in `src/app` and are emitted by the Next.js file conventions. No SVG master exists, so there is no `/icon.svg`.
 
 ---
 
@@ -1399,6 +1394,8 @@ All remaining page imagery that renders after scrolling.
 
 ### Image Dimensions Reference
 
+> **Current limits (17 Oct 2026):** `npm run check:images` warns when a hero image (any `/hero/` folder) is under 1920 px wide or any other image is under 1200 px wide. The Owner's resizing statement (unverified) is that heroes were resized to 1920 px wide and all other images to 1200 px wide; the file-size budgets are heroes ≤ 800 KB and other images ≤ 400 KB (not checked by the script). The "Minimum Resolution" column below holds the **original sourcing targets**, which the current files are below by design.
+
 | Context | Aspect Ratio | Minimum Resolution | Loading |
 |---------|-------------|-------------------|---------|
 | Hero (full viewport) | 16:9 to 21:9 | 3840 × 2160px | `priority` (LCP) |
@@ -1417,7 +1414,7 @@ All remaining page imagery that renders after scrolling.
 | Gallery category | 1:1 | 600 × 600px | Lazy |
 | Blog featured story | 3:2 | 2400 × 1600px | Lazy |
 | Blog article card | 16:10 | 1200 × 750px | Lazy |
-| Open Graph | 1200:630 exactly | 1200 × 630px | Static file |
+| Open Graph | 1200:630 exactly | 1200 × 630px | Static file (`public/og/default.jpg`, supplied) |
 
 ### Format Pipeline
 
@@ -1524,14 +1521,7 @@ The `imageSrc` and `imageAlt` fields will need to be added to the relevant TypeS
 
 ### 9.3 Removing Next.js Scaffold SVGs
 
-Before launch, remove the following unused scaffold files from `public/`:
-- `file.svg`
-- `globe.svg`
-- `next.svg`
-- `vercel.svg`
-- `window.svg`
-
-These are not referenced by any component in the production codebase and should not remain in the `public/` directory.
+Done: `file.svg`, `globe.svg`, `next.svg`, `vercel.svg` and `window.svg` have been deleted from `public/`.
 
 ### 9.4 OG Image Integration
 

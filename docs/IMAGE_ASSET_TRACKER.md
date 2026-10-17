@@ -1420,7 +1420,7 @@ OG images require a design step (brand overlay) in addition to photography. The 
 
 | OG Image | Path | Base Photo | Design Complete | Integrated | Notes |
 |----------|------|------------|-----------------|------------|-------|
-| Default (site-wide) | `public/og/default.jpg` | IMG-001 | ☐ | ☐ | Dark overlay + wordmark + tagline centred |
+| Default (site-wide) | `public/og/default.jpg` | Logo artwork (not IMG-001) | ✅ | ✅ | Supplied by the Owner 17 Oct 2026; 1200×630; see `ATTRIBUTION_LOG.md` (Brand assets) |
 | Homepage | `public/og/homepage.jpg` | IMG-001 | ☐ | ☐ | As default, or homepage-specific variant |
 | About | `public/og/about.jpg` | IMG-001 (default) | ☐ | ☐ | Default OG acceptable for launch |
 | Destinations | `public/og/destinations.jpg` | IMG-001 (default) | ☐ | ☐ | Default OG acceptable for launch |
@@ -1444,16 +1444,16 @@ These items are tracked in `IMAGE_ASSET_PLAN.md` Section 3.3 and must be complet
 | Remove `public/next.svg` | ✅ | Next.js scaffold |
 | Remove `public/vercel.svg` | ✅ | Next.js scaffold |
 | Remove `public/window.svg` | ✅ | Next.js scaffold |
-| Replace `public/favicon.ico` | ☐ | Scaffold default — requires final logo SVG |
-| Add `/icon.svg` | ☐ | Depends on final logo; re-add the `icons.icon` entry in `src/lib/metadata.ts` (removed in `chore/dead-links-and-cleanup`) |
-| Add `/apple-touch-icon.png` | ☐ | Re-add `icons.apple` in `src/lib/metadata.ts` (removed in `chore/dead-links-and-cleanup`) |
-| Add `/favicon-16x16.png` | ☐ | Re-add `icons.shortcut` in `src/lib/metadata.ts` (removed in `chore/dead-links-and-cleanup`) |
+| Replace `public/favicon.ico` | ✅ | Replaced by `src/app/favicon.ico` (16/32/48) supplied 17 Oct 2026 |
+| Add `/icon.svg` | n/a | No SVG master exists; `src/app/icon.png` (512×512) is used instead. Icons come from the Next.js file conventions, so nothing is declared in `src/lib/metadata.ts` |
+| Add `/apple-touch-icon.png` | ✅ | `src/app/apple-icon.png` (180×180), emitted by the file convention |
+| Add `/favicon-16x16.png` | n/a | Covered by the 16/32/48 sizes inside `favicon.ico` |
 | `DestinationData` interface — add `imageSrc: string` | ☐ | `src/lib/constants/homepage.ts` |
 | `FEATURED_DESTINATIONS` — populate `imageSrc` for all 4 entries | ☐ | `src/lib/constants/homepage.ts` |
 | `GalleryItem` interface — add `imageSrc: string` | ☐ | `src/lib/constants/homepage.ts` |
 | `GALLERY_ITEMS` — populate `imageSrc` for all 6 preview items | ☐ | `src/lib/constants/homepage.ts` |
 | `buildPageMetadata()` calls — add `image` for Packages and Gallery OG | ☐ | After OG images are designed |
-| `public/og/default.jpg` — design and place | ☐ | Blocking for social sharing on all pages |
+| `public/og/default.jpg` — design and place | ✅ | Supplied 17 Oct 2026 |
 | Lighthouse audit — all pages ≥ 90 Performance | ☐ | Post-integration |
 | Lighthouse audit — all pages ≥ 90 Accessibility | ☐ | Post-integration |
 | Lighthouse audit — all pages ≥ 90 Best Practices | ☐ | Post-integration |
